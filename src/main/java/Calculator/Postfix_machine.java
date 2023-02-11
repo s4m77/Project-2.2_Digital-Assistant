@@ -38,7 +38,7 @@ public class Postfix_machine {
                     }
                 }
             }else {
-                throw new IllegalArgumentException("wrong identify"+ token);
+                throw new IllegalArgumentException("identify failed"+ token);
             }
         }while (!opStack.isEmpty()){
             suffixList.add(opStack.pop());
@@ -110,7 +110,7 @@ public class Postfix_machine {
                 default -> list.add(s);
             }
         }
-        return list.size() == 1 ? list.get(0) : "Failed";
+        return list.size() == 1 ? list.get(0) : "Invalid Equation";
 
     }
 

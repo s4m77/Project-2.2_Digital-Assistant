@@ -95,10 +95,10 @@ public class MyCalculator extends JFrame implements ActionListener {
         //Button ）
         buttonRightParenthesis = new MyButton(")", 130, 160, 80, 50);
         frame.add(buttonRightParenthesis);
-        //Button C  Remove all the calc
+        //Button C
         buttonC = new MyButton("C", 220, 160, 80, 50);
         frame.add(buttonC);
-        //Button CE Remove the current calc
+        //Button CE
         buttonCE = new MyButton("CE", 310, 160, 80, 50);
         frame.add(buttonCE);
         //Add a text field to input calc formulae
