@@ -1,14 +1,14 @@
-
+package CFG;
 
 import java.io.FileReader;
 import java.util.ArrayList;
 
-import javax.swing.text.AbstractDocument.AttributeContext;
+
 
 public class CFG {
     
 
-    public static final String CFG_FILE = "Templates\\Template.txt";
+    public static final String CFG_FILE = "src\\main\\java\\CFG\\CFGTemplate.txt";
     public static ArrayList<String> rules=readCFG(CFG_FILE);
     public static String actionPrefix = "Action";
     public static String rulePrefix = "Rule";

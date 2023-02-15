@@ -1,18 +1,14 @@
-import javax.script.*;
+package CFG;
 
 public class TemplateMethods {
 
     public static void Math(Node tree){
         String expression = tree.findValue("<MATHEXPRESSION>");
-        ScriptEngineManager mgr = new ScriptEngineManager();
-        ScriptEngine engine = mgr.getEngineByName("JavaScript");
-        try{
-            tree.addChild(new Node("<ANSWER>",(String) engine.eval(expression)));
-        }
-        catch(Exception e){
-            System.out.println("Error in Math");
-        }
+        tree.addChild(new Node("<ANSWER>", String.valueOf(eval(expression))));
     }
+
+
+    //blatenly stolen from https://stackoverflow.com/questions/3422673/how-to-evaluate-a-math-expression-given-in-string-form
     public static double eval(final String str) {
         return new Object() {
             int pos = -1, ch;
