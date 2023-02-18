@@ -50,6 +50,25 @@ public class Node {
         return null;
     }
 
+    public String getFilledString(){
+        //return the string with all values surrounded by < > replaced with the value
+        //we need to watch out because multiple <> can have the same attribute but should be filled with different values
+        //luckily all values are added to the tree in order of appearance so we can just replace the first one we find
+        //we can also assume that all values are filled in the tree
+        String result = value;
+        for(int i=0;i<children.size();i++){
+            String attribute = children.get(i).getAttribute();
+
+            result = result.replaceFirst(children.get(i).getAttribute(),children.get(i).findValue(children.get(i).getAttribute()));
+        }
+        return result;
+
+    }
+
+    public void clearChildren(){
+        children.clear();
+    }
+
 
 
     

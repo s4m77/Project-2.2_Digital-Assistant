@@ -3,8 +3,12 @@ package CFG;
 public class TemplateMethods {
 
     public static void Math(Node tree){
-        String expression = tree.findValue("<MATHEXPRESSION>");
-        tree.addChild(new Node("<ANSWER>", String.valueOf(eval(expression))));
+        Node branch = tree.getNode("<MATHEXPRESSION>");
+        String expression = branch.getFilledString();
+        //tree.addChild(new Node("<ANSWER>", String.valueOf(eval(expression))));
+        double answer=eval(expression);
+        tree.addChild(new Node("<ANSWER>",String.valueOf(answer)));
+        
     }
 
 
