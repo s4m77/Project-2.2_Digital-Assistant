@@ -2,6 +2,7 @@ package CFG;
 
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.lang.reflect.*;
 
 
 
@@ -14,10 +15,18 @@ public class CFG {
     public static String rulePrefix = "Rule";
     public static String dividerChar = ":";
     public static String freeString="*";
+    public static String devideByChar="&";
+    public static int maxDepth=20;
     public static void main(String[] args) {
         // TODO Auto-generated method stub
-        String sentence = "Which lectures are there on monday at 9";
-        interpret(sentence);
+        // String sentence = "what is 2+2+2";
+        // interpret(sentence);
+        String[] test={"2","+","4","*","5"};
+        String rule="Rule <MATHEXPRESSION&> <MATHEXPRESSION&> <OPERATOR> <NUMBER> | <NUMBER> <OPERATOR> <NUMBER>";
+        Node tree = new Node("top",null);
+        applyRuleChar(tree, rule, test,0);
+        int tes2=-3;
+
     }
 
 
@@ -37,18 +46,28 @@ public class CFG {
 
     }
     public static void executeAction(Node tree, int action){
+        ArrayList<String> rules2=rules;
         String[] split=rules.get(action).split(dividerChar);
         if(split.length==3){
             //if there is a third part, it will contain methods to be executed
-            String[] methods = split[2].split(" ");
+            String methodString=split[2];
+            //remove front and back spaces
+            methodString=methodString.trim();
+            //split the string into methods
+            String[] methods=methodString.split(" ");
+
+
+
+
+            
             //first replace every substring surrounded by < and > with the value of the attribute
             //for example Math(<PRO>) will become Math(he)
             for(int i=0;i<methods.length;i++){
                 //every method will take as input the tree
                 //execute the method for example Math()
-                java.lang.reflect.Method method;
                 try{
-                    method=TemplateMethods.class.getMethod(methods[i], Node.class);
+                    Class<TemplateMethods> c=TemplateMethods.class;
+                    Method method=c.getMethod(methods[i], Node.class);
                     method.invoke(null, tree);
                 }
                 catch(Exception e){
@@ -57,7 +76,10 @@ public class CFG {
             }
         }
         String actionString = "";
-        String[] words = split[1].split(" ");
+        String temp=split[1];
+        //remove front and back spaces
+        temp=temp.trim();
+        String[] words=temp.split(" ");
         for(int j=0;j<words.length;j++){
             if(containsKey(words[j])){
                 actionString+=tree.findValue(words[j])+" ";
@@ -75,7 +97,9 @@ public class CFG {
         for(int i=0;i<rules.size();i++){
             String rule = rules.get(i);
             if(rule.contains(rulePrefix)){
-                if(applyRule(tree, rule, sentence)){
+                //split the sentence into words
+                String[] words = sentence.split(" ");
+                if(applyRule(tree, rule, words,0)){
                     break;
                 } 
             }
@@ -89,6 +113,7 @@ public class CFG {
     public static int isAction(Node tree){
         // ArrayList<String> attributes =new ArrayList<>();
         // ArrayList<String> values = new ArrayList<>();
+        int temp=0;
         for(int i=0;i<rules.size();i++){
             // attributes.clear();
             // values.clear();
@@ -133,25 +158,40 @@ public class CFG {
         }
         return -1;
     }
+    // public static Boolean applyRule(Node tree,String Rule, String sentence){
+    //     return applyRule(tree, Rule, sentence, false);
+    // }
 
-    public static Boolean applyRule(Node tree,String Rule, String sentence){
+    public static Boolean applyRule(Node tree,String Rule, String[] sentence,int depth){
+        if(Rule.equals("Rule <MATHEXPRESSION&> <MATHEXPRESSION> <OPERATOR> <NUMBER> | <NUMBER> <OPERATOR> <NUMBER>")){
+            int test=0;
+        }
+        if(depth>maxDepth){
+            return false;
+        }
         //start with rule:// Rule <PRO> I | you | he | she 
         //remove the first rule and attribute
         //then split the rule into parts
         String[] ruleParts = StripRule(Rule);
-        String[] sentenceParts = sentence.split(" ");
-        String attribute = Rule.split(" ")[1];
+        String[] sentenceParts = sentence;//sentence.split(" ");
+        
+        //get attribute and remove any & 
+        String attribute = Rule.split(" ")[1].replace(devideByChar, "");
         //list storing the indexes used in the sentence
+
         ArrayList<Integer> usedIndexes = new ArrayList<Integer>();
-        int foundIndex = 0;
+        
+        
         for(int i2=0;i2<ruleParts.length;i2++){
             String[] words=ruleParts[i2].split(" ");
             Boolean wordFound=true;
             //check if the words appear in order in the sentence
             usedIndexes.clear();
             int index=0;
+            int keywords=0;
             for(int j=index;j<words.length;j++){
                 if(containsKey(words[j])){
+                    keywords++;
                     continue;
                 }
                 Boolean found = false;
@@ -171,14 +211,29 @@ public class CFG {
             if(!wordFound){
                 continue;
             }
+            //if there are more keywords than words in the sentence
+            //we can't use this rule
+            if(keywords>sentenceParts.length){
+                continue;
+            }
+            int foundIndex = i2;
                     
-        
-        
+            ArrayList<String> nonUsedSentenceParts;
+            
+            nonUsedSentenceParts = getNonUsedSentenceParts(sentenceParts, usedIndexes);
+            
 
-            ArrayList<String> nonUsedSentenceParts = getNonUsedSentenceParts(sentenceParts, usedIndexes);
+            
             //we make a child node
             //if the rule part is * we want to add the whole sentence
-            String value = ruleParts[foundIndex].equals(freeString)?sentence:ruleParts[foundIndex];
+            String value =ruleParts[foundIndex];
+            if(ruleParts[foundIndex].equals(freeString)){
+                value = "";
+                for(int i=0;i<nonUsedSentenceParts.size();i++){
+                    value+=nonUsedSentenceParts.get(i)+" ";
+                }
+                value = value.substring(0, value.length()-1);
+            }
             Node child = new Node(attribute,value);
             Boolean subCorrect = true;
             //for every word in the rule containing < > 
@@ -192,14 +247,25 @@ public class CFG {
                     Boolean ruleFound = false;
                     for(int j=0;j<rules.size();j++){
                         String[] rule = rules.get(j).split(" ");
-                        if(j==7){
-                            int test=0;
-                        }
-                        if(rule[0].equals("Rule") && rule[1].equals("<"+subAttribute+">")){
-                            if(applyRule(child, rules.get(j), subSentence)){
-                                ruleFound = true;
-                                break;
+                        if(rule[0].equals("Rule") && (rule[1].equals("<"+subAttribute+">")||rule[1].equals("<"+subAttribute+devideByChar+">"))){
+                        
+                            Boolean temp=rule[1].equals("<"+subAttribute+devideByChar+">");
+                            if(temp){
+                                //if the contains a devide by char we want to split the whole sentence into its individual parts
+                                String[] characters=subSentence.split("");
+                                if(applyRuleChar(child, rules.get(j), characters,depth+1)!=-1){
+                                    ruleFound = true;
+                                    break;
+                                }
                             }
+                            else{
+                                String[] subSentenceParts=subSentence.split(" ");
+                                if(applyRule(child, rules.get(j), subSentenceParts,depth+1)){
+                                    ruleFound = true;
+                                    break;
+                                }
+                            }
+                            
                         }
                         if(ruleFound){
                             break;
@@ -222,6 +288,66 @@ public class CFG {
         return false;
 
         
+    }
+
+    public static int applyRuleChar(Node tree,String Rule, String[] characters ,int depth){
+        //does the same as applyRule but on a character by character basis
+        if(depth>maxDepth){
+            return -1;
+        }
+        //start with rule:// Rule <MATHEXPRESSION&> <MATHEXPRESSION> <OPERATOR> <NUMBER> | <NUMBER> <OPERATOR> <NUMBER>
+        //remove the first rule and attribute
+        //then split the rule into parts
+        String[] ruleParts = StripRule(Rule);
+       
+        //get attribute and remove any &
+        String attribute = Rule.split(" ")[1].replace(devideByChar, "");
+        Node child = new Node(attribute,ruleParts[0]);
+        for(int i2=0;i2<ruleParts.length;i2++){
+            String[] ruleChars = ruleParts[i2].split(" "); 
+            
+            int usedChars=0;
+            Boolean ruleUsed=true;
+            for(int i=0;i<ruleChars.length;i++){
+                if(containsKey(ruleChars[i])){
+                    //find a rule that matches the word
+                    String subAttribute=ruleChars[i].substring(1, ruleChars[i].length()-1);
+                    Boolean ruleFound = false;
+                    for(int j=0;j<rules.size();j++){
+                        String[] rule = rules.get(j).split(" ");
+                        String temp4=rule[1];
+                        String temp5=ruleChars[i];
+                        String temp6=ruleChars[i]+devideByChar;
+                        Boolean temp1=rule[0].equalsIgnoreCase("Rule");
+                        Boolean temp2= rule[1].equals("<"+subAttribute+">");
+                        Boolean temp3= rule[1].equals("<"+subAttribute+devideByChar+">");
+                        if(rule[0].equals("Rule") && (rule[1].equals("<"+subAttribute+">")||rule[1].equals("<"+subAttribute+devideByChar+">"))){
+                            String[] subSentenceParts= new String[characters.length-usedChars];
+                            for(int k=0;k<subSentenceParts.length;k++){
+                                subSentenceParts[k]=characters[usedChars+k];
+                            }
+                            int temp=applyRuleChar(child, rules.get(j), subSentenceParts,depth+1);
+                            if(temp!=-1){
+                                usedChars+=temp;
+                                ruleFound = true;
+                                break;
+                            }
+                        }
+                    }
+                    if(!ruleFound){
+                        ruleUsed=false;
+                        break;
+                    }
+                }
+            }
+            if(ruleUsed){
+                tree.addChild(child);
+                return usedChars;
+            }
+
+        }
+        return -1;
+
     }
 
 
@@ -261,10 +387,18 @@ public class CFG {
             nonUsedSentenceParts.add(nonUsedSentencePart);
         }
 
+
         return nonUsedSentenceParts;
     }
-
-
+    public static ArrayList<String> getNonUsedCharacters(String[] sentenceParts, ArrayList<Integer> usedIndexes){
+        ArrayList<String> nonUsedSentenceParts= new ArrayList<String>();
+        for(int i=0;i<sentenceParts.length;i++){
+            if(!usedIndexes.contains(i)){
+                nonUsedSentenceParts.add(sentenceParts[i]);
+            }
+        }
+        return nonUsedSentenceParts;
+    }
 
 
     public static String[] StripRule(String rule){
