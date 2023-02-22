@@ -14,36 +14,65 @@ public class CFG {
     public static String actionPrefix = "Action";
     public static String rulePrefix = "Rule";
     public static String dividerChar = ":";
-    public static String freeString="*";
+    public static String freeString="@";
     public static String devideByChar="&";
-    public static int maxDepth=20;
+    public static int maxDepth=7;
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        // String sentence = "what is 2+2+2";
-        // interpret(sentence);
-        String[] test={"2","+","4","*","5"};
-        String rule="Rule <MATHEXPRESSION&> <MATHEXPRESSION&> <OPERATOR> <NUMBER> | <NUMBER> <OPERATOR> <NUMBER>";
-        Node tree = new Node("top",null);
-        applyRuleChar(tree, rule, test,0);
-        int tes2=-3;
+        //TODO Auto-generated method stub
+        String sentence = "what is (200+2)+(2^20)";
+        interpret(sentence);
+
+
+
+        // String[] test={"1","0","*","2","+","3","*","4","0","*","5","*","6"};
+        // String rule="Rule <MATHEXPRESSION&> <NUMBER> <OPERATOR> <MATHEXPRESSION> | <NUMBER> <OPERATOR> <NUMBER>";
+        // Node tree = new Node("top",null);
+        // applyRuleChar(tree, rule, test);
+        // int tes2=-3;
+        // TemplateMethods.Math(tree);
+        // System.out.println(tree.getNode("<ANSWER>").value);
+
+        // String[] characters={"2","0","0","*","2","0","0","*","2","0","0"};
+        // String rule="Rule <MATHEXPRESSION&> <NUMBER> <OPERATOR> <MATHEXPRESSION> | <NUMBER> <OPERATOR> <NUMBER>";
+        // Node tree = new Node("top",null);
+        // applyRuleChar(tree, rule, characters);
+        // TemplateMethods.Math(tree);
+        // System.out.println(tree.getNode("<ANSWER>").value);
+
+        // String rule = "<MATHEXPRESSION> <OPERATOR> <NUMBER>";
+        // System.out.println(findSmallestAmountOfChars(rule));
 
     }
 
 
     
     public static void interpret(String sentence){
-        //capitalisation doesn't matter
-        sentence=sentence.toLowerCase();
+        //clean up the input
+        sentence=cleanUpInput(sentence);
         //construct the tree based on the rules in the CFG
         Node tree = new Node("top",sentence);
         applyRules(tree, sentence);
 
         //check if the tree meets the requirements of an action
         int action= isAction(tree);
+        //if it does, execute the action
         if(action!=-1){
             executeAction(tree, action);
         }
 
+    }
+
+    public static String cleanUpInput(String input){
+        //set everything to lower case
+        input=input.toLowerCase();
+        //remove all . ? ! and ,
+        input=input.replace(".", "");
+        input=input.replace("?", "");
+        input=input.replace("!", "");
+        input=input.replace(",", "");
+        //remove any leading or trailing spaces
+        input=input.trim();
+        return input;
     }
     public static void executeAction(Node tree, int action){
         ArrayList<String> rules2=rules;
@@ -94,16 +123,10 @@ public class CFG {
 
     public static void applyRules(Node tree, String sentence){
         //for every rule, check if the sentence matches the rule
-        for(int i=0;i<rules.size();i++){
-            String rule = rules.get(i);
-            if(rule.contains(rulePrefix)){
-                //split the sentence into words
-                String[] words = sentence.split(" ");
-                if(applyRule(tree, rule, words,0)){
-                    break;
-                } 
-            }
-        }
+        String headRule=rules.get(0);
+        String[] rule=sentence.split(" ");
+        applyRule(tree, headRule, rule, 0);
+
     }
     public static boolean containsKey(String sentense){
         return sentense.contains("<") && sentense.contains(">");
@@ -163,9 +186,6 @@ public class CFG {
     // }
 
     public static Boolean applyRule(Node tree,String Rule, String[] sentence,int depth){
-        if(Rule.equals("Rule <MATHEXPRESSION&> <MATHEXPRESSION> <OPERATOR> <NUMBER> | <NUMBER> <OPERATOR> <NUMBER>")){
-            int test=0;
-        }
         if(depth>maxDepth){
             return false;
         }
@@ -290,7 +310,10 @@ public class CFG {
         
     }
 
-    public static int applyRuleChar(Node tree,String Rule, String[] characters ,int depth){
+    public static int applyRuleChar(Node tree,String Rule,String[] characters){
+        return applyRuleChar(tree, Rule, characters, 0);
+    }
+    private static int applyRuleChar(Node tree,String Rule, String[] characters ,int depth){
         //does the same as applyRule but on a character by character basis
         if(depth>maxDepth){
             return -1;
@@ -302,25 +325,23 @@ public class CFG {
        
         //get attribute and remove any &
         String attribute = Rule.split(" ")[1].replace(devideByChar, "");
-        Node child = new Node(attribute,ruleParts[0]);
+        
         for(int i2=0;i2<ruleParts.length;i2++){
+            Node child = new Node(attribute,ruleParts[i2]);
             String[] ruleChars = ruleParts[i2].split(" "); 
-            
+            if(findSmallestAmountOfChars(ruleParts[i2])>characters.length){
+                continue;
+            }
             int usedChars=0;
             Boolean ruleUsed=true;
             for(int i=0;i<ruleChars.length;i++){
+
                 if(containsKey(ruleChars[i])){
                     //find a rule that matches the word
                     String subAttribute=ruleChars[i].substring(1, ruleChars[i].length()-1);
                     Boolean ruleFound = false;
                     for(int j=0;j<rules.size();j++){
                         String[] rule = rules.get(j).split(" ");
-                        String temp4=rule[1];
-                        String temp5=ruleChars[i];
-                        String temp6=ruleChars[i]+devideByChar;
-                        Boolean temp1=rule[0].equalsIgnoreCase("Rule");
-                        Boolean temp2= rule[1].equals("<"+subAttribute+">");
-                        Boolean temp3= rule[1].equals("<"+subAttribute+devideByChar+">");
                         if(rule[0].equals("Rule") && (rule[1].equals("<"+subAttribute+">")||rule[1].equals("<"+subAttribute+devideByChar+">"))){
                             String[] subSentenceParts= new String[characters.length-usedChars];
                             for(int k=0;k<subSentenceParts.length;k++){
@@ -339,8 +360,17 @@ public class CFG {
                         break;
                     }
                 }
+                else{
+                    if(!ruleChars[i].equals(characters[usedChars])){
+                        ruleUsed=false;
+                        break;
+                    }
+                    usedChars++;
+                }
             }
             if(ruleUsed){
+            
+                
                 tree.addChild(child);
                 return usedChars;
             }
@@ -438,6 +468,79 @@ public class CFG {
         }
 
     }
+
+
+
+
+    public static int findSmallestAmountOfChars(String  Rule){
+        return findSmallestAmountOfCharsTop(Rule);
+    }
+
+
+    public static int findSmallestAmountOfCharsSub(String  Rule,int depth){
+        if(depth>1){
+            return 99999999;
+        }
+        int smallestAmountOfChars=99999999;
+        //String attribute=Rule.substring(Rule.indexOf("<")+1,Rule.indexOf(">")).replace(devideByChar,"");
+        String[] subRules=StripRule(Rule);
+        for(int i=0;i<subRules.length;i++){
+            String current=subRules[i];
+            String[] subRuleParts=subRules[i].split(" ");
+            int amountOfChars=0;
+            for(int j=0;j<subRuleParts.length;j++){
+                if(subRuleParts[j].contains("<")){
+                    for(int k=0;k<rules.size();k++){
+                        String[] rule = rules.get(k).split(" ");
+                        if(rule[0].equals("Rule") && (rule[1].equals(subRuleParts[j])||rule[1].replace(devideByChar,"").equals(subRuleParts[j]))){
+                            int smallest=findSmallestAmountOfCharsSub(rules.get(k),depth+1);
+                            amountOfChars+=smallest;
+                            break;
+                        }
+                    }
+                }else{
+                    amountOfChars++;
+                }
+            }
+            if(amountOfChars<smallestAmountOfChars){
+                smallestAmountOfChars=amountOfChars;
+            }
+            
+        }
+    
+        return smallestAmountOfChars;
+    }
+
+
+    public static int findSmallestAmountOfCharsTop(String  Rule){
+        int smallestAmountOfChars=99999999;
+        //String attribute=Rule.substring(Rule.indexOf("<")+1,Rule.indexOf(">")).replace(devideByChar,"");
+       
+        String[] subRuleParts=Rule.split(" ");
+        int amountOfChars=0;
+        for(int j=0;j<subRuleParts.length;j++){
+            if(subRuleParts[j].contains("<")){
+                for(int k=0;k<rules.size();k++){
+                    String[] rule = rules.get(k).split(" ");
+                    if(rule[0].equals("Rule") && (rule[1].equals(subRuleParts[j])||rule[1].replace(devideByChar,"").equals(subRuleParts[j]))){
+                        int smallest=findSmallestAmountOfCharsSub(rules.get(k),0);
+                        amountOfChars+=smallest;
+                        break;
+                    }
+                }
+            }else{
+                amountOfChars++;
+            }
+        }
+        if(amountOfChars<smallestAmountOfChars){
+            smallestAmountOfChars=amountOfChars;
+        }
+        
+        
+    
+        return smallestAmountOfChars;
+    }
+
 
 
 }

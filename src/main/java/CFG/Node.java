@@ -34,6 +34,9 @@ public class Node {
     public String getAttribute(){
         return attribute;
     }
+    public void setValue(String value){
+        this.value = value;
+    }
 
     public String findValue(String attribute){
         if(this.attribute.equals(attribute)){
@@ -58,8 +61,9 @@ public class Node {
         String result = value;
         for(int i=0;i<children.size();i++){
             String attribute = children.get(i).getAttribute();
+            String replacement = children.get(i).getFilledString();
 
-            result = result.replaceFirst(children.get(i).getAttribute(),children.get(i).findValue(children.get(i).getAttribute()));
+            result = result.replaceFirst(attribute, replacement);
         }
         return result;
 

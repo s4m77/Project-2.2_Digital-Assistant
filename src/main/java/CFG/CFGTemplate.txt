@@ -5,19 +5,20 @@ Rule <TIMEEXPRESSION> on <DAY> at <TIME> | at <TIME> on <DAY>
 Rule <MATH> <MATHQUESTION> | <MATHEQUAL>
 Rule <MATHQUESTION> what is <MATHEXPRESSION>
 Rule <MATHEQUAL> is <MATHEXPRESSION> equal to <NUMBER>
-Rule <MATHEXPRESSION&> <MATHEXPRESSION> <OPERATOR> <NUMBER> | <NUMBER> <OPERATOR> <NUMBER>
-Rule <OPERATOR> / | + | - | ^
-Rule <NUMBER> 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | <NUMBER> <NUMBER>
+Rule <MATHEXPRESSION&> <NUMBER> <OPERATOR> <MATHEXPRESSION> | <MATHEXPRESSION> <OPERATOR> <NUMBER> | <MATHEXPRESSION> <OPERATOR> <MATHEXPRESSION> | ( <MATHEXPRESSION> ) | <NUMBER> <OPERATOR> <NUMBER>
+Rule <OPERATOR> / | + | - | ^ | *
+Rule <NUMBER> <SETNUMBER> <NUMBER>  | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0
+Rule <SETNUMBER> 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0
 Rule <TIME> 9 | 12
 Rule <LOCATION> where is <ROOM> | how do <PRO> get to <ROOM> | where is <ROOM> located
 Rule <PRO> I | you | he | she
-Rule <ROOM> deepSpace | spaceBox | *
 Rule <DAY> monday | tuesday | wednesday | thursday | friday | saturday | sunday
-Action <SCHEDULE> * <DAY> saturday : There are no lectures on Saturday
-Action <SCHEDULE> * <DAY> monday <TIME> 9 : We start the week with math
-Action <SCHEDULE> * <DAY> monday <TIME> 12 : On Monday noon we have Theoratical Computer Science
-Action <LOCATION> * <ROOM> deepSpace : DeepSpace is the first room after the entrance
-Action <LOCATION> * : <ROOM> is in the first floor
-Action <MATHEQUAL> * : test : Math
-Action <MATHQUESTION> * : <ANSWER> : Math
+Rule <ROOM> deepSpace | spaceBox | @
+Action <SCHEDULE> @ <DAY> saturday : There are no lectures on Saturday
+Action <SCHEDULE> @ <DAY> monday <TIME> 9 : We start the week with math
+Action <SCHEDULE> @ <DAY> monday <TIME> 12 : On Monday noon we have Theoratical Computer Science
+Action <LOCATION> @ <ROOM> deepSpace : DeepSpace is the first room after the entrance
+Action <LOCATION> @ : <ROOM> is in the first floor
+Action <MATHEQUAL> @ : test : Math
+Action <MATHQUESTION> @ : <ANSWER> : Math
 Action : I have no idea

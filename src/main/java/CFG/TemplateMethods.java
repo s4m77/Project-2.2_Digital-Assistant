@@ -3,12 +3,34 @@ package CFG;
 public class TemplateMethods {
 
     public static void Math(Node tree){
-        Node branch = tree.getNode("<MATHEXPRESSION>");
-        String expression = branch.getFilledString();
-        //tree.addChild(new Node("<ANSWER>", String.valueOf(eval(expression))));
-        double answer=eval(expression);
-        tree.addChild(new Node("<ANSWER>",String.valueOf(answer)));
+        try{
+            Node branch = tree.getNode("<MATHEXPRESSION>");
+            String expression = branch.getFilledString().replace(" ", "");
+            //tree.addChild(new Node("<ANSWER>", String.valueOf(eval(expression))));
+            double answer=eval(expression);
+            tree.addChild(new Node("<ANSWER>",String.valueOf(answer)));
         
+        }catch(Exception e){
+            tree.addChild(new Node("<ANSWER>", "I'm sorry, I don't understand that expression."));
+        }
+        
+    }
+
+    public static void mathQuestion(Node tree){
+        try{
+            String sentence=tree.getNode("MATHEQUAL").getFilledString();
+            String left=sentence.split(" ")[1];
+            String right=sentence.split(" ")[4];
+            if(eval(left)==eval(right)){
+                tree.addChild(new Node("<ANSWER>", "Yes, that is correct."));
+            }
+            else{
+                tree.addChild(new Node("<ANSWER>", "No, that is incorrect."));
+            }
+        }
+        catch(Exception e){
+            tree.addChild(new Node("<ANSWER>", "I'm sorry, I don't understand that expression."));
+        }
     }
 
 
