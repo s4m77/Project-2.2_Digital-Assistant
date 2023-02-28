@@ -13,7 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class MyCalculator extends Application {
+public class CalculatorDisplay extends Application {
 
     private TextField textField1;
     private TextArea textField2;
@@ -38,6 +38,9 @@ public class MyCalculator extends Application {
     private Button button8;//8
     private Button button9;//9
 
+    public CalculatorDisplay() {
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -46,13 +49,14 @@ public class MyCalculator extends Application {
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.setWidth(800);
-            primaryStage.setHeight(600);
+            primaryStage.setHeight(500);
             primaryStage.setResizable(false);
             addComp(root);
             primaryStage.setTitle("My Calculator");
             primaryStage.show();
         }catch(Exception e) {
             e.printStackTrace();
+            System.out.println("8");
         }
     }
 

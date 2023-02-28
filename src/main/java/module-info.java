@@ -4,7 +4,8 @@ module com.example.project_22_digitalassistant {
     requires org.apache.httpcomponents.httpcore;
     requires org.apache.httpcomponents.httpclient;
 
+    exports com.example.project_22_digitalassistant;
+    opens com.example.project_22_digitalassistant to javafx.fxml;
+    exports Calculator;
 
-    // opens com.example.project_22_digitalassistant to javafx.fxml;
-    // exports com.example.project_22_digitalassistant;
 }

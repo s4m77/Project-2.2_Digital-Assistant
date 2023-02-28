@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 
-public class WeatherCrawler {
+public class WeatherScraper {
 
     private static final String ENDPOINT_URL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast";
     private static final String API_KEY = "C75MHL3PX4HTAH53UHAL36CTF";
@@ -64,7 +64,7 @@ public class WeatherCrawler {
 
     public static void main(String[] args) throws Exception {
         System.out.println(getWeather("Brussels", "BE"));
-        System.out.println("------------------------------------------------------------------------------------------");
+        System.out.println("******************************************************************************************************************");
         System.out.println(getHourlyWeather("Maastricht","NL"));
     }
 }
