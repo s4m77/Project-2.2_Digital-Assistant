@@ -18,9 +18,10 @@ public class WeatherScraper {
     private static final String ENDPOINT_URL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast";
     private static final String API_KEY = "C75MHL3PX4HTAH53UHAL36CTF";
 
-    public static String getWeather(String city, String country) throws Exception {
+    public static String getTodayWeather(String city, String country) throws Exception {
         URIBuilder builder = new URIBuilder(ENDPOINT_URL);
-        builder.setParameter("aggregateHours", "24")
+        builder.setParameter("forecastDays", "1")
+                .setParameter("aggregateHours", "12")
                 .setParameter("contentType", "csv")
                 .setParameter("unitGroup", "metric")
                 .setParameter("locationMode", "single")
@@ -55,7 +56,6 @@ public class WeatherScraper {
                 .setParameter("contentType", "csv")
                 .setParameter("unitGroup", "metric")
                 .setParameter("locationMode", "single")
-                .setParameter("iconSet", "icons1")
                 .setParameter("key", API_KEY)
                 .setParameter("locations", city + "," + country);
 
@@ -63,7 +63,7 @@ public class WeatherScraper {
     }
 
     public static void main(String[] args) throws Exception {
-        System.out.println(getWeather("Brussels", "BE"));
+        //System.out.println(getTodayWeather("Brussels", "BE"));
         System.out.println("******************************************************************************************************************");
         System.out.println(getHourlyWeather("Maastricht","NL"));
     }
