@@ -9,7 +9,7 @@ public class ChatApplication extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(ChatApplication.class.getResource("/scenes/MainMenu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ChatApplication.class.getResource("start-page.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage.setTitle("Multi-Modal Digital Assistant");
         stage.setScene(scene);
