@@ -1,4 +1,4 @@
-package org.mmda.db;
+package db;
 import java.sql.*;
 public class Setupdb {
     // Setup the database

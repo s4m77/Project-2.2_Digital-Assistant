@@ -1,4 +1,4 @@
-package org.mmda.db;
+package db;
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.Timestamp;

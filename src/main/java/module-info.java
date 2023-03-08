@@ -1,11 +1,13 @@
 module com.example.project_22_digitalassistant {
     requires javafx.controls;
     requires javafx.fxml;
-    requires org.apache.httpcomponents.httpcore;
-    requires org.apache.httpcomponents.httpclient;
+    requires java.sql;
+    requires org.junit.jupiter.api;
+//    requires org.apache.httpcomponents.httpclient;
+//    requires org.apache.httpcomponents.httpcore;
 
-    exports com.example.project_22_digitalassistant;
     opens com.example.project_22_digitalassistant to javafx.fxml;
-    exports Calculator;
+    exports com.example.project_22_digitalassistant;
+    //exports Calculator;
 
 }
