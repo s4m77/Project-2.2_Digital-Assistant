@@ -207,8 +207,6 @@ public class CalculatorDisplay extends Application {
             //Press .
             if (e.getSource().equals(buttonPoint)) {
                 str = textField1.getText();
-                if (str.length() > 15 || hisNum == 1) {
-                }
                 if (decimalPointNum == 0) {
                     textField1.setText(str + ".");
                     decimalPointNum = 1;
@@ -217,10 +215,10 @@ public class CalculatorDisplay extends Application {
             //Press +
             if (e.getSource().equals(buttonAdd)) {
                 str = textField1.getText();
-                char ch1[] = str.toCharArray();
+                char[] ch1 = str.toCharArray();
                 int length1 = str.length() - 1;
-                if ((length1 == -1 || ch1[length1] != ')') && (str.equals("0") || str.equals("") || ch1[length1] == '.' || ch1[length1] == '+' || ch1[length1] == '-' || ch1[length1] == '*' || ch1[length1] == '/' || ch1[length1] == '(' || ch1[length1] == ')')) {
-                } else {
+                if ((length1 == -1 || ch1[length1] != ')') && (str.equals("0") || str.equals("") || ch1[length1] == '.' || ch1[length1] == '+' || ch1[length1] == '-' || ch1[length1] == '*' || ch1[length1] == '/' || ch1[length1] == '(' || ch1[length1] == ')'));
+                else {
                     textField1.setText(str + "+");
                 }
                 decimalPointNum = 0;
@@ -228,10 +226,10 @@ public class CalculatorDisplay extends Application {
             //Press -
             if (e.getSource().equals(buttonSub)) {
                 str = textField1.getText();
-                char ch1[] = str.toCharArray();
+                char[] ch1 = str.toCharArray();
                 int length1 = str.length() - 1;
-                if ((length1 == -1 || ch1[length1] != ')') && (ch1[length1] == '.' || ch1[length1] == '+' || ch1[length1] == '-' || ch1[length1] == '*' || ch1[length1] == '/' || ch1[length1] == '(' || ch1[length1] == ')')) {
-                } else {
+                if ((length1 == -1 || ch1[length1] != ')') && (ch1[length1] == '.' || ch1[length1] == '+' || ch1[length1] == '-' || ch1[length1] == '*' || ch1[length1] == '/' || ch1[length1] == '(' || ch1[length1] == ')'));
+                else {
                     textField1.setText(str + "-");
                 }
                 decimalPointNum = 0;
@@ -239,10 +237,10 @@ public class CalculatorDisplay extends Application {
             //Press *
             if (e.getSource().equals(buttonMul)) {
                 str = textField1.getText();
-                char ch1[] = str.toCharArray();
+                char[] ch1 = str.toCharArray();
                 int length1 = str.length() - 1;
-                if ((length1 == -1 || ch1[length1] != ')') && (str.equals("0") || str.equals("") || ch1[length1] == '.' || ch1[length1] == '+' || ch1[length1] == '-' || ch1[length1] == '*' || ch1[length1] == '/' || ch1[length1] == '(' || ch1[length1] == ')')) {
-                } else {
+                if ((length1 == -1 || ch1[length1] != ')') && (str.equals("0") || str.equals("") || ch1[length1] == '.' || ch1[length1] == '+' || ch1[length1] == '-' || ch1[length1] == '*' || ch1[length1] == '/' || ch1[length1] == '(' || ch1[length1] == ')'));
+                else {
                     textField1.setText(str + "*");
                 }
                 decimalPointNum = 0;
@@ -250,10 +248,10 @@ public class CalculatorDisplay extends Application {
             //Press /
             if (e.getSource().equals(buttonDiv)) {
                 str = textField1.getText();
-                char ch1[] = str.toCharArray();
+                char[] ch1 = str.toCharArray();
                 int length1 = str.length() - 1;
-                if ((length1 == -1 || ch1[length1] != ')') && (str.equals("0") || str.equals("") || ch1[length1] == '.' || ch1[length1] == '+' || ch1[length1] == '-' || ch1[length1] == '*' || ch1[length1] == '/' || ch1[length1] == '(' || ch1[length1] == ')')) {
-                } else {
+                if ((length1 == -1 || ch1[length1] != ')') && (str.equals("0") || str.equals("") || ch1[length1] == '.' || ch1[length1] == '+' || ch1[length1] == '-' || ch1[length1] == '*' || ch1[length1] == '/' || ch1[length1] == '(' || ch1[length1] == ')'));
+                else {
                     textField1.setText(str + "/");
                 }
                 decimalPointNum = 0;
@@ -261,7 +259,7 @@ public class CalculatorDisplay extends Application {
             //Press (
             if (e.getSource().equals(buttonLeftParenthesis)) {
                 str = textField1.getText();
-                char ch[] = str.toCharArray();
+                char[] ch = str.toCharArray();
                 int length = str.length() - 1;
                 if (length == -1 || ch[length] == '+' || ch[length] == '-' || ch[length] == '*' || ch[length] == '/') {
                     textField1.setText(str + '(');
@@ -277,7 +275,7 @@ public class CalculatorDisplay extends Application {
             //Press )
             if (e.getSource().equals(buttonRightParenthesis)) {
                 str = textField1.getText();
-                char ch[] = str.toCharArray();
+                char[] ch = str.toCharArray();
                 int length = str.length() - 1;
                 if (Character.isDigit(ch[length]) && leftParenthesisNum > rightParenthesisNum) {
                     rightParenthesisNum++;
@@ -322,18 +320,16 @@ public class CalculatorDisplay extends Application {
             //Press 0
             if (e.getSource().equals(button0)) {
                 str = textField1.getText();
-                if (str.length() > 16 || str.equals("0") || hisNum == 1) {
-
-                } else {
+                if (str.length() > 16 || str.equals("0") || hisNum == 1);
+                else {
                     textField1.setText(str + "0");
                 }
             }
             //Press 1
             if (e.getSource().equals(button1)) {
                 str = textField1.getText();
-                if (str.length() > 16 || hisNum == 1) {
-
-                } else if (str.equals("0") || str.equals("")) {
+                if (str.length() > 16 || hisNum == 1);
+                    else if (str.equals("0") || str.equals("")) {
                     textField1.setText("1");
                 } else {
                     textField1.setText(str + "1");
@@ -342,8 +338,8 @@ public class CalculatorDisplay extends Application {
             //Press 2
             if (e.getSource().equals(button2)) {
                 str = textField1.getText();
-                if (str.length() > 16 || hisNum == 1) {
-                } else if (str.equals("0") || str.equals("")) {
+                if (str.length() > 16 || hisNum == 1);
+                else if (str.equals("0") || str.equals("")) {
                     textField1.setText("2");
                 } else {
                     textField1.setText(str + "2");
@@ -352,8 +348,8 @@ public class CalculatorDisplay extends Application {
             //Press 3
             if (e.getSource().equals(button3)) {
                 str = textField1.getText();
-                if (str.length() > 16 || hisNum == 1) {
-                } else if (str.equals("0") || str.equals("")) {
+                if (str.length() > 16 || hisNum == 1);
+                else if (str.equals("0") || str.equals("")) {
                     textField1.setText("3");
                 } else {
                     textField1.setText(str + "3");
@@ -362,8 +358,8 @@ public class CalculatorDisplay extends Application {
             //Press 4
             if (e.getSource().equals(button4)) {
                 str = textField1.getText();
-                if (str.length() > 16 || hisNum == 1) {
-                } else if (str.equals("0") || str.equals("")) {
+                if (str.length() > 16 || hisNum == 1);
+                else if (str.equals("0") || str.equals("")) {
                     textField1.setText("4");
                 } else {
                     textField1.setText(str + "4");
@@ -372,8 +368,8 @@ public class CalculatorDisplay extends Application {
             //Press 5
             if (e.getSource().equals(button5)) {
                 str = textField1.getText();
-                if (str.length() > 16 || hisNum == 1) {
-                } else if (str.equals("0") || str.equals("")) {
+                if (str.length() > 16 || hisNum == 1);
+                else if (str.equals("0") || str.equals("")) {
                     textField1.setText("5");
                 } else {
                     textField1.setText(str + "5");
@@ -382,8 +378,8 @@ public class CalculatorDisplay extends Application {
             //Press 6
             if (e.getSource().equals(button6)) {
                 str = textField1.getText();
-                if (str.length() > 16 || hisNum == 1) {
-                } else if (str.equals("0") || str.equals("")) {
+                if (str.length() > 16 || hisNum == 1);
+                else if (str.equals("0") || str.equals("")) {
                     textField1.setText("6");
                 } else {
                     textField1.setText(str + "6");
@@ -392,8 +388,8 @@ public class CalculatorDisplay extends Application {
             //Press 7
             if (e.getSource().equals(button7)) {
                 str = textField1.getText();
-                if (str.length() > 16 || hisNum == 1) {
-                } else if (str.equals("0") || str.equals("")) {
+                if (str.length() > 16 || hisNum == 1);
+                else if (str.equals("0") || str.equals("")) {
                     textField1.setText("7");
                 } else {
                     textField1.setText(str + "7");
@@ -402,8 +398,8 @@ public class CalculatorDisplay extends Application {
             //Press 8
             if (e.getSource().equals(button8)) {
                 str = textField1.getText();
-                if (str.length() > 16 || hisNum == 1) {
-                } else if (str.equals("0") || str.equals("")) {
+                if (str.length() > 16 || hisNum == 1);
+                else if (str.equals("0") || str.equals("")) {
                     textField1.setText("8");
                 } else {
                     textField1.setText(str + "8");
@@ -412,8 +408,8 @@ public class CalculatorDisplay extends Application {
             //Press 9
             if (e.getSource().equals(button9)) {
                 str = textField1.getText();
-                if (str.length() > 16 || hisNum == 1) {
-                } else if (str.equals("0") || str.equals("")) {
+                if (str.length() > 16 || hisNum == 1);
+                else if (str.equals("0") || str.equals("")) {
                     textField1.setText("9");
                 } else {
                     textField1.setText(str + "9");

@@ -37,7 +37,7 @@ public class TimeTableScraper {
 
         if(coursesThatDay.isEmpty())
         {
-            return "There are no Lecture on the day: "+date+System.lineSeparator();
+            return "You don't have Lectures on the day: "+date+System.lineSeparator();
         }
         else
         {
