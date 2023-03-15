@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class TimeTableManager {
@@ -18,12 +17,10 @@ public class TimeTableManager {
         TimeTableURL schedule = new TimeTableURL(timetableUrl);
         coursesList = schedule.getCoursesList();
 
-        Date today = new Date();
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(today);
         currentWeekday = calendar.get(Calendar.DAY_OF_WEEK) - 1; // Calendar.SUNDAY = 1, we want Sunday to be 0
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-        todayDate = sdf.format(today);
+        todayDate = sdf.format(calendar.getTime());
     }
 
     public String getCourseOnDate(String date) {
@@ -38,10 +35,12 @@ public class TimeTableManager {
 
         if(coursesThatDay.isEmpty())
         {
-            return "You don't have lectures on the date: " + date + System.lineSeparator();
+            return "You don't have lecture on the date: " + date + System.lineSeparator();
         }
         else
         {
+            //onDateCourses.append(System.lineSeparator());
+            onDateCourses.append("You have following lecture on the date: ").append(date);
             for (MyCourse course : coursesThatDay) {
                 onDateCourses.append(course.getCourse()).append(System.lineSeparator());
             }
