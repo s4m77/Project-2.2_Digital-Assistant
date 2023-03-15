@@ -15,57 +15,48 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Handler">
    <top>
       <MenuBar style="-fx-background-color: #F0F8FF;" BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-                  <MenuItem fx:id="openMenu" mnemonicParsing="false" onAction="#chooseFile" text="Open" />
-                  <MenuItem fx:id="saveMenu" mnemonicParsing="false" onAction="#saveFile" text="Save" />
-              <MenuItem fx:id="closeMenu" mnemonicParsing="false" onAction="#goToMainMenu" text="Close" />
-            </items>
-          </Menu>
-        </menus>
+         <Menu mnemonicParsing="false" text="File">
+            <MenuItem fx:id="openMenu" mnemonicParsing="false" onAction="#chooseFile" text="Open"/>
+            <MenuItem fx:id="saveMenu" mnemonicParsing="false" onAction="#saveFile" text="Save"/>
+            <MenuItem fx:id="closeMenu" mnemonicParsing="false" onAction="#goToMainMenu" text="Close"/>
+         </Menu>
       </MenuBar>
    </top>
    <bottom>
-      <HBox alignment="CENTER" prefHeight="59.0" prefWidth="600.0" style="-fx-background-color: #F0F8FF;" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="323.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <Label fx:id="message" text="Checking changes...">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </Label>
-                  <ProgressBar fx:id="progressBar" prefWidth="200.0" progress="0.0">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </ProgressBar>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetChanges" text="Reset Changes" visible="false">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </Button>
-               </children>
-            </HBox>
-         </children>
+      <HBox alignment="CENTER" prefHeight="59.0" prefWidth="600.0" style="-fx-background-color: #F0F8FF;"
+            BorderPane.alignment="CENTER">
          <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" />
+            <Insets bottom="5.0" left="5.0" right="5.0"/>
          </padding>
+         <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="323.0" HBox.hgrow="ALWAYS">
+            <Label fx:id="message" text="Checking changes...">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+               </padding>
+            </Label>
+            <ProgressBar fx:id="progressBar" prefWidth="200.0" progress="0.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+               </padding>
+            </ProgressBar>
+         </HBox>
+         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetChanges" text="Reset Changes"
+                    visible="false">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+               </padding>
+            </Button>
+         </HBox>
       </HBox>
    </bottom>
    <center>
       <AnchorPane BorderPane.alignment="CENTER">
-         <children>
-            <TextArea fx:id="fileTextArea" layoutX="-1.0" layoutY="12.0" prefHeight="318.0" prefWidth="600.0" promptText="Load a file from the menu" />
-         </children>
          <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
          </padding>
+         <TextArea fx:id="fileTextArea" layoutX="-1.0" layoutY="12.0" prefHeight="318.0" prefWidth="600.0"
+                   promptText="Load a file from the menu"/>
       </AnchorPane>
    </center>
 </BorderPane>

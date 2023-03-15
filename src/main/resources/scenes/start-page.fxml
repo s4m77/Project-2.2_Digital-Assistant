@@ -9,22 +9,21 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Handler">
    <top>
       <AnchorPane prefHeight="73.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label fx:id="welcomeLabel" layoutX="143.0" layoutY="21.0" text="Multi-Modal Digital Assistant">
-               <font>
-                  <Font name="System Bold" size="26.0" />
-               </font>
-            </Label>
-         </children>
+         <Label fx:id="welcomeLabel" layoutX="143.0" layoutY="21.0" text="Multi-Modal Digital Assistant">
+            <font>
+               <Font name="System Bold" size="26.0"/>
+            </font>
+         </Label>
       </AnchorPane>
    </top>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="chatButton" layoutX="253.0" layoutY="47.0" mnemonicParsing="false" onAction="#goToChatBot" text="Start chatting" />
-            <Button fx:id="editorButton" layoutX="262.0" layoutY="115.0" mnemonicParsing="false" onAction="#goToSkillEditor" text="Skill editor" />
-            <Button fx:id="quitButton" layoutX="531.0" layoutY="288.0" mnemonicParsing="false" onAction="#closeApp" text="Quit" />
-         </children>
+         <Button fx:id="chatButton" layoutX="253.0" layoutY="47.0" mnemonicParsing="false" onAction="#goToChatBot"
+                 text="Start chatting"/>
+         <Button fx:id="editorButton" layoutX="262.0" layoutY="115.0" mnemonicParsing="false"
+                 onAction="#goToSkillEditor" text="Skill editor"/>
+         <Button fx:id="quitButton" layoutX="531.0" layoutY="288.0" mnemonicParsing="false" onAction="#closeApp"
+                 text="Quit"/>
       </AnchorPane>
    </center>
 </BorderPane>

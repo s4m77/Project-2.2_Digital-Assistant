@@ -1,5 +1,8 @@
 package gui;
 
+import CFG.CFG;
+import gui.utils.BotLabel;
+import gui.utils.HumanLabel;
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -82,29 +85,15 @@ public class Handler {
      * METHODS FOR CHAT
      */
 
-    public void addMessageToChat(String txt, boolean HUMAN){
-        Label l = new Label();
-        if (HUMAN) {
-            l.setText("YOU: "+txt);
-            l.setStyle("-fx-background-color:#E6E6FA");
-        }
-        else {
-            l.setText("BOT: "+txt);
-            l.setStyle("-fx-background-color:#00FFFF");
-        }
-        chatBox.getChildren().add(l);
+    public void addMessageToChat(){
+        String sentence = userInput.getText();
+        System.out.println("adding message to chat");
+        HumanLabel humanLabel = new HumanLabel(sentence);
+        BotLabel botLabel = new BotLabel(CFG.interpret(sentence));
+        chatBox.getChildren().add(humanLabel);
+        chatBox.getChildren().add(botLabel);
     }
 
-    private void submitMessage(){
-        String sentence = userInput.getText();
-        if (!sentence.isEmpty()) {
-            addMessageToChat("??? What should I answer to that?", false);
-            userInput.clear();
-        } else {
-            addMessageToChat("sentence", true);
-            addMessageToChat("answer!", false);
-        }
-    }
 
 
     /**

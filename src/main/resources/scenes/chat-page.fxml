@@ -12,34 +12,29 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F0F8FF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Handler">
    <top>
       <AnchorPane prefHeight="79.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button layoutX="14.0" layoutY="37.0" mnemonicParsing="false" onAction="#goToMainMenu" text="Main Menu" />
-            <Button layoutX="508.0" layoutY="36.0" mnemonicParsing="false" onAction="#goToSkillEditor" text="Skill Editor" />
-            <ImageView fitHeight="161.0" fitWidth="75.0" layoutX="263.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/avatar1.png" />
-               </image>
-            </ImageView>
-         </children>
+         <Button layoutX="14.0" layoutY="37.0" mnemonicParsing="false" onAction="#goToMainMenu" text="Main Menu"/>
+         <Button layoutX="508.0" layoutY="36.0" mnemonicParsing="false" onAction="#goToSkillEditor"
+                 text="Skill Editor"/>
+         <ImageView fitHeight="161.0" fitWidth="75.0" layoutX="263.0" layoutY="15.0" pickOnBounds="true"
+                    preserveRatio="true">
+            <Image url="@../images/avatar1.png"/>
+         </ImageView>
       </AnchorPane>
    </top>
    <bottom>
       <AnchorPane prefHeight="46.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <children>
-            <TextField fx:id="userInput" layoutX="7.0" layoutY="6.0" prefHeight="26.0" prefWidth="500.0" promptText="Enter a prompt!" />
-            <Button fx:id="submitButton" layoutX="529.0" layoutY="4.0" mnemonicParsing="false" text="Submit" />
-         </children>
+         <TextField fx:id="userInput" layoutX="7.0" layoutY="6.0" prefHeight="26.0" prefWidth="500.0"
+                    promptText="Enter a prompt!"/>
+         <Button fx:id="submitButton" layoutX="529.0" layoutY="4.0" mnemonicParsing="false" text="Submit"/>
       </AnchorPane>
    </bottom>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <VBox fx:id="chatBox" alignment="BOTTOM_LEFT" layoutX="15.0" layoutY="4.0" prefHeight="234.0" prefWidth="570.0">
-               <children>
-                  <Label prefHeight="18.0" prefWidth="569.0" style="-fx-background-color: #00FFFF;" text="BOT: Hi! How may I assist you today?" />
-               </children>
-            </VBox>
-         </children>
+         <VBox fx:id="chatBox" alignment="BOTTOM_LEFT" layoutX="15.0" layoutY="4.0" prefHeight="234.0"
+               prefWidth="570.0">
+            <Label prefHeight="18.0" prefWidth="569.0" style="-fx-background-color: #00FFFF;"
+                   text="BOT: Hi! How may I assist you today?"/>
+         </VBox>
       </AnchorPane>
    </center>
 </BorderPane>

@@ -1,5 +1,7 @@
 package CFG;
 
+import gui.ChatApplication;
+
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.lang.reflect.*;
@@ -9,7 +11,7 @@ import java.lang.reflect.*;
 public class CFG {
     
 
-    public static final String CFG_FILE = "src\\main\\java\\CFG\\CFGTemplate.txt";
+    public static final String CFG_FILE = System.getProperty("user.dir") + "/src/main/resources/txts/CFGTemplate.txt";
     public static ArrayList<String> rules=readCFG(CFG_FILE);
     public static String actionPrefix = "Action";
     public static String rulePrefix = "Rule";
@@ -19,8 +21,9 @@ public class CFG {
     public static int maxDepth=7;
     public static void main(String[] args) {
         //TODO Auto-generated method stub
+        System.out.println("Asking a question");
         String sentence = "what is (200+2)+(2^20)";
-        interpret(sentence);
+        interpret("What lectures are there on monday?");
 
 
 
@@ -46,7 +49,7 @@ public class CFG {
 
 
     
-    public static void interpret(String sentence){
+    public static String interpret(String sentence){
         //clean up the input
         sentence=cleanUpInput(sentence);
         //construct the tree based on the rules in the CFG
@@ -56,10 +59,10 @@ public class CFG {
         //check if the tree meets the requirements of an action
         int action= isAction(tree);
         //if it does, execute the action
-        if(action!=-1){
-            executeAction(tree, action);
-        }
-
+//        if(action!=-1){
+//            executeAction(tree, action);
+//        }
+        return action!=-1 ? executeAction(tree, action) : "I don't know how to answer that";
     }
 
     public static String cleanUpInput(String input){
@@ -74,7 +77,8 @@ public class CFG {
         input=input.trim();
         return input;
     }
-    public static void executeAction(Node tree, int action){
+
+    public static String executeAction(Node tree, int action){
         ArrayList<String> rules2=rules;
         String[] split=rules.get(action).split(dividerChar);
         if(split.length==3){
@@ -117,7 +121,8 @@ public class CFG {
                 actionString+=words[j]+" ";
             }
         }
-        System.out.println(actionString);
+        System.out.println("This is the answer: "+actionString);
+        return actionString;
     }
 
 
