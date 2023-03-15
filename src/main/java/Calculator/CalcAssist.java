@@ -3,7 +3,7 @@ package Calculator;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Template_based_calculator {
+public class CalcAssist {
     public static ArrayList<String> memoryList = new ArrayList<>(); // storage list
 
     // get current result
@@ -40,16 +40,16 @@ public class Template_based_calculator {
             System.out.println("Enter new expression:");
             Scanner input = new Scanner(System.in);
             String expression = input.nextLine(); // input expression with spaces
-            String result = Template_based_calculator.getCurrentResult(expression);
+            String result = CalcAssist.getCurrentResult(expression);
             System.out.println("Result is: " + result);
-            System.out.println("Next operation (m-store, c-clear, mr-allHistory, h-search, o-endTask):");
+            System.out.println("Next operation (m-store, c-clear, mr-allHistory, h-searchHistory, o-endTask):");
             Scanner next = new Scanner(System.in);
             String key = next.next();
             String current = "";
             switch (key) {
                 case "m" -> {
-                    Template_based_calculator.setMemoryValue(expression + " = " + result); // store and choose to do second operation
-                    System.out.println("Next expression (i-enter operator to continue, n-cancel):");
+                    CalcAssist.setMemoryValue(expression + " = " + result); // store and choose to do second operation
+                    System.out.println("Continue on this result (i-yes, n-cancel):");
                     String n = input.next();
                     switch (n) {
                         case "n" -> {
@@ -60,22 +60,22 @@ public class Template_based_calculator {
                             System.out.println("Enter expression (operator+operand):");
                             Scanner input1 = new Scanner(System.in);
                             String expression1 = input1.nextLine();
-                            current = Template_based_calculator.getCurrentResult(result + expression1);
-                            Template_based_calculator.setMemoryValue(result + expression1 + " = " + current); // store and choose to do second operation
+                            current = CalcAssist.getCurrentResult(result + expression1);
+                            CalcAssist.setMemoryValue(result + expression1 + " = " + current); // store and choose to do second operation
                             System.out.println("Result is " + current);
                         }
                     }
                 }
                 case "c" -> {
-                    Template_based_calculator.clearMemory();
+                    CalcAssist.clearMemory();
                 } // clear
                 case "mr" -> {
-                    Template_based_calculator.getMemoryValue();
+                    CalcAssist.getMemoryValue();
                 }
                 case "h" -> {
                     System.out.println("Select the id you want to search:");
                     int id = next.nextInt(); // input id to search
-                    System.out.println(Template_based_calculator.getHistoryValue(id));
+                    System.out.println(CalcAssist.getHistoryValue(id));
                 }
                 case "o" -> {
                     return;
