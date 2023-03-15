@@ -24,8 +24,8 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 application {
-    mainModule = 'com.example.project_22_digitalassistant'
-    mainClass = 'com.example.project_22_digitalassistant.ChatApplication'
+    mainModule = 'gui'
+    mainClass = 'gui.ChatApplication'
 }
 
 javafx {

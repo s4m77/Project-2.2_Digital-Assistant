@@ -44,7 +44,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Handler">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -88,13 +88,14 @@
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
             <Button layoutX="272.0" layoutY="270.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="62.0" text="Enter" />
-            <ImageView fitHeight="148.0" fitWidth="153.0" layoutX="226.0" layoutY="54.0">
-               <image>
-                  <Image url="@../../../../../../../../var/folders/_n/2rybm6wj4fsbd_h7wpcdv0_h0000gn/T/TemporaryItems/NSIRD_screencaptureui_2Yd0cI/Screenshot%202023-03-08%20at%2012.49.14%20AM.png" />
-               </image>
-            </ImageView>
             <Avatar layoutX="162.0" layoutY="154.0" />
             <TextField layoutX="171.0" layoutY="217.0" prefHeight="31.0" prefWidth="259.0" />
+            <ImageView fitHeight="125.0" fitWidth="90.0" layoutX="256.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/avatar1.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="49.0" layoutY="27.0" mnemonicParsing="false" onAction="#goToMainMenu" text="Main Menu" />
       </children>
     </AnchorPane>
   </children>
