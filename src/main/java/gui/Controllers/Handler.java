@@ -1,9 +1,10 @@
-package gui;
+package gui.Controllers;
 
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,14 +17,10 @@ import javafx.util.Duration;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
-import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 
@@ -32,6 +29,9 @@ public class Handler {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    // MAIN MENU
+    @FXML private Button chatBotButton; @FXML private Button skillEditorButton; @FXML private Label welcomeLabel;
 
     // CHAT
     @FXML private VBox chatBox; @FXML private TextField userInput;
@@ -42,11 +42,12 @@ public class Handler {
     private File loadedFileReference;
     private FileTime lastModifiedTime;
 
-    public String getUserInput(){
-        return userInput.getText();
-    }
 
-    public void goToMainMenu(ActionEvent ae) {
+    /**
+     * METHODS FOR MAIN MENU
+     */
+
+    public void goToMainMenu(ActionEvent ae) throws Exception {
         try{
             root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/scenes/start-page.fxml")));
             stage = (Stage) ((Node)ae.getSource()).getScene().getWindow();
@@ -58,7 +59,7 @@ public class Handler {
         }
     }
 
-    public void goToChatBot(ActionEvent ae) {
+    public void goToChatBot(ActionEvent ae) throws Exception {
         try {
             root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/scenes/chat-page.fxml")));
             stage = (Stage) ((Node)ae.getSource()).getScene().getWindow();
@@ -81,6 +82,9 @@ public class Handler {
             System.out.println("FXML not found");
         }
     }
+    /**
+     * METHODS FOR CHAT
+     */
 
     public void addMessageToChat(String txt, boolean HUMAN){
         Label l = new Label();
@@ -95,6 +99,15 @@ public class Handler {
         chatBox.getChildren().add(l);
     }
 
+    public String getUserInput(){
+        return userInput.getText();
+    }
+
+
+    /**
+     * METHODS FOR SKILL EDITOR
+     */
+
     public void chooseFile(ActionEvent ae) throws URISyntaxException {
         FileChooser fileChooser = new FileChooser();
         //only allow text files to be selected using chooser
@@ -107,29 +120,16 @@ public class Handler {
         File fileToLoad = fileChooser.showOpenDialog(null);
         //if file has been chosen, load it using asynchronous method (define later)
         if(fileToLoad != null){
-            loadFileToTextArea(fileToLoad);
+            updateTextArea(fileToLoad);
         }
         lastModifiedTime = FileTime.fromMillis(System.currentTimeMillis());
 
     }
 
-    public void saveChanges(){
-        loadFileToTextArea(loadedFileReference);
-        saveButton.setVisible(false);
-    }
-
-
-    public void saveFile(ActionEvent event) {
-        try {
-            FileWriter myWriter = new FileWriter(loadedFileReference);
-            myWriter.write(fileTextArea.getText());
-            myWriter.close();
-            lastModifiedTime = FileTime.fromMillis(System.currentTimeMillis());
-            System.out.println(lastModifiedTime);
-            System.out.println("Successfully wrote to the file.");
-        } catch (IOException e) {
-            Logger.getLogger(getClass().getName()).log(java.util.logging.Level.SEVERE, null, e);
-        }
+    private void updateTextArea(File fileToLoad) {
+        Task<String> loadFileTask = fileLoaderTask(fileToLoad);
+        progressBar.progressProperty().bind(loadFileTask.progressProperty());
+        loadFileTask.run();
     }
 
     private Task<String> fileLoaderTask(File fileToLoad){
@@ -138,37 +138,36 @@ public class Handler {
             @Override
             protected String call() throws Exception {
                 BufferedReader reader = new BufferedReader(new FileReader(fileToLoad));
-                //Use Files.lines() to calculate total lines - used for progress
+                // Calculate number of lines -> used for progress
                 long lineCount;
-                try (Stream<String> stream = Files.lines(fileToLoad.toPath())) {
-                    lineCount = stream.count();
+                try (Stream<String> s = Files.lines(fileToLoad.toPath())) {
+                    lineCount = s.count();
                 }
-                //Load in all lines one by one into a StringBuilder separated by "\n" - compatible with TextArea
+                //Load lines in memory
                 String line;
-                StringBuilder totalFile = new StringBuilder();
+                StringBuilder fileContent = new StringBuilder();
                 long linesLoaded = 0;
                 while((line = reader.readLine()) != null) {
-                    totalFile.append(line);
-                    totalFile.append("\n");
+                    fileContent.append(line);
+                    fileContent.append("\n");
                     updateProgress(++linesLoaded, lineCount);
                 }
-                return totalFile.toString();
+                return fileContent.toString();
             }
         };
-        //Success: update the text area, display a success message and store the loaded file reference
+        // If task is successful load content into text area and set status message
         loadFileTask.setOnSucceeded(workerStateEvent -> {
             try {
                 fileTextArea.setText(loadFileTask.get());
                 message.setText("File loaded: " + fileToLoad.getName());
                 loadedFileReference = fileToLoad;
             } catch (InterruptedException | ExecutionException e) {
-                Logger.getLogger(getClass().getName()).log(java.util.logging.Level.SEVERE, null, e);
                 fileTextArea.setText("Could not load file from:\n " + fileToLoad.getAbsolutePath());
             }
             // Check changes in the file
             scheduleFileChecking(loadedFileReference);
         });
-        //No success: set text area with error message and status message to failed
+        //If task failed display error message
         loadFileTask.setOnFailed(workerStateEvent -> {
             fileTextArea.setText("Could not load file from:\n " + fileToLoad.getAbsolutePath());
             message.setText("Failed to load file");
@@ -176,29 +175,27 @@ public class Handler {
         return loadFileTask;
     }
 
-    private void loadFileToTextArea(File fileToLoad) {
-        Task<String> loadFileTask = fileLoaderTask(fileToLoad);
-        progressBar.progressProperty().bind(loadFileTask.progressProperty());
-        loadFileTask.run();
-    }
-
     private void scheduleFileChecking(File file){
-        ScheduledService<Boolean> fileChangeCheckingService = createFileChangesCheckingService(file);
-        System.out.println(fileChangeCheckingService.getLastValue());
-        fileChangeCheckingService.setOnSucceeded(workerStateEvent -> {
-            if(fileChangeCheckingService.getLastValue()==null) return;
-            if(fileChangeCheckingService.getLastValue()){
+        ScheduledService<Boolean> fileChangeCheck = createFileChangesChecker(file);
+        System.out.println(fileChangeCheck.getLastValue());
+        fileChangeCheck.setOnSucceeded(workerStateEvent -> {
+            if(fileChangeCheck.getLastValue()==null) return;
+            if(fileChangeCheck.getLastValue()){
                 //stop checking for changes
-                fileChangeCheckingService.cancel();
+                fileChangeCheck.cancel();
                 System.out.println("we have arrived here");
                 showSaveButton();
             }
         });
-        System.out.println("Starting Checking Service...");
-        fileChangeCheckingService.start();
+        System.out.println("Checking for changes has started");
+        fileChangeCheck.start();
     }
 
-    private ScheduledService<Boolean> createFileChangesCheckingService(File file){
+    private void showSaveButton() {
+        saveButton.setVisible(true);
+    }
+
+    private ScheduledService<Boolean> createFileChangesChecker(File file){
         ScheduledService<Boolean> scheduledService = new ScheduledService<>() {
             @Override
             protected Task<Boolean> createTask() {
@@ -216,13 +213,26 @@ public class Handler {
         return scheduledService;
     }
 
-    private void showSaveButton() {
-        saveButton.setVisible(true);
+    public void resetChanges(){
+        updateTextArea(loadedFileReference);
+        saveButton.setVisible(false);
+    }
+
+    public void saveFile(ActionEvent event) {
+        try {
+            FileWriter fw = new FileWriter(loadedFileReference);
+            fw.write(fileTextArea.getText());
+            fw.close();
+            lastModifiedTime = FileTime.fromMillis(System.currentTimeMillis());
+            System.out.println(lastModifiedTime);
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+        }
     }
 
     public void closeApp(){
         System.exit(0);
     }
-
 
 }

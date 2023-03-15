@@ -8,4 +8,6 @@ module gui {
 
     opens gui to javafx.fxml;
     exports gui;
+    exports gui.Controllers;
+    opens gui.Controllers to javafx.fxml;
 }
