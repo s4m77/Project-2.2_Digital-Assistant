@@ -1,7 +1,5 @@
 package CFG;
 
-import gui.ChatApplication;
-
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.lang.reflect.*;
@@ -17,13 +15,13 @@ public class CFG {
     public static String rulePrefix = "Rule";
     public static String dividerChar = ":";
     public static String freeString="@";
-    public static String devideByChar="&";
+    public static String divideByChar ="&";
     public static int maxDepth=7;
     public static void main(String[] args) {
         //TODO Auto-generated method stub
         System.out.println("Asking a question");
         String sentence = "what is (200+2)+(2^20)";
-        interpret("What lectures are there on monday?");
+        System.out.println(interpret("What lectures are there on monday?"));
 
 
 
@@ -121,7 +119,7 @@ public class CFG {
                 actionString+=words[j]+" ";
             }
         }
-        System.out.println("This is the answer: "+actionString);
+        System.out.println(actionString);
         return actionString;
     }
 
@@ -201,7 +199,7 @@ public class CFG {
         String[] sentenceParts = sentence;//sentence.split(" ");
         
         //get attribute and remove any & 
-        String attribute = Rule.split(" ")[1].replace(devideByChar, "");
+        String attribute = Rule.split(" ")[1].replace(divideByChar, "");
         //list storing the indexes used in the sentence
 
         ArrayList<Integer> usedIndexes = new ArrayList<Integer>();
@@ -272,9 +270,9 @@ public class CFG {
                     Boolean ruleFound = false;
                     for(int j=0;j<rules.size();j++){
                         String[] rule = rules.get(j).split(" ");
-                        if(rule[0].equals("Rule") && (rule[1].equals("<"+subAttribute+">")||rule[1].equals("<"+subAttribute+devideByChar+">"))){
+                        if(rule[0].equals("Rule") && (rule[1].equals("<"+subAttribute+">")||rule[1].equals("<"+subAttribute+ divideByChar +">"))){
                         
-                            Boolean temp=rule[1].equals("<"+subAttribute+devideByChar+">");
+                            Boolean temp=rule[1].equals("<"+subAttribute+ divideByChar +">");
                             if(temp){
                                 //if the contains a devide by char we want to split the whole sentence into its individual parts
                                 String[] characters=subSentence.split("");
@@ -329,7 +327,7 @@ public class CFG {
         String[] ruleParts = StripRule(Rule);
        
         //get attribute and remove any &
-        String attribute = Rule.split(" ")[1].replace(devideByChar, "");
+        String attribute = Rule.split(" ")[1].replace(divideByChar, "");
         
         for(int i2=0;i2<ruleParts.length;i2++){
             Node child = new Node(attribute,ruleParts[i2]);
@@ -347,7 +345,7 @@ public class CFG {
                     Boolean ruleFound = false;
                     for(int j=0;j<rules.size();j++){
                         String[] rule = rules.get(j).split(" ");
-                        if(rule[0].equals("Rule") && (rule[1].equals("<"+subAttribute+">")||rule[1].equals("<"+subAttribute+devideByChar+">"))){
+                        if(rule[0].equals("Rule") && (rule[1].equals("<"+subAttribute+">")||rule[1].equals("<"+subAttribute+ divideByChar +">"))){
                             String[] subSentenceParts= new String[characters.length-usedChars];
                             for(int k=0;k<subSentenceParts.length;k++){
                                 subSentenceParts[k]=characters[usedChars+k];
@@ -497,7 +495,7 @@ public class CFG {
                 if(subRuleParts[j].contains("<")){
                     for(int k=0;k<rules.size();k++){
                         String[] rule = rules.get(k).split(" ");
-                        if(rule[0].equals("Rule") && (rule[1].equals(subRuleParts[j])||rule[1].replace(devideByChar,"").equals(subRuleParts[j]))){
+                        if(rule[0].equals("Rule") && (rule[1].equals(subRuleParts[j])||rule[1].replace(divideByChar,"").equals(subRuleParts[j]))){
                             int smallest=findSmallestAmountOfCharsSub(rules.get(k),depth+1);
                             amountOfChars+=smallest;
                             break;
@@ -527,7 +525,7 @@ public class CFG {
             if(subRuleParts[j].contains("<")){
                 for(int k=0;k<rules.size();k++){
                     String[] rule = rules.get(k).split(" ");
-                    if(rule[0].equals("Rule") && (rule[1].equals(subRuleParts[j])||rule[1].replace(devideByChar,"").equals(subRuleParts[j]))){
+                    if(rule[0].equals("Rule") && (rule[1].equals(subRuleParts[j])||rule[1].replace(divideByChar,"").equals(subRuleParts[j]))){
                         int smallest=findSmallestAmountOfCharsSub(rules.get(k),0);
                         amountOfChars+=smallest;
                         break;

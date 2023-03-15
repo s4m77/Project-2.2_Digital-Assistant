@@ -92,6 +92,7 @@ public class Handler {
         BotLabel botLabel = new BotLabel(CFG.interpret(sentence));
         chatBox.getChildren().add(humanLabel);
         chatBox.getChildren().add(botLabel);
+        userInput.clear();
     }
 
 
