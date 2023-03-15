@@ -1,4 +1,4 @@
-package gui.Controllers;
+package gui;
 
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
@@ -37,7 +37,7 @@ public class Handler {
     @FXML private VBox chatBox; @FXML private TextField userInput;
 
     // EDITOR
-    @FXML private TextArea fileTextArea; @FXML private Label message; @FXML private ProgressBar progressBar; @FXML private Button saveButton;
+    @FXML private TextArea fileTextArea; @FXML private Label message; @FXML private ProgressBar progressBar; @FXML private Button resetButton;
 
     /**
      * METHODS FOR MAIN MENU
@@ -95,8 +95,15 @@ public class Handler {
         chatBox.getChildren().add(l);
     }
 
-    public String getUserInput(){
-        return userInput.getText();
+    private void submitMessage(){
+        String sentence = userInput.getText();
+        if (!sentence.isEmpty()) {
+            addMessageToChat("??? What should I answer to that?", false);
+            userInput.clear();
+        } else {
+            addMessageToChat("sentence", true);
+            addMessageToChat("answer!", false);
+        }
     }
 
 
@@ -109,20 +116,19 @@ public class Handler {
 
     public void chooseFile(ActionEvent ae) throws URISyntaxException {
         FileChooser fileChooser = new FileChooser();
-        //only allow text files to be selected using chooser
+        // Select only .txt files
         fileChooser.getExtensionFilters().add(
                 new FileChooser.ExtensionFilter("Text files (*.txt)", "*.txt")
         );
-        //set initial directory somewhere user will recognise
+        // Select Resources folder as initial directory
         fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/main/resources/txts"));
-        //let user select file
         File fileToLoad = fileChooser.showOpenDialog(null);
-        //if file has been chosen, load it using asynchronous method (define later)
+        // Load chosen file
         if(fileToLoad != null){
             updateTextArea(fileToLoad);
         }
+        // Set last modified time else scheduleFileChecking() will not work
         lastModifiedTime = FileTime.fromMillis(System.currentTimeMillis());
-
     }
 
     private void updateTextArea(File fileToLoad) {
@@ -132,7 +138,6 @@ public class Handler {
     }
 
     private Task<String> fileLoaderTask(File fileToLoad){
-        //Create a task to load the file asynchronously
         Task<String> loadFileTask = new Task<>() {
             @Override
             protected String call() throws Exception {
@@ -142,16 +147,16 @@ public class Handler {
                 try (Stream<String> s = Files.lines(fileToLoad.toPath())) {
                     lineCount = s.count();
                 }
-                //Load lines in memory
+                // Load lines in memory
                 String line;
-                StringBuilder fileContent = new StringBuilder();
+                StringBuilder fc = new StringBuilder();
                 long linesLoaded = 0;
                 while((line = reader.readLine()) != null) {
-                    fileContent.append(line);
-                    fileContent.append("\n");
+                    fc.append(line);
+                    fc.append("\n");
                     updateProgress(++linesLoaded, lineCount);
                 }
-                return fileContent.toString();
+                return fc.toString();
             }
         };
         // If task is successful load content into text area and set status message
@@ -180,18 +185,17 @@ public class Handler {
         fileChangeCheck.setOnSucceeded(workerStateEvent -> {
             if(fileChangeCheck.getLastValue()==null) return;
             if(fileChangeCheck.getLastValue()){
-                //stop checking for changes
+                // stop checking for changes if changes are detected
                 fileChangeCheck.cancel();
-                System.out.println("we have arrived here");
-                showSaveButton();
+                showResetButton();
             }
         });
         System.out.println("Checking for changes has started");
         fileChangeCheck.start();
     }
 
-    private void showSaveButton() {
-        saveButton.setVisible(true);
+    private void showResetButton() {
+        resetButton.setVisible(true);
     }
 
     private ScheduledService<Boolean> createFileChangesChecker(File file){
@@ -214,7 +218,7 @@ public class Handler {
 
     public void resetChanges(){
         updateTextArea(loadedFileReference);
-        saveButton.setVisible(false);
+        resetButton.setVisible(false);
     }
 
     public void saveFile(ActionEvent event) {
