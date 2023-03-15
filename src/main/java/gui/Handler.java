@@ -13,14 +13,14 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Logger;
@@ -34,12 +34,10 @@ public class Handler {
     private Parent root;
 
     // CHAT
-    @FXML
-    private VBox chatBox; private TextField userInput;
+    @FXML private VBox chatBox; @FXML private TextField userInput;
 
     // EDITOR
-    @FXML
-    private TextArea fileTextArea; private Label message; private ProgressBar progressBar; private Button saveButton;
+    @FXML private TextArea fileTextArea; @FXML private Label message; @FXML private ProgressBar progressBar; @FXML private Button saveButton;
 
     private File loadedFileReference;
     private FileTime lastModifiedTime;
@@ -97,7 +95,6 @@ public class Handler {
         chatBox.getChildren().add(l);
     }
 
-    //TODO: fix directory
     public void chooseFile(ActionEvent ae) throws URISyntaxException {
         FileChooser fileChooser = new FileChooser();
         //only allow text files to be selected using chooser
@@ -105,18 +102,34 @@ public class Handler {
                 new FileChooser.ExtensionFilter("Text files (*.txt)", "*.txt")
         );
         //set initial directory somewhere user will recognise
-        fileChooser.setInitialDirectory(new File(Objects.requireNonNull(ChatApplication.class.getResource("/txts")).toURI()));
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/main/resources/txts"));
         //let user select file
         File fileToLoad = fileChooser.showOpenDialog(null);
         //if file has been chosen, load it using asynchronous method (define later)
         if(fileToLoad != null){
             loadFileToTextArea(fileToLoad);
         }
+        lastModifiedTime = FileTime.fromMillis(System.currentTimeMillis());
+
     }
 
     public void saveChanges(){
         loadFileToTextArea(loadedFileReference);
         saveButton.setVisible(false);
+    }
+
+
+    public void saveFile(ActionEvent event) {
+        try {
+            FileWriter myWriter = new FileWriter(loadedFileReference);
+            myWriter.write(fileTextArea.getText());
+            myWriter.close();
+            lastModifiedTime = FileTime.fromMillis(System.currentTimeMillis());
+            System.out.println(lastModifiedTime);
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            Logger.getLogger(getClass().getName()).log(java.util.logging.Level.SEVERE, null, e);
+        }
     }
 
     private Task<String> fileLoaderTask(File fileToLoad){
@@ -169,6 +182,22 @@ public class Handler {
         loadFileTask.run();
     }
 
+    private void scheduleFileChecking(File file){
+        ScheduledService<Boolean> fileChangeCheckingService = createFileChangesCheckingService(file);
+        System.out.println(fileChangeCheckingService.getLastValue());
+        fileChangeCheckingService.setOnSucceeded(workerStateEvent -> {
+            if(fileChangeCheckingService.getLastValue()==null) return;
+            if(fileChangeCheckingService.getLastValue()){
+                //stop checking for changes
+                fileChangeCheckingService.cancel();
+                System.out.println("we have arrived here");
+                showSaveButton();
+            }
+        });
+        System.out.println("Starting Checking Service...");
+        fileChangeCheckingService.start();
+    }
+
     private ScheduledService<Boolean> createFileChangesCheckingService(File file){
         ScheduledService<Boolean> scheduledService = new ScheduledService<>() {
             @Override
@@ -177,28 +206,14 @@ public class Handler {
                     @Override
                     protected Boolean call() throws Exception {
                         FileTime lastModifiedAsOfNow = Files.readAttributes(file.toPath(), BasicFileAttributes.class).lastModifiedTime();
-                        return lastModifiedAsOfNow.compareTo(lastModifiedTime) > 0;
+                        return lastModifiedAsOfNow.compareTo(lastModifiedTime) < 0;
                     }
                 };
             }
         };
-        // check every 10 seconds
-        scheduledService.setPeriod(Duration.seconds(10));
+        // set the time step for each check
+        scheduledService.setPeriod(Duration.seconds(5));
         return scheduledService;
-    }
-
-    private void scheduleFileChecking(File file){
-        ScheduledService<Boolean> fileChangeCheckingService = createFileChangesCheckingService(file);
-        fileChangeCheckingService.setOnSucceeded(workerStateEvent -> {
-            if(fileChangeCheckingService.getLastValue()==null) return;
-            if(fileChangeCheckingService.getLastValue()){
-                //stop checking for changes
-                fileChangeCheckingService.cancel();
-                showSaveButton();
-            }
-        });
-        System.out.println("Starting Checking Service...");
-        fileChangeCheckingService.start();
     }
 
     private void showSaveButton() {
@@ -208,4 +223,6 @@ public class Handler {
     public void closeApp(){
         System.exit(0);
     }
+
+
 }

@@ -19,7 +19,7 @@
           <Menu mnemonicParsing="false" text="File">
             <items>
                   <MenuItem fx:id="openMenu" mnemonicParsing="false" onAction="#chooseFile" text="Open" />
-                  <MenuItem fx:id="saveMenu" mnemonicParsing="false" onAction="#saveChanges" text="Save" />
+                  <MenuItem fx:id="saveMenu" mnemonicParsing="false" onAction="#saveFile" text="Save" />
               <MenuItem fx:id="closeMenu" mnemonicParsing="false" onAction="#goToMainMenu" text="Close" />
             </items>
           </Menu>
@@ -45,7 +45,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveChanges" text="Save Changes" visible="false">
+                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveFile" text="Save Changes" visible="false">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
@@ -61,7 +61,7 @@
    <center>
       <AnchorPane BorderPane.alignment="CENTER">
          <children>
-            <TextArea fx:id="fileTextArea" editable="false" layoutX="-1.0" layoutY="12.0" prefHeight="318.0" prefWidth="600.0" promptText="Load a file from the menu" />
+            <TextArea fx:id="fileTextArea" layoutX="-1.0" layoutY="12.0" prefHeight="318.0" prefWidth="600.0" promptText="Load a file from the menu" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
