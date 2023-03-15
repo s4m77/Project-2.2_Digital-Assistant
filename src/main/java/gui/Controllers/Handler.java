@@ -39,10 +39,6 @@ public class Handler {
     // EDITOR
     @FXML private TextArea fileTextArea; @FXML private Label message; @FXML private ProgressBar progressBar; @FXML private Button saveButton;
 
-    private File loadedFileReference;
-    private FileTime lastModifiedTime;
-
-
     /**
      * METHODS FOR MAIN MENU
      */
@@ -107,6 +103,9 @@ public class Handler {
     /**
      * METHODS FOR SKILL EDITOR
      */
+
+    private File loadedFileReference;
+    private FileTime lastModifiedTime;
 
     public void chooseFile(ActionEvent ae) throws URISyntaxException {
         FileChooser fileChooser = new FileChooser();
