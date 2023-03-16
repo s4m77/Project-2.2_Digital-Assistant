@@ -23,7 +23,7 @@ public class TimeTableManager {
         todayDate = sdf.format(calendar.getTime());
     }
 
-    public String getCourseOnDate(String date) {
+    public String getTimeTableOnDate(String date) {
         List<MyCourse> coursesThatDay = new ArrayList<>();
         StringBuilder onDateCourses = new StringBuilder();
 
@@ -48,11 +48,11 @@ public class TimeTableManager {
         }
     }
 
-    public String getTodayCourses() {
-        return getCourseOnDate(todayDate);
+    public String getTodayTimeTable() {
+        return getTimeTableOnDate(todayDate);
     }
 
-    public List<String> getThisWeekCourses()
+    public List<String> getThisWeekTimeTable()
     {
         List<String> thisWeek = new ArrayList<>();
 
@@ -61,7 +61,7 @@ public class TimeTableManager {
             calendar.add(Calendar.DAY_OF_YEAR, -i);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
             String date = sdf.format(calendar.getTime());
-            thisWeek.add(getCourseOnDate(date));
+            thisWeek.add(getTimeTableOnDate(date));
         }
 
         int plusDays = 7 - currentWeekday;
@@ -70,16 +70,18 @@ public class TimeTableManager {
             calendar.add(Calendar.DAY_OF_YEAR, i);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
             String date = sdf.format(calendar.getTime());
-            thisWeek.add(getCourseOnDate(date));
+            thisWeek.add(getTimeTableOnDate(date));
         }
 
         return thisWeek;
     }
 
+
     public static void main(String[] args) throws IOException {
         TimeTableManager manager = new TimeTableManager();
-        System.out.println(manager.getTodayCourses());
+        System.out.println(manager.getTodayTimeTable());
         System.out.println("************************************************************************************");
-        System.out.println(manager.getThisWeekCourses());
+        System.out.println(manager.getThisWeekTimeTable());
     }
 }
+
