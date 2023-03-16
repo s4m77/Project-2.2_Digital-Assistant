@@ -68,7 +68,7 @@ public class Handler {
         }
     }
 
-    public void goToChatBot(ActionEvent ae) throws Exception {
+    public void goToChatBot(ActionEvent ae) {
         try {
             root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/scenes/chat-page.fxml")));
             stage = (Stage) ((Node)ae.getSource()).getScene().getWindow();
