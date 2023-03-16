@@ -235,61 +235,61 @@ public class Handler {
     }
 
     // ComboBox
-    public void initialize() {
-        ObservableList<String> options = FXCollections.observableArrayList(
-                "CalcAssist",
-                "Weather",
-                "UM Schedule",
-                "Wiki Query",
-                "CalcDisplay"
-        );
-        comboBox.setItems(options);
-
-        comboBox.setOnAction(event -> {
-            String selectedOption = comboBox.getSelectionModel().getSelectedItem();
-            switch (selectedOption) {
-                case "Weather" -> {
-                    new Thread(() -> {
-                        try {
-                            HourlyWeatherRetriever("Maastricht", "NL");
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }).start();
-                    break;
-                }
-                case "Wiki Query" -> {
-                    new Thread(WikipediaAPI::handleInput).start();
-                    break;
-                }
-                case "UM Schedule" -> {
-                    new Thread(() -> {
-                        try {
-                            System.out.println(new TimeTableManager().getThisWeekTimeTable());
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }).start();
-                    break;
-                }
-                case "CalcAssist" -> {
-                    new Thread(CalcAssist::handleInput).start();
-                    break;
-                }
-                case "CalcDisplay" -> {
-                    Stage calculatorStage = new Stage();
-
-                    try {
-                        new CalculatorDisplay().start(calculatorStage);
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                    calculatorStage.show();
-                    break;
-                }
-            }
-        });
-    }
+//    public void initialize() {
+//        ObservableList<String> options = FXCollections.observableArrayList(
+//                "CalcAssist",
+//                "Weather",
+//                "UM Schedule",
+//                "Wiki Query",
+//                "CalcDisplay"
+//        );
+//        comboBox.setItems(options);
+//
+//        comboBox.setOnAction(event -> {
+//            String selectedOption = comboBox.getSelectionModel().getSelectedItem();
+//            switch (selectedOption) {
+//                case "Weather" -> {
+//                    new Thread(() -> {
+//                        try {
+//                            HourlyWeatherRetriever("Maastricht", "NL");
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//                    }).start();
+//                    break;
+//                }
+//                case "Wiki Query" -> {
+//                    new Thread(WikipediaAPI::handleInput).start();
+//                    break;
+//                }
+//                case "UM Schedule" -> {
+//                    new Thread(() -> {
+//                        try {
+//                            System.out.println(new TimeTableManager().getThisWeekTimeTable());
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//                    }).start();
+//                    break;
+//                }
+//                case "CalcAssist" -> {
+//                    new Thread(CalcAssist::handleInput).start();
+//                    break;
+//                }
+//                case "CalcDisplay" -> {
+//                    Stage calculatorStage = new Stage();
+//
+//                    try {
+//                        new CalculatorDisplay().start(calculatorStage);
+//                    } catch (Exception e) {
+//                        throw new RuntimeException(e);
+//                    }
+//                    calculatorStage.show();
+//                    break;
+//                }
+//            }
+//        });
+//    }
 
     public void closeApp(){
         System.exit(0);
