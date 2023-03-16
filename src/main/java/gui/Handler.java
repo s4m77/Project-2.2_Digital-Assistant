@@ -1,13 +1,20 @@
 package gui;
 
 import CFG.CFG;
+import Calculator.CalcAssist;
+import Calculator.CalculatorDisplay;
+import TimeTable.TimeTableManager;
+import web.WikipediaAPI;
+import static Weather.WeatherScraper.HourlyWeatherRetriever;
+
 import gui.utils.BotLabel;
 import gui.utils.HumanLabel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,6 +23,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
 
 import java.io.*;
 import java.net.URISyntaxException;
@@ -27,6 +35,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.stream.Stream;
 
 
+
 public class Handler {
 
     private Stage stage;
@@ -34,7 +43,7 @@ public class Handler {
     private Parent root;
 
     // MAIN MENU
-    @FXML private Button chatBotButton; @FXML private Button skillEditorButton; @FXML private Label welcomeLabel;
+    @FXML private Button chatBotButton; @FXML private Button skillEditorButton; @FXML private Label welcomeLabel; @FXML private ComboBox<String> comboBox;
 
     // CHAT
     @FXML private VBox chatBox; @FXML private TextField userInput;
@@ -222,6 +231,55 @@ public class Handler {
         } catch (IOException e) {
             System.out.println("An error occurred.");
         }
+    }
+
+    // ComboBox
+    public void initialize() {
+        ObservableList<String> options = FXCollections.observableArrayList(
+                "CalcAssist",
+                "Weather",
+                "UM Schedule",
+                "Wiki Query",
+                "CalcDisplay"
+        );
+        comboBox.setItems(options);
+
+        comboBox.setOnAction(event -> {
+            String selectedOption = comboBox.getSelectionModel().getSelectedItem();
+            switch (selectedOption) {
+                case "Weather" -> {
+                    try {
+                        HourlyWeatherRetriever("Maastricht", "NL");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                case "Wiki Query" -> {
+                    WikipediaAPI.handleInput();
+                }
+                case "UM Schedule" -> {
+                    try {
+                        System.out.println(new TimeTableManager().getThisWeekTimeTable());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                case "CalcAssist" -> {
+                    CalcAssist.handleInput();
+                }
+                case "CalcDisplay" -> {
+                    Stage calculatorStage = new Stage();
+
+                    try {
+                        new CalculatorDisplay().start(calculatorStage);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                    calculatorStage.show();
+                }
+            }
+        });
+
     }
 
     public void closeApp(){

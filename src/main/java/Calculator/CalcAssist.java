@@ -32,9 +32,8 @@ public class CalcAssist {
             return memoryList.get(index);
         return ("Array out of bounds, input error");
     }
-    // main function
-    public static void main(String[] args) {
 
+    public static void handleInput(){
         while (true) {
             System.out.println();
             System.out.println("Enter new expression:");
@@ -84,6 +83,10 @@ public class CalcAssist {
                         System.out.println("Invalid input.");
             }
         }
+    }
+    // main function
+    public static void main(String[] args) {
+        handleInput();
     }
 
 }

@@ -6,11 +6,12 @@ import org.json.JSONObject;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class WikipediaAPI {
 
-    public static String webQuery(String query) {
+    public static void webQuery(String query) {
         String summaryEndpoint = "https://en.wikipedia.org/api/rest_v1/page/summary/";
         String searchEndpoint = "https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch=";
         String title = "";
@@ -18,7 +19,7 @@ public class WikipediaAPI {
         //static final int MAX_RESULTS = 10;
 
         try {
-            String encodedQuery = URLEncoder.encode(query, "UTF-8");
+            String encodedQuery = URLEncoder.encode(query, StandardCharsets.UTF_8);
             URL searchUrl = new URL(searchEndpoint + encodedQuery); // + "&srprop=snippet");
             HttpURLConnection searchConn = (HttpURLConnection) searchUrl.openConnection();
             searchConn.setRequestMethod("GET");
@@ -62,15 +63,22 @@ public class WikipediaAPI {
             e.printStackTrace();
         }
 
-        return extract;
+        System.out.println(extract);
     }
 
+    public static void handleInput(){
+        System.out.println("Enter your query:");
+        Scanner myObj = new Scanner(System.in);
+
+        String query = myObj.nextLine();
+        webQuery(query);
+
+    }
 
     public static void main(String[] args) {
 
         String query = "what is the partition of an interval in mathematics?";
-        String result = webQuery(query);
-        System.out.println(result);
+        webQuery(query);
 
     }
 }
