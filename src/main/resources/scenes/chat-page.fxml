@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F0F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Handler">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F0F8FF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Handler">
    <top>
       <AnchorPane prefHeight="79.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <Button layoutX="14.0" layoutY="37.0" mnemonicParsing="false" onAction="#goToMainMenu" text="Main Menu" />
-         <Button layoutX="508.0" layoutY="36.0" mnemonicParsing="false" onAction="#goToSkillEditor" text="Skill Editor" />
+         <Button id="rich-blue" layoutX="14.0" layoutY="26.0" mnemonicParsing="false" onAction="#goToMainMenu" stylesheets="@../css/buttons.css" text="Main Menu" />
+         <Button id="rich-blue" layoutX="473.0" layoutY="26.0" mnemonicParsing="false" onAction="#goToSkillEditor" stylesheets="@../css/buttons.css" text="Skill Editor" />
          <ImageView fitHeight="161.0" fitWidth="75.0" layoutX="263.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../images/avatar1.png" />
          </ImageView>
@@ -21,14 +21,14 @@
    </top>
    <bottom>
       <AnchorPane prefHeight="46.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <TextField fx:id="userInput" layoutX="7.0" layoutY="6.0" prefHeight="26.0" prefWidth="500.0" promptText="Enter a prompt!" />
-         <Button fx:id="submitButton" layoutX="529.0" layoutY="4.0" mnemonicParsing="false" onAction="#addMessageToChat" text="Submit" />
+         <TextField fx:id="userInput" layoutX="7.0" layoutY="6.0" prefHeight="26.0" prefWidth="477.0" promptText="Enter a prompt!" />
+         <Button id="rich-blue" fx:id="submitButton" defaultButton="true" layoutX="488.0" mnemonicParsing="false" onAction="#addMessageToChat" stylesheets="@../css/buttons.css" text="Submit" />
       </AnchorPane>
    </bottom>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <VBox fx:id="chatBox" alignment="BOTTOM_LEFT" layoutX="15.0" layoutY="4.0" prefHeight="234.0" prefWidth="570.0">
-            <Label prefHeight="18.0" prefWidth="569.0" style="-fx-background-color: #00FFFF;" text="BOT: Hi! How may I assist you today?" />
+            <Label prefHeight="20.0" prefWidth="570.0" style="-fx-background-color: #00FFFF;" text="BOT: Hi! How may I assist you today?" />
          </VBox>
       </AnchorPane>
    </center>
