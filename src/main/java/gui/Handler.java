@@ -4,6 +4,7 @@ import CFG.CFG;
 import Calculator.CalcAssist;
 import Calculator.CalculatorDisplay;
 import TimeTable.TimeTableManager;
+import javafx.application.Platform;
 import web.WikipediaAPI;
 import static Weather.WeatherScraper.HourlyWeatherRetriever;
 
@@ -248,27 +249,31 @@ public class Handler {
             String selectedOption = comboBox.getSelectionModel().getSelectedItem();
             switch (selectedOption) {
                 case "Weather" -> {
-                    try {
-                        HourlyWeatherRetriever("Maastricht", "NL");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    new Thread(() -> {
+                        try {
+                            HourlyWeatherRetriever("Maastricht", "NL");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }).start();
                     break;
                 }
                 case "Wiki Query" -> {
-                    WikipediaAPI.handleInput();
+                    new Thread(WikipediaAPI::handleInput).start();
                     break;
                 }
                 case "UM Schedule" -> {
-                    try {
-                        System.out.println(new TimeTableManager().getThisWeekTimeTable());
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    new Thread(() -> {
+                        try {
+                            System.out.println(new TimeTableManager().getThisWeekTimeTable());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }).start();
                     break;
                 }
                 case "CalcAssist" -> {
-                    CalcAssist.handleInput();
+                    new Thread(CalcAssist::handleInput).start();
                     break;
                 }
                 case "CalcDisplay" -> {
@@ -284,7 +289,6 @@ public class Handler {
                 }
             }
         });
-
     }
 
     public void closeApp(){
