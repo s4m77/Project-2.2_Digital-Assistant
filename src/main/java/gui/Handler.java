@@ -253,9 +253,11 @@ public class Handler {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                    break;
                 }
                 case "Wiki Query" -> {
                     WikipediaAPI.handleInput();
+                    break;
                 }
                 case "UM Schedule" -> {
                     try {
@@ -263,9 +265,11 @@ public class Handler {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                    break;
                 }
                 case "CalcAssist" -> {
                     CalcAssist.handleInput();
+                    break;
                 }
                 case "CalcDisplay" -> {
                     Stage calculatorStage = new Stage();
@@ -276,6 +280,7 @@ public class Handler {
                         throw new RuntimeException(e);
                     }
                     calculatorStage.show();
+                    break;
                 }
             }
         });
