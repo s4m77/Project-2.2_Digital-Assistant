@@ -1,9 +1,11 @@
 package gui;
 
+
 import CFG.CFG;
 import Calculator.CalcAssist;
 import Calculator.CalculatorDisplay;
 import TimeTable.TimeTableManager;
+import db.Conversationdb;
 import javafx.application.Platform;
 import web.WikipediaAPI;
 import static Weather.WeatherScraper.HourlyWeatherRetriever;
@@ -31,6 +33,7 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
+import java.sql.Connection;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Stream;
@@ -42,6 +45,8 @@ public class Handler {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    private Connection connection = Conversationdb.CreateServer();
 
     // MAIN MENU
     @FXML private Button chatBotButton; @FXML private Button skillEditorButton; @FXML private Label welcomeLabel; @FXML private ComboBox<String> comboBox;
@@ -102,6 +107,7 @@ public class Handler {
         BotLabel botLabel = new BotLabel(CFG.interpret(sentence));
         chatBox.getChildren().add(humanLabel);
         chatBox.getChildren().add(botLabel);
+        Conversationdb.storeConversation(connection, sentence, CFG.interpret(sentence));
         userInput.clear();
     }
 
