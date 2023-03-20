@@ -16,7 +16,7 @@ public class CFG {
     public static String dividerChar = ":";
     public static String freeString="@";
     public static String devideByChar="&";
-    public static int maxDepth=7;
+    public static int maxDepth=9;
     public static void main(String[] args) {
         //TODO Auto-generated method stub
         String sentence = "what is (200+2)+(2^20)";
@@ -66,10 +66,10 @@ public class CFG {
         //set everything to lower case
         input=input.toLowerCase();
         //remove all . ? ! and ,
-        input=input.replace(".", "");
+        //input=input.replace(".", "");
         input=input.replace("?", "");
         input=input.replace("!", "");
-        input=input.replace(",", "");
+        //input=input.replace(",", "");
         //remove any leading or trailing spaces
         input=input.trim();
         return input;
