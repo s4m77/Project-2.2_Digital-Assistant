@@ -9,7 +9,7 @@ import java.lang.reflect.*;
 public class CFG {
     
 
-    public static final String CFG_FILE = "src\\main\\java\\CFG\\CFGTemplate.txt";
+    public static final String CFG_FILE = System.getProperty("user.dir") + "/src/main/resources/txts/CFGTemplate.txt";
     public static ArrayList<String> rules=readCFG(CFG_FILE);
     public static String actionPrefix = "Action";
     public static String rulePrefix = "Rule";
@@ -17,10 +17,13 @@ public class CFG {
     public static String freeString="@";
     public static String devideByChar="&";
     public static int maxDepth=9;
+    public static String divideByChar ="&";
+    public static int maxDepth=7;
     public static void main(String[] args) {
         //TODO Auto-generated method stub
+        System.out.println("Asking a question");
         String sentence = "what is (200+2)+(2^20)";
-        interpret(sentence);
+        System.out.println(interpret("What lectures are there on monday?"));
 
 
 
@@ -46,7 +49,7 @@ public class CFG {
 
 
     
-    public static void interpret(String sentence){
+    public static String interpret(String sentence){
         //clean up the input
         sentence=cleanUpInput(sentence);
         //construct the tree based on the rules in the CFG
@@ -56,10 +59,10 @@ public class CFG {
         //check if the tree meets the requirements of an action
         int action= isAction(tree);
         //if it does, execute the action
-        if(action!=-1){
-            executeAction(tree, action);
-        }
-
+//        if(action!=-1){
+//            executeAction(tree, action);
+//        }
+        return action!=-1 ? executeAction(tree, action) : "I don't know how to answer that";
     }
 
     public static String cleanUpInput(String input){
@@ -74,7 +77,8 @@ public class CFG {
         input=input.trim();
         return input;
     }
-    public static void executeAction(Node tree, int action){
+
+    public static String executeAction(Node tree, int action){
         ArrayList<String> rules2=rules;
         String[] split=rules.get(action).split(dividerChar);
         if(split.length==3){
@@ -118,6 +122,7 @@ public class CFG {
             }
         }
         System.out.println(actionString);
+        return actionString;
     }
 
 
@@ -196,7 +201,7 @@ public class CFG {
         String[] sentenceParts = sentence;//sentence.split(" ");
         
         //get attribute and remove any & 
-        String attribute = Rule.split(" ")[1].replace(devideByChar, "");
+        String attribute = Rule.split(" ")[1].replace(divideByChar, "");
         //list storing the indexes used in the sentence
 
         ArrayList<Integer> usedIndexes = new ArrayList<Integer>();
@@ -267,9 +272,9 @@ public class CFG {
                     Boolean ruleFound = false;
                     for(int j=0;j<rules.size();j++){
                         String[] rule = rules.get(j).split(" ");
-                        if(rule[0].equals("Rule") && (rule[1].equals("<"+subAttribute+">")||rule[1].equals("<"+subAttribute+devideByChar+">"))){
+                        if(rule[0].equals("Rule") && (rule[1].equals("<"+subAttribute+">")||rule[1].equals("<"+subAttribute+ divideByChar +">"))){
                         
-                            Boolean temp=rule[1].equals("<"+subAttribute+devideByChar+">");
+                            Boolean temp=rule[1].equals("<"+subAttribute+ divideByChar +">");
                             if(temp){
                                 //if the contains a devide by char we want to split the whole sentence into its individual parts
                                 String[] characters=subSentence.split("");
@@ -324,7 +329,7 @@ public class CFG {
         String[] ruleParts = StripRule(Rule);
        
         //get attribute and remove any &
-        String attribute = Rule.split(" ")[1].replace(devideByChar, "");
+        String attribute = Rule.split(" ")[1].replace(divideByChar, "");
         
         for(int i2=0;i2<ruleParts.length;i2++){
             Node child = new Node(attribute,ruleParts[i2]);
@@ -342,7 +347,7 @@ public class CFG {
                     Boolean ruleFound = false;
                     for(int j=0;j<rules.size();j++){
                         String[] rule = rules.get(j).split(" ");
-                        if(rule[0].equals("Rule") && (rule[1].equals("<"+subAttribute+">")||rule[1].equals("<"+subAttribute+devideByChar+">"))){
+                        if(rule[0].equals("Rule") && (rule[1].equals("<"+subAttribute+">")||rule[1].equals("<"+subAttribute+ divideByChar +">"))){
                             String[] subSentenceParts= new String[characters.length-usedChars];
                             for(int k=0;k<subSentenceParts.length;k++){
                                 subSentenceParts[k]=characters[usedChars+k];
@@ -492,7 +497,7 @@ public class CFG {
                 if(subRuleParts[j].contains("<")){
                     for(int k=0;k<rules.size();k++){
                         String[] rule = rules.get(k).split(" ");
-                        if(rule[0].equals("Rule") && (rule[1].equals(subRuleParts[j])||rule[1].replace(devideByChar,"").equals(subRuleParts[j]))){
+                        if(rule[0].equals("Rule") && (rule[1].equals(subRuleParts[j])||rule[1].replace(divideByChar,"").equals(subRuleParts[j]))){
                             int smallest=findSmallestAmountOfCharsSub(rules.get(k),depth+1);
                             amountOfChars+=smallest;
                             break;
@@ -522,7 +527,7 @@ public class CFG {
             if(subRuleParts[j].contains("<")){
                 for(int k=0;k<rules.size();k++){
                     String[] rule = rules.get(k).split(" ");
-                    if(rule[0].equals("Rule") && (rule[1].equals(subRuleParts[j])||rule[1].replace(devideByChar,"").equals(subRuleParts[j]))){
+                    if(rule[0].equals("Rule") && (rule[1].equals(subRuleParts[j])||rule[1].replace(divideByChar,"").equals(subRuleParts[j]))){
                         int smallest=findSmallestAmountOfCharsSub(rules.get(k),0);
                         amountOfChars+=smallest;
                         break;

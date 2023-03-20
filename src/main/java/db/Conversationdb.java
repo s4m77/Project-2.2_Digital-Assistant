@@ -14,7 +14,9 @@ public class Conversationdb {
         Connection connection = null;
         try {
             Class.forName("org.hsqldb.jdbcDriver");
-            connection = DriverManager.getConnection("jdbc:hsqldb:file:\\C:\\Users\\redab\\IdeaProjects\\test2_conv\\SRVMMDADB", "SA", "");
+            // current folder
+            connection = DriverManager.getConnection("jdbc:hsqldb:file:\\C:\\Project-2.2_Digital-Assistant\\SRVMMDADB", "SA", "");
+            //connection = DriverManager.getConnection("jdbc:hsqldb:file:\\C:\\Users\\SRVMMDADB", "SA", "");
             if (connection != null) {
                 System.out.println("Connected to the database");
             }
@@ -97,20 +99,20 @@ public class Conversationdb {
 
      Inserts a conversation into the specified database with the given parameters.
      @param connection the database connection to be used for the insertion
-     @param id the id of the conversation
-     @param userid the id of the user who initiated the conversation
      @param prompt the prompt text of the conversation
      @param response the response text of the conversation
-     @param timestamp the timestamp of the conversation
      */
-    public static void storeConversation(Connection connection, int id, int userid, String prompt, String response, Timestamp timestamp) {
+    public static void storeConversation(Connection connection, String prompt, String response) {
         Statement stmt = null;
         try {
 
-            stmt = connection.createStatement();
 
-            String sql = "INSERT INTO CONVERSATIONS (id,userid,prompt,response,time_stamp) VALUES (" + Integer.toString(id) + "," + Integer.toString(userid) +",'" + prompt +"','" + response +"','"+ timestamp +"')";
-            stmt.executeUpdate(sql);
+            String sql = "INSERT INTO CONVERS (PROMPT, RESPONSE) VALUES (?, ?)";
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setString(1, prompt);
+            pstmt.setString(2, response);
+            pstmt.executeUpdate();
+
 
         } catch (SQLException se) {
             se.printStackTrace();
@@ -137,11 +139,11 @@ public class Conversationdb {
         try {
             stmt = connection.createStatement();
 
-            String sql = "SELECT * FROM CONVERSATIONS ";
+            String sql = "SELECT * FROM CONVERS ";
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
-                String conversation = rs.getString("id") + " ++ " + rs.getString("userid") + " ++ " + rs.getString("prompt") + " ++ " + rs.getString("response") + "++" + rs.getString("time_stamp");
+                String conversation = rs.getString("prompt") + " ++ " + rs.getString("response");
                 System.out.println(conversation);
             }
             rs.close();

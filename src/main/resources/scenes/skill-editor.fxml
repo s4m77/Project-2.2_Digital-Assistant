@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Handler">
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="59.0" prefWidth="600.0" style="-fx-background-color: #F0F8FF;" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" />
+         </padding>
+         <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="323.0" HBox.hgrow="ALWAYS">
+            <Label fx:id="message" text="Checking changes...">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Label>
+            <ProgressBar fx:id="progressBar" prefWidth="200.0" progress="0.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </ProgressBar>
+         </HBox>
+         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetChanges" text="Reset Changes" visible="false">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Button>
+         </HBox>
+      </HBox>
+   </bottom>
+   <center>
+      <AnchorPane prefHeight="287.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <TextArea fx:id="fileTextArea" layoutX="9.0" layoutY="17.0" prefHeight="312.0" prefWidth="586.0" promptText="Load a file from the menu">
+            <padding>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding></TextArea>
+      </AnchorPane>
+   </center>
+   <top>
+      <HBox prefHeight="37.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="109.0">
+               <children>
+                  <MenuBar prefHeight="21.0" prefWidth="53.0" style="-fx-background-color: #F0F8FF;">
+                     <Menu mnemonicParsing="false" text="File">
+                        <MenuItem fx:id="openMenu" mnemonicParsing="false" onAction="#chooseFile" text="Open" />
+                        <MenuItem fx:id="saveMenu" mnemonicParsing="false" onAction="#saveFile" text="Save" />
+                     </Menu>
+                  </MenuBar>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="37.0" prefWidth="477.0">
+               <children>
+                  <Button id="rich-blue" alignment="CENTER_RIGHT" contentDisplay="CENTER" minWidth="46.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="28.0" prefWidth="118.0" stylesheets="@../css/buttons.css" text="Back" wrapText="true">
+                     <HBox.margin>
+                        <Insets left="480.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

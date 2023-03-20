@@ -6,25 +6,21 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_22_digitalassistant.Handler">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="346.0" style="-fx-background-color: #F0F8FF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Handler">
    <top>
       <AnchorPane prefHeight="73.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="143.0" layoutY="21.0" text="Multi-Modal Digital Assistant">
-               <font>
-                  <Font name="System Bold" size="26.0" />
-               </font>
-            </Label>
-         </children>
+         <Label fx:id="welcomeLabel" layoutX="28.0" layoutY="22.0" text="Multi-Modal Digital Assistant">
+            <font>
+               <Font name="System Bold" size="24.0" />
+            </font>
+         </Label>
       </AnchorPane>
    </top>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="chatButton" layoutX="253.0" layoutY="47.0" mnemonicParsing="false" onAction="#goToChatBot" text="Start chatting" />
-            <Button fx:id="editorButton" layoutX="262.0" layoutY="115.0" mnemonicParsing="false" text="Skill editor" />
-            <Button fx:id="quitButton" layoutX="531.0" layoutY="288.0" mnemonicParsing="false" onAction="#closeApp" text="Quit" />
-         </children>
+      <AnchorPane prefHeight="327.0" prefWidth="270.0" BorderPane.alignment="CENTER">
+         <Button id="rich-blue" fx:id="chatButton" layoutX="107.0" layoutY="49.0" mnemonicParsing="false" onAction="#goToChatBot" stylesheets="@../css/buttons.css" text="Start chatting" />
+         <Button id="rich-blue" fx:id="editorButton" layoutX="115.0" layoutY="125.0" mnemonicParsing="false" onAction="#goToSkillEditor" stylesheets="@../css/buttons.css" text="Skill editor" />
+         <Button id="rich-blue" fx:id="quitButton" layoutX="264.0" layoutY="274.0" mnemonicParsing="false" onAction="#closeApp" stylesheets="@../css/buttons.css" text="Quit" />
       </AnchorPane>
    </center>
 </BorderPane>

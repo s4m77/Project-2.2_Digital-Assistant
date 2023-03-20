@@ -1,0 +1,11 @@
+package gui.utils;
+
+import javafx.scene.control.Label;
+
+public class BotLabel extends ALabel {
+    public BotLabel(String text) {
+        super();
+        this.setText("BOT -> "+text);
+        this.setStyle("-fx-background-color:#00FFFF");
+    }
+}

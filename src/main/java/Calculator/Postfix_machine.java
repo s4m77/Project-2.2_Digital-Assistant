@@ -7,10 +7,10 @@ public class Postfix_machine {
 
     public String infixToPostfix(String infixExpression){
 
-        Stack<String> opStack = new Stack<>();
-        ArrayList<String> suffixList = new ArrayList<>();
+        Stack<String> operatorStack = new Stack<>();
+        ArrayList<String> postfixList = new ArrayList<>();
 
-        infixExpression = insertBlanks(infixExpression);
+        infixExpression = addSpaces(infixExpression);
         String[] tokens = infixExpression.split(" ");
 
         for(String token : tokens){
@@ -19,45 +19,45 @@ public class Postfix_machine {
             }
             if(isOperator(token)){
                 while(true){
-                    if(opStack.isEmpty() || "(".equals(opStack.peek()) || priority(token) > priority(opStack.peek())){
-                        opStack.push(token);
+                    if(operatorStack.isEmpty() || "(".equals(operatorStack.peek()) || getPriority(token) > getPriority(operatorStack.peek())){
+                        operatorStack.push(token);
                         break;
                     }
-                    suffixList.add(opStack.pop());
+                    postfixList.add(operatorStack.pop());
                 }
             }else if (isNumber(token)) {
-                suffixList.add(token);
+                postfixList.add(token);
             } else if(token.equals(".")){
-                suffixList.add(token);
+                postfixList.add(token);
             }else if ("(".equals(token)) {
-                opStack.push(token);
+                operatorStack.push(token);
             }else if (")".equals(token)){
                 while (true){
-                    if ("(".equals(opStack.peek())){
-                        opStack.pop();
+                    if ("(".equals(operatorStack.peek())){
+                        operatorStack.pop();
                         break;
                     }else{
-                        suffixList.add(opStack.pop());
+                        postfixList.add(operatorStack.pop());
                     }
                 }
             }else {
-                throw new IllegalArgumentException("identify failed"+ token);
+                throw new IllegalArgumentException("Failed to identify " + token);
             }
-        }while (!opStack.isEmpty()){
-            suffixList.add(opStack.pop());
+        }while (!operatorStack.isEmpty()){
+            postfixList.add(operatorStack.pop());
         }
         StringBuilder sb = new StringBuilder();
-        for (String s : suffixList) {
+        for (String s : postfixList) {
             sb.append(s).append(",");
         }
         sb.deleteCharAt(sb.length() - 1);
         return sb.toString();
     }
 
-    private int priority(String token){
-        if("*".equals(token) || "/".equals(token)){
+    private int getPriority(String operator){
+        if("*".equals(operator) || "/".equals(operator)){
             return 2;
-        }else if("+".equals(token) || "-".equals(token)){
+        }else if("+".equals(operator) || "-".equals(operator)){
             return 1;
         }else{
             return 0;
@@ -82,7 +82,7 @@ public class Postfix_machine {
     }
 
 
-    private String insertBlanks(String expression){
+    private String addSpaces(String expression){
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < expression.length(); i++){
             char c = expression.charAt(i);
@@ -126,5 +126,5 @@ public class Postfix_machine {
         return list.size() == 1 ? list.get(0) : "Invalid Equation";
 
     }
-
 }
+
