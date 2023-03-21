@@ -2,18 +2,12 @@ package gui;
 
 
 import CFG.CFG;
-import Calculator.CalcAssist;
-import Calculator.CalculatorDisplay;
-import TimeTable.TimeTableManager;
+
 import db.Conversationdb;
-import javafx.application.Platform;
-import web.WikipediaAPI;
-import static Weather.WeatherScraper.HourlyWeatherRetriever;
+
 
 import gui.utils.BotLabel;
 import gui.utils.HumanLabel;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -29,7 +23,6 @@ import javafx.util.Duration;
 
 
 import java.io.*;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
@@ -42,6 +35,11 @@ import java.util.stream.Stream;
 
 public class Handler {
 
+    public enum BotType{
+        TEMPLATESKILLS,
+        CFG
+    }
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -49,7 +47,7 @@ public class Handler {
     private Connection connection = Conversationdb.CreateServer();
 
     // MAIN MENU
-    @FXML private Button chatBotButton; @FXML private Button skillEditorButton; @FXML private Label welcomeLabel; @FXML private ComboBox<String> comboBox;
+    @FXML private Button chatBotButton; @FXML private Button skillEditorButton; @FXML private Label welcomeLabel;
 
     // CHAT
     @FXML private VBox chatBox; @FXML private TextField userInput;
@@ -61,7 +59,7 @@ public class Handler {
      * METHODS FOR MAIN MENU
      */
 
-    public void goToMainMenu(ActionEvent ae) throws Exception {
+    public void goToMainMenu(ActionEvent ae) {
         try{
             root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/scenes/start-page.fxml")));
             stage = (Stage) ((Node)ae.getSource()).getScene().getWindow();
@@ -69,7 +67,7 @@ public class Handler {
             stage.setScene(scene);
             stage.show();
         } catch (IOException e){
-            System.out.println("FXML not found");
+            System.out.println("FXML: /scenes/start-page.fxml not found");
         }
     }
 
@@ -81,28 +79,29 @@ public class Handler {
             stage.setScene(scene);
             stage.show();
         } catch (IOException e){
-            System.out.println("FXML not found");
+            System.out.println("FXML: /scenes/chat-page.fxml not found");
         }
     }
 
-    public void goToSkillEditor(ActionEvent ae){
+    public void goToSkillEditor(ActionEvent ae) {
         try {
             root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/scenes/skill-editor.fxml")));
             stage = (Stage) ((Node)ae.getSource()).getScene().getWindow();
+            //stage = fileTextArea.getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         } catch (IOException e){
-            System.out.println("FXML not found");
+            System.out.println("FXML: /scenes/skill-editor.fxm not found");
         }
     }
+
     /**
      * METHODS FOR CHAT
      */
 
     public void addMessageToChat(){
         String sentence = userInput.getText();
-        System.out.println("adding message to chat");
         HumanLabel humanLabel = new HumanLabel(sentence);
         BotLabel botLabel = new BotLabel(CFG.interpret(sentence));
         chatBox.getChildren().add(humanLabel);
@@ -111,17 +110,16 @@ public class Handler {
         userInput.clear();
     }
 
-
-
     /**
      * METHODS FOR SKILL EDITOR
      */
 
-    private File loadedFileReference;
-    private FileTime lastModifiedTime;
+    public static FileTime lastModifiedTime;
+    public static File loadedFileReference;
 
-    public void chooseFile(ActionEvent ae) throws URISyntaxException {
+    public void chooseFile() {
         FileChooser fileChooser = new FileChooser();
+        //txtFileManager = new TXTFileManager(fileTextArea, message, resetButton, progressBar);
         // Select only .txt files
         fileChooser.getExtensionFilters().add(
                 new FileChooser.ExtensionFilter("Text files (*.txt)", "*.txt")
@@ -227,75 +225,18 @@ public class Handler {
         resetButton.setVisible(false);
     }
 
-    public void saveFile(ActionEvent event) {
+    public void saveFile() {
         try {
             FileWriter fw = new FileWriter(loadedFileReference);
             fw.write(fileTextArea.getText());
             fw.close();
             lastModifiedTime = FileTime.fromMillis(System.currentTimeMillis());
             System.out.println(lastModifiedTime);
-            System.out.println("Successfully wrote to the file.");
+            System.out.println("File update successful");
         } catch (IOException e) {
-            System.out.println("An error occurred.");
+            System.out.println("Error in saving file");
         }
     }
-
-    // ComboBox
-//    public void initialize() {
-//        ObservableList<String> options = FXCollections.observableArrayList(
-//                "CalcAssist",
-//                "Weather",
-//                "UM Schedule",
-//                "Wiki Query",
-//                "CalcDisplay"
-//        );
-//        comboBox.setItems(options);
-//
-//        comboBox.setOnAction(event -> {
-//            String selectedOption = comboBox.getSelectionModel().getSelectedItem();
-//            switch (selectedOption) {
-//                case "Weather" -> {
-//                    new Thread(() -> {
-//                        try {
-//                            HourlyWeatherRetriever("Maastricht", "NL");
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                        }
-//                    }).start();
-//                    break;
-//                }
-//                case "Wiki Query" -> {
-//                    new Thread(WikipediaAPI::handleInput).start();
-//                    break;
-//                }
-//                case "UM Schedule" -> {
-//                    new Thread(() -> {
-//                        try {
-//                            System.out.println(new TimeTableManager().getThisWeekTimeTable());
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                        }
-//                    }).start();
-//                    break;
-//                }
-//                case "CalcAssist" -> {
-//                    new Thread(CalcAssist::handleInput).start();
-//                    break;
-//                }
-//                case "CalcDisplay" -> {
-//                    Stage calculatorStage = new Stage();
-//
-//                    try {
-//                        new CalculatorDisplay().start(calculatorStage);
-//                    } catch (Exception e) {
-//                        throw new RuntimeException(e);
-//                    }
-//                    calculatorStage.show();
-//                    break;
-//                }
-//            }
-//        });
-//    }
 
     public void closeApp(){
         System.exit(0);

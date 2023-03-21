@@ -15,10 +15,9 @@ public class CFG {
     public static String rulePrefix = "Rule";
     public static String dividerChar = ":";
     public static String freeString="@";
-    public static String devideByChar="&";
     public static int maxDepth=9;
     public static String divideByChar ="&";
-    public static int maxDepth=7;
+
     public static void main(String[] args) {
         //TODO Auto-generated method stub
         System.out.println("Asking a question");

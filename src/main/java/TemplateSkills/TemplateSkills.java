@@ -1,10 +1,12 @@
 package TemplateSkills;
 
+import gui.ChatApplication;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class test {
+public class TemplateSkills {
     //class that does the same thing as the CFG.java
     //but for a simpler template
     public static String[] templates=readTemplates();
@@ -116,7 +118,7 @@ public class test {
         //and store them in the templates array
         String[] templates = new String[0];
         try{
-            Scanner scanner = new Scanner(new File("templateskills.txt"));
+            Scanner scanner = new Scanner(new File( System.getProperty("user.dir") + "/src/main/resources/txts/CFGTemplate.txt"));
             ArrayList<String> lines = new ArrayList<String>();
             while(scanner.hasNextLine()){
                 lines.add(scanner.nextLine().toLowerCase());

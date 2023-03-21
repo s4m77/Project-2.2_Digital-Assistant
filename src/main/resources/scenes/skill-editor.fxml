@@ -52,29 +52,27 @@
       <HBox prefHeight="37.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="109.0">
-               <children>
-                  <MenuBar prefHeight="21.0" prefWidth="53.0" style="-fx-background-color: #F0F8FF;">
-                     <Menu mnemonicParsing="false" text="File">
-                        <MenuItem fx:id="openMenu" mnemonicParsing="false" onAction="#chooseFile" text="Open" />
-                        <MenuItem fx:id="saveMenu" mnemonicParsing="false" onAction="#saveFile" text="Save" />
-                     </Menu>
-                  </MenuBar>
-               </children>
+               <MenuBar prefHeight="21.0" prefWidth="53.0" style="-fx-background-color: #F0F8FF;">
+                  <Menu mnemonicParsing="false" text="File">
+                     <MenuItem fx:id="openMenu" mnemonicParsing="false" onAction="#chooseFile" text="Open"/>
+                     <MenuItem fx:id="saveMenu" mnemonicParsing="false" onAction="#saveFile" text="Save"/>
+                  </Menu>
+               </MenuBar>
             </HBox>
             <HBox alignment="CENTER" prefHeight="37.0" prefWidth="477.0">
-               <children>
-                  <Button id="rich-blue" alignment="CENTER_RIGHT" contentDisplay="CENTER" minWidth="46.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="28.0" prefWidth="118.0" stylesheets="@../css/buttons.css" text="Back" wrapText="true">
-                     <HBox.margin>
-                        <Insets left="480.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="9.0" />
-                     </font>
-                  </Button>
-               </children>
                <padding>
-                  <Insets right="5.0" top="5.0" />
+                  <Insets right="5.0" top="5.0"/>
                </padding>
+               <Button id="rich-blue" alignment="CENTER_RIGHT" contentDisplay="CENTER" minWidth="46.0"
+                       mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="28.0" prefWidth="118.0"
+                       stylesheets="@../css/buttons.css" text="Back" wrapText="true">
+                  <HBox.margin>
+                     <Insets left="480.0"/>
+                  </HBox.margin>
+                  <font>
+                     <Font size="9.0"/>
+                  </font>
+               </Button>
             </HBox>
          </children>
       </HBox>
