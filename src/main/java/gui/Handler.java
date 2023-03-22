@@ -3,6 +3,7 @@ package gui;
 
 import CFG.CFG;
 
+import TemplateSkills.TemplateSkills;
 import db.Conversationdb;
 
 
@@ -35,6 +36,8 @@ import java.util.stream.Stream;
 
 public class Handler {
 
+
+
     public enum BotType{
         TEMPLATESKILLS,
         CFG
@@ -43,6 +46,8 @@ public class Handler {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    public static BotType currentType = BotType.CFG;
 
     private Connection connection = Conversationdb.CreateServer();
 
@@ -54,6 +59,11 @@ public class Handler {
 
     // EDITOR
     @FXML private TextArea fileTextArea; @FXML private Label message; @FXML private ProgressBar progressBar; @FXML private Button resetButton;
+
+    // SETTING
+    @FXML public ToggleGroup botTypeGroup; @FXML public RadioButton templateSkillsRadio; @FXML public RadioButton CFGRadio;
+
+
 
     /**
      * METHODS FOR MAIN MENU
@@ -80,14 +90,28 @@ public class Handler {
             stage.show();
         } catch (IOException e){
             System.out.println("FXML: /scenes/chat-page.fxml not found");
+        } finally {
+            currentType = CFGRadio.isSelected() ? BotType.CFG : BotType.TEMPLATESKILLS;
         }
+
     }
 
     public void goToSkillEditor(ActionEvent ae) {
         try {
             root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/scenes/skill-editor.fxml")));
             stage = (Stage) ((Node)ae.getSource()).getScene().getWindow();
-            //stage = fileTextArea.getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e){
+            System.out.println("FXML: /scenes/skill-editor.fxm not found");
+        }
+    }
+
+    public void goToSettings(ActionEvent ae){
+        try {
+            root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/scenes/settings.fxml")));
+            stage = (Stage) ((Node)ae.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
@@ -100,14 +124,29 @@ public class Handler {
      * METHODS FOR CHAT
      */
 
-    public void addMessageToChat(){
+    public void addMessageToChat() {
         String sentence = userInput.getText();
         HumanLabel humanLabel = new HumanLabel(sentence);
-        BotLabel botLabel = new BotLabel(CFG.interpret(sentence));
+        String botString = getBotResponse(sentence);
+
+        BotLabel botLabel = new BotLabel(botString);
         chatBox.getChildren().add(humanLabel);
         chatBox.getChildren().add(botLabel);
-        Conversationdb.storeConversation(connection, sentence, CFG.interpret(sentence));
+        Conversationdb.storeConversation(connection, sentence, botString);
         userInput.clear();
+    }
+
+    private String getBotResponse(String sentence) {
+        String botString = "";
+        switch (currentType){
+            case CFG -> {
+                botString = CFG.interpret(sentence);
+            }
+            case TEMPLATESKILLS -> {
+                botString = TemplateSkills.interpret(sentence);
+            }
+        }
+        return botString;
     }
 
     /**
