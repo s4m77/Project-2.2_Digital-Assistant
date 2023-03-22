@@ -29,7 +29,7 @@ SET FILES NIO TRUE
 SET FILES NIO SIZE 256
 SET FILES LOG TRUE
 SET FILES LOG SIZE 50
-SET FILES CHECK 1415
+SET FILES CHECK 2490
 SET DATABASE COLLATION "SQL_TEXT" PAD SPACE
 CREATE USER SA PASSWORD DIGEST 'd41d8cd98f00b204e9800998ecf8427e'
 ALTER USER SA SET LOCAL TRUE
@@ -50,3 +50,18 @@ SET SCHEMA PUBLIC
 INSERT INTO CONVERS VALUES('Which lectures are there on Monday at 12','On Monday noon we have Theoratical Computer Science ')
 INSERT INTO CONVERS VALUES('Which lectures are there on Saturday at  9','There are no lectures on Saturday ')
 INSERT INTO CONVERS VALUES('Which lectures are there on Monday at 9','We start the week with math ')
+INSERT INTO CONVERS VALUES('test','I have no idea ')
+INSERT INTO CONVERS VALUES('Which lectures are there on Monday at 12','On Monday noon we have Theoretical Computer Science ')
+INSERT INTO CONVERS VALUES('Where is deepspace','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('Where is deepSpace','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('where is deepSpace','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('where is room deepSpace','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('where is deepSpace located','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('which lectures are there on Monday at 12','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('which lectures are there on Monday at 12','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('Which lectures are there on Monday at 11','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('which lectures are there on Monday at 12','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('which lectures are there on Monday at 12','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('which lectures are there on Saturday at 9','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('Which lectures are there on saturday at 9?','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('which lectures are there on Monday at 12','I''m sorry, I don''t understand that.')

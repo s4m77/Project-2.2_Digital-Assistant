@@ -15,7 +15,7 @@ public class Conversationdb {
         try {
             Class.forName("org.hsqldb.jdbcDriver");
             // current folder
-            connection = DriverManager.getConnection("jdbc:hsqldb:file:\\C:\\Project-2.2_Digital-Assistant\\SRVMMDADB", "SA", "");
+            connection = DriverManager.getConnection("jdbc:hsqldb:file:./dbserver/SRVMMDADB", "SA", "");
             //connection = DriverManager.getConnection("jdbc:hsqldb:file:\\C:\\Users\\SRVMMDADB", "SA", "");
             if (connection != null) {
                 System.out.println("Connected to the database");
