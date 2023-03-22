@@ -20,8 +20,8 @@
       <AnchorPane prefHeight="327.0" prefWidth="270.0" BorderPane.alignment="CENTER">
          <Button id="rich-blue" fx:id="chatButton" layoutX="107.0" layoutY="49.0" mnemonicParsing="false" onAction="#goToChatBot" stylesheets="@../css/buttons.css" text="Start chatting" />
          <Button id="rich-blue" fx:id="editorButton" layoutX="115.0" layoutY="112.0" mnemonicParsing="false" onAction="#goToSkillEditor" stylesheets="@../css/buttons.css" text="Skill editor" />
+         <Button id="rich-blue" fx:id="settingsButton" layoutX="121.0" layoutY="175.0" mnemonicParsing="false" onAction="#goToSettings" stylesheets="@../css/buttons.css" text="Settings" />
          <Button id="rich-blue" fx:id="quitButton" layoutX="264.0" layoutY="274.0" mnemonicParsing="false" onAction="#closeApp" stylesheets="@../css/buttons.css" text="Quit" />
-         <Button id="rich-blue" fx:id="editorButton1" layoutX="121.0" layoutY="175.0" mnemonicParsing="false" onAction="#goToSettings" stylesheets="@../css/buttons.css" text="Settings" />
       </AnchorPane>
    </center>
 </BorderPane>

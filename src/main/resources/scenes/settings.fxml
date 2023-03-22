@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="308.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Handler">
    <top>
        <AnchorPane prefHeight="57.0" prefWidth="308.0" BorderPane.alignment="CENTER">
            <Label layoutX="119.0" layoutY="16.0" text="Settings">
               <font>
-                  <Font size="20.0"/>
+                  <Font name="System Bold" size="20.0" />
               </font>
            </Label>
        </AnchorPane>
@@ -25,31 +24,41 @@
        <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
            <VBox alignment="TOP_CENTER" prefHeight="343.0" prefWidth="159.0">
                <padding>
-                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
                <Label alignment="TOP_LEFT" contentDisplay="TOP" text="Bot Type">
                    <padding>
-                       <Insets bottom="5.0" left="5.0" right="5.0" top="10.0"/>
+                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                    </padding>
                    <font>
-                       <Font name="System Bold" size="16.0"/>
+                       <Font name="System Bold" size="16.0" />
                    </font>
                </Label>
                <Label alignment="TOP_LEFT" contentDisplay="TOP">
                    <padding>
-                       <Insets bottom="5.0" left="5.0" right="5.0"/>
+                       <Insets bottom="5.0" left="5.0" right="5.0" />
                    </padding>
                </Label>
            </VBox>
            <VBox prefHeight="343.0" prefWidth="139.0">
-               <RadioButton fx:id="templateSkillsRadio" mnemonicParsing="false" selected="true"
-                            text="Template Skills">
-                   <toggleGroup>
-                       <ToggleGroup fx:id="botTypeGroup"/>
-                   </toggleGroup>
-               </RadioButton>
-               <RadioButton fx:id="CFGRadio" mnemonicParsing="false" text="CFG" toggleGroup="$botTypeGroup"/>
+            <children>
+               <ComboBox fx:id="botComboBox" prefWidth="150.0">
+                  <padding>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  </padding></ComboBox>
+            </children>
            </VBox>
        </HBox>
    </center>
+   <bottom>
+      <HBox alignment="CENTER" spacing="50.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button id="rich-blue" mnemonicParsing="false" onAction="#goToMainMenu" stylesheets="@../css/buttons.css" text="Main Menu" />
+            <Button id="rich-blue" mnemonicParsing="false" onAction="#goToChatBot" stylesheets="@../css/buttons.css" text="Chat" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" />
+         </padding>
+      </HBox>
+   </bottom>
 </BorderPane>

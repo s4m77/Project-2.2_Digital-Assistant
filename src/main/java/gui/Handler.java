@@ -9,10 +9,13 @@ import db.Conversationdb;
 
 import gui.utils.BotLabel;
 import gui.utils.HumanLabel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,22 +27,30 @@ import javafx.util.Duration;
 
 
 import java.io.*;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
 import java.sql.Connection;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.ResourceBundle;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Stream;
 
 
 
-public class Handler {
+public class Handler implements Initializable {
 
 
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        botComboBox.getItems().addAll(typeList);
+    }
 
     public enum BotType{
-        TEMPLATESKILLS,
+        TemplateSkills,
         CFG
     }
 
@@ -47,7 +58,8 @@ public class Handler {
     private Scene scene;
     private Parent root;
 
-    public static BotType currentType = BotType.CFG;
+
+    public static BotType currentType = BotType.TemplateSkills;
 
     private Connection connection = Conversationdb.CreateServer();
 
@@ -61,8 +73,7 @@ public class Handler {
     @FXML private TextArea fileTextArea; @FXML private Label message; @FXML private ProgressBar progressBar; @FXML private Button resetButton;
 
     // SETTING
-    @FXML public ToggleGroup botTypeGroup; @FXML public RadioButton templateSkillsRadio; @FXML public RadioButton CFGRadio;
-
+    @FXML private ComboBox<String> botComboBox = new ComboBox<>();
 
 
     /**
@@ -90,10 +101,7 @@ public class Handler {
             stage.show();
         } catch (IOException e){
             System.out.println("FXML: /scenes/chat-page.fxml not found");
-        } finally {
-            currentType = CFGRadio.isSelected() ? BotType.CFG : BotType.TEMPLATESKILLS;
         }
-
     }
 
     public void goToSkillEditor(ActionEvent ae) {
@@ -115,8 +123,9 @@ public class Handler {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+
         } catch (IOException e){
-            System.out.println("FXML: /scenes/skill-editor.fxm not found");
+            System.out.println("FXML: /scenes/settings.fxml not found");
         }
     }
 
@@ -142,7 +151,7 @@ public class Handler {
             case CFG -> {
                 botString = CFG.interpret(sentence);
             }
-            case TEMPLATESKILLS -> {
+            case TemplateSkills -> {
                 botString = TemplateSkills.interpret(sentence);
             }
         }
@@ -277,8 +286,16 @@ public class Handler {
         }
     }
 
+    /**
+     * METHODS FOR SETTINGS
+     */
+
+    private static ObservableList<String> typeList = FXCollections.observableArrayList("CFG", "TemplateSkills");
+    private void setCurrentType(){}
+
     public void closeApp(){
         System.exit(0);
     }
+
 
 }
