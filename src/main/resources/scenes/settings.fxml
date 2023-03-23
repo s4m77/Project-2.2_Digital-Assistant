@@ -42,7 +42,7 @@
            </VBox>
            <VBox prefHeight="343.0" prefWidth="139.0">
             <children>
-               <ComboBox fx:id="botComboBox" prefWidth="150.0">
+               <ComboBox fx:id="botComboBox" prefWidth="150.0" promptText="select a type">
                   <padding>
                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                   </padding></ComboBox>
