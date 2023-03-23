@@ -101,10 +101,11 @@ public class Handler implements Initializable {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-            currentType = BotType.valueOf(botComboBox.getValue());
-            System.out.println("Current bot type: " + currentType);
+
         } catch (IOException e){
             System.out.println("FXML: /scenes/chat-page.fxml not found");
+        } finally {
+            setCurrentType();
         }
     }
 
@@ -294,7 +295,7 @@ public class Handler implements Initializable {
      * METHODS FOR SETTINGS
      */
 
-    private static final ObservableList<String> typeList = FXCollections.observableArrayList(typeNames());
+    public static final ObservableList<String> typeList = FXCollections.observableArrayList(typeNames());
 
     private static String[] typeNames(){
         String[] s = new String[BotType.values().length];
@@ -304,7 +305,10 @@ public class Handler implements Initializable {
         return s;
     }
 
-    private void setCurrentType(){}
+    private void setCurrentType(){
+        currentType = BotType.valueOf(botComboBox.getValue());
+        System.out.println("Current bot type: " + currentType);
+    }
 
     public void closeApp(){
         System.exit(0);
