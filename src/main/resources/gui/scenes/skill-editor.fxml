@@ -15,12 +15,12 @@
             <Insets bottom="5.0" left="5.0" right="5.0" />
          </padding>
          <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
-            <Label fx:id="message" text="Checking changes...">
+            <Label fx:id="editorMessage">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </Label>
-            <ProgressBar fx:id="progressBar" prefWidth="200.0" progress="0.0">
+            <ProgressBar fx:id="progressBar" prefWidth="200.0" progress="0.0" visible="false">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>

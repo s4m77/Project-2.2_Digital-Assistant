@@ -32,6 +32,9 @@ import java.nio.file.Files;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutionException;
@@ -71,7 +74,7 @@ public class Handler implements Initializable {
     @FXML public ScrollPane scrollPane; @FXML private VBox chatBox; @FXML private TextField userInput;
 
     // EDITOR
-    @FXML private TextArea fileTextArea; @FXML private Label message; @FXML private ProgressBar progressBar;
+    @FXML private TextArea fileTextArea; @FXML private Label editorMessage; @FXML private ProgressBar progressBar;
     @FXML private Button resetButton; @FXML private Button saveBtn;
 
 
@@ -175,11 +178,10 @@ public class Handler implements Initializable {
      */
 
     public static FileTime lastModifiedTime;
-    public static File loadedFileReference;
+    public static File fileInEditor;
 
     public void openFile() {
         FileChooser fileChooser = new FileChooser();
-        //txtFileManager = new TXTFileManager(fileTextArea, message, resetButton, progressBar);
         // Select only .txt files
         fileChooser.getExtensionFilters().add(
                 new FileChooser.ExtensionFilter("Text files (*.txt)", "*.txt")
@@ -198,12 +200,14 @@ public class Handler implements Initializable {
     }
 
     private void updateTextArea(File fileToLoad) {
+        progressBar.setVisible(true);
         Task<String> loadFileTask = fileLoaderTask(fileToLoad);
         progressBar.progressProperty().bind(loadFileTask.progressProperty());
         loadFileTask.run();
     }
 
     private Task<String> fileLoaderTask(File fileToLoad){
+        // Load content of the file with a Task
         Task<String> loadFileTask = new Task<>() {
             @Override
             protected String call() throws Exception {
@@ -220,6 +224,7 @@ public class Handler implements Initializable {
                 while((line = reader.readLine()) != null) {
                     fc.append(line);
                     fc.append("\n");
+                    // progress bar updated based on the number of lines loaded
                     updateProgress(++linesLoaded, lineCount);
                 }
                 return fc.toString();
@@ -229,42 +234,41 @@ public class Handler implements Initializable {
         loadFileTask.setOnSucceeded(workerStateEvent -> {
             try {
                 fileTextArea.setText(loadFileTask.get());
-                message.setText("File loaded: " + fileToLoad.getName());
-                loadedFileReference = fileToLoad;
+                editorMessage.setText("File loaded: " + fileToLoad.getName());
+                fileInEditor = fileToLoad;
             } catch (InterruptedException | ExecutionException e) {
                 fileTextArea.setText("Could not load file from:\n " + fileToLoad.getAbsolutePath());
             }
             // Check changes in the file
-            scheduleFileChecking(loadedFileReference);
+            setFileChecking(fileInEditor);
         });
         //If task failed display error message
         loadFileTask.setOnFailed(workerStateEvent -> {
             fileTextArea.setText("Could not load file from:\n " + fileToLoad.getAbsolutePath());
-            message.setText("Failed to load file");
+            editorMessage.setText("Failed to load file");
         });
         return loadFileTask;
     }
 
-    private void scheduleFileChecking(File file){
-        ScheduledService<Boolean> fileChangeCheck = createFileChangesChecker(file);
-        System.out.println(fileChangeCheck.getLastValue());
-        fileChangeCheck.setOnSucceeded(workerStateEvent -> {
-            if(fileChangeCheck.getLastValue()==null) return;
-            if(fileChangeCheck.getLastValue()){
-                // stop checking for changes if changes are detected
-                fileChangeCheck.cancel();
-                showResetButton();
+    private void setFileChecking(File file){
+        ScheduledService<Boolean> fileChecking = scheduledFileChecker(file);
+        System.out.println(fileChecking.getLastValue());
+        fileChecking.setOnSucceeded(workerStateEvent -> {
+            if(fileChecking.getLastValue()==null) return;
+            if(fileChecking.getLastValue()){
+                // If changes are detected no need to continue checking
+                fileChecking.cancel();
+                showResetBnt();
             }
         });
-        System.out.println("Checking for changes has started");
-        fileChangeCheck.start();
+        fileChecking.start();
     }
 
-    private void showResetButton() {
+    private void showResetBnt() {
         resetButton.setVisible(true);
     }
 
-    private ScheduledService<Boolean> createFileChangesChecker(File file){
+    private ScheduledService<Boolean> scheduledFileChecker(File file){
         ScheduledService<Boolean> scheduledService = new ScheduledService<>() {
             @Override
             protected Task<Boolean> createTask() {
@@ -283,21 +287,25 @@ public class Handler implements Initializable {
     }
 
     public void resetChanges(){
-        updateTextArea(loadedFileReference);
+        updateTextArea(fileInEditor);
         resetButton.setVisible(false);
     }
 
     public void saveFile() {
         try {
-            FileWriter fw = new FileWriter(loadedFileReference);
+            FileWriter fw = new FileWriter(fileInEditor);
             fw.write(fileTextArea.getText());
             fw.close();
             lastModifiedTime = FileTime.fromMillis(System.currentTimeMillis());
-            System.out.println(lastModifiedTime);
-            System.out.println("File update successful");
+            setMessageSaved();
         } catch (IOException e) {
             System.out.println("Error in saving file");
         }
+    }
+
+    private void setMessageSaved(){
+        editorMessage.setText("File : '" + fileInEditor.getName() +
+                "' saved at: " + new SimpleDateFormat("HH:mm:ss").format(new Date()));
     }
 
     /**
@@ -327,5 +335,9 @@ public class Handler implements Initializable {
         System.exit(0);
     }
 
+    public static void main(String[] args) {
+        System.out.println(LocalDateTime.now().getHour()+
+        ":"+LocalDateTime.now().getMinute());
+    }
 
 }
