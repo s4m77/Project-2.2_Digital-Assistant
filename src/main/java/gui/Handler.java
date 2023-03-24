@@ -33,30 +33,26 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Stream;
 
-
-
+/**
+ * This class is the main controller for the GUI.
+ * It handles all the events and actions that are triggered by the user.
+ * Path to .fxml Files: /src/main/resources/gui/scenes
+ */
 public class Handler implements Initializable {
 
 
-    public static final String mainTitle = "Multi Modal Digital Assistant";
-
+    public static final String MAIN_TITLE = "Multi Modal Digital Assistant";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         botComboBox.getItems().addAll(typeList);
         botComboBox.setValue(typeList.get(0));
-    }
-
-    public enum BotType{
-        TemplateSkills,
-        CFG
     }
 
     private Stage stage;
@@ -68,24 +64,13 @@ public class Handler implements Initializable {
 
     private Connection connection = Conversationdb.CreateServer();
 
-    // MAIN MENU
-
-    // CHAT
-    @FXML public ScrollPane scrollPane; @FXML private VBox chatBox; @FXML private TextField userInput;
-
-    // EDITOR
-    @FXML private TextArea fileTextArea; @FXML private Label editorMessage; @FXML private ProgressBar progressBar;
-    @FXML private Button resetButton; @FXML private Button saveBtn;
-
-
-    // SETTING
-    @FXML private ComboBox<String> botComboBox = new ComboBox<>();
-
-
     /**
-     * METHODS FOR MAIN MENU
+                                                    * METHODS FOR MAIN MENU
      */
 
+    /*
+     * This method is called when the user is directed to the main menu
+     */
     public void goToMainMenu(ActionEvent ae) {
         try{
             root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/scenes/start-page.fxml")));
@@ -93,12 +78,16 @@ public class Handler implements Initializable {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-            stage.setTitle(mainTitle);
+            stage.setTitle(MAIN_TITLE);
         } catch (IOException e){
             System.out.println("FXML: /scenes/start-page.fxml not found");
         }
     }
 
+    /**
+     * This method is called when the user is directed to the Chat Bot page
+     * @param ae event
+     */
     public void goToChatBot(ActionEvent ae) {
         try {
             root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/scenes/chat-page.fxml")));
@@ -106,7 +95,7 @@ public class Handler implements Initializable {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-            stage.setTitle(mainTitle + " - Chat Bot");
+            stage.setTitle(MAIN_TITLE + " - Chat Bot");
 
         } catch (IOException e){
             System.out.println("FXML: /scenes/chat-page.fxml not found");
@@ -115,6 +104,10 @@ public class Handler implements Initializable {
         }
     }
 
+    /**
+     * This method is called when the user is directed to the Chat Bot page
+     * @param ae event
+     */
     public void goToSkillEditor(ActionEvent ae) {
         try {
             root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/scenes/skill-editor.fxml")));
@@ -122,13 +115,17 @@ public class Handler implements Initializable {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-            stage.setTitle(mainTitle + " - Skill Editor");
+            stage.setTitle(MAIN_TITLE + " - Skill Editor");
 
         } catch (IOException e){
             System.out.println("FXML: /scenes/skill-editor.fxm not found");
         }
     }
 
+    /**
+     * This method is called when the user is directed to the Settings page
+     * @param ae event
+     */
     public void goToSettings(ActionEvent ae){
         try {
             root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/scenes/settings.fxml")));
@@ -136,7 +133,7 @@ public class Handler implements Initializable {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-            stage.setTitle(mainTitle + " - Settings");
+            stage.setTitle(MAIN_TITLE + " - Settings");
 
         } catch (IOException e){
             System.out.println("FXML: /scenes/settings.fxml not found");
@@ -144,9 +141,12 @@ public class Handler implements Initializable {
     }
 
     /**
-     * METHODS FOR CHAT
+                                                    * METHODS FOR CHAT BOT
      */
 
+    @FXML public ScrollPane scrollPane; @FXML private VBox chatBox; @FXML private TextField userInput;
+
+    // This method is called when the user presses the 'Submit' button
     public void addMessageToChat() {
         String sentence = userInput.getText();
         HumanLabel humanLabel = new HumanLabel(sentence);
@@ -159,6 +159,11 @@ public class Handler implements Initializable {
         userInput.clear();
     }
 
+    /**
+     * This method handles the response of the Bot to a given input
+     * @param sentence question or statement from the user
+     * @return response from the Bot
+     */
     private String getBotResponse(String sentence) {
         switch (currentType){
             case CFG -> {
@@ -174,12 +179,18 @@ public class Handler implements Initializable {
     }
 
     /**
-     * METHODS FOR SKILL EDITOR
+                                                    * METHODS FOR SKILL EDITOR
      */
+
+    @FXML private TextArea fileTextArea; @FXML private Label editorMessage; @FXML private ProgressBar progressBar;
+    @FXML private Button resetButton; @FXML private Button saveBtn;
 
     public static FileTime lastModifiedTime;
     public static File fileInEditor;
 
+    /**
+     * This method is called when the user presses the 'Open File' button
+     */
     public void openFile() {
         FileChooser fileChooser = new FileChooser();
         // Select only .txt files
@@ -189,7 +200,7 @@ public class Handler implements Initializable {
         // Select Resources folder as initial directory
         fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/main/resources/texts"));
         File fileToLoad = fileChooser.showOpenDialog(null);
-        // Load chosen file
+        // Load chosen fileToCheck
         if(fileToLoad != null){
             updateTextArea(fileToLoad);
         }
@@ -199,6 +210,10 @@ public class Handler implements Initializable {
         saveBtn.setDisable(false);
     }
 
+    /**
+     * This method updates the TextArea with the content of the selected fileToCheck
+     * @param fileToLoad selected fileToCheck
+     */
     private void updateTextArea(File fileToLoad) {
         progressBar.setVisible(true);
         Task<String> loadFileTask = fileLoaderTask(fileToLoad);
@@ -206,8 +221,13 @@ public class Handler implements Initializable {
         loadFileTask.run();
     }
 
+    /**
+     * This method loads the content of the selected fileToCheck into a Task
+     * @param fileToLoad selected fileToCheck
+     * @return Task with the content of the selected fileToCheck
+     */
     private Task<String> fileLoaderTask(File fileToLoad){
-        // Load content of the file with a Task
+        // Load content of the fileToCheck with a Task
         Task<String> loadFileTask = new Task<>() {
             @Override
             protected String call() throws Exception {
@@ -237,45 +257,53 @@ public class Handler implements Initializable {
                 editorMessage.setText("File loaded: " + fileToLoad.getName());
                 fileInEditor = fileToLoad;
             } catch (InterruptedException | ExecutionException e) {
-                fileTextArea.setText("Could not load file from:\n " + fileToLoad.getAbsolutePath());
+                fileTextArea.setText("Could not load fileToCheck from:\n " + fileToLoad.getAbsolutePath());
             }
-            // Check changes in the file
+            // Check changes in the fileToCheck
             setFileChecking(fileInEditor);
         });
         //If task failed display error message
         loadFileTask.setOnFailed(workerStateEvent -> {
-            fileTextArea.setText("Could not load file from:\n " + fileToLoad.getAbsolutePath());
-            editorMessage.setText("Failed to load file");
+            fileTextArea.setText("Could not load fileToCheck from:\n " + fileToLoad.getAbsolutePath());
+            editorMessage.setText("Failed to load fileToCheck");
         });
         return loadFileTask;
     }
 
-    private void setFileChecking(File file){
-        ScheduledService<Boolean> fileChecking = scheduledFileChecker(file);
+    /**
+     * This method sets a Scheduled Service to the loaded fileToCheck
+     * The service checks if the fileToCheck has been modified
+     * @param fileToCheck selected fileToCheck
+     */
+    private void setFileChecking(File fileToCheck){
+        ScheduledService<Boolean> fileChecking = scheduledFileChecker(fileToCheck);
         System.out.println(fileChecking.getLastValue());
         fileChecking.setOnSucceeded(workerStateEvent -> {
             if(fileChecking.getLastValue()==null) return;
             if(fileChecking.getLastValue()){
                 // If changes are detected no need to continue checking
                 fileChecking.cancel();
-                showResetBnt();
+                // Show the button to reset the changes
+                resetButton.setVisible(true);
             }
         });
         fileChecking.start();
     }
 
-    private void showResetBnt() {
-        resetButton.setVisible(true);
-    }
 
-    private ScheduledService<Boolean> scheduledFileChecker(File file){
+    /**
+     * This method creates a Scheduled Service to check if the fileToCheck has been modified
+     * @param FileToCheck selected fileToCheck
+     * @return Scheduled Service to check if the fileToCheck has been modified
+     */
+    private ScheduledService<Boolean> scheduledFileChecker(File FileToCheck){
         ScheduledService<Boolean> scheduledService = new ScheduledService<>() {
             @Override
             protected Task<Boolean> createTask() {
                 return new Task<>() {
                     @Override
                     protected Boolean call() throws Exception {
-                        FileTime lastModifiedAsOfNow = Files.readAttributes(file.toPath(), BasicFileAttributes.class).lastModifiedTime();
+                        FileTime lastModifiedAsOfNow = Files.readAttributes(FileToCheck.toPath(), BasicFileAttributes.class).lastModifiedTime();
                         return lastModifiedAsOfNow.compareTo(lastModifiedTime) < 0;
                     }
                 };
@@ -286,11 +314,17 @@ public class Handler implements Initializable {
         return scheduledService;
     }
 
+    /*
+     * This method is called when the user presses the 'Reset Changes' button
+     */
     public void resetChanges(){
         updateTextArea(fileInEditor);
         resetButton.setVisible(false);
     }
 
+    /**
+     * This method is called when the user presses the 'Save' button
+     */
     public void saveFile() {
         try {
             FileWriter fw = new FileWriter(fileInEditor);
@@ -299,21 +333,39 @@ public class Handler implements Initializable {
             lastModifiedTime = FileTime.fromMillis(System.currentTimeMillis());
             setMessageSaved();
         } catch (IOException e) {
-            System.out.println("Error in saving file");
+            System.out.println("Error in saving fileToCheck");
         }
     }
 
+    /**
+     * This method sets the status message to last saved time
+     */
     private void setMessageSaved(){
         editorMessage.setText("File : '" + fileInEditor.getName() +
                 "' saved at: " + new SimpleDateFormat("HH:mm:ss").format(new Date()));
     }
 
     /**
-     * METHODS FOR SETTINGS
+                                                    * METHODS FOR SETTINGS
      */
+
+    @FXML private ComboBox<String> botComboBox = new ComboBox<>();
+
+    /**
+     * Enum class for the different Bot types
+     */
+    public enum BotType{
+        TemplateSkills,
+        CFG
+    }
 
     public static final ObservableList<String> typeList = FXCollections.observableArrayList(typeNames());
 
+    /**
+     * This method returns the Bot Types as an Array of Strings.
+     * This is used to populate the ComboBox in the settings page
+     * @return Array of Strings with the Bot Types
+     */
     private static String[] typeNames(){
         String[] s = new String[BotType.values().length];
         for (int i = 0; i < BotType.values().length; i++) {
@@ -322,6 +374,9 @@ public class Handler implements Initializable {
         return s;
     }
 
+    /**
+     * This method is used to set the  current Bot Type to the selected type in the ComboBox
+     */
     private void setCurrentType(){
         switch (botComboBox.getValue()){
             case "CFG" -> currentType = BotType.CFG;
@@ -330,14 +385,4 @@ public class Handler implements Initializable {
         }
         System.out.println("Current bot type: " + currentType);
     }
-
-    public void closeApp(){
-        System.exit(0);
-    }
-
-    public static void main(String[] args) {
-        System.out.println(LocalDateTime.now().getHour()+
-        ":"+LocalDateTime.now().getMinute());
-    }
-
 }

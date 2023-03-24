@@ -11,7 +11,7 @@ public class ChatApplication extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(ChatApplication.class.getResource("/gui/scenes/start-page.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle(Handler.mainTitle);
+        stage.setTitle(Handler.MAIN_TITLE);
         stage.setScene(scene);
         stage.show();
     }
