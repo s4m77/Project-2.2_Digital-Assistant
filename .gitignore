@@ -23,7 +23,7 @@ out/
 .sts4-cache
 bin/
 !**/src/main/**/bin/
-!**/src/test/**/bin/
+/src/test/**/bin/
 
 ### NetBeans ###
 /nbproject/private/
@@ -39,5 +39,5 @@ bin/
 .DS_Store
 
 ### OTHER ###
-src/main/resources/dbserver/
+!**/src/main/resources/dbserver/
 
