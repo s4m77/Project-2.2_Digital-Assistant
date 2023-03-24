@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="308.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Handler">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="308.0" style="-fx-background-color: #F0F8FF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Handler">
    <top>
        <AnchorPane prefHeight="57.0" prefWidth="308.0" BorderPane.alignment="CENTER">
            <Label layoutX="119.0" layoutY="16.0" text="Settings">
@@ -51,10 +51,10 @@
        </HBox>
    </center>
    <bottom>
-      <HBox alignment="CENTER" spacing="50.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" spacing="40.0" BorderPane.alignment="CENTER">
          <children>
-            <Button id="rich-blue" mnemonicParsing="false" onAction="#goToMainMenu" stylesheets="@../css/buttons.css" text="Main Menu" />
-            <Button id="rich-blue" mnemonicParsing="false" onAction="#goToChatBot" stylesheets="@../css/buttons.css" text="Chat" />
+            <Button id="rich-blue" mnemonicParsing="false" onAction="#goToMainMenu" stylesheets="@../css/style-class.css" text="Main Menu" />
+            <Button id="rich-blue" mnemonicParsing="false" onAction="#goToChatBot" stylesheets="@../css/style-class.css" text="Chat" />
          </children>
          <padding>
             <Insets bottom="10.0" />

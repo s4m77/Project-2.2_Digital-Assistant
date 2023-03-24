@@ -9,7 +9,7 @@ import java.lang.reflect.*;
 public class CFG {
     
 
-    public static final String CFG_FILE = System.getProperty("user.dir") + "/src/main/resources/txts/CFGTemplate.txt";
+    public static final String CFG_FILE = System.getProperty("user.dir") + "/src/main/resources/texts/CFGTemplate.txt";
     public static ArrayList<String> rules=readCFG(CFG_FILE);
     public static String actionPrefix = "Action";
     public static String rulePrefix = "Rule";

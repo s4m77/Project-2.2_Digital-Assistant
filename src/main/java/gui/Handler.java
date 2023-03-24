@@ -32,17 +32,17 @@ import java.nio.file.Files;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
 import java.sql.Connection;
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutionException;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
 
 public class Handler implements Initializable {
 
+
+    public static final String mainTitle = "Multi Modal Digital Assistant";
 
 
     @Override
@@ -61,18 +61,19 @@ public class Handler implements Initializable {
     private Parent root;
 
 
-    public static BotType currentType = BotType.TemplateSkills;
+    private static BotType currentType;
 
     private Connection connection = Conversationdb.CreateServer();
 
     // MAIN MENU
-    @FXML private Button chatBotButton; @FXML private Button skillEditorButton; @FXML private Label welcomeLabel;
 
     // CHAT
-    @FXML private VBox chatBox; @FXML private TextField userInput;
+    @FXML public ScrollPane scrollPane; @FXML private VBox chatBox; @FXML private TextField userInput;
 
     // EDITOR
-    @FXML private TextArea fileTextArea; @FXML private Label message; @FXML private ProgressBar progressBar; @FXML private Button resetButton;
+    @FXML private TextArea fileTextArea; @FXML private Label message; @FXML private ProgressBar progressBar;
+    @FXML private Button resetButton; @FXML private Button saveBtn;
+
 
     // SETTING
     @FXML private ComboBox<String> botComboBox = new ComboBox<>();
@@ -84,11 +85,12 @@ public class Handler implements Initializable {
 
     public void goToMainMenu(ActionEvent ae) {
         try{
-            root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/scenes/start-page.fxml")));
+            root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/scenes/start-page.fxml")));
             stage = (Stage) ((Node)ae.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            stage.setTitle(mainTitle);
         } catch (IOException e){
             System.out.println("FXML: /scenes/start-page.fxml not found");
         }
@@ -96,11 +98,12 @@ public class Handler implements Initializable {
 
     public void goToChatBot(ActionEvent ae) {
         try {
-            root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/scenes/chat-page.fxml")));
+            root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/scenes/chat-page.fxml")));
             stage = (Stage) ((Node)ae.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            stage.setTitle(mainTitle + " - Chat Bot");
 
         } catch (IOException e){
             System.out.println("FXML: /scenes/chat-page.fxml not found");
@@ -111,11 +114,13 @@ public class Handler implements Initializable {
 
     public void goToSkillEditor(ActionEvent ae) {
         try {
-            root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/scenes/skill-editor.fxml")));
+            root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/scenes/skill-editor.fxml")));
             stage = (Stage) ((Node)ae.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            stage.setTitle(mainTitle + " - Skill Editor");
+
         } catch (IOException e){
             System.out.println("FXML: /scenes/skill-editor.fxm not found");
         }
@@ -123,11 +128,12 @@ public class Handler implements Initializable {
 
     public void goToSettings(ActionEvent ae){
         try {
-            root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/scenes/settings.fxml")));
+            root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/scenes/settings.fxml")));
             stage = (Stage) ((Node)ae.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            stage.setTitle(mainTitle + " - Settings");
 
         } catch (IOException e){
             System.out.println("FXML: /scenes/settings.fxml not found");
@@ -151,16 +157,17 @@ public class Handler implements Initializable {
     }
 
     private String getBotResponse(String sentence) {
-        String botString = "";
         switch (currentType){
             case CFG -> {
-                botString = CFG.interpret(sentence);
+                return CFG.interpret(sentence);
             }
             case TemplateSkills -> {
-                botString = TemplateSkills.interpret(sentence);
+                return TemplateSkills.interpret(sentence);
+            }
+            default -> {
+                return "Error: BotType not set";
             }
         }
-        return botString;
     }
 
     /**
@@ -170,7 +177,7 @@ public class Handler implements Initializable {
     public static FileTime lastModifiedTime;
     public static File loadedFileReference;
 
-    public void chooseFile() {
+    public void openFile() {
         FileChooser fileChooser = new FileChooser();
         //txtFileManager = new TXTFileManager(fileTextArea, message, resetButton, progressBar);
         // Select only .txt files
@@ -178,7 +185,7 @@ public class Handler implements Initializable {
                 new FileChooser.ExtensionFilter("Text files (*.txt)", "*.txt")
         );
         // Select Resources folder as initial directory
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/main/resources/txts"));
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/main/resources/texts"));
         File fileToLoad = fileChooser.showOpenDialog(null);
         // Load chosen file
         if(fileToLoad != null){
@@ -186,6 +193,8 @@ public class Handler implements Initializable {
         }
         // Set last modified time else scheduleFileChecking() will not work
         lastModifiedTime = FileTime.fromMillis(System.currentTimeMillis());
+        // Enable save button
+        saveBtn.setDisable(false);
     }
 
     private void updateTextArea(File fileToLoad) {
@@ -306,7 +315,11 @@ public class Handler implements Initializable {
     }
 
     private void setCurrentType(){
-        currentType = BotType.valueOf(botComboBox.getValue());
+        switch (botComboBox.getValue()){
+            case "CFG" -> currentType = BotType.CFG;
+            case "TemplateSkills" -> currentType = BotType.TemplateSkills;
+            default -> currentType = BotType.TemplateSkills;
+        }
         System.out.println("Current bot type: " + currentType);
     }
 

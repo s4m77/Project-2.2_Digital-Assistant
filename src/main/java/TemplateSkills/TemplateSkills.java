@@ -114,11 +114,11 @@ public class TemplateSkills {
 
 
     public static String[] readTemplates(){
-        //read in the templates from a file called templateskills.txt
+        //read in the templates from a file called template-skills.txt
         //and store them in the templates array
         String[] templates = new String[0];
         try{
-            Scanner scanner = new Scanner(new File( System.getProperty("user.dir") + "/src/main/resources/txts/CFGTemplate.txt"));
+            Scanner scanner = new Scanner(new File( System.getProperty("user.dir") + "/src/main/resources/texts/template-skills.txt"));
             ArrayList<String> lines = new ArrayList<String>();
             while(scanner.hasNextLine()){
                 lines.add(scanner.nextLine().toLowerCase());
@@ -126,7 +126,7 @@ public class TemplateSkills {
             templates = lines.toArray(new String[lines.size()]);
         }
         catch(Exception e){
-            System.out.println("Error reading templateskills.txt");
+            System.out.println("Error reading template-skills.txt");
         }
         return templates;
 
