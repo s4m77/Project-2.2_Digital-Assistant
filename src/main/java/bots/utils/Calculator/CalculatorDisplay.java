@@ -1,4 +1,4 @@
-package Calculator;
+package bots.utils.Calculator;
 
 import javafx.application.Application;
 import javafx.event.Event;
@@ -52,7 +52,7 @@ public class CalculatorDisplay extends Application {
             primaryStage.setHeight(500);
             primaryStage.setResizable(false);
             addComp(root);
-            primaryStage.setTitle("My Calculator");
+            primaryStage.setTitle("My bots.utils.Calculator");
             primaryStage.show();
         }catch(Exception e) {
             e.printStackTrace();

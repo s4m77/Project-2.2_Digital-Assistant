@@ -1,13 +1,11 @@
-package TemplateSkills;
-
-import gui.ChatApplication;
+package bots.TemplateSkills;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TemplateSkills {
-    //class that does the same thing as the CFG.java
+    //class that does the same thing as the bots.CFG.java
     //but for a simpler template
     public static String[] templates=readTemplates();
 

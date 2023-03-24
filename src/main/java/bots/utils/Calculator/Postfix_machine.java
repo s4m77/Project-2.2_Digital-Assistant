@@ -1,4 +1,4 @@
-package Calculator;
+package bots.utils.Calculator;
 
 import java.util.*;
 import java.util.regex.Pattern;

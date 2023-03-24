@@ -1,9 +1,9 @@
 package gui;
 
 
-import CFG.CFG;
+import bots.CFG.CFG;
 
-import TemplateSkills.TemplateSkills;
+import bots.TemplateSkills.TemplateSkills;
 import db.Conversationdb;
 
 

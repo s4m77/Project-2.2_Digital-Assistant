@@ -1,4 +1,4 @@
-package web;
+package bots.utils.web;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

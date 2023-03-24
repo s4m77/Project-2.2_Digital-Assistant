@@ -1,4 +1,4 @@
-package CFG;
+package bots.CFG;
 import java.util.ArrayList;
 
 

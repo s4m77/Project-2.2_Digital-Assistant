@@ -1,4 +1,4 @@
-package CFG;
+package bots.CFG;
 
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -51,7 +51,7 @@ public class CFG {
     public static String interpret(String sentence){
         //clean up the input
         sentence=cleanUpInput(sentence);
-        //construct the tree based on the rules in the CFG
+        //construct the tree based on the rules in the bots.CFG
         Node tree = new Node("top",sentence);
         applyRules(tree, sentence);
 

@@ -1,4 +1,4 @@
-package Calculator;
+package bots.utils.Calculator;
 
 import javafx.scene.control.Button;
 import javafx.scene.text.Font;
