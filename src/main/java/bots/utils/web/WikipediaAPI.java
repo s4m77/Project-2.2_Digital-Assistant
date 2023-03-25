@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class WikipediaAPI {
 
-    public static void webQuery(String query) {
+    public static String webQuery(String query) {
         String summaryEndpoint = "https://en.wikipedia.org/api/rest_v1/page/summary/";
         String searchEndpoint = "https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch=";
         String title = "";
@@ -63,7 +63,7 @@ public class WikipediaAPI {
             e.printStackTrace();
         }
 
-        System.out.println(extract);
+        return extract;
     }
 
     public static void handleInput(){

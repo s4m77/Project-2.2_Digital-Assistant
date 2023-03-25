@@ -1,6 +1,7 @@
 Rule <S> <ACTION>
-Rule <ACTION> <LOCATION> | <SCHEDULE> | <MATH>
+Rule <ACTION> <LOCATION> | <SCHEDULE> | <MATH> | <WIKI>
 Rule <SCHEDULE> which lectures are there <TIMEEXPRESSION> | <TIMEEXPRESSION> which lectures are there
+Rule <WIKI> wiki <WIKIQUERY>
 Rule <TIMEEXPRESSION> on <DAY> at <TIME> | at <TIME> on <DAY>
 Rule <MATH> <MATHQUESTION> | <MATHEQUAL>
 Rule <MATHQUESTION> what is <MATHEXPRESSION>
@@ -14,6 +15,9 @@ Rule <LOCATION> where is <ROOM> | how do <PRO> get to <ROOM> | where is <ROOM> l
 Rule <PRO> I | you | he | she
 Rule <DAY> monday | tuesday | wednesday | thursday | friday | saturday | sunday
 Rule <ROOM> deepSpace | spaceBox | @
+Rule <WIKIQUERY> <WORD>
+Rule <WORD> <SETWORD> | <WORD> <SETWORD>
+Rule <SETWORD> a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | _ | - | . | , | ? | ! | : | ; | ' | " | ( | ) | [ | ] | { | } | < | > | / | \ | & | @ | # | $ | % | ^ | * | + | = | ~ | ` | | | \ | \ | \ | \ | \ |
 Action <SCHEDULE> @ <DAY> saturday : There are no lectures on Saturday
 Action <SCHEDULE> @ <DAY> monday <TIME> 9 : We start the week with math
 Action <SCHEDULE> @ <DAY> monday <TIME> 12 : On Monday noon we have Theoretical Computer Science
@@ -21,4 +25,5 @@ Action <LOCATION> @ <ROOM> deepSpace : DeepSpace is the first room after the ent
 Action <LOCATION> @ : <ROOM> is in the first floor
 Action <MATHEQUAL> @ : test : Math
 Action <MATHQUESTION> @ : <ANSWER> : Math
+Action <WIKI> @ : <WIKIANSWER> : Wiki
 Action : I have no idea

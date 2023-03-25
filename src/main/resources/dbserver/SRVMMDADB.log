@@ -1,3 +1,8 @@
+/*C3*/SET SCHEMA PUBLIC
+DISCONNECT
 /*C4*/SET SCHEMA PUBLIC
-INSERT INTO CONVERS VALUES('Which lectures are there on Saturday at 9','there are no lectures on saturday ')
+DELETE FROM CONVERS WHERE PROMPT='wiki  usa' AND RESPONSE='I have no idea '
+DELETE FROM CONVERS WHERE PROMPT='wiki usa' AND RESPONSE='I have no idea '
+DELETE FROM CONVERS WHERE PROMPT='wiki usa' AND RESPONSE='I have no idea '
 COMMIT
+DISCONNECT

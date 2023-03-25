@@ -1,6 +1,19 @@
 package bots.CFG;
+import static bots.utils.web.WikipediaAPI.webQuery;
 
 public class TemplateMethods {
+
+    public static void Wiki(Node tree){
+        try{
+            String query=tree.getNode("<WIKIQUERY>").getFilledString();
+            String summary=webQuery(query);
+            tree.addChild(new Node("<WIKIANSWER>", summary));
+        }
+        catch(Exception e){
+            tree.addChild(new Node("<WIKIANSWER>", "I'm sorry, I don't understand the query inputted."));
+        }
+    }
+
 
     public static void Math(Node tree){
         try{
