@@ -1,4 +1,5 @@
 package bots.CFG;
+import static bots.utils.Weather.WeatherScraper.WeatherRetriever;
 import static bots.utils.web.WikipediaAPI.webQuery;
 
 public class TemplateMethods {
@@ -11,6 +12,17 @@ public class TemplateMethods {
         }
         catch(Exception e){
             tree.addChild(new Node("<WIKIANSWER>", "I'm sorry, I don't understand the query inputted."));
+        }
+    }
+
+    public static void Weather(Node tree){
+        try{
+            String city=tree.getNode("<WEATHERQUERY>").getFilledString();
+            String weather=WeatherRetriever(city);
+            tree.addChild(new Node("<WEATHERANSWER>", weather));
+        }
+        catch(Exception e){
+            tree.addChild(new Node("<WEATHERANSWER>", "I'm sorry, I don't understand the city name you entered."));
         }
     }
 
