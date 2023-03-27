@@ -21,8 +21,8 @@ public class CFG {
     public static void main(String[] args) {
         //TODO Auto-generated method stub
         System.out.println("Asking a question");
-        String sentence = "what is (200+2)+(2^20)";
-        System.out.println(interpret("What lectures are there on monday?"));
+        String sentence = "wiki brussels";
+        System.out.println(interpret(sentence));
 
 
 
@@ -252,11 +252,15 @@ public class CFG {
             //if the rule part is * we want to add the whole sentence
             String value =ruleParts[foundIndex];
             if(ruleParts[foundIndex].equals(freeString)){
-                value = "";
-                for(int i=0;i<nonUsedSentenceParts.size();i++){
-                    value+=nonUsedSentenceParts.get(i)+" ";
+                String temp="";
+                for(int i=0;i<sentenceParts.length;i++){
+                    temp+=sentenceParts[i]+" ";
                 }
-                value = value.substring(0, value.length()-1);
+                //remove the last space
+                temp=temp.substring(0, temp.length()-1);
+                Node child = new Node(attribute,temp);
+                tree.addChild(child);
+                return true;
             }
             Node child = new Node(attribute,value);
             Boolean subCorrect = true;

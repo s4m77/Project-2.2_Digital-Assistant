@@ -9,15 +9,15 @@ Slot <TIME> 9
 Slot <TIME> 11
 Slot <TIME> 13
 Slot <TIME> 15
-Action <DAY> Saturday There are no lectures on Saturday
-Action <DAY> Monday <TIME> 9 We start the week with math
-Action <DAY> Monday <TIME> 11 On Monday noon we have Theoretical Computer Science
+Action <DAY> Saturday : There are no lectures on Saturday
+Action <DAY> Monday <TIME> 9 : We start the week with math
+Action <DAY> Monday <TIME> 11 : On Monday noon we have Theoretical Computer Science
 Question How do i get from <city> to <city> at <timemark>
-Slot  <city> Maastricht
-Slot  <city> Heerlen
+Slot <city> Maastricht
+Slot <city> Heerlen
 Slot <city> Sittard
-Slot <timemark> 9am
-Slot <timemark> 11am
-Action <city> Maastricht <city> Heerlen <timemark> 9am By train
-Action <city> Maastricht <city> Heerlen <timemark> 11am By car
-Action <city> Maastricht <city> Sittard <timemark> 11am By bike
+Slot <timemark> 9 am
+Slot <timemark> 11 am
+Action <city> Maastricht <city> Heerlen <timemark> 9 am : By train
+Action <city> Maastricht <city> Heerlen <timemark> 11 am : By car
+Action <city> Maastricht <city> Sittard <timemark> 11 am : By bike

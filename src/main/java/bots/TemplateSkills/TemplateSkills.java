@@ -3,6 +3,7 @@ package bots.TemplateSkills;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class TemplateSkills {
     //class that does the same thing as the bots.CFG.java
@@ -11,7 +12,7 @@ public class TemplateSkills {
 
 
     public static void main(String[] args) {
-        String input="Which lectures are there on Saturday at 9?";
+        String input="How do i get from maastricht to heerlen at 9 am";
         String test=interpret(input);
         System.out.println(test);
     }
@@ -22,6 +23,10 @@ public class TemplateSkills {
         input=input.replace("!", "");
         input=input.replace(".", "");
         String[] inputWords = input.split(" ");
+
+        //make a stack of the words in the input with the first word on top
+        //and the last word at the bottom
+
         for(int i=0; i<templates.length; i++){
             String[] parts = templates[i].split(" ");
             if(!parts[0].equals("question")){
@@ -32,56 +37,68 @@ public class TemplateSkills {
             for(int j=1; j<parts.length; j++){
                 TemplateWords[j-1]=parts[j];
             }
-            //if they have unequal length, they can't match
-            if(TemplateWords.length!=inputWords.length){
-                continue;
-            }
+            
             
             boolean match=true;
             //check if the input matches the template and call checkKeyWord if a word starts with <>
             ArrayList<String> values = new ArrayList<String>();
+            int keyWordIndex=0;
             for(int j=0; j<TemplateWords.length; j++){
-                if(TemplateWords[j].startsWith("<")&&TemplateWords[j].endsWith(">")){
-                    if(checkKeyWord(TemplateWords[j], inputWords[j], i)){
-                        values.add(inputWords[j]);
-                    }
-                    else{
+                if(TemplateWords[j].contains("<")){
+                    //check if the word is a keyword
+                    String restofwords=getRestOfString(inputWords, keyWordIndex);
+                    int amountofwords =checkKeyWord(restofwords, TemplateWords[j], i);
+                    if(amountofwords==-1){
                         match=false;
                         break;
                     }
+                    else{
+                        String value="";
+                        for(int k=0; k<amountofwords; k++){
+                            value+=inputWords[j+k]+" ";
+                        }
+                        //remove the last space
+                        value=value.substring(0, value.length()-1);
+                        values.add(value);
+                        keyWordIndex+=amountofwords;
+                    }
                 }
-                else if(!TemplateWords[j].equals(inputWords[j])){
-                    match=false;
-                    break;
+                else{
+                    //check if the word is the same as the input
+                    if(!TemplateWords[j].equals(inputWords[keyWordIndex])){
+                        match=false;
+                        break;
+                    }
+                    keyWordIndex++;
                 }
             }
             if(!match){
                 continue;
             }
             for(int j=i+1; j<templates.length; j++){
-                parts = templates[j].split(" ");
-                if(parts[0].equals("action")){
-                    //the string is formated as Action <DAY> Monday <TIME> 9 We start the week with math
-                    //we need to check if the values match the template
-                    //and return the rest of the string
-                    String[] parts2 = templates[j].split(" ");
-                    int k=1;
-                    int l=0;
-                    boolean matching = true;
-                    while(parts[k].contains("<")){
-                        if(!parts[k+1].equals(values.get(l))){
-                            matching=false;
-                            break;
+                String[] split1=templates[j].split(":");
+                String[] parts1=split1[0].split(" ");
+                
+
+
+                if(parts1[0].equals("action")){
+                    String parts2=split1[1];
+                    int valuesindex=0;
+                    boolean match2=true;
+                    //Action <name> bob dylan <age> 23
+                    for(int k=1; k<parts1.length; k++){
+                        if(parts1[k].contains("<")){
+                            String condition=getStringFromFirstPart(parts1, k);
+                            String value=values.get(valuesindex);
+                            if(!value.equals(condition)){
+                                match2=false;
+                                break;
+                            }
+                            valuesindex++;
                         }
-                        l++;
-                        k+=2;
                     }
-                    if(matching){
-                        String output="";
-                        for(int m=k; m<parts.length; m++){
-                            output+=parts[m]+" ";
-                        }
-                        return output;
+                    if(match2){
+                        return parts2;
                     }
                 }	
             }
@@ -90,8 +107,7 @@ public class TemplateSkills {
         return "I'm sorry, I don't understand that.";
     }
 
-    public static boolean checkKeyWord(String Keyword,String value,  int line){
-        //remove <> from keyword
+    public static int checkKeyWord(String RestOfSentence,String value,  int line){
         //Keyword=Keyword.substring(1, Keyword.length()-1);
         for(int i=line+1;i<templates.length;i++){
             //loop until you find a line that starts with "Question"
@@ -100,14 +116,21 @@ public class TemplateSkills {
                 break;
             }
             String[] parts = templates[i].split(" ");
-            if(parts[0].equals("slot")&&parts[1].equals(Keyword)){
-                if(value.equals(parts[2])){
-                    return true;
+            if(parts[0].equals("slot")&&parts[1].equals(value)){
+                Boolean match=true;
+                for(int j=2, k=0; j<parts.length; k++,j++){
+                    if(!parts[j].equals(RestOfSentence.split(" ")[k])){
+                        match=false;
+                        break;
+                    }
+                }
+                if(match){
+                    return parts.length-2;
                 }
             }
 
         }
-        return false;
+        return -1;
     }
 
 
@@ -128,6 +151,29 @@ public class TemplateSkills {
         }
         return templates;
 
+    }
+
+
+    public static String getRestOfString(String[] words, int index){
+        String output="";
+        for(int i=index; i<words.length; i++){
+            output+=words[i]+" ";
+        }
+        return output;
+    }
+
+    public static String getStringFromFirstPart(String[] words, int index){
+        //string on index containss <> return all words after it until the next <>
+        String output="";
+        for(int i=index+1; i<words.length; i++){
+            if(words[i].contains("<")){
+                break;
+            }
+            output+=words[i]+" ";
+        }
+        //remove the last space
+        output=output.substring(0, output.length()-1);
+        return output;
     }
     
 }
