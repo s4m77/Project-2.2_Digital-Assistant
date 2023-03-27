@@ -79,7 +79,7 @@ public class WeatherScraper {
     public static String WeatherRetriever(String city) throws Exception {
         String countryCode = getCountryCode(city);
         URIBuilder uriBuilder = new URIBuilder(ENDPOINT_URL);
-        uriBuilder.setParameter("forecastDays", "0")
+        uriBuilder.setParameter("forecastDays", "1")
                 .setParameter("aggregateHours", "24")
                 .setParameter("locationMode", "single")
                 .setParameter("contentType", "csv")
@@ -90,25 +90,23 @@ public class WeatherScraper {
         HttpGet httpGet = new HttpGet(uriBuilder.build());
 
         // create one thread to fetch weather data
-        Thread weatherThread = new Thread(new Runnable() {
-            public void run() {
-                CloseableHttpClient closeableHttpClient = HttpClients.createDefault();
-                try (CloseableHttpResponse execute = closeableHttpClient.execute(httpGet)) {
-                    if (execute.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
-                        System.out.println("Received bad response status code:%d%n" + execute.getStatusLine().getStatusCode());
-                    }
-
-                    HttpEntity executeEntity = execute.getEntity();
-                    if (executeEntity != null) {
-                        // Write the response content to a csv file
-                        String fileName = "src/main/java/bots/utils/weather/weather.csv";
-                        BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
-                        writer.write(EntityUtils.toString(executeEntity, StandardCharsets.UTF_8));
-                        writer.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
+        Thread weatherThread = new Thread(() -> {
+            CloseableHttpClient closeableHttpClient = HttpClients.createDefault();
+            try (CloseableHttpResponse execute = closeableHttpClient.execute(httpGet)) {
+                if (execute.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
+                    System.out.println("Received bad response status code:%d%n" + execute.getStatusLine().getStatusCode());
                 }
+
+                HttpEntity executeEntity = execute.getEntity();
+                if (executeEntity != null) {
+                    // Write the response content to a csv file
+                    String fileName = "src/main/java/bots/utils/weather/weather.csv";
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+                    writer.write(EntityUtils.toString(executeEntity, StandardCharsets.UTF_8));
+                    writer.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
         AtomicReference<String> sharedResult = new AtomicReference<>("");
