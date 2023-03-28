@@ -40,4 +40,5 @@ bin/
 
 ### OTHER ###
 !**/src/main/resources/dbserver/
+src/main/resources/dbserver/
 
