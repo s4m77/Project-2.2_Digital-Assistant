@@ -14,7 +14,7 @@ public class BotLabel extends ALabel {
                     -fx-background-radius: 20;
                     -fx-max-width: 500px;
                     -fx-padding: 10px;
-                    -fx-font-family: Arial;
+                    -fx-font-family: Roboto;
                     -fx-font-size: 14px;
                     -fx-text-fill: black;
                     -fx-wrap-text: true;

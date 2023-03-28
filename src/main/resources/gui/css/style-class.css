@@ -15,12 +15,13 @@
 /* Style for human chat labels */
 .chat-human {
     -fx-background-color: #E6E6FA;
-    -fx-font-family: Arial;
+    -fx-font-family: Roboto;
     -fx-font-size: 14px;
+    -fx-max-width: 500px;
     -fx-text-fill: black;
     -fx-background-radius: 20;
-    -fx-max-width: 500px;
     -fx-padding: 10px;
+    -fx-wrap-text: true;
     -fx-alignment:CENTER-RIGHT;
 
 }
@@ -30,8 +31,9 @@
     -fx-background-radius: 20;
     -fx-max-width: 500px;
     -fx-padding: 10px;
-    -fx-font-family: Arial;
+    -fx-font-family: Roboto;
     -fx-font-size: 14px;
     -fx-text-fill: black;
+    -fx-wrap-text: true;
     -fx-alignment:CENTER-LEFT;
 }
