@@ -2,13 +2,11 @@ package gui;
 
 
 import bots.CFG.CFG;
-
 import bots.TemplateSkills.TemplateSkills;
 import db.Conversationdb;
-
-
 import gui.utils.BotLabel;
 import gui.utils.HumanLabel;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.ScheduledService;
@@ -46,7 +44,6 @@ import java.util.stream.Stream;
  */
 public class Handler implements Initializable {
 
-
     public static final String MAIN_TITLE = "Multi Modal Digital Assistant";
 
     @Override
@@ -62,7 +59,7 @@ public class Handler implements Initializable {
 
     private static BotType currentType;
 
-    private Connection connection = Conversationdb.CreateServer();
+    private final Connection connection = Conversationdb.CreateServer();
 
     /**
                                                     * METHODS FOR MAIN MENU

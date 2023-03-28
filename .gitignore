@@ -38,7 +38,7 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-### OTHER ###
+### DATABASE ###
 !**/src/main/resources/dbserver/
 src/main/resources/dbserver/SRVMMDADB.log
 src/main/resources/dbserver/SRVMMDADB.properties

@@ -1,3 +1,0 @@
-/*C4*/SET SCHEMA PUBLIC
-INSERT INTO CONVERS VALUES('Mar 28, 2023 11:21:34 AM com.sun.javafx.application.PlatformImpl startupWARNING: Unsupported JavaFX configuration: classes were loaded from ''unnamed module @297e2f87''','I''m sorry, I don''t understand that.')
-COMMIT
