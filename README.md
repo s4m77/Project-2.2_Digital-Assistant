@@ -1,4 +1,4 @@
-## Group 05 - Multi-Modal Digital Assistant - @ v 1.1 (12-2022)
+## Group 05 - Multi-Modal Digital Assistant - @ v 1.0 (03-2023)
 ### An Assistant to your Everyday Life
 ###### ***Developed by***: Reda Belcaid, Sam Goldie, Haoran Luan, Kumar Sambhavit, Jesse Stettner, Elza Strazda, Tom Verbeek
 
