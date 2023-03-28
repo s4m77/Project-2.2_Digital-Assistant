@@ -49,7 +49,10 @@ public class Handler implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         botComboBox.getItems().addAll(typeList);
-        botComboBox.setValue(typeList.get(0));
+        if (currentType != null)
+            botComboBox.setValue(String.valueOf(currentType));
+        else
+            botComboBox.setValue(typeList.get(0));
     }
 
     private Stage stage;
