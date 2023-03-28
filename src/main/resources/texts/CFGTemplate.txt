@@ -16,12 +16,10 @@ Rule <LOCATION> where is <ROOM> | how do <PRO> get to <ROOM> | where is <ROOM> l
 Rule <PRO> I | you | he | she
 Rule <DAY> monday | tuesday | wednesday | thursday | friday | saturday | sunday
 Rule <ROOM> deepSpace | spaceBox | @
-Rule <WIKIQUERY> <WORD>
-Rule <WORD> <SETWORD> | <WORD> <SETWORD>
-Rule <SETWORD> a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | _ | - | . | , | ? | ! | : | ; | ' | " | ( | ) | [ | ] | { | } | < | > | / | \ | & | @ | # | $ | % | ^ | * | + | = | ~ | ` | | | \ | \ | \ | \ | \ |
+Rule <WIKIQUERY> @
 Rule <WEATHERQUERY> <CITYNAME>
 Rule <CITYNAME> <SETNAME> | <CITYNAME> <SETNAME>
-Rule <SETNAME> brussels | maastricht | amsterdam | paris | aachen | rome | berlin | madrid
+Rule <SETNAME> @
 Action <SCHEDULE> @ <DAY> saturday : There are no lectures on Saturday
 Action <SCHEDULE> @ <DAY> monday <TIME> 9 : We start the week with math
 Action <SCHEDULE> @ <DAY> monday <TIME> 12 : On Monday noon we have Theoretical Computer Science
