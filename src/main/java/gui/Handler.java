@@ -1,6 +1,5 @@
 package gui;
 
-
 import bots.CFG.CFG;
 import bots.TemplateSkills.TemplateSkills;
 import db.Conversationdb;
@@ -55,6 +54,7 @@ public class Handler implements Initializable {
             botComboBox.setValue(typeList.get(0));
     }
 
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -81,6 +81,8 @@ public class Handler implements Initializable {
             stage.setTitle(MAIN_TITLE);
         } catch (IOException e){
             System.out.println("FXML: /scenes/start-page.fxml not found");
+        }  finally {
+            setCurrentType();
         }
     }
 
@@ -119,6 +121,8 @@ public class Handler implements Initializable {
 
         } catch (IOException e){
             System.out.println("FXML: /scenes/skill-editor.fxm not found");
+        } finally {
+            setCurrentType();
         }
     }
 
@@ -137,6 +141,8 @@ public class Handler implements Initializable {
 
         } catch (IOException e){
             System.out.println("FXML: /scenes/settings.fxml not found");
+        }  finally {
+            setCurrentType();
         }
     }
 
