@@ -8,7 +8,6 @@ public class Conversationdb {
      * Establishes a connection to the database server.
      *
      * @return A database Connection object that represents a connection to the database server.
-     * @throws SQLException if a database access error occurs.
      */
     public static Connection CreateServer() {
         Connection connection = null;
@@ -31,7 +30,6 @@ public class Conversationdb {
      * Creates a new schema in the specified database Connection.
      *
      * @param connection A Connection object that represents a connection to the database.
-     * @throws SQLException if a database access error occurs or an error is encountered while creating the schema.
      */
     public static void CreateSchema(Connection connection) {
         Statement statement = null;
@@ -50,7 +48,6 @@ public class Conversationdb {
      *
      * @param connection A Connection object that represents a connection to the database.
      * @param query The SQL query to execute to create the new table.
-     * @throws SQLException if a database access error occurs or an error is encountered while creating the table.
      */
     public static void CreateTable(Connection connection, String query) {
         Statement statement = null;
@@ -68,7 +65,6 @@ public class Conversationdb {
      *
      * @param connection A Connection object that represents a connection to the database.
      * @param query The SQL query to execute to delete the table.
-     * @throws SQLException if a database access error occurs or an error is encountered while deleting the table.
      */
     public static void DeleteTable(Connection connection, String query) {
         Statement statement = null;
@@ -115,10 +111,8 @@ public class Conversationdb {
             pstmt.executeUpdate();
 
 
-        } catch (SQLException se) {
+        } catch (Exception se) {
             se.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
         } finally {
             try {
                 if (stmt != null)
@@ -149,15 +143,13 @@ public class Conversationdb {
             }
             rs.close();
 
-        } catch (SQLException se) {
+        } catch (Exception se) {
             se.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
         } finally {
             try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2) {
+            } catch (SQLException ignored) {
 
             }
 
@@ -171,7 +163,6 @@ public class Conversationdb {
      Prints each conversation in the format "id ++ userid ++ prompt ++ response ++ time_stamp" to the console.
      @param connection the connection to the database
      @param userid the ID of the user whose conversations will be retrieved
-     @throws SQLException if a database access error occurs
      */
     public static void retrieveConversationsPerUser(Connection connection,int userid) {
         Statement stmt = null;
@@ -187,10 +178,8 @@ public class Conversationdb {
             }
             rs.close();
 
-        } catch (SQLException se) {
+        } catch (Exception se) {
             se.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
         } finally {
             try {
                 if (stmt != null)
@@ -208,7 +197,6 @@ public class Conversationdb {
      Inserts data into a table in a database using a SQL query.
      @param connection A Connection object representing a database connection.
      @param query A String containing the SQL query to execute.
-     @throws SQLException If an error occurs while executing the query or closing the statement.
      */
     public static void InsertTable(Connection connection, String query) {
         Statement statement = null;
