@@ -354,12 +354,13 @@ public class Handler implements Initializable {
     /**
      * Enum class for the different Bot types
      */
+
+    public static final ObservableList<String> typeList = FXCollections.observableArrayList(typeNames());
+
     public enum BotType{
         TemplateSkills,
         CFG
     }
-
-    public static final ObservableList<String> typeList = FXCollections.observableArrayList(typeNames());
 
     /**
      * This method returns the Bot Types as an Array of Strings.
