@@ -44,3 +44,5 @@ src/main/resources/dbserver/SRVMMDADB.log
 src/main/resources/dbserver/SRVMMDADB.properties
 src/main/resources/dbserver/SRVMMDADB.script
 
+
+src/main/resources/dbserver/SRVMMDADB.lck
