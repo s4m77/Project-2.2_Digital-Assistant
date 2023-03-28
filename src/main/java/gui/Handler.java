@@ -277,7 +277,7 @@ public class Handler implements Initializable {
      */
     private void setFileChecking(File fileToCheck){
         ScheduledService<Boolean> fileChecking = scheduledFileChecker(fileToCheck);
-        System.out.println(fileChecking.getLastValue());
+        //System.out.println(fileChecking.getLastValue());
         fileChecking.setOnSucceeded(workerStateEvent -> {
             if(fileChecking.getLastValue()==null) return;
             if(fileChecking.getLastValue()){
@@ -384,6 +384,6 @@ public class Handler implements Initializable {
             case "TemplateSkills" -> currentType = BotType.TemplateSkills;
             default -> currentType = BotType.TemplateSkills;
         }
-        System.out.println("Current bot type: " + currentType);
+        //System.out.println("Current bot type: " + currentType);
     }
 }

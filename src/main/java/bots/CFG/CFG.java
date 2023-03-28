@@ -120,7 +120,7 @@ public class CFG {
                 actionString+=words[j]+" ";
             }
         }
-        System.out.println(actionString);
+        //System.out.println(actionString);
         return actionString;
     }
 
@@ -178,7 +178,7 @@ public class CFG {
                             actionString+=words[j]+" ";
                         }
                     }
-                    System.out.println(actionString);
+                    //System.out.println(actionString);
                     break;
                 }
             }
