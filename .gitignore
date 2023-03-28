@@ -39,6 +39,6 @@ bin/
 .DS_Store
 
 ### OTHER ###
-!**/src/main/resources/dbserver/
-src/main/resources/dbserver/
+!**/src/main/resources/dbserver/**/
+
 
