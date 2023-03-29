@@ -5,8 +5,7 @@ plugins {
     id 'org.beryx.jlink' version '2.25.0'
 }
 
-group 'com.example'
-version '1.0-SNAPSHOT'
+version 'Version - 1.0'
 
 repositories {
     mavenCentral()
@@ -23,11 +22,6 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 
-application {
-    mainModule = 'gui'
-    mainClass = 'gui.ChatApplication'
-}
-
 javafx {
     version = '17.0.2'
     modules = ['javafx.controls', 'javafx.fxml']
@@ -39,7 +33,6 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 
-    implementation 'org.apache.httpcomponents:httpcore:4.4.14'
     implementation 'org.apache.httpcomponents:httpclient:4.5.13'
 
     implementation 'ch.qos.logback:logback-classic:1.2.9'
@@ -52,6 +45,14 @@ dependencies {
 
     implementation group: 'org.hsqldb', name: 'hsqldb', version: '2.7.1'
 
+}
+
+mainClassName = 'Run'
+jar {
+    duplicatesStrategy  = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes 'Main-Class': 'Run'
+    }
 }
 
 test {
