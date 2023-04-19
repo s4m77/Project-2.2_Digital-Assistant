@@ -33,6 +33,7 @@ javafx {
     modules = ['javafx.controls', 'javafx.fxml']
 }
 
+
 dependencies {
 
     implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
@@ -51,6 +52,8 @@ dependencies {
     implementation 'org.json:json:20220320'
 
     implementation group: 'org.hsqldb', name: 'hsqldb', version: '2.7.1'
+
+    implementation group: 'org.openpnp', name: 'opencv', version: '3.4.2-0'
 
 }
 
