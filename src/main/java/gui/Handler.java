@@ -63,6 +63,12 @@ public class Handler implements Initializable {
     private static BotType currentType;
 
     private final Connection connection = Conversationdb.CreateServer();
+    /**
+                                                    * METHODS FOR LOGIN PAGE
+     */
+
+    @FXML public TextField userTextField; @FXML public PasswordField passwdField;
+    @FXML public Button loginBtn; @FXML public Button newAccBtn;
 
     /**
                                                     * METHODS FOR MAIN MENU
@@ -73,14 +79,14 @@ public class Handler implements Initializable {
      */
     public void goToMainMenu(ActionEvent ae) {
         try{
-            root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/scenes/start-page.fxml")));
+            root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/scenes/menu-page.fxml")));
             stage = (Stage) ((Node)ae.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
             stage.setTitle(MAIN_TITLE);
         } catch (IOException e){
-            System.out.println("FXML: /scenes/start-page.fxml not found");
+            System.out.println("FXML: /scenes/menu-page.fxml not found");
         }  finally {
             setCurrentType();
         }

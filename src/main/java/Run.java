@@ -1,5 +1,4 @@
 import gui.ChatApplication;
-import javafx.application.Application;
 
 /**
  * MAIN RUNNER FOR THE APPLICATION

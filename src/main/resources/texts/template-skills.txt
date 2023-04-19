@@ -21,3 +21,12 @@ Slot <timemark> 11 am
 Action <city> Maastricht <city> Heerlen <timemark> 9 am : By train
 Action <city> Maastricht <city> Heerlen <timemark> 11 am : By car
 Action <city> Maastricht <city> Sittard <timemark> 11 am : By bike
+Question Dial <phone>
+Slot <phone> 123456
+Action <phone> 123456:  Calling 123456
+Question What can i make out of <ingr> and <ingr>
+Slot <ingr> banana
+Slot <ingr> eggs
+Slot <ingr> salt
+Action <ingr> banana <ingr> eggs: banana bread
+Action <ingr> eggs <ingr> salt: omelette
