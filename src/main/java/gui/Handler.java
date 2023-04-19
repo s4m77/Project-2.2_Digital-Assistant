@@ -45,6 +45,10 @@ public class Handler implements Initializable {
 
     public static final String MAIN_TITLE = "Multi Modal Digital Assistant";
 
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         botComboBox.getItems().addAll(typeList);
@@ -54,21 +58,24 @@ public class Handler implements Initializable {
             botComboBox.setValue(typeList.get(0));
     }
 
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
-
     private static BotType currentType;
 
     private final Connection connection = Conversationdb.CreateServer();
     /**
                                                     * METHODS FOR LOGIN PAGE
      */
-
     @FXML public TextField userTextField; @FXML public PasswordField passwdField;
     @FXML public Button loginBtn; @FXML public Button newAccBtn;
+
+    public boolean login(){
+        String user = this.userTextField.getText();
+        String passwd = this.passwdField.getText();
+    }
+
+    private boolean newAccount(){
+        String user = this.userTextField.getText();
+        String passwd = this.passwdField.getText();
+    }
 
     /**
                                                     * METHODS FOR MAIN MENU
