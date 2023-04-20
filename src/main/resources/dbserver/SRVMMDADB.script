@@ -1,0 +1,149 @@
+SET DATABASE UNIQUE NAME HSQLDB86E6FB959D
+SET DATABASE DEFAULT RESULT MEMORY ROWS 0
+SET DATABASE EVENT LOG LEVEL 0
+SET DATABASE TRANSACTION CONTROL LOCKS
+SET DATABASE DEFAULT ISOLATION LEVEL READ COMMITTED
+SET DATABASE TRANSACTION ROLLBACK ON CONFLICT TRUE
+SET DATABASE TEXT TABLE DEFAULTS ''
+SET DATABASE SQL NAMES FALSE
+SET DATABASE SQL RESTRICT EXEC FALSE
+SET DATABASE SQL REFERENCES FALSE
+SET DATABASE SQL SIZE TRUE
+SET DATABASE SQL TYPES FALSE
+SET DATABASE SQL TDC DELETE TRUE
+SET DATABASE SQL TDC UPDATE TRUE
+SET DATABASE SQL SYS INDEX NAMES TRUE
+SET DATABASE SQL CONCAT NULLS TRUE
+SET DATABASE SQL UNIQUE NULLS TRUE
+SET DATABASE SQL CONVERT TRUNCATE TRUE
+SET DATABASE SQL AVG SCALE 0
+SET DATABASE SQL DOUBLE NAN TRUE
+SET FILES WRITE DELAY 500 MILLIS
+SET FILES BACKUP INCREMENT TRUE
+SET FILES CACHE SIZE 10000
+SET FILES CACHE ROWS 50000
+SET FILES SCALE 32
+SET FILES LOB SCALE 32
+SET FILES DEFRAG 0
+SET FILES NIO TRUE
+SET FILES NIO SIZE 256
+SET FILES LOG TRUE
+SET FILES LOG SIZE 50
+SET FILES CHECK 4306
+SET DATABASE COLLATION "SQL_TEXT" PAD SPACE
+CREATE USER SA PASSWORD DIGEST 'd41d8cd98f00b204e9800998ecf8427e'
+ALTER USER SA SET LOCAL TRUE
+CREATE SCHEMA PUBLIC AUTHORIZATION DBA
+CREATE SCHEMA MMDADB AUTHORIZATION SA
+CREATE MEMORY TABLE PUBLIC.CONVERS(PROMPT VARCHAR(255),RESPONSE VARCHAR(2000))
+ALTER SEQUENCE SYSTEM_LOBS.LOB_ID RESTART WITH 1
+SET DATABASE DEFAULT INITIAL SCHEMA PUBLIC
+GRANT USAGE ON DOMAIN INFORMATION_SCHEMA.CARDINAL_NUMBER TO PUBLIC
+GRANT USAGE ON DOMAIN INFORMATION_SCHEMA.YES_OR_NO TO PUBLIC
+GRANT USAGE ON DOMAIN INFORMATION_SCHEMA.CHARACTER_DATA TO PUBLIC
+GRANT USAGE ON DOMAIN INFORMATION_SCHEMA.SQL_IDENTIFIER TO PUBLIC
+GRANT USAGE ON DOMAIN INFORMATION_SCHEMA.TIME_STAMP TO PUBLIC
+GRANT DBA TO SA
+SET SCHEMA SYSTEM_LOBS
+INSERT INTO BLOCKS VALUES(0,2147483647,0)
+SET SCHEMA PUBLIC
+INSERT INTO CONVERS VALUES('Which lectures are there on Monday at 12','On Monday noon we have Theoratical Computer Science ')
+INSERT INTO CONVERS VALUES('Which lectures are there on Saturday at  9','There are no lectures on Saturday ')
+INSERT INTO CONVERS VALUES('Which lectures are there on Monday at 9','We start the week with math ')
+INSERT INTO CONVERS VALUES('wiki  usa','The United States of America, commonly known as the United States or America, is a country primarily located in North America. It consists of 50 states, a federal district, five major unincorporated territories, nine Minor Outlying Islands, and 326 Indian reservations. The United States is also in free association with three Pacific Island sovereign states: the Federated States of Micronesia, the Marshall Islands, and the Republic of Palau. It is the world''s third-largest country by both land and total area. It shares land borders with Canada to its north and with Mexico to its south and has maritime borders with the Bahamas, Cuba, Russia, and other nations. With a population of over 333 million, it is the most populous country in the Americas and the third most populous in the world. The national capital of the United States is Washington, D.C. and its most populous city and principal financial center is New York City. ')
+INSERT INTO CONVERS VALUES('wiki c usa','C, or c, is the third letter in the Latin alphabet, used in the modern English alphabet, the alphabets of other western European languages and others worldwide. Its name in English is cee, plural cees. ')
+INSERT INTO CONVERS VALUES('wiki _ france','The apostrophe is a punctuation mark, and sometimes a diacritical mark, in languages that use the Latin alphabet and some other alphabets. In English, the apostrophe is used for two basic purposes:The marking of the omission of one or more letters, e.g. the contraction of "do not" to "don''t".\u000aThe marking of possessive case of nouns. ')
+INSERT INTO CONVERS VALUES('wiki  usa','The United States of America, commonly known as the United States or America, is a country primarily located in North America. It consists of 50 states, a federal district, five major unincorporated territories, nine Minor Outlying Islands, and 326 Indian reservations. The United States is also in free association with three Pacific Island sovereign states: the Federated States of Micronesia, the Marshall Islands, and the Republic of Palau. It is the world''s third-largest country by both land and total area. It shares land borders with Canada to its north and with Mexico to its south and has maritime borders with the Bahamas, Cuba, Russia, and other nations. With a population of over 333 million, it is the most populous country in the Americas and the third most populous in the world. The national capital of the United States is Washington, D.C. and its most populous city and principal financial center is New York City. ')
+INSERT INTO CONVERS VALUES('wiki what is an interval partition in mathematics','In mathematics, a partition of an interval [a, b] on the real line is a finite sequence x0, x1, x2, \u00e2\u20ac\u00a6, xn of real numbers such thata = x0 < x1 < x2 < \u00e2\u20ac\u00a6 < xn = b. ')
+INSERT INTO CONVERS VALUES('wiki what is USA','USA Today is an American daily middle-market newspaper and news broadcasting company. Founded by Al Neuharth on September 15, 1982, the newspaper operates from Gannett''s corporate headquarters in Tysons, Virginia. Its newspaper is printed at 37 sites across the United States and at five additional sites internationally. The paper''s dynamic design influenced the style of local, regional, and national newspapers worldwide through its use of concise reports, colorized images, informational graphics, and inclusion of popular culture stories, among other distinct features. ')
+INSERT INTO CONVERS VALUES('wiki what is usa country','Water Country USA is a water park in Williamsburg, Virginia, United States. It is the Mid-Atlantic''s largest water park, and it offers live entertainment, shops and restaurants, water rides, and other family attractions, all of which have a 1950s or 1960s surf theme. It is owned by SeaWorld Parks & Entertainment. The park is just a few miles away from Busch Gardens Williamsburg, with which it shares clientele. Multi-park passes are available, and a parking pass at Water Country USA is valid for same-day entry to Busch Gardens Williamsburg. ')
+INSERT INTO CONVERS VALUES('wiki country united state of america','The United States of America, commonly known as the United States or America, is a country primarily located in North America. It consists of 50 states, a federal district, five major unincorporated territories, nine Minor Outlying Islands, and 326 Indian reservations. The United States is also in free association with three Pacific Island sovereign states: the Federated States of Micronesia, the Marshall Islands, and the Republic of Palau. It is the world''s third-largest country by both land and total area. It shares land borders with Canada to its north and with Mexico to its south and has maritime borders with the Bahamas, Cuba, Russia, and other nations. With a population of over 333 million, it is the most populous country in the Americas and the third most populous in the world. The national capital of the United States is Washington, D.C. and its most populous city and principal financial center is New York City. ')
+INSERT INTO CONVERS VALUES('hi, what is 2+2?','4.0 ')
+INSERT INTO CONVERS VALUES('what lectures are there on Saturday?','I have no idea ')
+INSERT INTO CONVERS VALUES('Hi, what is 2+2*4?','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('what is 2+2*4','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('Hi, what is 2+2*4?','10.0 ')
+INSERT INTO CONVERS VALUES('what lectures are there on saturday at 9?','I have no idea ')
+INSERT INTO CONVERS VALUES('what lectures are there on saturday?','I have no idea ')
+INSERT INTO CONVERS VALUES('what lectures are there saturday?','I have no idea ')
+INSERT INTO CONVERS VALUES('what lectures are there monday at 9?','I have no idea ')
+INSERT INTO CONVERS VALUES('how do I get to room spaceBox?','I have no idea ')
+INSERT INTO CONVERS VALUES('where is spaceBox located?','located is in the first floor ')
+INSERT INTO CONVERS VALUES('fbvieve veverhve v erv ronihijhihuhuhuhuuhuhuhuhuhuhuhuh uhuhuhhuhuhuhuhuhuhuhhu hhuhuhuhuhuhuhuhu hhuhuhuhu ','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('uweubfewubfuewfef hfehieuwfiufruirfherif h hfioefoeirhfoirhfehrforhefie  iorehfoirehfoirehfouhfguorhfgfieh ierfhoie','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('Mar 28, 2023 11:16:48 AM com.sun.javafx.application.PlatformImpl startupWARNING: Unsupported JavaFX configuration: classes were loaded from ''unnamed module @297e2f87''','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('Mar 28, 2023 11:18:34 AM com.sun.javafx.application.PlatformImpl startupWARNING: Unsupported JavaFX configuration: classes were loaded from ''unnamed module @297e2f87''','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('Mar 28, 2023 11:18:34 AM com.sun.javafx.application.PlatformImpl startupWARNING: Unsupported JavaFX configuration: classes were loaded from ''unnamed module @297e2f87''','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('Mar 28, 2023 11:18:34 AM com.sun.javafx.application.PlatformImpl startupWARNING: Unsupported JavaFX configuration: classes were loaded from ''unnamed module @297e2f87''','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('Mar 28, 2023 11:18:34 AM com.sun.javafx.application.PlatformImpl startupWARNING: Unsupported JavaFX configuration: classes were loaded from ''unnamed module @297e2f87''','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('Mar 28, 2023 11:21:34 AM com.sun.javafx.application.PlatformImpl startupWARNING: Unsupported JavaFX configuration: classes were loaded from ''unnamed module @297e2f87''','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('G','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('t\','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('what is the weather is brussels?','Overcast ')
+INSERT INTO CONVERS VALUES('What lectures are there on saturday?','I have no idea ')
+INSERT INTO CONVERS VALUES('what is the weather like in maastricht?','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('what is the weather like in maastricht?','Rain, Overcast ')
+INSERT INTO CONVERS VALUES('what lectures are there on saturday at 9?','I have no idea ')
+INSERT INTO CONVERS VALUES('which lecturers are there on saturday at 9?','I have no idea ')
+INSERT INTO CONVERS VALUES('which lectures are there on saturday at 9?','There are no lectures on Saturday ')
+INSERT INTO CONVERS VALUES('what is the weather like in maastricht?','Rain, Overcast ')
+INSERT INTO CONVERS VALUES('','I have no idea ')
+INSERT INTO CONVERS VALUES('what lectures are there on saturday at 9?','I have no idea ')
+INSERT INTO CONVERS VALUES('which lectures are there on saturday at 9?','There are no lectures on Saturday ')
+INSERT INTO CONVERS VALUES('what is the weather like in Maastricht?','Rain, Overcast ')
+INSERT INTO CONVERS VALUES('wiki Template Skills','A skill is the learned ability to act with determined results with good execution often within a given amount of time, energy, or both. Skills can often be divided into domain-general and domain-specific skills. For example, in the domain of work, some general skills would include time management, teamwork and leadership, self-motivation and others, whereas domain-specific skills would be used only for a certain job. Skill usually requires certain environmental stimuli and situations to assess the level of skill being shown and used. ')
+INSERT INTO CONVERS VALUES('t','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('t','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('wiki cfg','CFG may stand for:Canada''s Food Guide, a diet planning document produced by Health Canada\u000aCharacteristic function game, in cooperative game theory\u000aChina Film Group, a Chinese film studio\u000aCity Football Group, a multinational sporting organisation owning and controlling a number of football clubs\u000aCitizens Financial Group, a regional US financial institution\u000aCondor (airline), a German charter airline based in Frankfurt\u000aConfiguration file, a file used to configure the initial settings for some computer programs\u000aConsortium for Functional Glycomics, a research initiative to study carbohydrate-protein interaction\u000aContext-free grammar, in computer science, a grammar that naturally generates a formal language\u000aControl-flow graph, in computer science, a representation of all paths that might be traversed through a program during its execution\u000aJaime Gonz\u00e1lez Airport, an international airport that serves the city of Cienfuegos, Cuba ')
+INSERT INTO CONVERS VALUES('weather maastricht','Rain, Overcast ')
+INSERT INTO CONVERS VALUES('what is 2+2*4','10.0 ')
+INSERT INTO CONVERS VALUES('Weather Maastricht','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('what is 2+2*4?','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('Weather Maastricht','Overcast ')
+INSERT INTO CONVERS VALUES('What is 2+2*4?','10.0 ')
+INSERT INTO CONVERS VALUES('Wiki Albert Einstein','Albert Einstein was a German-born theoretical physicist, widely acknowledged to be one of the greatest and most influential physicists of all time. Einstein is best known for developing the theory of relativity, but he also made important contributions to the development of the theory of quantum mechanics. Relativity and quantum mechanics are the two pillars of modern physics. His mass\u2013energy equivalence formula E = mc2, which arises from relativity theory, has been dubbed "the world''s most famous equation". His work is also known for its influence on the philosophy of science. He received the 1921 Nobel Prize in Physics "for his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect", a pivotal step in the development of quantum theory. His intellectual achievements and originality resulted in "Einstein" becoming synonymous with "genius". Einsteinium, one of the synthetic elements in the periodic table, was named in his honor. ')
+INSERT INTO CONVERS VALUES('wiki test','Test(s), testing, or TEST may refer to:Test (assessment), an educational assessment intended to measure the respondents'' knowledge or other abilities ')
+INSERT INTO CONVERS VALUES('wiki data structures','In computer science, a data structure is a data organization, management, and storage format that is usually chosen for efficient access to data. More precisely, a data structure is a collection of data values, the relationships among them, and the functions or operations that can be applied to the data, i.e., it is an algebraic structure about data. ')
+INSERT INTO CONVERS VALUES('wiki test','Test(s), testing, or TEST may refer to:Test (assessment), an educational assessment intended to measure the respondents'' knowledge or other abilities ')
+INSERT INTO CONVERS VALUES('wiki test','Test(s), testing, or TEST may refer to:Test (assessment), an educational assessment intended to measure the respondents'' knowledge or other abilities ')
+INSERT INTO CONVERS VALUES('t','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('test','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('wiki test','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('wiki google','Google LLC is an American multinational technology company focusing on online advertising, search engine technology, cloud computing, computer software, quantum computing, e-commerce, artificial intelligence, and consumer electronics. It has often been referred to as "the most powerful company in the world" and one of the world''s most valuable brands due to its market dominance, data collection, and technological advantages in the area of artificial intelligence. Its parent company Alphabet is considered one of the Big Five American information technology companies, alongside Amazon, Apple, Meta, and Microsoft. ')
+INSERT INTO CONVERS VALUES('','I have no idea ')
+INSERT INTO CONVERS VALUES('t','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('t','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('t','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('t','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('t','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('wiki googlre','No potential results found ')
+INSERT INTO CONVERS VALUES('t','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('t','I have no idea ')
+INSERT INTO CONVERS VALUES('t','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('t','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('r','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('t','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('t','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('which lectures are there on saturday at 9?',' there are no lectures on saturday')
+INSERT INTO CONVERS VALUES('which lectures are there on saturday at 9?','There are no lectures on Saturday ')
+INSERT INTO CONVERS VALUES('wiki einstein ','Albert Einstein was a German-born theoretical physicist, widely acknowledged to be one of the greatest and most influential physicists of all time. Einstein is best known for developing the theory of relativity, but he also made important contributions to the development of the theory of quantum mechanics. Relativity and quantum mechanics are the two pillars of modern physics. His mass\u2013energy equivalence formula E = mc2, which arises from relativity theory, has been dubbed "the world''s most famous equation". His work is also known for its influence on the philosophy of science. He received the 1921 Nobel Prize in Physics "for his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect", a pivotal step in the development of quantum theory. His intellectual achievements and originality resulted in "Einstein" becoming synonymous with "genius". Einsteinium, one of the synthetic elements in the periodic table, was named in his honor. ')
+INSERT INTO CONVERS VALUES('what is the weather in maastricht?','Overcast ')
+INSERT INTO CONVERS VALUES('Dial 123456','  calling 123456')
+INSERT INTO CONVERS VALUES('What is 60*72?','4320.0 ')
+INSERT INTO CONVERS VALUES('What is the weather in maastricht?','Overcast ')
+INSERT INTO CONVERS VALUES('what is 5/0','Infinity ')
+INSERT INTO CONVERS VALUES('how is the weather in maastricht?','Overcast ')
+INSERT INTO CONVERS VALUES('weather brussels','Overcast ')
+INSERT INTO CONVERS VALUES('wiki einstein','Albert Einstein was a German-born theoretical physicist, widely acknowledged to be one of the greatest and most influential physicists of all time. Einstein is best known for developing the theory of relativity, but he also made important contributions to the development of the theory of quantum mechanics. Relativity and quantum mechanics are the two pillars of modern physics. His mass\u2013energy equivalence formula E = mc2, which arises from relativity theory, has been dubbed "the world''s most famous equation". His work is also known for its influence on the philosophy of science. He received the 1921 Nobel Prize in Physics "for his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect", a pivotal step in the development of quantum theory. His intellectual achievements and originality resulted in "Einstein" becoming synonymous with "genius". Einsteinium, one of the synthetic elements in the periodic table, was named in his honor. ')
+INSERT INTO CONVERS VALUES('wiki Albert einstein','Albert Einstein was a German-born theoretical physicist, widely acknowledged to be one of the greatest and most influential physicists of all time. Einstein is best known for developing the theory of relativity, but he also made important contributions to the development of the theory of quantum mechanics. Relativity and quantum mechanics are the two pillars of modern physics. His mass\u2013energy equivalence formula E = mc2, which arises from relativity theory, has been dubbed "the world''s most famous equation". His work is also known for its influence on the philosophy of science. He received the 1921 Nobel Prize in Physics "for his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect", a pivotal step in the development of quantum theory. His intellectual achievements and originality resulted in "Einstein" becoming synonymous with "genius". Einsteinium, one of the synthetic elements in the periodic table, was named in his honor. ')
+INSERT INTO CONVERS VALUES('what can i make out of banana and eggs?','I have no idea ')
+INSERT INTO CONVERS VALUES('What can i make out of banana and eggs?','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('what can i make out of banana and eggs','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('what can i make out of banana and eggs','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('What can I make out of banana and eggs','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('what can i make out of banana and eggs','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('dial 123456','  calling 123456')
+INSERT INTO CONVERS VALUES('What can I make out of banana and eggs','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('What can I make out of eggs and salt','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('what can i make out of eggs and salt','I''m sorry, I don''t understand that.')
+INSERT INTO CONVERS VALUES('what can i make out of eggs and salt',' omelette')
