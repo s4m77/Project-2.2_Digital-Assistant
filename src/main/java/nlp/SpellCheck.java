@@ -1,8 +1,61 @@
 package nlp;
+
+import java.util.*;
+
 public class SpellCheck {
+
+    private static final Trie trie = new Trie();
+    private static final Map<String, Integer> dict = new HashMap<>();
+
     public static void main(String[] args){
         System.out.println(minEditDistance("apple","p"));
+        System.out.println(SpellCheck.findBestMatch("banane"));
     }
+
+    public static String findBestMatch(String input){
+        List<String> corpus = TextFileReader.read("Corpus.txt");
+        SpellCheck.init(corpus);
+        return SpellCheck.bestMatch(input);
+    }
+
+    public static void init(List<String> dictionary){
+        for(String line: dictionary){
+            String word = line.toLowerCase();
+            if (!line.contains(" ")) {
+                dict.put(word, dict.getOrDefault(word, 0)+1);
+                trie.add(word);
+            } else {
+                String[] strs= line.split("\\s");
+                for(String str: strs) {
+                    dict.put(str, dict.getOrDefault(str, 0)+1);
+                    trie.add(str);
+                }
+            }
+        }
+    }
+
+    public static String bestMatch(String inputWord) {
+        String s = inputWord.toLowerCase();
+        String res;
+        TreeMap<Integer, TreeMap<Integer, TreeSet<String>>> map = new TreeMap<>();
+        TrieNode node = trie.find(s);
+        if(node == null) {
+            for (String w: dict.keySet()) {
+                int dist = minEditDistance(w, s);
+                TreeMap<Integer, TreeSet<String>> similarWords = map.getOrDefault(dist, new TreeMap<>());
+                int freq = dict.get(w);
+                TreeSet<String> set = similarWords.getOrDefault(freq, new TreeSet<>());
+                set.add(w);
+                similarWords.put(freq, set);
+                map.put(dist, similarWords);
+            }
+            res = map.firstEntry().getValue().lastEntry().getValue().first();
+        } else {
+            res = s;
+        }
+        return res;
+    }
+
     public static int minEditDistance(String str1, String str2) {
         int l = str1.length();
         int m = str2.length();
@@ -24,4 +77,5 @@ public class SpellCheck {
         }
         return editDist[l][m];
     }
+
 }
