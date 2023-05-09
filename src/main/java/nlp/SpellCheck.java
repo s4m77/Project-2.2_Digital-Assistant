@@ -1,5 +1,8 @@
 package nlp;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class SpellCheck {
@@ -7,29 +10,26 @@ public class SpellCheck {
     private static final Trie trie = new Trie();
     private static final Map<String, Integer> dict = new HashMap<>();
 
-    public static void main(String[] args){
-        String text = "Ths sentnce has some speling mistaks.";
-        System.out.println(SpellCheck.correct(text));
+    public static void main(String[] args) throws IOException {
+        String text = "they wqnt";
+        System.out.println(SpellCheck.correctSentence(text));
     }
 
-    public static String correct(String input) {
-        List<String> corpus = TextFileReader.read("src/main/java/nlp/Corpus.txt");
-        SpellCheck.init(corpus);
-        String[] words = input.split("\\s+");
+    public static String correctSentence(String input) throws IOException {
+        String[] words = input.split("\\s");
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < words.length; i++) {
-            String word = words[i];
-            String corrected = SpellCheck.bestMatch(word);
-            if (!word.equals(corrected)) {
-                sb.append(corrected);
-            } else {
-                sb.append(word);
-            }
-            if (i < words.length - 1) {
-                sb.append(" ");
-            }
+        for (String word : words) {
+            String correctedWord = correct(word);
+            sb.append(correctedWord).append(" ");
         }
-        return sb.toString();
+        return sb.toString().trim();
+    }
+
+    public static String correct(String input) throws IOException {
+        String fileName = "src/main/java/nlp/Corpus";
+        List<String> corpus =  Files.readAllLines(Paths.get(fileName));;
+        SpellCheck.init(corpus);
+        return SpellCheck.bestMatch(input);
     }
 
     public static void init(List<String> dictionary){
