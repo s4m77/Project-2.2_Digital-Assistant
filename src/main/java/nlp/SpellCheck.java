@@ -8,14 +8,28 @@ public class SpellCheck {
     private static final Map<String, Integer> dict = new HashMap<>();
 
     public static void main(String[] args){
-        System.out.println(minEditDistance("apple","p"));
-        System.out.println(SpellCheck.findBestMatch("banane"));
+        String text = "Ths sentnce has some speling mistaks.";
+        System.out.println(SpellCheck.correct(text));
     }
 
-    public static String findBestMatch(String input){
+    public static String correct(String input) {
         List<String> corpus = TextFileReader.read("src/main/java/nlp/Corpus.txt");
         SpellCheck.init(corpus);
-        return SpellCheck.bestMatch(input);
+        String[] words = input.split("\\s+");
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < words.length; i++) {
+            String word = words[i];
+            String corrected = SpellCheck.bestMatch(word);
+            if (!word.equals(corrected)) {
+                sb.append(corrected);
+            } else {
+                sb.append(word);
+            }
+            if (i < words.length - 1) {
+                sb.append(" ");
+            }
+        }
+        return sb.toString();
     }
 
     public static void init(List<String> dictionary){
