@@ -13,7 +13,7 @@ public class SpellCheck {
     }
 
     public static String findBestMatch(String input){
-        List<String> corpus = TextFileReader.read("Corpus.txt");
+        List<String> corpus = TextFileReader.read("src/main/java/nlp/Corpus.txt");
         SpellCheck.init(corpus);
         return SpellCheck.bestMatch(input);
     }
