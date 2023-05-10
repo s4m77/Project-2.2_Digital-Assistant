@@ -1,4 +1,4 @@
-package gui.utils;
+package gui.utils.messages;
 
 import javafx.scene.control.Label;
 

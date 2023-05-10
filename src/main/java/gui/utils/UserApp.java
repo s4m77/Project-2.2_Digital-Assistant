@@ -1,8 +1,5 @@
-package gui;
+package gui.utils;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class UserApp {
 
@@ -34,6 +31,10 @@ public class UserApp {
 
         public void close() throws SQLException {
             con.close();
+        }
+
+        public static void main(String[] args) {
+
         }
     }
 

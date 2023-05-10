@@ -1,5 +1,6 @@
-package gui.utils;
+package gui.utils.messages;
 
+import gui.utils.messages.ALabel;
 import javafx.geometry.Pos;
 import javafx.scene.text.TextAlignment;
 

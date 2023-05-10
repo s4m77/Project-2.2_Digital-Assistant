@@ -11,7 +11,7 @@ public class SpellCheck {
     private static final Map<String, Integer> dict = new HashMap<>();
 
     public static void main(String[] args) throws IOException {
-        String text = "they wqnt";
+        String text = "I like to eats apple and banana";
         System.out.println(SpellCheck.correctSentence(text));
     }
 

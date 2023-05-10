@@ -45,8 +45,6 @@ public class CFG {
         // System.out.println(findSmallestAmountOfChars(rule));
 
     }
-
-
     
     public static String interpret(String sentence){
         //clean up the input
@@ -185,9 +183,6 @@ public class CFG {
         }
         return -1;
     }
-    // public static Boolean applyRule(Node tree,String Rule, String sentence){
-    //     return applyRule(tree, Rule, sentence, false);
-    // }
 
     public static Boolean applyRule(Node tree,String Rule, String[] sentence,int depth){
         if(depth>maxDepth){

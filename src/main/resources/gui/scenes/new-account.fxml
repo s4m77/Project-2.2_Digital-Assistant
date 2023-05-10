@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="360.0" style="-fx-background-color: #F0F8FF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.utils.Handler">
+    <center>
+        <VBox fx:id="passwdTextField" alignment="CENTER" spacing="25.0" BorderPane.alignment="CENTER">
+            <children>
+                <TextField fx:id="newUserTextField" promptText="user" />
+                <PasswordField fx:id="newPasswdField" promptText="password" />
+                <Button id="rich-blue" fx:id="createAccount" mnemonicParsing="false" stylesheets="@../css/style-class.css" text="Create Account" />
+            </children>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </VBox>
+    </center>
+    <top>
+        <HBox alignment="CENTER" prefHeight="70.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label text="MMDA - New Account">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+    </top>
+</BorderPane>

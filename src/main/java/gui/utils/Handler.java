@@ -1,10 +1,10 @@
-package gui;
+package gui.utils;
 
 import bots.CFG.CFG;
 import bots.TemplateSkills.TemplateSkills;
 import db.Conversationdb;
-import gui.utils.BotLabel;
-import gui.utils.HumanLabel;
+import gui.utils.messages.BotLabel;
+import gui.utils.messages.HumanLabel;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -70,9 +70,11 @@ public class Handler implements Initializable {
     public boolean login(){
         String user = this.userTextField.getText();
         String passwd = this.passwdField.getText();
+
+        return false;
     }
 
-    private boolean newAccount(){
+    private void newAccount(){
         String user = this.userTextField.getText();
         String passwd = this.passwdField.getText();
     }
