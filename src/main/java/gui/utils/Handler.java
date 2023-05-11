@@ -43,7 +43,7 @@ import java.util.stream.Stream;
  */
 public class Handler implements Initializable {
 
-    public static final String MAIN_TITLE = "Multi Modal Digital Assistant";
+    public static final String MAIN_TITLE = "Multi-Modal Digital Assistant";
 
     private Stage stage;
     private Scene scene;
@@ -56,27 +56,57 @@ public class Handler implements Initializable {
             botComboBox.setValue(String.valueOf(currentType));
         else
             botComboBox.setValue(typeList.get(0));
+
+        userApp = new UserApp(this.connection);
+
+    }
+
+    private void goToPage(String page, ActionEvent ae){
+        try{
+            root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource(page)));
+            stage = (Stage) ((Node)ae.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            stage.setTitle(MAIN_TITLE + " - " + page.substring(24, page.length()-5));
+        } catch (IOException e){
+            System.out.println("FXML: " + page + " not found");
+        }
     }
 
     private static BotType currentType;
 
     private final Connection connection = Conversationdb.CreateServer();
+
     /**
                                                     * METHODS FOR LOGIN PAGE
      */
     @FXML public TextField userTextField; @FXML public PasswordField passwdField;
     @FXML public Button loginBtn; @FXML public Button newAccBtn;
 
-    public boolean login(){
-        String user = this.userTextField.getText();
-        String passwd = this.passwdField.getText();
+    private UserApp userApp;
 
-        return false;
+    public void goToLoginPage(ActionEvent ae) {
+        goToPage("/gui/scenes/login-page.fxml", ae);
+    }
+
+    public void login(ActionEvent ae){
+
+        if (userApp.retrieveUser(this.userTextField.getText(), this.passwdField.getText())){
+            goToMainMenu(ae);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Login Failed");
+            alert.setContentText("Username or Password incorrect");
+            alert.showAndWait();
+        }
     }
 
     private void newAccount(){
         String user = this.userTextField.getText();
         String passwd = this.passwdField.getText();
+        userApp.addUser(user, passwd);
     }
 
     /**
@@ -86,80 +116,42 @@ public class Handler implements Initializable {
     /*
      * This method is called when the user is directed to the main menu
      */
-    public void goToMainMenu(ActionEvent ae) {
-        try{
-            root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/scenes/menu-page.fxml")));
-            stage = (Stage) ((Node)ae.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-            stage.setTitle(MAIN_TITLE);
-        } catch (IOException e){
-            System.out.println("FXML: /scenes/menu-page.fxml not found");
-        }  finally {
-            setCurrentType();
-        }
+
+    public void goToMainMenu(ActionEvent ae){
+        goToPage("/gui/scenes/menu-page.fxml", ae);
+    }
+
+
+    /**
+     * This method is called when the user is directed to the Chat Bot page
+     * @param ae event
+     */
+
+    public void goToChatBot(ActionEvent ae){
+        goToPage("/gui/scenes/chat-page.fxml", ae);
+        setCurrentType();
     }
 
     /**
      * This method is called when the user is directed to the Chat Bot page
      * @param ae event
      */
-    public void goToChatBot(ActionEvent ae) {
-        try {
-            root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/scenes/chat-page.fxml")));
-            stage = (Stage) ((Node)ae.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-            stage.setTitle(MAIN_TITLE + " - Chat Bot");
 
-        } catch (IOException e){
-            System.out.println("FXML: /scenes/chat-page.fxml not found");
-        } finally {
-            setCurrentType();
-        }
-    }
-
-    /**
-     * This method is called when the user is directed to the Chat Bot page
-     * @param ae event
-     */
-    public void goToSkillEditor(ActionEvent ae) {
-        try {
-            root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/scenes/skill-editor.fxml")));
-            stage = (Stage) ((Node)ae.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-            stage.setTitle(MAIN_TITLE + " - Skill Editor");
-
-        } catch (IOException e){
-            System.out.println("FXML: /scenes/skill-editor.fxm not found");
-        } finally {
-            setCurrentType();
-        }
+    public void goToSkillEditor(ActionEvent ae){
+        goToPage("/gui/scenes/skill-editor.fxml", ae);
+        setCurrentType();
     }
 
     /**
      * This method is called when the user is directed to the Settings page
      * @param ae event
      */
-    public void goToSettings(ActionEvent ae){
-        try {
-            root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/scenes/settings.fxml")));
-            stage = (Stage) ((Node)ae.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-            stage.setTitle(MAIN_TITLE + " - Settings");
 
-        } catch (IOException e){
-            System.out.println("FXML: /scenes/settings.fxml not found");
-        }  finally {
-            setCurrentType();
-        }
+    public void goToSettings(ActionEvent ae){
+        goToPage("/gui/scenes/settings.fxml", ae);
+        setCurrentType();
     }
+
 
     /**
                                                     * METHODS FOR CHAT BOT
@@ -379,8 +371,8 @@ public class Handler implements Initializable {
     public static final ObservableList<String> typeList = FXCollections.observableArrayList(typeNames());
 
     public enum BotType{
-        TemplateSkills,
-        CFG
+        CFG,
+        TemplateSkills
     }
 
     /**

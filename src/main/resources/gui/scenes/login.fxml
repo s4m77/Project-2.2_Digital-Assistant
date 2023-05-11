@@ -16,10 +16,10 @@
          <children>
             <TextField fx:id="userTextField" promptText="user" />
             <PasswordField fx:id="passwdField" promptText="password" />
-            <Button id="rich-blue" fx:id="loginBtn" mnemonicParsing="false" stylesheets="@../css/style-class.css" text="Login" />
+            <Button id="rich-blue" fx:id="loginBtn" mnemonicParsing="false" onAction="#login" stylesheets="@../css/style-class.css" text="Login" />
             <VBox alignment="BOTTOM_CENTER" prefHeight="91.0" prefWidth="350.0">
                <children>
-                  <Button id="rich-blue" fx:id="newAccBtn" mnemonicParsing="false" stylesheets="@../css/style-class.css" text="New Account" />
+                  <Button id="rich-blue" fx:id="newAccBtn" mnemonicParsing="false" onAction="#newAccount" stylesheets="@../css/style-class.css" text="New Account" />
                </children>
             </VBox>
          </children>

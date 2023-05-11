@@ -5,32 +5,48 @@ public class UserApp {
 
         private Connection con;
 
-        public UserApp(String url, String userN, String password) throws SQLException {
-            con = DriverManager.getConnection(url, userN, password);
+        public UserApp(Connection connection){
+            con = connection;
         }
 
-        public void addUser(String username, String password) throws SQLException {
-            String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-            PreparedStatement stm = con.prepareStatement(sql);
-            stm.setString(1, username);
-            stm.setString(2, password);
-            stm.executeUpdate();
-            stm.close();
+        public boolean addUser(String username, String password) {
+            try{
+                String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+                PreparedStatement stm = con.prepareStatement(sql);
+                stm.setString(1, username);
+                stm.setString(2, password);
+                stm.executeUpdate();
+                stm.close();
+                return true;
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+                return false;
+            }
         }
 
-        public boolean retrieveUser(String username, String password) throws SQLException {
-            String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
-            PreparedStatement stm = con.prepareStatement(sql);
-            stm.setString(1, username);
-            stm.setString(2, password);
-            ResultSet result = stm.executeQuery();
-            boolean found = result.next();
-            stm.close();
-            return found;
+        public boolean retrieveUser(String username, String password) {
+
+            try {
+                String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+                PreparedStatement stm = con.prepareStatement(sql);
+                stm.setString(1, username);
+                stm.setString(2, password);
+                ResultSet result = stm.executeQuery();
+                boolean found = result.next();
+                stm.close();
+                return found;
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+                return false;
+            }
         }
 
-        public void close() throws SQLException {
-            con.close();
+        public void close() {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
         }
 
         public static void main(String[] args) {
