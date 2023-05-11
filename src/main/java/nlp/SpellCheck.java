@@ -7,6 +7,10 @@ import java.util.*;
 
 public class SpellCheck {
 
+    public enum Distance {
+        EDIT, DAM_LEV, HAMMING, JARO, QWERTY
+    }
+
     private static final Trie trie = new Trie();
     private static final Map<String, Integer> dict = new HashMap<>();
 
