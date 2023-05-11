@@ -1,4 +1,4 @@
-package nlp.Distance;
+package nlp.distance;
 
 public class Hamming {
 
