@@ -30,7 +30,7 @@ public class SpellCheck {
     }
 
     public static String correct(String input) throws IOException {
-        String fileName = "src/main/java/nlp/Corpus";
+        String fileName = "src/main/resources/NLPdata/Corpus";
         List<String> corpus =  Files.readAllLines(Paths.get(fileName));;
         SpellCheck.init(corpus);
         return SpellCheck.bestMatch(input);
