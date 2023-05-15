@@ -45,6 +45,8 @@ public class Handler implements Initializable {
 
     public static final String MAIN_TITLE = "Multi-Modal Digital Assistant";
 
+    private final Connection connection = Conversationdb.CreateServer();
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -56,7 +58,7 @@ public class Handler implements Initializable {
             botComboBox.setValue(String.valueOf(currentType));
         else
             botComboBox.setValue(typeList.get(0));
-
+        setCurrentType();
         userApp = new UserApp(this.connection);
 
     }
@@ -68,7 +70,7 @@ public class Handler implements Initializable {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-            stage.setTitle(MAIN_TITLE + " - " + page.substring(24, page.length()-5));
+            stage.setTitle(MAIN_TITLE + " - " + page.substring(12, page.length()-5));
         } catch (IOException e){
             System.out.println("FXML: " + page + " not found");
         }
@@ -76,7 +78,6 @@ public class Handler implements Initializable {
 
     private static BotType currentType;
 
-    private final Connection connection = Conversationdb.CreateServer();
 
     /**
                                                     * METHODS FOR LOGIN PAGE
