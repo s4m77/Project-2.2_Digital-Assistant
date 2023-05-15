@@ -98,16 +98,18 @@ public class Conversationdb {
      @param connection the database connection to be used for the insertion
      @param prompt the prompt text of the conversation
      @param response the response text of the conversation
+     @param userid the userid of the user who participated in the conversation
      */
-    public static void storeConversation(Connection connection, String prompt, String response) {
+    public static void storeConversation(Connection connection, String prompt, String response, int userid) {
         Statement stmt = null;
         try {
 
 
-            String sql = "INSERT INTO CONVERS (PROMPT, RESPONSE) VALUES (?, ?)";
+            String sql = "INSERT INTO CONVERS (PROMPT, RESPONSE, USERID) VALUES (?, ?, ?)";
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, prompt);
             pstmt.setString(2, response);
+            pstmt.setInt(3, userid);
             pstmt.executeUpdate();
 
 
@@ -138,7 +140,7 @@ public class Conversationdb {
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
-                String conversation = rs.getString("prompt") + " ++ " + rs.getString("response");
+                String conversation = rs.getString("prompt") + " ++ " + rs.getString("response") + " ++ " + rs.getInt("userid");
                 System.out.println(conversation);
             }
             rs.close();
@@ -185,7 +187,7 @@ public class Conversationdb {
                 if (stmt != null)
                     stmt.close();
 
-            } catch (SQLException se2) {
+            } catch (SQLException ignored) {
 
             }
 
@@ -208,6 +210,71 @@ public class Conversationdb {
             e.printStackTrace();
         }
     }
+
+
+
+    public static void addUser(Connection connection, String username, String password) throws SQLException {
+        String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+        PreparedStatement stm = connection.prepareStatement(sql);
+        stm.setString(1, username);
+        stm.setString(2, password);
+        stm.executeUpdate();
+        stm.close();
+    }
+
+    public static boolean retrieveUser(Connection connection, String username, String password) throws SQLException {
+        String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+        PreparedStatement stm = connection.prepareStatement(sql);
+        stm.setString(1, username);
+        stm.setString(2, password);
+        ResultSet result = stm.executeQuery();
+        boolean found = result.next();
+        stm.close();
+        return found;
+    }
+
+    public static void retrieveAllUsers(Connection connection) throws SQLException {
+        String sql = "SELECT * FROM users ";
+        PreparedStatement stm = connection.prepareStatement(sql);
+        ResultSet result = stm.executeQuery();
+        while (result.next()) {
+            String user = result.getString("username") + " ++ " + result.getString("password");
+            System.out.println(user);
+        }
+        stm.close();
+    }
+
+    public static int getCurrentUserId(Connection connection, String username, String password) {
+
+        int userid = 0;
+        Statement stmt = null;
+        try {
+            stmt = connection.createStatement();
+
+            String sql = "SELECT ID FROM users WHERE username =  " + "'" + username + "'" + " AND password = " + "'" + password + "'";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                userid = rs.getInt("id");
+            }
+            rs.close();
+
+        } catch (Exception se) {
+            se.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+
+            } catch (SQLException ignored) {
+
+            }
+
+        }
+        return userid;
+    }
+
+
 
 
 }

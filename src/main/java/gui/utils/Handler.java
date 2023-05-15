@@ -168,7 +168,8 @@ public class Handler implements Initializable {
         BotLabel botLabel = new BotLabel(botString);
         chatBox.getChildren().add(humanLabel);
         chatBox.getChildren().add(botLabel);
-        Conversationdb.storeConversation(connection, sentence, botString);
+        int currentUserId = Conversationdb.getCurrentUserId(connection, "Tom", "tom12345"); //dummy code do not bother. It will be replaced by
+        Conversationdb.storeConversation(connection, sentence, botString, currentUserId);
         userInput.clear();
     }
 
