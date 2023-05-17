@@ -4,34 +4,40 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
-import nlp.SpellCheck.*;
 import java.io.IOException;
-import java.util.*;
 
 public class SpellCheckTest {
     private static final Random random = new Random();
 
+    public enum Modification {
+        DELETE, INSERT, SUBSTITUTE, SWAP
+    }
+
     public static String modifyString(String input) throws IOException {
         int modification = random.nextInt(4); // random int for each case of modification
 
-        String modified = "";
-        switch (modification) {
-            case 0:
-                modified = deleteRandomChar(input);
-                break;
-            case 1:
-                modified = insertWord(input); // todo sam
-                break;
-            case 2:
-                modified = substituteWord(input); // todo sam
-                break;
-            case 3:
-                modified = swapRandomChar(input);
-                break;
-        }
+//        String modified = switch (modification) {
+//            case 0 -> deleteWord(input);
+//            case 1 -> insertWord(input);
+//            case 2 -> substituteWord(input);
+//            case 3 -> swapWords(input);
+//            default -> "";
+//        };
         System.out.println("Modification made: " + modification);
-        return modified;
+        return null; //modified;
+    }
+
+    public static int performTest(String input, String target, Modification type, int operations){
+        String modified = switch (type){
+            case SWAP -> swapRandomChar(input);
+            case SUBSTITUTE -> replaceCharInWord(input);
+            case INSERT -> insertCharInWord(input);
+            case DELETE -> deleteRandomChar(input);
+        };
+        if (SpellCheck.bestMatch(modified).equals(target))
+            return performTest(modified, target, type, operations + 1);
+        else
+            return operations;
     }
 
     //Delete random character from input string and return the modified string
@@ -46,19 +52,6 @@ public class SpellCheckTest {
         return sb.toString();
     }
 
-
-    private static String insertWord(String input) throws IOException {
-        String[] words = input.split("\\s");
-        int index = random.nextInt(words.length);
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < words.length; i++) {
-            sb.append(words[i]).append(" ");
-            if (i == index) {
-                sb.append(getRandomWord()).append(" ");
-            }
-        }
-        return sb.toString().trim();
-    }
 
     /**
      * This method inserts a random character into the input string
@@ -84,17 +77,6 @@ public class SpellCheckTest {
         // insert a random char at that index
         char randomChar = (char) (random.nextInt(26) + 'a');
         return input.substring(0, index) + randomChar + input.substring(index + 1);
-    }
-
-    private static String substituteWord(String input) throws IOException {
-        String[] words = input.split("\\s");
-        int index = random.nextInt(words.length);
-        words[index] = getRandomWord();
-        StringBuilder sb = new StringBuilder();
-        for (String word : words) {
-            sb.append(word).append(" ");
-        }
-        return sb.toString().trim();
     }
 
     private static String swapRandomChar(String input) {
