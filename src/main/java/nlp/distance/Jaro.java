@@ -1,6 +1,7 @@
 package nlp.distance;
 
 public class Jaro {
+
     public static double calculate(String str1, String str2) {
         int l = str1.length();
         int m = str2.length();

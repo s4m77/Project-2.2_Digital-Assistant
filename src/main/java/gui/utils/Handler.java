@@ -51,6 +51,8 @@ public class Handler implements Initializable {
     private Scene scene;
     private Parent root;
 
+    private static BotType currentType;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         botComboBox.getItems().addAll(typeList);
@@ -76,9 +78,6 @@ public class Handler implements Initializable {
         }
     }
 
-    private static BotType currentType;
-
-
     /**
                                                     * METHODS FOR LOGIN PAGE
      */
@@ -87,13 +86,14 @@ public class Handler implements Initializable {
 
     private UserApp userApp;
 
-    public void goToLoginPage(ActionEvent ae) {
-        goToPage("/gui/scenes/login-page.fxml", ae);
-    }
+
+
 
     public void login(ActionEvent ae){
 
         if (userApp.retrieveUser(this.userTextField.getText(), this.passwdField.getText())){
+            // store the current user in the UserApp class
+            userApp.user = new UserApp.CurrentUser(this.userTextField.getText(), this.passwdField.getText());
             goToMainMenu(ae);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -104,6 +104,7 @@ public class Handler implements Initializable {
         }
     }
 
+    @FXML
     private void newAccount(){
         String user = this.userTextField.getText();
         String passwd = this.passwdField.getText();
@@ -113,13 +114,15 @@ public class Handler implements Initializable {
     /**
                                                     * METHODS FOR MAIN MENU
      */
+    @FXML public Label usrWelcome;
 
     /*
      * This method is called when the user is directed to the main menu
      */
-
     public void goToMainMenu(ActionEvent ae){
         goToPage("/gui/scenes/menu-page.fxml", ae);
+        usrWelcome = (Label) scene.lookup("#usrWelcome");
+        usrWelcome.setText("Welcome " + userApp.user.getUsername());
     }
 
 
@@ -127,7 +130,6 @@ public class Handler implements Initializable {
      * This method is called when the user is directed to the Chat Bot page
      * @param ae event
      */
-
     public void goToChatBot(ActionEvent ae){
         goToPage("/gui/scenes/chat-page.fxml", ae);
         setCurrentType();
@@ -137,7 +139,6 @@ public class Handler implements Initializable {
      * This method is called when the user is directed to the Chat Bot page
      * @param ae event
      */
-
     public void goToSkillEditor(ActionEvent ae){
         goToPage("/gui/scenes/skill-editor.fxml", ae);
         setCurrentType();
@@ -147,12 +148,18 @@ public class Handler implements Initializable {
      * This method is called when the user is directed to the Settings page
      * @param ae event
      */
-
     public void goToSettings(ActionEvent ae){
         goToPage("/gui/scenes/settings.fxml", ae);
         setCurrentType();
     }
 
+    /**
+     * This method is called when the user is directed to the Login page (by clicking the 'Logout' button)
+     * @param ae event
+     */
+    public void goToLoginPage(ActionEvent ae) {
+        goToPage("/gui/scenes/login.fxml", ae);
+    }
 
     /**
                                                     * METHODS FOR CHAT BOT
@@ -348,7 +355,7 @@ public class Handler implements Initializable {
             lastModifiedTime = FileTime.fromMillis(System.currentTimeMillis());
             setMessageSaved();
         } catch (IOException e) {
-            System.out.println("Error in saving fileToCheck");
+            System.out.println("Error in saving file in editor");
         }
     }
 
