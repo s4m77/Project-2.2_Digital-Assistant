@@ -87,9 +87,6 @@ public class Handler implements Initializable {
     private UserApp userApp;
 
 
-    public void goToLoginPage(ActionEvent ae) {
-        goToPage("/gui/scenes/login.fxml", ae);
-    }
 
 
     public void login(ActionEvent ae){
@@ -117,7 +114,6 @@ public class Handler implements Initializable {
     /**
                                                     * METHODS FOR MAIN MENU
      */
-
     @FXML public Label usrWelcome;
 
     /*
@@ -157,6 +153,13 @@ public class Handler implements Initializable {
         setCurrentType();
     }
 
+    /**
+     * This method is called when the user is directed to the Login page (by clicking the 'Logout' button)
+     * @param ae event
+     */
+    public void goToLoginPage(ActionEvent ae) {
+        goToPage("/gui/scenes/login.fxml", ae);
+    }
 
     /**
                                                     * METHODS FOR CHAT BOT
@@ -352,7 +355,7 @@ public class Handler implements Initializable {
             lastModifiedTime = FileTime.fromMillis(System.currentTimeMillis());
             setMessageSaved();
         } catch (IOException e) {
-            System.out.println("Error in saving fileToCheck");
+            System.out.println("Error in saving file in editor");
         }
     }
 

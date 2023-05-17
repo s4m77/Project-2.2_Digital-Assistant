@@ -61,6 +61,32 @@ public class SpellCheckTest {
         return sb.toString().trim();
     }
 
+    /**
+     * This method inserts a random character into the input string
+     * @param input String to be modified
+     * @return modified string
+     */
+    private static String insertCharInWord(String input){
+        // select random index of char in word
+        int index = random.nextInt(input.length());
+        // insert a random char at that index
+        char randomChar = (char) (random.nextInt(26) + 'a');
+        return input.substring(0, index) + randomChar + input.substring(index);
+    }
+
+    /**
+     * This method replaces a random character in the input string
+     * @param input String to be modified
+     * @return modified string
+     */
+    private static String replaceCharInWord(String input){
+        // select random index of char in word
+        int index = random.nextInt(input.length());
+        // insert a random char at that index
+        char randomChar = (char) (random.nextInt(26) + 'a');
+        return input.substring(0, index) + randomChar + input.substring(index + 1);
+    }
+
     private static String substituteWord(String input) throws IOException {
         String[] words = input.split("\\s");
         int index = random.nextInt(words.length);
@@ -95,21 +121,27 @@ public class SpellCheckTest {
     }
 
     public static void main(String[] args) throws IOException {
-        String text = "I like to eats apple and banana"; // 20 words
+//        String text = "I like to eats apple and banana"; // 20 words
+//
+//        int numTests = 10;
+//        int numSimilar = 0;
+//        for (int i = 0; i < numTests; i++) {
+//            String modified = SpellCheckTest.modifyString(text);
+//            String expected = SpellCheck.correctSentence(text);
+//            String actual = SpellCheck.correctSentence(modified);
+//            if (actual.equals(expected)) {
+//                numSimilar++;
+//            }
+//            System.out.println("Current test:" + i + " *** Nbcorrect : " + numSimilar + " *** Modified sentence: " + modified + " *** Operation performed:");
+//        }
+//        double percentageCorrect = ((double) numSimilar / numTests) * 100;
+//        System.out.println("Percentage correct: " + percentageCorrect + "%");
 
-        int numTests = 10;
-        int numSimilar = 0;
-        for (int i = 0; i < numTests; i++) {
-            String modified = SpellCheckTest.modifyString(text);
-            String expected = SpellCheck.correctSentence(text);
-            String actual = SpellCheck.correctSentence(modified);
-            if (actual.equals(expected)) {
-                numSimilar++;
-            }
-            System.out.println("Current test:" + i + " *** Nbcorrect : " + numSimilar + " *** Modified sentence: " + modified + " *** Operation performed:");
+        for (int i = 0; i < 1000; i++) {
+            System.out.println("Inserting: "+ insertCharInWord("hello"));
+            System.out.println("Replacing: "+ replaceCharInWord("hello"));
+
         }
-        double percentageCorrect = ((double) numSimilar / numTests) * 100;
-        System.out.println("Percentage correct: " + percentageCorrect + "%");
     }
 
 }
