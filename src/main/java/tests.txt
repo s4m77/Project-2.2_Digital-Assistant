@@ -16,11 +16,11 @@ for the cfg we want to test its robustness in the following way:
 
 for the Facial scanner we want to try and see the effects of
     certain kinds of noise
-        gaussian
-        periodic
-        salt and pepper
-        film grain 
-        anisotropic
+        gaussian : stdev mean 
+        periodic : amplitude frequency
+        salt and pepper : percentage
+        film grain : 
+        anisotropic :
         read noise
         sensor heat
     changing channel value:

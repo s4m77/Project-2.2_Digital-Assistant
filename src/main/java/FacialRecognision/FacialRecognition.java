@@ -73,7 +73,7 @@ public class FacialRecognition {
     }
 
 
-    private static boolean isFaceInImage(Mat image){
+    public static boolean isFaceInImage(Mat image){
         //use detectMultiScale to detect faces
         //the image needs to be greyscale
         Imgproc.cvtColor(image, image, Imgproc.COLOR_BGR2GRAY);
