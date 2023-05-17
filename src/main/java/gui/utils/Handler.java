@@ -104,6 +104,7 @@ public class Handler implements Initializable {
         }
     }
 
+    @FXML
     private void newAccount(){
         String user = this.userTextField.getText();
         String passwd = this.passwdField.getText();
