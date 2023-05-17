@@ -21,7 +21,7 @@ public class FacialRecognition {
     
     public static void main(String[] args) {
         //test if the camera is working 
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        nu.pattern.OpenCV.loadLocally();
         if(!openCamera()){
             System.out.println("Error: Camera not found!");
             System.exit(0);
