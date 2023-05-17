@@ -18,7 +18,7 @@ public class SpellCheckTest {
         String modified = "";
         switch (modification) {
             case 0:
-                modified = deleteWord(input);
+                modified = deleteRandomChar(input);
                 break;
             case 1:
                 modified = insertWord(input); // todo sam
@@ -27,24 +27,23 @@ public class SpellCheckTest {
                 modified = substituteWord(input); // todo sam
                 break;
             case 3:
-                modified = swapWords(input);
+                modified = swapRandomChar(input);
                 break;
         }
         System.out.println("Modification made: " + modification);
         return modified;
     }
 
-    private static String deleteWord(String input) {
-        String[] words = input.split("\\s");
-        int index = random.nextInt(words.length);
+    //Delete random character from input string and return the modified string
+    private static String deleteRandomChar(String input) {
+        int index = random.nextInt(input.length());
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < words.length; i++) {
-            if (i == index) {
-                continue;
+        for (int i = 0; i < input.length(); i++) {
+            if (i != index) {
+                sb.append(input.charAt(i));
             }
-            sb.append(words[i]).append(" ");
         }
-        return sb.toString().trim();
+        return sb.toString();
     }
 
 
@@ -98,18 +97,20 @@ public class SpellCheckTest {
         return sb.toString().trim();
     }
 
-    private static String swapWords(String input) {
-        String[] words = input.split("\\s");
-        int index1 = random.nextInt(words.length);
-        int index2 = random.nextInt(words.length);
-        String temp = words[index1];
-        words[index1] = words[index2];
-        words[index2] = temp;
+    private static String swapRandomChar(String input) {
+        int index1 = random.nextInt(input.length());
+        int index2 = random.nextInt(input.length());
         StringBuilder sb = new StringBuilder();
-        for (String word : words) {
-            sb.append(word).append(" ");
+        for (int i = 0; i < input.length(); i++) {
+            if (i == index1) {
+                sb.append(input.charAt(index2));
+            } else if (i == index2) {
+                sb.append(input.charAt(index1));
+            } else {
+                sb.append(input.charAt(i));
+            }
         }
-        return sb.toString().trim();
+        return sb.toString();
     }
 
     private static String getRandomWord() throws IOException {
@@ -140,6 +141,8 @@ public class SpellCheckTest {
         for (int i = 0; i < 1000; i++) {
             System.out.println("Inserting: "+ insertCharInWord("hello"));
             System.out.println("Replacing: "+ replaceCharInWord("hello"));
+            System.out.println("Swapping: "+ swapRandomChar("hello"));
+            System.out.println("Deleting: "+ deleteRandomChar("hello"));
 
         }
     }
