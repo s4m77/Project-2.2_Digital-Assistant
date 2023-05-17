@@ -28,16 +28,14 @@ public class SpellCheckTest {
     }
 
     public static int performTest(String input, String target, Modification type, int operations){
-        String modified = switch (type){
+        String modified = switch (type) {
             case SWAP -> swapRandomChar(input);
             case SUBSTITUTE -> replaceCharInWord(input);
             case INSERT -> insertCharInWord(input);
             case DELETE -> deleteRandomChar(input);
         };
-        if (SpellCheck.bestMatch(modified).equals(target))
-            return performTest(modified, target, type, operations + 1);
-        else
-            return operations;
+        return SpellCheck.bestMatch(modified).equals(target) ?
+                performTest(modified, target, type, operations + 1) : operations;
     }
 
     //Delete random character from input string and return the modified string
