@@ -21,10 +21,10 @@ public class SpellCheckTest {
                 modified = deleteWord(input);
                 break;
             case 1:
-                modified = insertWord(input);
+                modified = insertWord(input); // todo sam
                 break;
             case 2:
-                modified = substituteWord(input);
+                modified = substituteWord(input); // todo sam
                 break;
             case 3:
                 modified = swapWords(input);
