@@ -1,0 +1,34 @@
+for the cfg we want to test its robustness in the following way:
+
+    robustness of the syntax checker by changing prebuild sentences:
+        deleting
+        inserting
+        swapping
+
+
+    testing different kinds of edit distance
+        minimum
+        damerau-levenstein
+        hamming distance
+        jaro distance
+        qwerty distance
+
+
+for the Facial scanner we want to try and see the effects of
+    certain kinds of noise
+        gaussian
+        periodic
+        salt and pepper
+        film grain 
+        anisotropic
+        read noise
+        sensor heat
+    changing channel value:
+        saturation
+        luminocity
+    equalizing channel values:
+        saturation
+        luminocity
+
+lastly writing the report
+
