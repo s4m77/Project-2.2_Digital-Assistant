@@ -18,13 +18,19 @@ public class FacialRecognition {
     public static CascadeClassifier faceDetector;
     public static String classifierPath="src\\main\\resources\\Facial models\\haarcascade_frontalface_default.xml";
     public static VideoCapture camera;
-    
+
     public static void main(String[] args) {
         //test if the camera is working 
         nu.pattern.OpenCV.loadLocally();
         if(!openCamera()){
             System.out.println("Error: Camera not found!");
             System.exit(0);
+        }
+        if(!peopleInCamera()){
+            System.out.println("No people in camera");
+        }
+        else{
+            System.out.println("People in camera");
         }
     }
 
