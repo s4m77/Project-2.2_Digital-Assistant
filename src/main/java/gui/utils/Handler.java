@@ -88,9 +88,6 @@ public class Handler implements Initializable {
 
     private UserApp userApp;
 
-
-
-
     public void login(ActionEvent ae){
 
         if (userApp.retrieveUser(this.userTextField.getText(), this.passwdField.getText())){
@@ -172,6 +169,7 @@ public class Handler implements Initializable {
     // This method is called when the user presses the 'Submit' button
     public void processInput() {
         // check if someone is in front of the camera
+        System.out.println("Inside processInput()");
         if(FacialRecognition.peopleInCamera()){
             addMessageToChat();
         } else { // if no one is in front of the camera, show an error message
@@ -191,7 +189,7 @@ public class Handler implements Initializable {
         BotLabel botLabel = new BotLabel(botString);
         chatBox.getChildren().add(humanLabel);
         chatBox.getChildren().add(botLabel);
-        int currentUserId = Conversationdb.getCurrentUserId(connection, "Tom", "tom12345"); //dummy code do not bother. It will be replaced by
+        int currentUserId = Conversationdb.getCurrentUserId(connection, "Tom", "tom12345"); //todo: change to current user (see line 89)
         Conversationdb.storeConversation(connection, sentence, botString, currentUserId);
         userInput.clear();
     }

@@ -16,7 +16,7 @@ public class FacialRecognition {
     
     public static boolean loaded=false;
     public static CascadeClassifier faceDetector;
-    public static String classifierPath="src\\main\\resources\\Facial models\\haarcascade_frontalface_default.xml";
+    public static String classifierPath=System.getProperty("user.dir")+"/src/main/resources/Facial models/haarcascade_frontalface_default.xml";
     public static VideoCapture camera;
 
     public static void main(String[] args) {
@@ -123,7 +123,8 @@ public class FacialRecognition {
         }
         //detect faces
         MatOfRect faceDetections = new MatOfRect();
-        faceDetector.detectMultiScale(image, faceDetections);
+        //faceDetector.detectMultiScale(image, faceDetections);
+        faceDetector.detectMultiScale(new Mat(), faceDetections);
         //if there is a face return true
         if(faceDetections.toArray().length>0){
             return true;
