@@ -26,6 +26,45 @@ public class FacialRecognition {
             System.out.println("Error: Camera not found!");
             System.exit(0);
         }
+        if(!peopleInCamera()){
+            System.out.println("No people in camera");
+        }
+        else{
+            System.out.println("People in camera");
+        }
+
+        //show the camera feed and draw a rectangle around the face
+        Mat image = new Mat();
+        camera.read(image);
+        //use detectMultiScale to detect faces
+        //the image needs to be greyscale
+        Imgproc.cvtColor(image, image, Imgproc.COLOR_BGR2GRAY);
+        //load the classifier
+        if(!loaded){
+            faceDetector = new CascadeClassifier(classifierPath);
+            loaded=true;
+        }
+        //detect faces
+        while(true){
+            camera.read(image);
+            //image needs to be greyscale
+            Imgproc.cvtColor(image, image, Imgproc.COLOR_BGR2GRAY);
+            MatOfRect faceDetections = new MatOfRect();
+            faceDetector.detectMultiScale(image, faceDetections);
+            //draw a rectangle around the face
+            if(faceDetections.toArray().length>0){
+                System.out.println("Face detected");
+            }
+            for (Rect rect : faceDetections.toArray()) {
+                Imgproc.rectangle(image, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height),
+                        new Scalar(0, 255, 0));
+            }
+            HighGui.imshow("Camera", image);
+            HighGui.waitKey(1);
+        }
+
+
+
     }
 
 

@@ -28,7 +28,6 @@ public class ImageProcessing {
                 noisyImage.put(row, col, 0, 0, 0);        // Set pixel to black (pepper)
             }
         }
-
         return noisyImage;
     }
     
