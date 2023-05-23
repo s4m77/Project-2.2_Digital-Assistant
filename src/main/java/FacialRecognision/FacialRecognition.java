@@ -18,7 +18,7 @@ public class FacialRecognition {
     public static CascadeClassifier faceDetector;
     public static String classifierPath="src\\main\\resources\\Facial models\\haarcascade_frontalface_default.xml";
     public static VideoCapture camera;
-    
+
     public static void main(String[] args) {
         //test if the camera is working 
         nu.pattern.OpenCV.loadLocally();

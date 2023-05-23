@@ -1,5 +1,6 @@
 package gui.utils;
 
+import FacialRecognision.FacialRecognition;
 import bots.CFG.CFG;
 import bots.TemplateSkills.TemplateSkills;
 import db.Conversationdb;
@@ -63,6 +64,7 @@ public class Handler implements Initializable {
         setCurrentType();
         userApp = new UserApp(this.connection);
 
+        nu.pattern.OpenCV.loadLocally();
     }
 
     private void goToPage(String page, ActionEvent ae){
@@ -168,7 +170,20 @@ public class Handler implements Initializable {
     @FXML public ScrollPane scrollPane; @FXML private VBox chatBox; @FXML private TextField userInput;
 
     // This method is called when the user presses the 'Submit' button
-    public void addMessageToChat() {
+    public void processInput() {
+        // check if someone is in front of the camera
+        if(FacialRecognition.peopleInCamera()){
+            addMessageToChat();
+        } else { // if no one is in front of the camera, show an error message
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("The system didn't detect anyone in the camera");
+            alert.setContentText("Please make sure someone is in the camera");
+            alert.showAndWait();
+        }
+    }
+
+    public void addMessageToChat(){
         String sentence = userInput.getText();
         HumanLabel humanLabel = new HumanLabel(sentence);
         String botString = getBotResponse(sentence);
