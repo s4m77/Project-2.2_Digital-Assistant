@@ -17,6 +17,7 @@ public class FacialRecognition {
     public static boolean loaded=false;
     public static CascadeClassifier faceDetector;
     public static String classifierPath=System.getProperty("user.dir")+"/src/main/resources/Facial models/haarcascade_frontalface_default.xml";
+    public static String eyeClassifierPath=System.getProperty("user.dir")+"/src/main/resources/Facial models/haarcascade_eye_tree_eyeglasses.xml";
     public static VideoCapture camera;
 
     public static void main(String[] args) {
@@ -41,7 +42,7 @@ public class FacialRecognition {
         Imgproc.cvtColor(image, image, Imgproc.COLOR_BGR2GRAY);
         //load the classifier
         if(!loaded){
-            faceDetector = new CascadeClassifier(classifierPath);
+            faceDetector = new CascadeClassifier(eyeClassifierPath);
             loaded=true;
         }
         //detect faces
@@ -116,7 +117,7 @@ public class FacialRecognition {
         Imgproc.cvtColor(image, image, Imgproc.COLOR_BGR2GRAY);
         //load the classifier
         if(!loaded){
-            faceDetector = new CascadeClassifier(classifierPath);
+            faceDetector = new CascadeClassifier(eyeClassifierPath);
             loaded=true;
         }
         //detect faces
