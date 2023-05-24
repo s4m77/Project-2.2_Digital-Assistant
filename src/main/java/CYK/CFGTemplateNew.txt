@@ -1,0 +1,23 @@
+<S> <ACTION>
+<ACTION> <LOCATION> | <SCHEDULE> | <MATH> | <WIKI> | <WEATHER>
+<SCHEDULE> which lectures are there <TIMEEXPRESSION> | <TIMEEXPRESSION> which lectures are there
+<WIKI> wiki <WIKIQUERY>
+<WEATHER> weather <WEATHERQUERY>
+<TIMEEXPRESSION> on <DAY> at <TIME> | at <TIME> on <DAY>
+<MATH> <MATHQUESTION> | <MATHEQUAL>
+<MATHQUESTION> what is <MATHEXPRESSION>
+<MATHEQUAL> is <MATHEXPRESSION> equal to <NUMBER>
+<MATHEXPRESSION> <NUMBER> <OPERATOR> <MATHEXPRESSION> | <MATHEXPRESSION> <OPERATOR> <NUMBER> | <MATHEXPRESSION> <OPERATOR> <MATHEXPRESSION> | ( <MATHEXPRESSION> ) | <NUMBER> <OPERATOR> <NUMBER>
+<OPERATOR> / | + | - | ^ | *
+<NUMBER> <SETNUMBER> <NUMBER>  | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0
+<SETNUMBER> 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0
+<TIME> 9 | 12
+<LOCATION> where is <ROOM> | how do <PRO> get to <ROOM> | where is <ROOM> located
+<PRO> I | you | he | she
+<DAY> monday | tuesday | wednesday | thursday | friday | saturday | sunday
+<ROOM> deepSpace | spaceBox
+<WIKIQUERY> Einstein
+<WEATHERQUERY> <CITYNAME>
+<CITYNAME> <SETNAME> | <CITYNAME> <SETNAME>
+<SETNAME> brussels | madrid | maastricht | paris | rome | aachen | heerlen | amsterdam | berlin
+
