@@ -57,15 +57,31 @@ public class Handler implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        nu.pattern.OpenCV.loadLocally(); // init openCV
+
+        initBotCBox(); // init bot combobox
+
+        initFaceCBox(); // init face combobox
+
+        userApp = new UserApp(this.connection); // init user app
+
+    }
+
+    private void initFaceCBox(){
+        faceComboBox.getItems().addAll(faceModelList);
+        if (fr.currentModel != null)
+            faceComboBox.setValue(String.valueOf(fr.currentModel));
+//        else
+//            faceComboBox.setValue(faceModelList.get(0));
+    }
+
+    private void initBotCBox() {
         botComboBox.getItems().addAll(typeList);
         if (currentType != null)
             botComboBox.setValue(String.valueOf(currentType));
         else
             botComboBox.setValue(typeList.get(0));
         setCurrentType();
-        userApp = new UserApp(this.connection);
-
-        nu.pattern.OpenCV.loadLocally();
     }
 
     private void goToPage(String page, ActionEvent ae){
@@ -91,9 +107,9 @@ public class Handler implements Initializable {
 
     public void login(ActionEvent ae){
 
-        if (userApp.retrieveUser(this.userTextField.getText(), this.passwdField.getText())){
+        if (this.userApp.retrieveUser(this.userTextField.getText(), this.passwdField.getText())){
             // store the current user in the UserApp class
-            userApp.user = new UserApp.CurrentUser(this.userTextField.getText(), this.passwdField.getText());
+            this.userApp.user = new UserApp.CurrentUser(this.userTextField.getText(), this.passwdField.getText());
             goToMainMenu(ae);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -108,14 +124,13 @@ public class Handler implements Initializable {
     private void newAccount(){
         String user = this.userTextField.getText();
         String passwd = this.passwdField.getText();
-        userApp.addUser(user, passwd);
+        this.userApp.addUser(user, passwd);
     }
 
     /**
                                                     * METHODS FOR MAIN MENU
      */
     @FXML public Label usrWelcome;
-
     /*
      * This method is called when the user is directed to the main menu
      */
@@ -388,12 +403,13 @@ public class Handler implements Initializable {
      */
 
     @FXML private ComboBox<String> botComboBox = new ComboBox<>();
-
+    @FXML private ComboBox<String> faceComboBox = new ComboBox<>();
     /**
      * Enum class for the different Bot types
      */
 
-    public static final ObservableList<String> typeList = FXCollections.observableArrayList(typeNames());
+    public static final ObservableList<String> typeList = FXCollections.observableArrayList(botTypeNames());
+    public static final ObservableList<String> faceModelList = FXCollections.observableArrayList(faceModelNames());
 
     public enum BotType{
         CFG,
@@ -405,10 +421,18 @@ public class Handler implements Initializable {
      * This is used to populate the ComboBox in the settings page
      * @return Array of Strings with the Bot Types
      */
-    private static String[] typeNames(){
+    private static String[] botTypeNames(){
         String[] s = new String[BotType.values().length];
         for (int i = 0; i < BotType.values().length; i++) {
             s[i] = BotType.values()[i].name();
+        }
+        return s;
+    }
+
+    private static String[] faceModelNames(){
+        String[] s = new String[FacialRecognition.FacialModel.values().length];
+        for (int i = 0; i < FacialRecognition.FacialModel.values().length; i++) {
+            s[i] = FacialRecognition.FacialModel.values()[i].name();
         }
         return s;
     }

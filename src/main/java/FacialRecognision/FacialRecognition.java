@@ -21,6 +21,8 @@ public class FacialRecognition {
     private VideoCapture camera;
     private static FacialRecognition instance;
 
+    public FacialModel currentModel;
+
     public static void main(String[] args) {
         FacialRecognition fr=FacialRecognition.getInstance();
         fr.setFacialModel(FacialModel.FACE);
@@ -49,9 +51,8 @@ public class FacialRecognition {
         //load the classifier
         nu.pattern.OpenCV.loadLocally();
         faceDetector = new CascadeClassifier(classifierPath);
+        this.currentModel=FacialModel.FACE; // DEFAULT ATM
         //open the camera
-
-
         camera=new VideoCapture(0);
 
     }
@@ -64,16 +65,12 @@ public class FacialRecognition {
     }
 
     public void setFacialModel(FacialModel model){
-        switch(model){
-            case FACE:
-                faceDetector = new CascadeClassifier(classifierPath);
-                break;
-            case EYE:
-                faceDetector = new CascadeClassifier(eyeClassifierPath);
-                break;
+        switch (model) {
+            case FACE -> faceDetector = new CascadeClassifier(classifierPath);
+            case EYE -> faceDetector = new CascadeClassifier(eyeClassifierPath);
         }
+        currentModel=model;
     }
-
 
 
     public boolean peopleInCamera(){

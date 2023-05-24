@@ -46,8 +46,6 @@ dependencies {
 
     implementation group: 'org.hsqldb', name: 'hsqldb', version: '2.7.1'
 
-    //implementation group: 'org.openpnp', name: 'opencv', version: '3.4.2-0'
-
     // https://mvnrepository.com/artifact/org.apache.commons/commons-text
     implementation group: 'org.apache.commons', name: 'commons-text', version: '1.10.0'
 
