@@ -132,6 +132,7 @@ public class Handler implements Initializable {
     public void goToChatBot(ActionEvent ae){
         goToPage("/gui/scenes/chat-page.fxml", ae);
         setCurrentType();
+        FacialRecognition.openCamera();
     }
 
     /**

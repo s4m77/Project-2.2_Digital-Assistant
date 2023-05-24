@@ -99,7 +99,7 @@ public class FacialRecognition {
 
     
 
-    private static boolean openCamera() throws UnsatisfiedLinkError{
+    public static boolean openCamera() throws UnsatisfiedLinkError{
         if(camera==null){
             camera = new VideoCapture(0);
         }
