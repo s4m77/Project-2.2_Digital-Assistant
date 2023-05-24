@@ -12,20 +12,19 @@ public class SpellCheckTest {
     public enum Modification {
         DELETE, INSERT, SUBSTITUTE, SWAP
     }
-
-    public static String modifyString(String input) throws IOException {
-        int modification = random.nextInt(4); // random int for each case of modification
-
-//        String modified = switch (modification) {
-//            case 0 -> deleteWord(input);
-//            case 1 -> insertWord(input);
-//            case 2 -> substituteWord(input);
-//            case 3 -> swapWords(input);
-//            default -> "";
-//        };
-        System.out.println("Modification made: " + modification);
-        return null; //modified;
-    }
+//    public static String modifyString(String input) throws IOException {
+//        int modification = random.nextInt(4); // random int for each case of modification
+//
+////        String modified = switch (modification) {
+////            case 0 -> deleteWord(input);
+////            case 1 -> insertWord(input);
+////            case 2 -> substituteWord(input);
+////            case 3 -> swapWords(input);
+////            default -> "";
+////        };
+//        System.out.println("Modification made: " + modification);
+//        return null; //modified;
+//    }
 
     public static int performTest(String input, String target, Modification type, int operations){
         String modified = switch (type) {
@@ -49,7 +48,6 @@ public class SpellCheckTest {
         }
         return sb.toString();
     }
-
 
     /**
      * This method inserts a random character into the input string

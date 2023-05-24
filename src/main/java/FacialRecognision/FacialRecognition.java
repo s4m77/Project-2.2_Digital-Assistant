@@ -63,8 +63,6 @@ public class FacialRecognition {
             HighGui.waitKey(1);
         }
 
-
-
     }
 
 
@@ -123,8 +121,7 @@ public class FacialRecognition {
         }
         //detect faces
         MatOfRect faceDetections = new MatOfRect();
-        //faceDetector.detectMultiScale(image, faceDetections);
-        faceDetector.detectMultiScale(new Mat(), faceDetections);
+        faceDetector.detectMultiScale(image, faceDetections);
         //if there is a face return true
         if(faceDetections.toArray().length>0){
             return true;
