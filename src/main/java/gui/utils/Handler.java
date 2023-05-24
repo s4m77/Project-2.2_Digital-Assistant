@@ -168,6 +168,7 @@ public class Handler implements Initializable {
 
     // This method is called when the user presses the 'Submit' button
     public void processInput() {
+        System.out.println("User input: " + userInput.getText());
         // check if someone is in front of the camera
         System.out.println("Inside processInput()");
         if(FacialRecognition.peopleInCamera()){
