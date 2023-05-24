@@ -25,9 +25,10 @@ public class FacialRecognitionTesting {
         Mat[] images = getImages();
         //first test the images with no noise
         int correct=0;
+        FacialRecognition fr=FacialRecognition.getInstance();
         for(int i=0;i<images.length;i++){
             
-            if(FacialRecognition.isFaceInImage(images[i])){
+            if(fr.isFaceInImage(images[i])){
                 correct++;
             }
         }
@@ -39,7 +40,7 @@ public class FacialRecognitionTesting {
         for(int i=1;i<25;i++){
             correct=0;
             for(int j=0;j<images.length;j++){
-                if(FacialRecognition.isFaceInImage(ImageProcessing.addSaltAndPepperNoise(images[j], i/100))){
+                if(fr.isFaceInImage(ImageProcessing.addSaltAndPepperNoise(images[j], i/100))){
                     correct++;
                 }
             }
@@ -51,7 +52,7 @@ public class FacialRecognitionTesting {
         for(int i=1;i<25;i++){
             correct=0;
             for(int j=0;j<images.length;j++){
-                if(FacialRecognition.isFaceInImage(ImageProcessing.addGaussianNoise(images[j], 0, i/10))){
+                if(fr.isFaceInImage(ImageProcessing.addGaussianNoise(images[j], 0, i/10))){
                     correct++;
                 }
             }
@@ -63,7 +64,7 @@ public class FacialRecognitionTesting {
         for(int i=0;i<19;i++){
             correct=0;
             for(int j=0;j<images.length;j++){
-                if(FacialRecognition.isFaceInImage(ImageProcessing.addPeriodicNoise(images[j], (i+10)*10, 1, 1))){
+                if(fr.isFaceInImage(ImageProcessing.addPeriodicNoise(images[j], (i+10)*10, 1, 1))){
                     correct++;
                 }
             }
@@ -96,8 +97,9 @@ public class FacialRecognitionTesting {
     }
 
     public static Mat[] getImages(){
+        FacialRecognition fr=FacialRecognition.getInstance();
         try{ 
-            return new Mat[]{FacialRecognition.LoadImageFromCamera()};
+            return new Mat[]{fr.LoadImageFromCamera()};
         }
         catch(Exception e){
             System.out.println("Error: "+e);

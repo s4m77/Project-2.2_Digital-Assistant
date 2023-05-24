@@ -53,6 +53,7 @@ public class Handler implements Initializable {
     private Parent root;
 
     private static BotType currentType;
+    private static FacialRecognition fr = FacialRecognition.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -132,7 +133,7 @@ public class Handler implements Initializable {
     public void goToChatBot(ActionEvent ae){
         goToPage("/gui/scenes/chat-page.fxml", ae);
         setCurrentType();
-        FacialRecognition.openCamera();
+        
     }
 
     /**
@@ -172,7 +173,7 @@ public class Handler implements Initializable {
         System.out.println("User input: " + userInput.getText());
         // check if someone is in front of the camera
         System.out.println("Inside processInput()");
-        if(FacialRecognition.peopleInCamera()){
+        if(fr.peopleInCamera()){
             addMessageToChat();
         } else { // if no one is in front of the camera, show an error message
             Alert alert = new Alert(Alert.AlertType.ERROR);

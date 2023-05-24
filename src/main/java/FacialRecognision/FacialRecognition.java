@@ -14,60 +14,69 @@ import org.opencv.videoio.Videoio;
 
 public class FacialRecognition {
     
-    public static boolean loaded=false;
-    public static CascadeClassifier faceDetector;
-    public static String classifierPath=System.getProperty("user.dir")+"/src/main/resources/Facial models/haarcascade_frontalface_default.xml";
-    public static String eyeClassifierPath=System.getProperty("user.dir")+"/src/main/resources/Facial models/haarcascade_eye_tree_eyeglasses.xml";
-    public static VideoCapture camera;
+
+    private CascadeClassifier faceDetector;
+    private String classifierPath=System.getProperty("user.dir")+"/src/main/resources/Facial models/haarcascade_frontalface_default.xml";
+    private String eyeClassifierPath=System.getProperty("user.dir")+"/src/main/resources/Facial models/haarcascade_eye_tree_eyeglasses.xml";
+    private VideoCapture camera;
+    private static FacialRecognition instance;
 
     public static void main(String[] args) {
-        //test if the camera is working 
-        nu.pattern.OpenCV.loadLocally();
-        if(!openCamera()){
+        FacialRecognition fr=FacialRecognition.getInstance();
+        fr.setFacialModel(FacialModel.FACE);
+        Mat image;
+        try {
+            image = fr.LoadImageFromCamera();
+        } catch (InterruptedException e) {
             System.out.println("Error: Camera not found!");
-            System.exit(0);
+            return;
         }
-        if(!peopleInCamera()){
-            System.out.println("No people in camera");
+        if(fr.isFaceInImage(image)){
+            System.out.println("Face detected");
         }
         else{
-            System.out.println("People in camera");
+            System.out.println("No face detected");
         }
+     
+        
+    }
 
-        //show the camera feed and draw a rectangle around the face
-        Mat image = new Mat();
-        camera.read(image);
-        //use detectMultiScale to detect faces
-        //the image needs to be greyscale
-        Imgproc.cvtColor(image, image, Imgproc.COLOR_BGR2GRAY);
+    public enum FacialModel{
+        FACE, EYE
+    }
+
+    private FacialRecognition(){
         //load the classifier
-        if(!loaded){
-            faceDetector = new CascadeClassifier(eyeClassifierPath);
-            loaded=true;
-        }
-        //detect faces
-        while(true){
-            camera.read(image);
-            //image needs to be greyscale
-            Imgproc.cvtColor(image, image, Imgproc.COLOR_BGR2GRAY);
-            MatOfRect faceDetections = new MatOfRect();
-            faceDetector.detectMultiScale(image, faceDetections);
-            //draw a rectangle around the face
-            if(faceDetections.toArray().length>0){
-                System.out.println("Face detected");
-            }
-            for (Rect rect : faceDetections.toArray()) {
-                Imgproc.rectangle(image, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height),
-                        new Scalar(0, 255, 0));
-            }
-            HighGui.imshow("Camera", image);
-            HighGui.waitKey(1);
-        }
+        nu.pattern.OpenCV.loadLocally();
+        faceDetector = new CascadeClassifier(classifierPath);
+        //open the camera
+
+
+        camera=new VideoCapture(0);
 
     }
 
+    public static FacialRecognition getInstance(){
+        if(instance==null){
+            instance=new FacialRecognition();
+        }
+        return instance;
+    }
 
-    public static boolean peopleInCamera(){
+    public void setFacialModel(FacialModel model){
+        switch(model){
+            case FACE:
+                faceDetector = new CascadeClassifier(classifierPath);
+                break;
+            case EYE:
+                faceDetector = new CascadeClassifier(eyeClassifierPath);
+                break;
+        }
+    }
+
+
+
+    public boolean peopleInCamera(){
         //load the image from the camera
         Mat image;
         try {
@@ -87,11 +96,7 @@ public class FacialRecognition {
 
     }
 
-    public static Mat LoadImageFromCamera() throws InterruptedException {
-        if(!openCamera()){
-            System.out.println("Error: Camera not found!");
-            throw new InterruptedException();
-        }
+    public Mat LoadImageFromCamera() throws InterruptedException {
         Mat image = new Mat();
         camera.read(image);
         return image;
@@ -100,26 +105,14 @@ public class FacialRecognition {
 
     
 
-    public static boolean openCamera() throws UnsatisfiedLinkError{
-        if(camera==null){
-            camera = new VideoCapture(0);
-        }
-        if(!camera.isOpened()){
-            return false;
-        }
-        return true;
-    }
+ 
 
-
-    public static boolean isFaceInImage(Mat image){
+    public boolean isFaceInImage(Mat image){
         //use detectMultiScale to detect faces
         //the image needs to be greyscale
         Imgproc.cvtColor(image, image, Imgproc.COLOR_BGR2GRAY);
         //load the classifier
-        if(!loaded){
-            faceDetector = new CascadeClassifier(eyeClassifierPath);
-            loaded=true;
-        }
+       
         //detect faces
         MatOfRect faceDetections = new MatOfRect();
         faceDetector.detectMultiScale(image, faceDetections);
