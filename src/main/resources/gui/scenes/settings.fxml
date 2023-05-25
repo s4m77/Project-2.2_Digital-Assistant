@@ -67,7 +67,7 @@
    <bottom>
       <HBox alignment="CENTER" prefWidth="322.0" spacing="40.0" BorderPane.alignment="CENTER">
          <children>
-            <Button id="rich-blue" mnemonicParsing="false" onAction="#goToMainMenu" stylesheets="@../css/style-class.css" text="Main Menu" />
+            <Button id="rich-blue" mnemonicParsing="false" onAction="#goToMainMenu" stylesheets="@../css/style-class.css" text="Cancel" />
             <Button id="rich-blue" mnemonicParsing="false" onAction="#goToChatBot" stylesheets="@../css/style-class.css" text="Chat" />
          </children>
          <padding>

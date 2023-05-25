@@ -12,7 +12,7 @@ public class UserApp {
         con = connection;
     }
 
-    public boolean addUser(String username, String password) {
+    public void addUser(String username, String password) {
         try{
             String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
             PreparedStatement stm = con.prepareStatement(sql);
@@ -20,10 +20,8 @@ public class UserApp {
             stm.setString(2, password);
             stm.executeUpdate();
             stm.close();
-            return true;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            return false;
         }
     }
 
@@ -42,6 +40,7 @@ public class UserApp {
             System.out.println(e.getMessage());
             return false;
         }
+        
     }
 
     public void close() {

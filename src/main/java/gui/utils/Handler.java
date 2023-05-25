@@ -71,8 +71,16 @@ public class Handler implements Initializable {
         faceComboBox.getItems().addAll(faceModelList);
         if (fr.currentModel != null)
             faceComboBox.setValue(String.valueOf(fr.currentModel));
-//        else
-//            faceComboBox.setValue(faceModelList.get(0));
+        else
+            faceComboBox.setValue(faceModelList.get(0));
+        setCurrentModel();
+    }
+
+    private void setCurrentModel(){
+        switch (faceComboBox.getValue()) {
+            case "FACE" -> fr.currentModel = FacialRecognition.FacialModel.FACE;
+            case "EYE" -> fr.currentModel = FacialRecognition.FacialModel.EYE;
+        }
     }
 
     private void initBotCBox() {
@@ -138,6 +146,8 @@ public class Handler implements Initializable {
         goToPage("/gui/scenes/menu-page.fxml", ae);
         usrWelcome = (Label) scene.lookup("#usrWelcome");
         usrWelcome.setText("Welcome " + userApp.user.getUsername());
+        setCurrentType();
+        setCurrentModel();
     }
 
 
@@ -148,7 +158,7 @@ public class Handler implements Initializable {
     public void goToChatBot(ActionEvent ae){
         goToPage("/gui/scenes/chat-page.fxml", ae);
         setCurrentType();
-        
+        setCurrentModel();
     }
 
     /**
@@ -158,6 +168,7 @@ public class Handler implements Initializable {
     public void goToSkillEditor(ActionEvent ae){
         goToPage("/gui/scenes/skill-editor.fxml", ae);
         setCurrentType();
+        setCurrentModel();
     }
 
     /**
@@ -167,6 +178,7 @@ public class Handler implements Initializable {
     public void goToSettings(ActionEvent ae){
         goToPage("/gui/scenes/settings.fxml", ae);
         setCurrentType();
+        setCurrentModel();
     }
 
     /**
@@ -207,9 +219,13 @@ public class Handler implements Initializable {
         BotLabel botLabel = new BotLabel(botString);
         chatBox.getChildren().add(humanLabel);
         chatBox.getChildren().add(botLabel);
-        int currentUserId = Conversationdb.getCurrentUserId(connection, "Tom", "tom12345"); //todo: change to current user (see line 89)
+        int currentUserId = getUserId();
         Conversationdb.storeConversation(connection, sentence, botString, currentUserId);
         userInput.clear();
+    }
+
+    private int getUserId(){
+        return Conversationdb.getCurrentUserId(connection, this.userApp.user.getUsername(), this.userApp.user.getPassword());
     }
 
     /**
