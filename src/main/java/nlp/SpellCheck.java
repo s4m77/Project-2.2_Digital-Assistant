@@ -19,15 +19,21 @@ public class SpellCheck {
         EDIT, HAMMING, JARO, QWERTY, COSINE
     }
 
-    private final Trie trie = new Trie();
-    private final Map<String, Integer> dict = new HashMap<>();
+    public static void main(String[] args) {
+        SpellCheck sc = new SpellCheck("Corpus.txt", Distance.EDIT);
+        System.out.println(sc.correct("I like to eat appls"));
+    }
 
-    //constructor
+    private final Trie trie = new Trie();
+    private final Map<String, Double> dict = new HashMap<String, Double>();
+    List<String> corpus;
+
+    //constructor atm file is "Corpus.txt"
     public SpellCheck(String fileName, Distance type){
         this.type = type;
         try{
             this.fileName = PATH+fileName;
-            List<String> corpus =  Files.readAllLines(Paths.get(fileName));;
+            this.corpus =  Files.readAllLines(Paths.get(fileName));
             this.init(corpus);
         } catch (IOException e){
             System.out.println("File not found");
@@ -35,15 +41,15 @@ public class SpellCheck {
     }
 
     public void init(List<String> dictionary){
-        for(String line: dictionary){
+        for(String line: dictionary) {
             String word = line.toLowerCase();
             if (!line.contains(" ")) {
-                dict.put(word, dict.getOrDefault(word, 0)+1);
+                dict.put(word, dict.getOrDefault(word, 0.d)+1);
                 trie.add(word);
             } else {
                 String[] strs= line.split("\\s");
                 for(String str: strs) {
-                    dict.put(str, dict.getOrDefault(str, 0)+1);
+                    dict.put(str, dict.getOrDefault(str, 0.d)+1);
                     trie.add(str);
                 }
             }
@@ -60,25 +66,16 @@ public class SpellCheck {
         return sb.toString().trim();
     }
 
-    public String correct(String input) throws IOException {
-        //this.fileName = "src/main/resources/NLPdata/Corpus";
-        List<String> corpus =  Files.readAllLines(Paths.get(this.fileName));;
-        this.init(corpus);
-        return this.bestMatch(input);
-    }
-
-
-
-    public String bestMatch(String inputWord) {
+    public String correct(String inputWord) {
         String s = inputWord.toLowerCase();
         String res;
-        TreeMap<Integer, TreeMap<Integer, TreeSet<String>>> map = new TreeMap<>();
+        TreeMap<Double, TreeMap<Double, TreeSet<String>>> map = new TreeMap<>();
         TrieNode node = trie.find(s);
         if(node == null) {
             for (String w: dict.keySet()) {
                 double dist = getDistance(w, s);
-                TreeMap<Integer, TreeSet<String>> similarWords = map.getOrDefault(dist, new TreeMap<>());
-                int freq = dict.get(w);
+                TreeMap<Double, TreeSet<String>> similarWords = map.getOrDefault(dist, new TreeMap<>());
+                Double freq = dict.get(w);
                 TreeSet<String> set = similarWords.getOrDefault(freq, new TreeSet<>());
                 set.add(w);
                 similarWords.put(freq, set);
