@@ -1,42 +1,40 @@
 package nlp;
 
+import nlp.distance.*;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
+
+
 public class SpellCheck {
 
+    public static final String PATH = System.getProperty("user.dir")+"/src/main/resources/NLPdata/";
+    private String fileName;
+    public final Distance type;
+
     public enum Distance {
-        EDIT, DAM_LEV, HAMMING, JARO, QWERTY
+        EDIT, HAMMING, JARO, QWERTY, COSINE
     }
 
-    private static final Trie trie = new Trie();
-    private static final Map<String, Integer> dict = new HashMap<>();
+    private final Trie trie = new Trie();
+    private final Map<String, Integer> dict = new HashMap<>();
 
-    public static void main(String[] args) throws IOException {
-        String text = "I like to eats apple and banana";
-        System.out.println(SpellCheck.correctSentence(text));
-    }
-
-    public static String correctSentence(String input) throws IOException {
-        String[] words = input.split("\\s");
-        StringBuilder sb = new StringBuilder();
-        for (String word : words) {
-            String correctedWord = correct(word);
-            sb.append(correctedWord).append(" ");
+    //constructor
+    public SpellCheck(String fileName, Distance type){
+        this.type = type;
+        try{
+            this.fileName = PATH+fileName;
+            List<String> corpus =  Files.readAllLines(Paths.get(fileName));;
+            this.init(corpus);
+        } catch (IOException e){
+            System.out.println("File not found");
         }
-        return sb.toString().trim();
     }
 
-    public static String correct(String input) throws IOException {
-        String fileName = "src/main/resources/NLPdata/Corpus";
-        List<String> corpus =  Files.readAllLines(Paths.get(fileName));;
-        SpellCheck.init(corpus);
-        return SpellCheck.bestMatch(input);
-    }
-
-    public static void init(List<String> dictionary){
+    public void init(List<String> dictionary){
         for(String line: dictionary){
             String word = line.toLowerCase();
             if (!line.contains(" ")) {
@@ -52,14 +50,33 @@ public class SpellCheck {
         }
     }
 
-    public static String bestMatch(String inputWord) {
+    public String correctSentence(String input) throws IOException {
+        String[] words = input.split("\\s");
+        StringBuilder sb = new StringBuilder();
+        for (String word : words) {
+            String correctedWord = correct(word);
+            sb.append(correctedWord).append(" ");
+        }
+        return sb.toString().trim();
+    }
+
+    public String correct(String input) throws IOException {
+        //this.fileName = "src/main/resources/NLPdata/Corpus";
+        List<String> corpus =  Files.readAllLines(Paths.get(this.fileName));;
+        this.init(corpus);
+        return this.bestMatch(input);
+    }
+
+
+
+    public String bestMatch(String inputWord) {
         String s = inputWord.toLowerCase();
         String res;
         TreeMap<Integer, TreeMap<Integer, TreeSet<String>>> map = new TreeMap<>();
         TrieNode node = trie.find(s);
         if(node == null) {
             for (String w: dict.keySet()) {
-                int dist = minEditDistance(w, s);
+                double dist = getDistance(w, s);
                 TreeMap<Integer, TreeSet<String>> similarWords = map.getOrDefault(dist, new TreeMap<>());
                 int freq = dict.get(w);
                 TreeSet<String> set = similarWords.getOrDefault(freq, new TreeSet<>());
@@ -74,26 +91,14 @@ public class SpellCheck {
         return res;
     }
 
-    public static int minEditDistance(String str1, String str2) {
-        int l = str1.length();
-        int m = str2.length();
-        int[][] editDist = new int[l+1][m+1];
-        for (int i = 0; i <= l; i++) {
-            for (int j = 0; j <= m; j++) {
-                if (i == 0)
-                    editDist[i][j] = j;
-                else if (j == 0)
-                    editDist[i][j] = i;
-                else if (str1.charAt(i-1) == str2.charAt(j-1))
-                    editDist[i][j] = editDist[i-1][j-1];
-                else if (i>1 && j>1  && str1.charAt(i-1) == str2.charAt(j-2)
-                        && str1.charAt(i-2) == str2.charAt(j-1))
-                    editDist[i][j] = 1+Math.min(Math.min(editDist[i-2][j-2], editDist[i-1][j]), Math.min(editDist[i][j-1], editDist[i-1][j-1]));
-                else
-                    editDist[i][j] = 1 + Math.min(editDist[i][j-1], Math.min(editDist[i-1][j], editDist[i-1][j-1]));
-            }
-        }
-        return editDist[l][m];
+    public double getDistance(String str1, String str2){
+        return switch (this.type){
+            case EDIT -> MinEdit.calculate(str1, str2);
+            case HAMMING -> Hamming.calculate(str1, str2);
+            case JARO -> Jaro.calculate(str1, str2);
+            case QWERTY -> Qwerty.calculate(str1, str2);
+            case COSINE -> Cosine.calculate(str1, str2);
+        };
     }
 
 }
