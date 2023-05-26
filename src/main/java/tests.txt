@@ -1,17 +1,16 @@
 for the cfg we want to test its robustness in the following way:
 
     robustness of the syntax checker by changing prebuild sentences:
-        deleting
-        inserting
-        swapping
+        deleting - user omitting a character
+        inserting - user adding a character twice
+        swapping - user swapping two characters close to each other
 
 
     testing different kinds of edit distance
-        minimum
-        damerau-levenstein
-        hamming distance
+        damerau-levenstein (modified minimum edit distance)
         jaro distance
         qwerty distance
+        cosine distance
 
 
 for the Facial scanner we want to try and see the effects of

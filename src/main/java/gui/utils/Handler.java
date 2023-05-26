@@ -79,13 +79,6 @@ public class Handler implements Initializable {
         setCurrentModel();
     }
 
-    private void setCurrentModel(){
-        switch (faceComboBox.getValue()) {
-            case "FACE" -> fr.currentModel = FacialRecognition.FacialModel.FACE;
-            case "EYE" -> fr.currentModel = FacialRecognition.FacialModel.EYE;
-        }
-    }
-
     private void initBotCBox() {
         botComboBox.getItems().addAll(typeList);
         if (currentType != null)
@@ -265,11 +258,17 @@ public class Handler implements Initializable {
                                                     * METHODS FOR SKILL EDITOR
      */
 
-    @FXML private TextArea fileTextArea; @FXML private Label editorMessage; @FXML private ProgressBar progressBar;
-    @FXML private Button resetButton; @FXML private Button saveBtn;
+    @FXML
+    TextArea fileTextArea; @FXML
+    Label editorMessage; @FXML
+    ProgressBar progressBar;
+    @FXML
+    Button resetButton; @FXML private Button saveBtn;
 
     public static FileTime lastModifiedTime;
     public static File fileInEditor;
+
+    public static FileEditor editor;
 
     /**
      * This method is called when the user presses the 'Open File' button
@@ -285,7 +284,9 @@ public class Handler implements Initializable {
         File fileToLoad = fileChooser.showOpenDialog(null);
         // Load chosen fileToCheck
         if(fileToLoad != null){
-            updateTextArea(fileToLoad);
+            editor = new FileEditor(this);
+            editor.updateTextArea(fileToLoad);
+            //new FileEditor(this).updateTextArea(fileToLoad);
         }
         // Set last modified time else scheduleFileChecking() will not work
         lastModifiedTime = FileTime.fromMillis(System.currentTimeMillis());
@@ -293,115 +294,11 @@ public class Handler implements Initializable {
         saveBtn.setDisable(false);
     }
 
-    /**
-     * This method updates the TextArea with the content of the selected fileToCheck
-     * @param fileToLoad selected fileToCheck
-     */
-    private void updateTextArea(File fileToLoad) {
-        progressBar.setVisible(true);
-        Task<String> loadFileTask = fileLoaderTask(fileToLoad);
-        progressBar.progressProperty().bind(loadFileTask.progressProperty());
-        loadFileTask.run();
-    }
-
-    /**
-     * This method loads the content of the selected fileToCheck into a Task
-     * @param fileToLoad selected fileToCheck
-     * @return Task with the content of the selected fileToCheck
-     */
-    private Task<String> fileLoaderTask(File fileToLoad){
-        // Load content of the fileToCheck with a Task
-        Task<String> loadFileTask = new Task<>() {
-            @Override
-            protected String call() throws Exception {
-                BufferedReader reader = new BufferedReader(new FileReader(fileToLoad));
-                // Calculate number of lines -> used for progress
-                long lineCount;
-                try (Stream<String> s = Files.lines(fileToLoad.toPath())) {
-                    lineCount = s.count();
-                }
-                // Load lines in memory
-                String line;
-                StringBuilder fc = new StringBuilder();
-                long linesLoaded = 0;
-                while((line = reader.readLine()) != null) {
-                    fc.append(line);
-                    fc.append("\n");
-                    // progress bar updated based on the number of lines loaded
-                    updateProgress(++linesLoaded, lineCount);
-                }
-                return fc.toString();
-            }
-        };
-        // If task is successful load content into text area and set status message
-        loadFileTask.setOnSucceeded(workerStateEvent -> {
-            try {
-                fileTextArea.setText(loadFileTask.get());
-                editorMessage.setText("File loaded: " + fileToLoad.getName());
-                fileInEditor = fileToLoad;
-            } catch (InterruptedException | ExecutionException e) {
-                fileTextArea.setText("Could not load fileToCheck from:\n " + fileToLoad.getAbsolutePath());
-            }
-            // Check changes in the fileToCheck
-            setFileChecking(fileInEditor);
-        });
-        //If task failed display error message
-        loadFileTask.setOnFailed(workerStateEvent -> {
-            fileTextArea.setText("Could not load fileToCheck from:\n " + fileToLoad.getAbsolutePath());
-            editorMessage.setText("Failed to load fileToCheck");
-        });
-        return loadFileTask;
-    }
-
-    /**
-     * This method sets a Scheduled Service to the loaded fileToCheck
-     * The service checks if the fileToCheck has been modified
-     * @param fileToCheck selected fileToCheck
-     */
-    private void setFileChecking(File fileToCheck){
-        ScheduledService<Boolean> fileChecking = scheduledFileChecker(fileToCheck);
-        //System.out.println(fileChecking.getLastValue());
-        fileChecking.setOnSucceeded(workerStateEvent -> {
-            if(fileChecking.getLastValue()==null) return;
-            if(fileChecking.getLastValue()){
-                // If changes are detected no need to continue checking
-                fileChecking.cancel();
-                // Show the button to reset the changes
-                resetButton.setVisible(true);
-            }
-        });
-        fileChecking.start();
-    }
-
-
-    /**
-     * This method creates a Scheduled Service to check if the fileToCheck has been modified
-     * @param FileToCheck selected fileToCheck
-     * @return Scheduled Service to check if the fileToCheck has been modified
-     */
-    private ScheduledService<Boolean> scheduledFileChecker(File FileToCheck){
-        ScheduledService<Boolean> scheduledService = new ScheduledService<>() {
-            @Override
-            protected Task<Boolean> createTask() {
-                return new Task<>() {
-                    @Override
-                    protected Boolean call() throws Exception {
-                        FileTime lastModifiedAsOfNow = Files.readAttributes(FileToCheck.toPath(), BasicFileAttributes.class).lastModifiedTime();
-                        return lastModifiedAsOfNow.compareTo(lastModifiedTime) < 0;
-                    }
-                };
-            }
-        };
-        // set the time step for each check
-        scheduledService.setPeriod(Duration.seconds(5));
-        return scheduledService;
-    }
-
     /*
      * This method is called when the user presses the 'Reset Changes' button
      */
     public void resetChanges(){
-        updateTextArea(fileInEditor);
+        editor.updateTextArea(fileInEditor);
         resetButton.setVisible(false);
     }
 
@@ -477,5 +374,13 @@ public class Handler implements Initializable {
             default -> currentType = BotType.TemplateSkills;
         }
         //System.out.println("Current bot type: " + currentType);
+    }
+
+    private void setCurrentModel(){
+        switch (faceComboBox.getValue()) {
+            case "EYE" -> fr.setFacialModel(FacialRecognition.FacialModel.EYE);
+            case "FACE" ->fr.setFacialModel(FacialRecognition.FacialModel.FACE);
+            default -> fr.setFacialModel(FacialRecognition.FacialModel.FACE);
+        }
     }
 }

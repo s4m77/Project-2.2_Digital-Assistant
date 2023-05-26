@@ -1,15 +1,10 @@
 package FacialRecognision;
 
-import java.util.ArrayList;
 //openCV imports
 import org.opencv.core.*;
-import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
-import org.opencv.video.Video;
-import org.opencv.highgui.HighGui;
 import org.opencv.videoio.VideoCapture;
-import org.opencv.videoio.Videoio;
 
 
 public class FacialRecognition {
@@ -83,12 +78,7 @@ public class FacialRecognition {
             return false;
         }
         //check if there is a face in the image
-        if(isFaceInImage(image)){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return isFaceInImage(image);
 
 
     }
@@ -98,11 +88,6 @@ public class FacialRecognition {
         camera.read(image);
         return image;
     }
-
-
-    
-
- 
 
     public boolean isFaceInImage(Mat image){
         //use detectMultiScale to detect faces
@@ -114,11 +99,6 @@ public class FacialRecognition {
         MatOfRect faceDetections = new MatOfRect();
         faceDetector.detectMultiScale(image, faceDetections);
         //if there is a face return true
-        if(faceDetections.toArray().length>0){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return faceDetections.toArray().length > 0;
     }
 }

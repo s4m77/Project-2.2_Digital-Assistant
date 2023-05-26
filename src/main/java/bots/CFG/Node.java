@@ -21,9 +21,9 @@ public class Node {
             return this;
         }
         else{
-            for(int i=0;i<children.size();i++){
+            for(int i=0;i<children.size();i++) {
                 Node result = children.get(i).getNode(attribute);
-                if(result!=null){
+                if(result!=null) {
                     return result;
                 }
             }
@@ -59,9 +59,9 @@ public class Node {
         //luckily all values are added to the tree in order of appearance so we can just replace the first one we find
         //we can also assume that all values are filled in the tree
         String result = value;
-        for(int i=0;i<children.size();i++){
-            String attribute = children.get(i).getAttribute();
-            String replacement = children.get(i).getFilledString();
+        for (Node child : children) {
+            String attribute = child.getAttribute();
+            String replacement = child.getFilledString();
 
             result = result.replaceFirst(attribute, replacement);
         }
@@ -69,11 +69,4 @@ public class Node {
 
     }
 
-    public void clearChildren(){
-        children.clear();
-    }
-
-
-
-    
 }

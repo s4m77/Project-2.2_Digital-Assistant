@@ -19,9 +19,9 @@ public class SpellCheck {
 
 
     public static void main(String[] args) throws IOException {
-        String text = "what is lectur on Moday";
+        String text = "eats";
 
-        SpellCheck.setDistance(Distance.QWERTY);
+        SpellCheck.setDistance(Distance.EDIT);
         System.out.println(SpellCheck.correctSentence(text));
     }
 
@@ -82,48 +82,50 @@ public class SpellCheck {
 
                 double dist = getDistance(w, s);
                 TreeMap<Double, TreeSet<String>> similarWords = map.getOrDefault(dist, new TreeMap<>());
-                double freq = dict.get(w);
-                if (w.equals("deepSpace")) {
-                    freq = 10; // Set the weight of 'deepSpace' to 10
-                } else if (w.equals("spaceBox")) {
-                    freq = 10; // Set the weight of 'spaceBox' to 10
-                }else if (w.equals("wiki")) {
-                    freq = 10; // Set the weight of 'wiki' to 10
-                }else if (w.equals("weather")) {
-                    freq = 10; // Set the weight of 'weather' to 10
-                }else if (w.equals("which")) {
-                    freq = 10; // Set the weight of 'which' to 10
-                }else if (w.equals("lectures")) {
-                    freq = 10; // Set the weight of 'lectures' to 10
-                }else if (w.equals("are")) {
-                    freq = 10; // Set the weight of 'are' to 10
-                }else if (w.equals("there")) {
-                    freq = 10; // Set the weight of 'there' to 10
-                }else if (w.equals("what")) {
-                    freq = 10; // Set the weight of 'what' to 10
-                }else if (w.equals("is")) {
-                    freq = 10; // Set the weight of 'is' to 10
-                }else if (w.equals("sittard")) {
-                    freq = 10; // Set the weight of 'sittard' to 10
-                }else if (w.equals("heerlen")) {
-                    freq = 10; // Set the weight of 'heerlen' to 10
-                }else if (w.equals("maastricht")) {
-                    freq = 10; // Set the weight of 'maastricht' to 10
-                }else if (w.equals("dialing")) {
-                    freq = 10; // Set the weight of 'dialing' to 10
-                }else if (w.equals("monday")) {
-                    freq = 10; // Set the weight of 'is' to 10
-                }else if (w.equals("tuesday")) {
-                    freq = 10; // Set the weight of 'is' to 10
-                }else if (w.equals("wednesday")) {
-                    freq = 10; // Set the weight of 'is' to 10
-                }else if (w.equals("thursday")) {
-                    freq = 10; // Set the weight of 'is' to 10
-                }else if (w.equals("friday")) {
-                    freq = 10; // Set the weight of 'is' to 10
-                }else if (w.equals("saturday")) {
-                    freq = 10; // Set the weight of 'is' to 10
-                }
+                dict.get(w);
+                double freq = switch (w) {
+                    case "deepSpace" -> 10; // Set the weight of 'deepSpace' to 10
+
+                    case "spaceBox" -> 10; // Set the weight of 'spaceBox' to 10
+
+                    case "wiki" -> 10; // Set the weight of 'wiki' to 10
+
+                    case "weather" -> 10; // Set the weight of 'weather' to 10
+
+                    case "which" -> 10; // Set the weight of 'which' to 10
+
+                    case "lectures" -> 10; // Set the weight of 'lectures' to 10
+
+                    case "are" -> 10; // Set the weight of 'are' to 10
+
+                    case "there" -> 10; // Set the weight of 'there' to 10
+
+                    case "what" -> 10; // Set the weight of 'what' to 10
+
+                    case "is" -> 10; // Set the weight of 'is' to 10
+
+                    case "sittard" -> 10; // Set the weight of 'sittard' to 10
+
+                    case "heerlen" -> 10; // Set the weight of 'heerlen' to 10
+
+                    case "maastricht" -> 10; // Set the weight of 'maastricht' to 10
+
+                    case "dialing" -> 10; // Set the weight of 'dialing' to 10
+
+                    case "monday" -> 10; // Set the weight of 'is' to 10
+
+                    case "tuesday" -> 10; // Set the weight of 'is' to 10
+
+                    case "wednesday" -> 10; // Set the weight of 'is' to 10
+
+                    case "thursday" -> 10; // Set the weight of 'is' to 10
+
+                    case "friday" -> 10; // Set the weight of 'is' to 10
+
+                    case "saturday" -> 10;
+                    default -> dict.get(w); // Set the weight of 'is' to 10
+
+                };
                 TreeSet<String> set = similarWords.getOrDefault(freq, new TreeSet<>());
                 set.add(w);
                 similarWords.put(freq, set);
