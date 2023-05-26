@@ -19,8 +19,8 @@ public class SpellCheck {
 
 
     public static void main(String[] args) throws IOException {
-        String text = "I liked to eatt apple and banana";
-        SpellCheck.setDistance(Distance.JARO);
+        String text = "I liked to go to spaceBoox";
+        SpellCheck.setDistance(Distance.QWERTY);
         System.out.println(SpellCheck.correctSentence(text));
     }
 
@@ -78,9 +78,31 @@ public class SpellCheck {
         TrieNode node = trie.find(s);
         if(node == null) {
             for (String w: dict.keySet()) {
+
                 double dist = getDistance(w, s);
                 TreeMap<Double, TreeSet<String>> similarWords = map.getOrDefault(dist, new TreeMap<>());
                 double freq = dict.get(w);
+                if (w.equals("deepSpace")) {
+                    freq = 10; // Set the weight of 'deepSpace' to 10
+                } else if (w.equals("spaceBox")) {
+                    freq = 10; // Set the weight of 'spaceBox' to 10
+                }else if (w.equals("wiki")) {
+                    freq = 10; // Set the weight of 'wiki' to 10
+                }else if (w.equals("weather")) {
+                    freq = 10; // Set the weight of 'weather' to 10
+                }else if (w.equals("which")) {
+                    freq = 10; // Set the weight of 'which' to 10
+                }else if (w.equals("lectures")) {
+                    freq = 10; // Set the weight of 'lectures' to 10
+                }else if (w.equals("are")) {
+                    freq = 10; // Set the weight of 'are' to 10
+                }else if (w.equals("there")) {
+                    freq = 10; // Set the weight of 'there' to 10
+                }else if (w.equals("what")) {
+                    freq = 10; // Set the weight of 'what' to 10
+                }else if (w.equals("is")) {
+                    freq = 10; // Set the weight of 'is' to 10
+                }
                 TreeSet<String> set = similarWords.getOrDefault(freq, new TreeSet<>());
                 set.add(w);
                 similarWords.put(freq, set);
