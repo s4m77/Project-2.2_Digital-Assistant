@@ -21,22 +21,22 @@ public class FileEditor {
         this.handler = handler;
     }
 
-    protected void updateTextArea(File fileToLoad) {
+    protected void updateTextArea(File file) {
         handler.progressBar.setVisible(true);
-        Task<String> loadFileTask = fileLoaderTask(fileToLoad);
+        Task<String> loadFileTask = fileLoaderTask(file);
         handler.progressBar.progressProperty().bind(loadFileTask.progressProperty());
         loadFileTask.run();
     }
 
-    private Task<String> fileLoaderTask(File fileToLoad){
+    private Task<String> fileLoaderTask(File file){
         // Load content of the fileToCheck with a Task
         Task<String> loadFileTask = new Task<>() {
             @Override
             protected String call() throws Exception {
-                BufferedReader reader = new BufferedReader(new FileReader(fileToLoad));
+                BufferedReader reader = new BufferedReader(new FileReader(file));
                 // Calculate number of lines -> used for progress
                 long lineCount;
-                try (Stream<String> s = Files.lines(fileToLoad.toPath())) {
+                try (Stream<String> s = Files.lines(file.toPath())) {
                     lineCount = s.count();
                 }
                 // Load lines in memory
@@ -56,17 +56,17 @@ public class FileEditor {
         loadFileTask.setOnSucceeded(workerStateEvent -> {
             try {
                 handler.fileTextArea.setText(loadFileTask.get());
-                handler.editorMessage.setText("File loaded: " + fileToLoad.getName());
-                Handler.fileInEditor = fileToLoad;
+                handler.editorMessage.setText("File loaded: " + file.getName());
+                Handler.fileInEditor = file;
             } catch (InterruptedException | ExecutionException e) {
-                handler.fileTextArea.setText("Could not load fileToCheck from:\n " + fileToLoad.getAbsolutePath());
+                handler.fileTextArea.setText("Could not load fileToCheck from:\n " + file.getAbsolutePath());
             }
             // Check changes in the fileToCheck
             setFileChecking(Handler.fileInEditor);
         });
         //If task failed display error message
         loadFileTask.setOnFailed(workerStateEvent -> {
-            handler.fileTextArea.setText("Could not load fileToCheck from:\n " + fileToLoad.getAbsolutePath());
+            handler.fileTextArea.setText("Could not load fileToCheck from:\n " + file.getAbsolutePath());
             handler.editorMessage.setText("Failed to load fileToCheck");
         });
         return loadFileTask;
@@ -104,6 +104,5 @@ public class FileEditor {
         scheduledService.setPeriod(Duration.seconds(5));
         return scheduledService;
     }
-
 
 }
