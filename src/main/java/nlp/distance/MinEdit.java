@@ -2,7 +2,7 @@ package nlp.distance;
 
 public class MinEdit {
 
-    public static int calculate(String str1, String str2) {
+    public static double calculate(String str1, String str2) {
         int l = str1.length();
         int m = str2.length();
         int[][] editDist = new int[l+1][m+1];

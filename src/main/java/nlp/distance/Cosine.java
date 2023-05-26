@@ -6,7 +6,7 @@ public class Cosine {
 
     public static double calculate(String str1, String str2) {
         CosineDistance cosineDistance = new CosineDistance();
-        return 1-cosineDistance.apply(str1, str2);
+        return cosineDistance.apply(str1, str2);
     }
 
 }
