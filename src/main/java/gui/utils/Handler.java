@@ -14,10 +14,13 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -215,10 +218,21 @@ public class Handler implements Initializable {
         String sentence = userInput.getText();
         HumanLabel humanLabel = new HumanLabel(sentence);
         String botString = getBotResponse(sentence);
-
         BotLabel botLabel = new BotLabel(botString);
-        chatBox.getChildren().add(humanLabel);
-        chatBox.getChildren().add(botLabel);
+
+        HBox humanHBox = new HBox();
+        humanHBox.setAlignment(Pos.CENTER_RIGHT);
+        HBox.setHgrow(humanHBox, Priority.ALWAYS);
+        humanHBox.prefWidthProperty().bind(chatBox.widthProperty().add(20));
+        humanHBox.getChildren().addAll(humanLabel);
+
+        HBox botHBox = new HBox();
+        botHBox.setAlignment(Pos.CENTER_LEFT);
+        HBox.setHgrow(botHBox, Priority.ALWAYS);
+        botHBox.prefWidthProperty().bind(chatBox.widthProperty().subtract(20));
+        botHBox.getChildren().addAll(botLabel);
+        chatBox.getChildren().addAll(humanHBox, botHBox);
+
         int currentUserId = getUserId();
         Conversationdb.storeConversation(connection, sentence, botString, currentUserId);
         userInput.clear();
