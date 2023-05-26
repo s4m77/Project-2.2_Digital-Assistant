@@ -19,7 +19,8 @@ public class SpellCheck {
 
 
     public static void main(String[] args) throws IOException {
-        String text = "I liked to go to spaceBoox";
+        String text = "what is lectur on Moday";
+
         SpellCheck.setDistance(Distance.QWERTY);
         System.out.println(SpellCheck.correctSentence(text));
     }
@@ -101,6 +102,26 @@ public class SpellCheck {
                 }else if (w.equals("what")) {
                     freq = 10; // Set the weight of 'what' to 10
                 }else if (w.equals("is")) {
+                    freq = 10; // Set the weight of 'is' to 10
+                }else if (w.equals("sittard")) {
+                    freq = 10; // Set the weight of 'sittard' to 10
+                }else if (w.equals("heerlen")) {
+                    freq = 10; // Set the weight of 'heerlen' to 10
+                }else if (w.equals("maastricht")) {
+                    freq = 10; // Set the weight of 'maastricht' to 10
+                }else if (w.equals("dialing")) {
+                    freq = 10; // Set the weight of 'dialing' to 10
+                }else if (w.equals("monday")) {
+                    freq = 10; // Set the weight of 'is' to 10
+                }else if (w.equals("tuesday")) {
+                    freq = 10; // Set the weight of 'is' to 10
+                }else if (w.equals("wednesday")) {
+                    freq = 10; // Set the weight of 'is' to 10
+                }else if (w.equals("thursday")) {
+                    freq = 10; // Set the weight of 'is' to 10
+                }else if (w.equals("friday")) {
+                    freq = 10; // Set the weight of 'is' to 10
+                }else if (w.equals("saturday")) {
                     freq = 10; // Set the weight of 'is' to 10
                 }
                 TreeSet<String> set = similarWords.getOrDefault(freq, new TreeSet<>());
