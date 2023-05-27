@@ -224,13 +224,8 @@ public class Handler implements Initializable {
         botHBox.getChildren().addAll(botLabel);
         chatBox.getChildren().addAll(humanHBox, botHBox);
 
-        int currentUserId = getUserId();
-        Conversationdb.storeConversation(connection, sentence, botString, currentUserId);
+        Conversationdb.storeConversation(connection, sentence, botString, Integer.parseInt(UserApp.userInfo[2]));
         userInput.clear();
-    }
-
-    private int getUserId(){
-        return Conversationdb.getCurrentUserId(connection, UserApp.userInfo[0], UserApp.userInfo[1]);
     }
 
     /**

@@ -1,4 +1,6 @@
 package gui.utils;
+import db.Conversationdb;
+
 import java.sql.*;
 
 public class UserApp {
@@ -43,7 +45,7 @@ public class UserApp {
     }
 
     public void storeUser(String username, String password) {
-        userInfo = new String[]{username, password};
+        userInfo = new String[]{username, password, String.valueOf(Conversationdb.getCurrentUserId(con, username, password))};
     }
 
 }
