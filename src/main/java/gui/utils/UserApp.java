@@ -5,8 +5,7 @@ public class UserApp {
 
     private Connection con;
 
-
-    public CurrentUser user;
+    public static String[] userInfo;
 
     public UserApp(Connection connection){
         con = connection;
@@ -43,27 +42,8 @@ public class UserApp {
         
     }
 
-    public void close() {
-        try {
-            con.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    static class CurrentUser {
-        private final String username;
-        private final String password;
-        public CurrentUser(String username, String password) {
-            this.username = username;
-            this.password = password;
-        }
-        public String getUsername() {
-            return username;
-        }
-        public String getPassword() {
-            return password;
-        }
+    public void storeUser(String username, String password) {
+        userInfo = new String[]{username, password};
     }
 
 }

@@ -49,6 +49,7 @@ public class Handler implements Initializable {
 
     public static final String MAIN_TITLE = "Multi-Modal Digital Assistant";
 
+    private static final FacialRecognition fr = FacialRecognition.getInstance();
     private final Connection connection = Conversationdb.CreateServer();
 
     private Stage stage;
@@ -56,7 +57,6 @@ public class Handler implements Initializable {
     private Parent root;
 
     private static BotType currentType;
-    private static FacialRecognition fr = FacialRecognition.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -65,8 +65,6 @@ public class Handler implements Initializable {
         initBotCBox(); // init bot combobox
 
         initFaceCBox(); // init face combobox
-
-        userApp = new UserApp(this.connection); // init user app
 
     }
 
@@ -107,13 +105,13 @@ public class Handler implements Initializable {
     @FXML public TextField userTextField; @FXML public PasswordField passwdField;
     @FXML public Button loginBtn; @FXML public Button newAccBtn;
 
-    private UserApp userApp;
+    private final UserApp userApp = new UserApp(this.connection);
 
     public void login(ActionEvent ae){
 
         if (this.userApp.retrieveUser(this.userTextField.getText(), this.passwdField.getText())){
             // store the current user in the UserApp class
-            this.userApp.user = new UserApp.CurrentUser(this.userTextField.getText(), this.passwdField.getText());
+            this.userApp.storeUser(this.userTextField.getText(), this.passwdField.getText());
             goToMainMenu(ae);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -141,7 +139,7 @@ public class Handler implements Initializable {
     public void goToMainMenu(ActionEvent ae){
         goToPage("/gui/scenes/menu-page.fxml", ae);
         usrWelcome = (Label) scene.lookup("#usrWelcome");
-        usrWelcome.setText("Welcome " + userApp.user.getUsername());
+        usrWelcome.setText("Welcome " + UserApp.userInfo[0]);
         setCurrentType();
         setCurrentModel();
     }
@@ -232,7 +230,7 @@ public class Handler implements Initializable {
     }
 
     private int getUserId(){
-        return Conversationdb.getCurrentUserId(connection, this.userApp.user.getUsername(), this.userApp.user.getPassword());
+        return Conversationdb.getCurrentUserId(connection, UserApp.userInfo[0], UserApp.userInfo[1]);
     }
 
     /**
