@@ -52,6 +52,10 @@ dependencies {
     // https://mvnrepository.com/artifact/org.openpnp/opencv
     implementation group: 'org.openpnp', name: 'opencv', version: '4.7.0-0'
 
+    // https://mvnrepository.com/artifact/com.opencsv/opencsv
+    implementation group: 'com.opencsv', name: 'opencsv', version: '5.7.1'
+
+
 }
 
 mainClassName = 'Run'
