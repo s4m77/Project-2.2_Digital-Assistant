@@ -13,17 +13,16 @@ import java.util.Random;
 public class Tester {
     public static void main(String[] args) throws IOException {
         Random r = new Random(42);
-        List<String> words = getWords(100);
-        SpellCheck.setDistance(SpellCheck.Distance.EDIT);
-        CSVWriter writer = new CSVWriter(new java.io.FileWriter("src/main/resources/experiments/output.csv"));
-
+        List<String> words = getWords(1000);
+        SpellCheck.setDistance(SpellCheck.Distance.QWERTY);
+        CSVWriter writer = new CSVWriter(new java.io.FileWriter("src/main/resources/experiments/QWERTY_output.csv"));
+        System.out.println(words.size());
         // for each operation
         for (Operation op : Operation.values()) {
             // for each word
             int count = 0;
             String currWord = "";
             for (String word : words) {
-                // for each index
                 boolean cont = true;
                 while (cont){
                     if (count == 0) {
@@ -63,7 +62,9 @@ public class Tester {
         try(BufferedReader r = new BufferedReader(new FileReader("src/main/resources/NLPdata/Corpus"))){
             String word;
             while ((word = r.readLine()) != null){
-                words.add(word);
+                if (word.length() > 4) {
+                    words.add(word);
+                }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
