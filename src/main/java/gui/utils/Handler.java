@@ -9,8 +9,6 @@ import gui.utils.messages.HumanLabel;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.concurrent.ScheduledService;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,21 +22,16 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 
 import java.io.*;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
-import java.util.concurrent.ExecutionException;
-import java.util.stream.Stream;
 
 /**
  * This class is the main controller for the GUI.
@@ -205,6 +198,11 @@ public class Handler implements Initializable {
         }
     }
 
+    /**
+     * This method takes care of adding the questions and answers to the GUI.
+     * Texts are Labels encapsulated in HBoxes, so they can be aligned to the left or right,
+     * depending on User or Bot.
+     */
     public void addMessageToChat(){
         String sentence = userInput.getText();
         HumanLabel humanLabel = new HumanLabel(sentence);
@@ -251,17 +249,13 @@ public class Handler implements Initializable {
                                                     * METHODS FOR SKILL EDITOR
      */
 
-    @FXML
-    TextArea fileTextArea; @FXML
-    Label editorMessage; @FXML
-    ProgressBar progressBar;
-    @FXML
-    Button resetButton; @FXML private Button saveBtn;
+    @FXML protected TextArea fileTextArea; @FXML protected Label editorMessage; @FXML protected ProgressBar progressBar;
+    @FXML protected Button resetButton; @FXML protected Button saveBtn;
 
-    public static FileTime lastModifiedTime;
-    public static File fileInEditor;
+    protected static FileTime lastModifiedTime;
+    protected static File fileInEditor;
 
-    public static FileEditor editor;
+    public static FileUploader uploader;
 
     /**
      * This method is called when the user presses the 'Open File' button
@@ -277,8 +271,8 @@ public class Handler implements Initializable {
         File fileToLoad = fileChooser.showOpenDialog(null);
         // Load chosen fileToCheck
         if(fileToLoad != null){
-            editor = new FileEditor(this);
-            editor.updateTextArea(fileToLoad);
+            uploader = new FileUploader(this);
+            uploader.updateTextArea(fileToLoad);
             //new FileEditor(this).updateTextArea(fileToLoad);
         }
         // Set last modified time else scheduleFileChecking() will not work
@@ -291,7 +285,7 @@ public class Handler implements Initializable {
      * This method is called when the user presses the 'Reset Changes' button
      */
     public void resetChanges(){
-        editor.updateTextArea(fileInEditor);
+        uploader.updateTextArea(fileInEditor);
         resetButton.setVisible(false);
     }
 

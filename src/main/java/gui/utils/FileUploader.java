@@ -13,14 +13,18 @@ import java.nio.file.attribute.FileTime;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Stream;
 
-public class FileEditor {
+public class FileUploader {
 
     private final Handler handler;
 
-    FileEditor(Handler handler) {
+    protected FileUploader(Handler handler) {
         this.handler = handler;
     }
 
+    /**
+     * Update the text area with the content of the File.
+     * @param file to upload
+     */
     protected void updateTextArea(File file) {
         handler.progressBar.setVisible(true);
         Task<String> loadFileTask = fileLoaderTask(file);
@@ -28,6 +32,11 @@ public class FileEditor {
         loadFileTask.run();
     }
 
+    /**
+     * Load the content of the File in a Task.
+     * @param file to upload
+     * @return Task<String> to load the content of the fileToCheck
+     */
     private Task<String> fileLoaderTask(File file){
         // Load content of the fileToCheck with a Task
         Task<String> loadFileTask = new Task<>() {
@@ -72,6 +81,9 @@ public class FileEditor {
         return loadFileTask;
     }
 
+    /**
+     * Check if the File has been modified.
+     */
     private void setFileChecking(File file){
         ScheduledService<Boolean> fileChecking = scheduledFileChecker(file);
         //System.out.println(fileChecking.getLastValue());
@@ -87,6 +99,11 @@ public class FileEditor {
         fileChecking.start();
     }
 
+    /**
+     * Creates a scheduled service to check if the File has been modified.
+     * @param file in editor
+     * @return ScheduledService<Boolean>
+     */
     private ScheduledService<Boolean> scheduledFileChecker(File file){
         ScheduledService<Boolean> scheduledService = new ScheduledService<>() {
             @Override
