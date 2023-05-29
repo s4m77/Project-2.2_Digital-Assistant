@@ -19,13 +19,14 @@ public class FacialRecognitionTesting {
     
 
     public static void main(String[] args) {
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        
         //test the facial recognitions effectiveness by adding different types of noise to the image
         //load preset images
-        Mat[] images = getImages();
+    
         //first test the images with no noise
         int correct=0;
         FacialRecognition fr=FacialRecognition.getInstance();
+        Mat[] images = getImages();
         for(int i=0;i<images.length;i++){
             
             if(fr.isFaceInImage(images[i])){
@@ -97,14 +98,22 @@ public class FacialRecognitionTesting {
     }
 
     public static Mat[] getImages(){
-        FacialRecognition fr=FacialRecognition.getInstance();
-        try{ 
-            return new Mat[]{fr.LoadImageFromCamera()};
+        //src\main\resources\Facedataset\Humans this path contains 6991 images of humans with names 1(number)
+        //open them all
+        Mat[] images = new Mat[100];
+        for(int i=0;i<100;i++){
+            String link="src\\main\\resources\\Facedataset\\Humans\\1 ("+(i+1)+").jpg";
+            Mat temp=Imgcodecs.imread(link);
+            if(temp.empty()){
+                //make it an empty image
+                temp=new Mat(100,100, CvType.CV_8UC3);
+                System.out.println("Error: Image not found on value "+i);        
+            }
+            //convert to grayscale
+            Imgproc.cvtColor(temp, temp, Imgproc.COLOR_BGR2GRAY);
+            images[i]=temp;
         }
-        catch(Exception e){
-            System.out.println("Error: "+e);
-            return null;
-        }
+        return images;
     }
     
 }
