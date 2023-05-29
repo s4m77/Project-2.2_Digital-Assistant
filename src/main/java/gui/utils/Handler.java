@@ -22,6 +22,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import nlp.SpellCheck;
 
 
 import java.io.*;
@@ -59,6 +60,7 @@ public class Handler implements Initializable {
 
         initFaceCBox(); // init face combobox
 
+        SpellCheck.setDistance(SpellCheck.Distance.EDIT); // init spellcheck
     }
 
     private void initFaceCBox(){
@@ -231,10 +233,11 @@ public class Handler implements Initializable {
      * @param sentence question or statement from the user
      * @return response from the Bot
      */
-    private String getBotResponse(String sentence) {
+    private String getBotResponse(String sentence) throws IOException {
         switch (currentType){
             case CFG -> {
-                return CFG.interpret(sentence);
+                String answer = CFG.interpret(sentence);
+                return answer.equals("I don't know how to answer that") ? CFG.interpret(SpellCheck.correctSentence(sentence)) : answer;
             }
             case TemplateSkills -> {
                 return TemplateSkills.interpret(sentence);
