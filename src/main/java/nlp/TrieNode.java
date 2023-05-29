@@ -14,7 +14,4 @@ public class TrieNode {
         count++;
     }
 
-    public TrieNode[] getChildren() {
-        return nodes;
-    }
 }

@@ -1,5 +1,7 @@
 package nlp;
 
+import nlp.distance.*;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -8,15 +10,33 @@ import java.util.*;
 public class SpellCheck {
 
     public enum Distance {
-        EDIT, DAM_LEV, HAMMING, JARO, QWERTY
+        EDIT, COSINE, HAMMING, JARO, QWERTY
     }
 
     private static final Trie trie = new Trie();
     private static final Map<String, Integer> dict = new HashMap<>();
+    public static Distance type = null;
+
 
     public static void main(String[] args) throws IOException {
-        String text = "I like to eats apple and banana";
+        String text = "eats";
+
+        SpellCheck.setDistance(Distance.EDIT);
         System.out.println(SpellCheck.correctSentence(text));
+    }
+
+    public static void setDistance(Distance type){
+        SpellCheck.type = type;
+    }
+
+    public static double getDistance(String str1, String str2){
+        return switch (type){
+            case EDIT -> MinEdit.calculate(str1, str2);
+            case HAMMING -> Hamming.calculate(str1, str2);
+            case JARO -> Jaro.calculate(str1, str2);
+            case QWERTY -> Qwerty.calculate(str1, str2);
+            case COSINE -> Cosine.calculate(str1, str2);
+        };
     }
 
     public static String correctSentence(String input) throws IOException {
@@ -55,13 +75,57 @@ public class SpellCheck {
     public static String bestMatch(String inputWord) {
         String s = inputWord.toLowerCase();
         String res;
-        TreeMap<Integer, TreeMap<Integer, TreeSet<String>>> map = new TreeMap<>();
+        TreeMap<Double, TreeMap<Double, TreeSet<String>>> map = new TreeMap<>();
         TrieNode node = trie.find(s);
         if(node == null) {
             for (String w: dict.keySet()) {
-                int dist = minEditDistance(w, s);
-                TreeMap<Integer, TreeSet<String>> similarWords = map.getOrDefault(dist, new TreeMap<>());
-                int freq = dict.get(w);
+
+                double dist = getDistance(w, s);
+                TreeMap<Double, TreeSet<String>> similarWords = map.getOrDefault(dist, new TreeMap<>());
+                dict.get(w);
+                double freq = switch (w) {
+                    case "deepSpace" -> 10; // Set the weight of 'deepSpace' to 10
+
+                    case "spaceBox" -> 10; // Set the weight of 'spaceBox' to 10
+
+                    case "wiki" -> 10; // Set the weight of 'wiki' to 10
+
+                    case "weather" -> 10; // Set the weight of 'weather' to 10
+
+                    case "which" -> 10; // Set the weight of 'which' to 10
+
+                    case "lectures" -> 10; // Set the weight of 'lectures' to 10
+
+                    case "are" -> 10; // Set the weight of 'are' to 10
+
+                    case "there" -> 10; // Set the weight of 'there' to 10
+
+                    case "what" -> 10; // Set the weight of 'what' to 10
+
+                    case "is" -> 10; // Set the weight of 'is' to 10
+
+                    case "sittard" -> 10; // Set the weight of 'sittard' to 10
+
+                    case "heerlen" -> 10; // Set the weight of 'heerlen' to 10
+
+                    case "maastricht" -> 10; // Set the weight of 'maastricht' to 10
+
+                    case "dialing" -> 10; // Set the weight of 'dialing' to 10
+
+                    case "monday" -> 10; // Set the weight of 'is' to 10
+
+                    case "tuesday" -> 10; // Set the weight of 'is' to 10
+
+                    case "wednesday" -> 10; // Set the weight of 'is' to 10
+
+                    case "thursday" -> 10; // Set the weight of 'is' to 10
+
+                    case "friday" -> 10; // Set the weight of 'is' to 10
+
+                    case "saturday" -> 10;
+                    default -> dict.get(w); // Set the weight of 'is' to 10
+
+                };
                 TreeSet<String> set = similarWords.getOrDefault(freq, new TreeSet<>());
                 set.add(w);
                 similarWords.put(freq, set);
@@ -72,28 +136,6 @@ public class SpellCheck {
             res = s;
         }
         return res;
-    }
-
-    public static int minEditDistance(String str1, String str2) {
-        int l = str1.length();
-        int m = str2.length();
-        int[][] editDist = new int[l+1][m+1];
-        for (int i = 0; i <= l; i++) {
-            for (int j = 0; j <= m; j++) {
-                if (i == 0)
-                    editDist[i][j] = j;
-                else if (j == 0)
-                    editDist[i][j] = i;
-                else if (str1.charAt(i-1) == str2.charAt(j-1))
-                    editDist[i][j] = editDist[i-1][j-1];
-                else if (i>1 && j>1  && str1.charAt(i-1) == str2.charAt(j-2)
-                        && str1.charAt(i-2) == str2.charAt(j-1))
-                    editDist[i][j] = 1+Math.min(Math.min(editDist[i-2][j-2], editDist[i-1][j]), Math.min(editDist[i][j-1], editDist[i-1][j-1]));
-                else
-                    editDist[i][j] = 1 + Math.min(editDist[i][j-1], Math.min(editDist[i-1][j], editDist[i-1][j-1]));
-            }
-        }
-        return editDist[l][m];
     }
 
 }

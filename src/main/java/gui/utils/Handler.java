@@ -9,33 +9,30 @@ import gui.utils.messages.HumanLabel;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.concurrent.ScheduledService;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.Duration;
+import nlp.SpellCheck;
 
 
 import java.io.*;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
-import java.util.concurrent.ExecutionException;
-import java.util.stream.Stream;
 
 /**
  * This class is the main controller for the GUI.
@@ -46,6 +43,7 @@ public class Handler implements Initializable {
 
     public static final String MAIN_TITLE = "Multi-Modal Digital Assistant";
 
+    private static final FacialRecognition fr = FacialRecognition.getInstance();
     private final Connection connection = Conversationdb.CreateServer();
 
     private Stage stage;
@@ -53,19 +51,34 @@ public class Handler implements Initializable {
     private Parent root;
 
     private static BotType currentType;
-    private static FacialRecognition fr = FacialRecognition.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        nu.pattern.OpenCV.loadLocally(); // init openCV
+
+        initBotCBox(); // init bot combobox
+
+        initFaceCBox(); // init face combobox
+
+        SpellCheck.setDistance(SpellCheck.Distance.EDIT); // init spellcheck
+    }
+
+    private void initFaceCBox(){
+        faceComboBox.getItems().addAll(faceModelList);
+        if (fr.currentModel != null)
+            faceComboBox.setValue(String.valueOf(fr.currentModel));
+        else
+            faceComboBox.setValue(faceModelList.get(0));
+        setCurrentModel();
+    }
+
+    private void initBotCBox() {
         botComboBox.getItems().addAll(typeList);
         if (currentType != null)
             botComboBox.setValue(String.valueOf(currentType));
         else
             botComboBox.setValue(typeList.get(0));
         setCurrentType();
-        userApp = new UserApp(this.connection);
-
-        nu.pattern.OpenCV.loadLocally();
     }
 
     private void goToPage(String page, ActionEvent ae){
@@ -87,13 +100,13 @@ public class Handler implements Initializable {
     @FXML public TextField userTextField; @FXML public PasswordField passwdField;
     @FXML public Button loginBtn; @FXML public Button newAccBtn;
 
-    private UserApp userApp;
+    private final UserApp userApp = new UserApp(this.connection);
 
     public void login(ActionEvent ae){
 
-        if (userApp.retrieveUser(this.userTextField.getText(), this.passwdField.getText())){
+        if (this.userApp.retrieveUser(this.userTextField.getText(), this.passwdField.getText())){
             // store the current user in the UserApp class
-            userApp.user = new UserApp.CurrentUser(this.userTextField.getText(), this.passwdField.getText());
+            this.userApp.storeUser(this.userTextField.getText(), this.passwdField.getText());
             goToMainMenu(ae);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -108,21 +121,22 @@ public class Handler implements Initializable {
     private void newAccount(){
         String user = this.userTextField.getText();
         String passwd = this.passwdField.getText();
-        userApp.addUser(user, passwd);
+        this.userApp.addUser(user, passwd);
     }
 
     /**
                                                     * METHODS FOR MAIN MENU
      */
     @FXML public Label usrWelcome;
-
     /*
      * This method is called when the user is directed to the main menu
      */
     public void goToMainMenu(ActionEvent ae){
         goToPage("/gui/scenes/menu-page.fxml", ae);
         usrWelcome = (Label) scene.lookup("#usrWelcome");
-        usrWelcome.setText("Welcome " + userApp.user.getUsername());
+        usrWelcome.setText("Welcome " + UserApp.userInfo[0]);
+        setCurrentType();
+        setCurrentModel();
     }
 
 
@@ -133,7 +147,7 @@ public class Handler implements Initializable {
     public void goToChatBot(ActionEvent ae){
         goToPage("/gui/scenes/chat-page.fxml", ae);
         setCurrentType();
-        
+        setCurrentModel();
     }
 
     /**
@@ -143,6 +157,7 @@ public class Handler implements Initializable {
     public void goToSkillEditor(ActionEvent ae){
         goToPage("/gui/scenes/skill-editor.fxml", ae);
         setCurrentType();
+        setCurrentModel();
     }
 
     /**
@@ -152,6 +167,7 @@ public class Handler implements Initializable {
     public void goToSettings(ActionEvent ae){
         goToPage("/gui/scenes/settings.fxml", ae);
         setCurrentType();
+        setCurrentModel();
     }
 
     /**
@@ -184,16 +200,31 @@ public class Handler implements Initializable {
         }
     }
 
+    /**
+     * This method takes care of adding the questions and answers to the GUI.
+     * Texts are Labels encapsulated in HBoxes, so they can be aligned to the left or right,
+     * depending on User or Bot.
+     */
     public void addMessageToChat(){
         String sentence = userInput.getText();
         HumanLabel humanLabel = new HumanLabel(sentence);
         String botString = getBotResponse(sentence);
-
         BotLabel botLabel = new BotLabel(botString);
-        chatBox.getChildren().add(humanLabel);
-        chatBox.getChildren().add(botLabel);
-        int currentUserId = Conversationdb.getCurrentUserId(connection, "Tom", "tom12345"); //todo: change to current user (see line 89)
-        Conversationdb.storeConversation(connection, sentence, botString, currentUserId);
+
+        HBox humanHBox = new HBox();
+        humanHBox.setAlignment(Pos.CENTER_RIGHT);
+        HBox.setHgrow(humanHBox, Priority.ALWAYS);
+        humanHBox.prefWidthProperty().bind(chatBox.widthProperty().add(20));
+        humanHBox.getChildren().addAll(humanLabel);
+
+        HBox botHBox = new HBox();
+        botHBox.setAlignment(Pos.CENTER_LEFT);
+        HBox.setHgrow(botHBox, Priority.ALWAYS);
+        botHBox.prefWidthProperty().bind(chatBox.widthProperty().subtract(20));
+        botHBox.getChildren().addAll(botLabel);
+        chatBox.getChildren().addAll(humanHBox, botHBox);
+
+        Conversationdb.storeConversation(connection, sentence, botString, Integer.parseInt(UserApp.userInfo[2]));
         userInput.clear();
     }
 
@@ -203,16 +234,23 @@ public class Handler implements Initializable {
      * @return response from the Bot
      */
     private String getBotResponse(String sentence) {
-        switch (currentType){
-            case CFG -> {
-                return CFG.interpret(sentence);
+
+        try {
+            switch (currentType){
+                case CFG -> {
+                    String answer = CFG.interpret(sentence);
+                    return answer.equals("I don't know how to answer that") ? CFG.interpret(SpellCheck.correctSentence(sentence)) : answer;
+                }
+                case TemplateSkills -> {
+                    return TemplateSkills.interpret(sentence);
+                }
+                default -> {
+                    return "Error: BotType not set";
+                }
             }
-            case TemplateSkills -> {
-                return TemplateSkills.interpret(sentence);
-            }
-            default -> {
-                return "Error: BotType not set";
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error: BotType not set";
         }
     }
 
@@ -220,11 +258,13 @@ public class Handler implements Initializable {
                                                     * METHODS FOR SKILL EDITOR
      */
 
-    @FXML private TextArea fileTextArea; @FXML private Label editorMessage; @FXML private ProgressBar progressBar;
-    @FXML private Button resetButton; @FXML private Button saveBtn;
+    @FXML protected TextArea fileTextArea; @FXML protected Label editorMessage; @FXML protected ProgressBar progressBar;
+    @FXML protected Button resetButton; @FXML protected Button saveBtn;
 
-    public static FileTime lastModifiedTime;
-    public static File fileInEditor;
+    protected static FileTime lastModifiedTime;
+    protected static File fileInEditor;
+
+    public static FileUploader uploader;
 
     /**
      * This method is called when the user presses the 'Open File' button
@@ -240,7 +280,9 @@ public class Handler implements Initializable {
         File fileToLoad = fileChooser.showOpenDialog(null);
         // Load chosen fileToCheck
         if(fileToLoad != null){
-            updateTextArea(fileToLoad);
+            uploader = new FileUploader(this);
+            uploader.updateTextArea(fileToLoad);
+            //new FileEditor(this).updateTextArea(fileToLoad);
         }
         // Set last modified time else scheduleFileChecking() will not work
         lastModifiedTime = FileTime.fromMillis(System.currentTimeMillis());
@@ -248,115 +290,11 @@ public class Handler implements Initializable {
         saveBtn.setDisable(false);
     }
 
-    /**
-     * This method updates the TextArea with the content of the selected fileToCheck
-     * @param fileToLoad selected fileToCheck
-     */
-    private void updateTextArea(File fileToLoad) {
-        progressBar.setVisible(true);
-        Task<String> loadFileTask = fileLoaderTask(fileToLoad);
-        progressBar.progressProperty().bind(loadFileTask.progressProperty());
-        loadFileTask.run();
-    }
-
-    /**
-     * This method loads the content of the selected fileToCheck into a Task
-     * @param fileToLoad selected fileToCheck
-     * @return Task with the content of the selected fileToCheck
-     */
-    private Task<String> fileLoaderTask(File fileToLoad){
-        // Load content of the fileToCheck with a Task
-        Task<String> loadFileTask = new Task<>() {
-            @Override
-            protected String call() throws Exception {
-                BufferedReader reader = new BufferedReader(new FileReader(fileToLoad));
-                // Calculate number of lines -> used for progress
-                long lineCount;
-                try (Stream<String> s = Files.lines(fileToLoad.toPath())) {
-                    lineCount = s.count();
-                }
-                // Load lines in memory
-                String line;
-                StringBuilder fc = new StringBuilder();
-                long linesLoaded = 0;
-                while((line = reader.readLine()) != null) {
-                    fc.append(line);
-                    fc.append("\n");
-                    // progress bar updated based on the number of lines loaded
-                    updateProgress(++linesLoaded, lineCount);
-                }
-                return fc.toString();
-            }
-        };
-        // If task is successful load content into text area and set status message
-        loadFileTask.setOnSucceeded(workerStateEvent -> {
-            try {
-                fileTextArea.setText(loadFileTask.get());
-                editorMessage.setText("File loaded: " + fileToLoad.getName());
-                fileInEditor = fileToLoad;
-            } catch (InterruptedException | ExecutionException e) {
-                fileTextArea.setText("Could not load fileToCheck from:\n " + fileToLoad.getAbsolutePath());
-            }
-            // Check changes in the fileToCheck
-            setFileChecking(fileInEditor);
-        });
-        //If task failed display error message
-        loadFileTask.setOnFailed(workerStateEvent -> {
-            fileTextArea.setText("Could not load fileToCheck from:\n " + fileToLoad.getAbsolutePath());
-            editorMessage.setText("Failed to load fileToCheck");
-        });
-        return loadFileTask;
-    }
-
-    /**
-     * This method sets a Scheduled Service to the loaded fileToCheck
-     * The service checks if the fileToCheck has been modified
-     * @param fileToCheck selected fileToCheck
-     */
-    private void setFileChecking(File fileToCheck){
-        ScheduledService<Boolean> fileChecking = scheduledFileChecker(fileToCheck);
-        //System.out.println(fileChecking.getLastValue());
-        fileChecking.setOnSucceeded(workerStateEvent -> {
-            if(fileChecking.getLastValue()==null) return;
-            if(fileChecking.getLastValue()){
-                // If changes are detected no need to continue checking
-                fileChecking.cancel();
-                // Show the button to reset the changes
-                resetButton.setVisible(true);
-            }
-        });
-        fileChecking.start();
-    }
-
-
-    /**
-     * This method creates a Scheduled Service to check if the fileToCheck has been modified
-     * @param FileToCheck selected fileToCheck
-     * @return Scheduled Service to check if the fileToCheck has been modified
-     */
-    private ScheduledService<Boolean> scheduledFileChecker(File FileToCheck){
-        ScheduledService<Boolean> scheduledService = new ScheduledService<>() {
-            @Override
-            protected Task<Boolean> createTask() {
-                return new Task<>() {
-                    @Override
-                    protected Boolean call() throws Exception {
-                        FileTime lastModifiedAsOfNow = Files.readAttributes(FileToCheck.toPath(), BasicFileAttributes.class).lastModifiedTime();
-                        return lastModifiedAsOfNow.compareTo(lastModifiedTime) < 0;
-                    }
-                };
-            }
-        };
-        // set the time step for each check
-        scheduledService.setPeriod(Duration.seconds(5));
-        return scheduledService;
-    }
-
     /*
      * This method is called when the user presses the 'Reset Changes' button
      */
     public void resetChanges(){
-        updateTextArea(fileInEditor);
+        uploader.updateTextArea(fileInEditor);
         resetButton.setVisible(false);
     }
 
@@ -388,12 +326,13 @@ public class Handler implements Initializable {
      */
 
     @FXML private ComboBox<String> botComboBox = new ComboBox<>();
-
+    @FXML private ComboBox<String> faceComboBox = new ComboBox<>();
     /**
      * Enum class for the different Bot types
      */
 
-    public static final ObservableList<String> typeList = FXCollections.observableArrayList(typeNames());
+    public static final ObservableList<String> typeList = FXCollections.observableArrayList(botTypeNames());
+    public static final ObservableList<String> faceModelList = FXCollections.observableArrayList(faceModelNames());
 
     public enum BotType{
         CFG,
@@ -405,10 +344,18 @@ public class Handler implements Initializable {
      * This is used to populate the ComboBox in the settings page
      * @return Array of Strings with the Bot Types
      */
-    private static String[] typeNames(){
+    private static String[] botTypeNames(){
         String[] s = new String[BotType.values().length];
         for (int i = 0; i < BotType.values().length; i++) {
             s[i] = BotType.values()[i].name();
+        }
+        return s;
+    }
+
+    private static String[] faceModelNames(){
+        String[] s = new String[FacialRecognition.FacialModel.values().length];
+        for (int i = 0; i < FacialRecognition.FacialModel.values().length; i++) {
+            s[i] = FacialRecognition.FacialModel.values()[i].name();
         }
         return s;
     }
@@ -423,5 +370,13 @@ public class Handler implements Initializable {
             default -> currentType = BotType.TemplateSkills;
         }
         //System.out.println("Current bot type: " + currentType);
+    }
+
+    private void setCurrentModel(){
+        switch (faceComboBox.getValue()) {
+            case "EYE" -> fr.setFacialModel(FacialRecognition.FacialModel.EYE);
+            case "FACE" ->fr.setFacialModel(FacialRecognition.FacialModel.FACE);
+            default -> fr.setFacialModel(FacialRecognition.FacialModel.FACE);
+        }
     }
 }

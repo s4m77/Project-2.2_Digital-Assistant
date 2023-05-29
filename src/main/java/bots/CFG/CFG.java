@@ -281,7 +281,7 @@ public class CFG {
                                     break;
                                 }
                             }
-                            else{
+                            else {
                                 String[] subSentenceParts=subSentence.split(" ");
                                 if(applyRule(child, rules.get(j), subSentenceParts,depth+1)){
                                     ruleFound = true;

@@ -1,18 +1,19 @@
 package gui.utils;
+import db.Conversationdb;
+
 import java.sql.*;
 
 public class UserApp {
 
     private Connection con;
 
-
-    public CurrentUser user;
+    public static String[] userInfo;
 
     public UserApp(Connection connection){
         con = connection;
     }
 
-    public boolean addUser(String username, String password) {
+    public void addUser(String username, String password) {
         try{
             String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
             PreparedStatement stm = con.prepareStatement(sql);
@@ -20,10 +21,8 @@ public class UserApp {
             stm.setString(2, password);
             stm.executeUpdate();
             stm.close();
-            return true;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            return false;
         }
     }
 
@@ -42,29 +41,11 @@ public class UserApp {
             System.out.println(e.getMessage());
             return false;
         }
+        
     }
 
-    public void close() {
-        try {
-            con.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    static class CurrentUser {
-        private final String username;
-        private final String password;
-        public CurrentUser(String username, String password) {
-            this.username = username;
-            this.password = password;
-        }
-        public String getUsername() {
-            return username;
-        }
-        public String getPassword() {
-            return password;
-        }
+    public void storeUser(String username, String password) {
+        userInfo = new String[]{username, password, String.valueOf(Conversationdb.getCurrentUserId(con, username, password))};
     }
 
 }

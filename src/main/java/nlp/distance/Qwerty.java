@@ -6,7 +6,7 @@ public class Qwerty {
 
         String s1 = "hello";
         String s2 = "helmo";
-        int qwertyDistance = Qwerty.calculate(s1, s2);
+        double qwertyDistance = Qwerty.calculate(s1, s2);
         System.out.println(qwertyDistance);
 
     }
@@ -41,7 +41,7 @@ public class Qwerty {
     }
 
     //  Calculate the QWERTY distance between two strings
-    public static int calculate(String str1, String str2) {
+    public static double calculate(String str1, String str2) {
         int len1 = str1.length();
         int len2 = str2.length();
         int[][] dis = new int[len1 + 1][len2 + 1];
