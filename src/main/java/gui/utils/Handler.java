@@ -233,18 +233,24 @@ public class Handler implements Initializable {
      * @param sentence question or statement from the user
      * @return response from the Bot
      */
-    private String getBotResponse(String sentence) throws IOException {
-        switch (currentType){
-            case CFG -> {
-                String answer = CFG.interpret(sentence);
-                return answer.equals("I don't know how to answer that") ? CFG.interpret(SpellCheck.correctSentence(sentence)) : answer;
+    private String getBotResponse(String sentence) {
+
+        try {
+            switch (currentType){
+                case CFG -> {
+                    String answer = CFG.interpret(sentence);
+                    return answer.equals("I don't know how to answer that") ? CFG.interpret(SpellCheck.correctSentence(sentence)) : answer;
+                }
+                case TemplateSkills -> {
+                    return TemplateSkills.interpret(sentence);
+                }
+                default -> {
+                    return "Error: BotType not set";
+                }
             }
-            case TemplateSkills -> {
-                return TemplateSkills.interpret(sentence);
-            }
-            default -> {
-                return "Error: BotType not set";
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error: BotType not set";
         }
     }
 
