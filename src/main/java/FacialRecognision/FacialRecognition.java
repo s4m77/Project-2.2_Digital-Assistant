@@ -5,6 +5,7 @@ import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.videoio.VideoCapture;
+import org.opencv.highgui.HighGui;
 
 
 public class FacialRecognition {
@@ -22,17 +23,36 @@ public class FacialRecognition {
         FacialRecognition fr=FacialRecognition.getInstance();
         fr.setFacialModel(FacialModel.FACE);
         Mat image;
-        try {
-            image = fr.LoadImageFromCamera();
-        } catch (InterruptedException e) {
-            System.out.println("Error: Camera not found!");
-            return;
-        }
-        if(fr.isFaceInImage(image)){
-            System.out.println("Face detected");
-        }
-        else{
-            System.out.println("No face detected");
+        fr.setFacialModel(FacialModel.EYE);
+        
+
+        //show face and put squares around the detected areas
+
+        while(true){
+            MatOfRect faceDetections = new MatOfRect();
+            try{
+                image=fr.LoadImageFromCamera();
+                //convert to grayscale
+                Imgproc.cvtColor(image, image, Imgproc.COLOR_BGR2GRAY);
+            } catch (InterruptedException e) {
+
+                System.out.println("Error: Camera not found!");
+                return;
+            }
+            fr.faceDetector.detectMultiScale(image, faceDetections);
+            if(faceDetections.toArray().length>0){
+                System.out.println("Face detected");
+            }
+            else{
+                System.out.println("No face detected");
+            }
+            for (Rect rect : faceDetections.toArray()) {
+                Imgproc.rectangle(image, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height),
+                        new Scalar(0, 255, 0));
+            }
+            HighGui.imshow("Face Detection", image);
+            HighGui.waitKey(1);
+
         }
      
         
