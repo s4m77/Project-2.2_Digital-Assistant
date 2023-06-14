@@ -11,11 +11,11 @@ Rule <MATHEXPRESSION&> <NUMBER> <OPERATOR> <MATHEXPRESSION> | <MATHEXPRESSION> <
 Rule <OPERATOR> / | + | - | ^ | *
 Rule <NUMBER> <SETNUMBER> <NUMBER>  | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0
 Rule <SETNUMBER> 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0
-Rule <TIME> 9 | 12
+Rule <TIME> 9 | 12 | @
 Rule <LOCATION> where is <ROOM> | how do <PRO> get to <ROOM> | where is <ROOM> located
 Rule <PRO> I | you | he | she
 Rule <DAY> monday | tuesday | wednesday | thursday | friday | saturday | sunday
-Rule <ROOM> deepSpace | spaceBox | @
+Rule <ROOM> deepspace | spacebox | @
 Rule <WIKIQUERY> @
 Rule <WEATHERQUERY> <CITYNAME>
 Rule <CITYNAME> <SETNAME> | <CITYNAME> <SETNAME>
@@ -23,7 +23,7 @@ Rule <SETNAME> @
 Action <SCHEDULE> @ <DAY> saturday : There are no lectures on Saturday
 Action <SCHEDULE> @ <DAY> monday <TIME> 9 : We start the week with math
 Action <SCHEDULE> @ <DAY> monday <TIME> 12 : On Monday noon we have Theoretical Computer Science
-Action <LOCATION> @ <ROOM> deepSpace : DeepSpace is the first room after the entrance
+Action <LOCATION> @ <ROOM> deepspace : DeepSpace is the first room after the entrance
 Action <LOCATION> @ : <ROOM> is in the first floor
 Action <MATHEQUAL> @ : test : Math
 Action <MATHQUESTION> @ : <ANSWER> : Math
