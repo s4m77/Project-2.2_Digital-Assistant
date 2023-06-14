@@ -32,6 +32,7 @@ public class FacialRecognitionTesting {
             if(fr.isFaceInImage(images[i])){
                 correct++;
             }
+            System.out.println("base: "+i);
         }
         double correctNormal=correct/images.length;
 
@@ -44,7 +45,9 @@ public class FacialRecognitionTesting {
                 if(fr.isFaceInImage(ImageProcessing.addSaltAndPepperNoise(images[j], i/100))){
                     correct++;
                 }
+
             }
+            System.out.println("salt and pepper: "+i);
             saltAndPepperNoise[i]=correct/images.length;
         }
 
@@ -57,6 +60,7 @@ public class FacialRecognitionTesting {
                     correct++;
                 }
             }
+            System.out.println("gaussian: "+i);
             gaussianNoise[i]=correct/images.length;
         }
 
@@ -69,6 +73,7 @@ public class FacialRecognitionTesting {
                     correct++;
                 }
             }
+            System.out.println("periodic: "+i);
             periodicNoise[i]=correct/images.length;
         }
 
