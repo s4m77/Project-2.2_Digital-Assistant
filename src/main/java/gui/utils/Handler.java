@@ -239,7 +239,12 @@ public class Handler implements Initializable {
             switch (currentType){
                 case CFG -> {
                     String answer = CFG.interpret(sentence);
-                    return answer.equals("I don't know how to answer that") ? CFG.interpret(SpellCheck.correctSentence(sentence)) : answer;
+                    if (answer.equals("I have no idea")) {
+                        String corr = SpellCheck.correctSentence(sentence);
+                        return CFG.interpret(corr);
+                    } else {
+                        return answer;
+                    }
                 }
                 case TemplateSkills -> {
                     return TemplateSkills.interpret(sentence);

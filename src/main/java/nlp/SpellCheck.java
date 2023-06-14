@@ -1,5 +1,6 @@
 package nlp;
 
+import bots.CFG.CFG;
 import nlp.distance.*;
 
 import java.io.IOException;
@@ -19,11 +20,13 @@ public class SpellCheck {
 
 
     public static void main(String[] args) throws IOException {
-        String text = "eats";
+        String text = "whhere is deepspace";
 
         SpellCheck.setDistance(Distance.EDIT);
-        System.out.println(SpellCheck.correctSentence(text));
+        String corr = SpellCheck.correctSentence(text);
+        System.out.println(CFG.interpret(corr));
     }
+
 
     public static void setDistance(Distance type){
         SpellCheck.type = type;
