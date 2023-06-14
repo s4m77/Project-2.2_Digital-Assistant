@@ -21,7 +21,7 @@ public class CFG {
     public static void main(String[] args) {
         //TODO Auto-generated method stub
         System.out.println("Asking a question");
-        String sentence = "wiki brussels";
+        String sentence = "where is deepSpace";
         System.out.println(interpret(sentence));
 
 
@@ -165,21 +165,70 @@ public class CFG {
                 if(action){
                     return i;
                 }
-                if(action){
-                    String actionString = "";
-                    String[] words = rules.get(i).split(dividerChar)[1].split(" ");
-                    for(int j=0;j<words.length;j++){
-                        if(containsKey(words[j])){
-                            actionString+=tree.findValue(words[j])+" ";
+            }
+        }
+        return -1;
+    }
+
+    public static int isAction(Node[] trees){
+        //does the same as isAction but for multiple trees 
+        //each tree represents the history of a conversation
+
+        for(int i=0;i<rules.size();i++){
+            
+            String[] split=rules.get(i).split(dividerChar);
+            //each sentence starts with Action and is stored in the first part of the rule
+            String[] rule = split[0].split(" ");
+            if(!rule[0].equals(actionPrefix)){
+                continue;
+            }
+            ArrayList<String> sentences = new ArrayList<String>();
+            int index=1;
+            String current="";
+            while(index<rule.length){
+                if(rule[index].equals(actionPrefix)){
+                    sentences.add(current);
+                    current="";
+                }
+                else{
+                    current+=rule[index]+" ";
+                }
+                index++;
+            }
+            current=current.substring(0, current.length()-1);
+            sentences.add(current);
+            //for every sentence in the rule check if the requirements are met
+            //in the corresponding tree
+            if(trees.length!=sentences.size()){
+                continue;
+            }
+            boolean action = true;
+            for(int j=0;j<sentences.size();j++){
+                String[] sentence = sentences.get(j).split(" ");
+                for(int k=0;k<sentence.length;k++){
+                    if(containsKey(sentence[k])){
+                        String attribute = sentence[k];
+                        String value = trees[j].findValue(attribute);
+                        if(value!=null&&(value.equals(sentence[k+1])||sentence[k+1].equals(freeString))){
+                            // attributes.add(attribute);
+                            // values.add(value);
                         }
                         else{
-                            actionString+=words[j]+" ";
+                            action=false;
+                            break;
                         }
                     }
-                    //System.out.println(actionString);
+                    if(!action){
+                        break;
+                    }
+                }
+                if(!action){
                     break;
                 }
             }
+            if(action){
+                return i;
+            } 
         }
         return -1;
     }
