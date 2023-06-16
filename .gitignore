@@ -44,3 +44,6 @@ bin/
 ### Mac OS ###
 .DS_Store
 src/main/resources/Facedataset/Humans/1 (1).jpeg
+
+### Python ENV ###
+mmda_venv/
