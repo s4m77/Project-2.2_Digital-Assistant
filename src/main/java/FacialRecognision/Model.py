@@ -111,6 +111,15 @@ class Model:
         certainity=self.getCertainity(image,label)
         return certainity>self.Certainity
 
+    def facesAndCertainity(self,image):
+        ##find all the faces in the image
+        predictions=self.predict(image)
+        faces=self.findFaces(image)
+        certainity=[]
+        for i in range(len(predictions)):
+            certainity.append(self.getCertainity(image, predictions[i]))
+        return faces,certainity
+
 
 
 ##open the camera and feed the image to the model
@@ -118,10 +127,9 @@ class Model:
 if __name__=="__main__":
     model=Model()
     cap=cv2.VideoCapture(0)
-    while True:
-        ##use highgui to show the image
-        ret, frame = cap.read()
-        ##show the image
-        cv2.imshow("frame", frame)
+
+    ret, frame = cap.read()
+    ##show the image
+    print(model.facesAndCertainity(frame))
     cap.release()
     cv2.destroyAllWindows()
