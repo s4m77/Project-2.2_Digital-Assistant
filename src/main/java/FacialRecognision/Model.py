@@ -45,6 +45,9 @@ class Model:
         gray = []
         for i in resized:
             gray.append(cv2.cvtColor(i, cv2.COLOR_BGR2GRAY))
+            ##set to numpy array
+        gray = np.array(gray)
+
 
         return gray
 
@@ -52,8 +55,19 @@ class Model:
         gray = self.process(image)
         predictions = []
         for i in gray:
-            predictions.append(self.model.predict(i.reshape(1, -1)))
+            value=self.model.predict(i.reshape(1, -1))
+            predictions.append(value[0])
         return predictions
+    
+
+    def predictAll(self,image):
+        gray= self.process(image)
+        predictions=[]
+        for i in gray:
+            value=self.model.predict(i.reshape(1,-1))
+            predictions.append(value)
+        return predictions
+
     
 
     def findFaces(self,image):
@@ -63,7 +77,7 @@ class Model:
 
     def extract_features(self,image):
         ##method assumes that the image is a grayscale image
-
+        
         # Apply LBP
         radius = 1
         num_points = 8 * radius
@@ -95,31 +109,10 @@ class Model:
         print("Model trained")
         return classifier
     
-    def getCertainity(self,image,label):
-        ##use cosine similarity to get the certainity of the prediction
-        gray=self.process(image)
-        feature_vector=self.extract_features(gray)
-        normalized=(feature_vector-np.mean(feature_vector))/np.std(feature_vector)
-        pca=PCA(n_components=100)
-        reduced=pca.fit_transform(normalized)
-        prediction=self.model.predict(reduced)
-        certainity=cosine_similarity(reduced,self.model.embedding_)
-        return certainity
+    
+    
 
 
-
-    def isFace(self,image,label):
-        certainity=self.getCertainity(image,label)
-        return certainity>self.Certainity
-
-    def facesAndCertainity(self,image):
-        ##find all the faces in the image
-        predictions=self.predict(image)
-        faces=self.findFaces(image)
-        certainity=[]
-        for i in range(len(predictions)):
-            certainity.append(self.getCertainity(image, predictions[i]))
-        return faces,certainity
 
 
 
@@ -130,17 +123,37 @@ if __name__=="__main__":
     
     cap=cv2.VideoCapture(0)
 
-    ret, frame = cap.read()
-    ##show the image
-    list1,list2=model.facesAndCertainity(frame)
-    ##convert both to just lists
-    list1=list(list1)
-    list2=list(list2)
-    ##list are 1 to 1 convert them to tuples 
-    tuples=[]
-    for i in range(len(list1)):
-        tuples.append([list1[i],list2[i]])
-    print(tuples)
+    while True:
+        ret, frame = cap.read()
+        predictions=model.predict(frame)
+        if len(predictions)>0:
+            break
+
+    print(predictions)
+    ##list are 1 to 1 convert them to tuples   
     cap.release()
     cv2.destroyAllWindows()
+
+# if __name__ == '__main__':
+#     model=Model()
+#     cap=cv2.VideoCapture(0)
+#     while True:
+#         ret, frame = cap.read()
+#         faces=model.findFaces(frame)
+#         print(faces)
+#         #put a rectangle around the face
+#         for (x,y,w,h) in faces:
+#             cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
+#         predictions=model.predict(frame)
+#         print(predictions)
+        
+#         cv2.imshow("frame",frame)
+#         ##repeat until the user presses q
+#         if cv2.waitKey(1) & 0xFF == ord('q'):
+#             break
+
+#     cap.release()
+#     cv2.destroyAllWindows()
+
+
     
