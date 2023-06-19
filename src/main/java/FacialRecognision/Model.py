@@ -17,17 +17,18 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 
 class Model:
-    MODEL_PATH = "model.joblib"
-    face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+    MODEL_PATH = "src\\main\\java\\FacialRecognision\\model.joblib"
+    face_cascade = cv2.CascadeClassifier('src\\main\\resources\\Facial models\\haarcascade_frontalface_default.xml')
     model=None
     picturePath="src\\main\\resources\\Faces"
     Certainity=0.6
 
     def __init__(self):
+        self.model = joblib.load(self.MODEL_PATH)
         if os.path.exists(self.MODEL_PATH):
             self.model = joblib.load(self.MODEL_PATH)
         else:
-            print("Model not found")
+            print("wtf")
             exit(1)
 
     def process(self, image):
@@ -126,6 +127,7 @@ class Model:
 ##if the model predicts a face, draw a rectangle around it
 if __name__=="__main__":
     model=Model()
+    print("model made")
     cap=cv2.VideoCapture(0)
 
     ret, frame = cap.read()
@@ -133,3 +135,4 @@ if __name__=="__main__":
     print(model.facesAndCertainity(frame))
     cap.release()
     cv2.destroyAllWindows()
+    print("done")
