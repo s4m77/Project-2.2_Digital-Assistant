@@ -28,7 +28,7 @@ class Model:
         if os.path.exists(self.MODEL_PATH):
             self.model = joblib.load(self.MODEL_PATH)
         else:
-            print("wtf")
+            print("facial recognition model not found")
             exit(1)
 
     def process(self, image):
@@ -127,12 +127,20 @@ class Model:
 ##if the model predicts a face, draw a rectangle around it
 if __name__=="__main__":
     model=Model()
-    print("model made")
+    
     cap=cv2.VideoCapture(0)
 
     ret, frame = cap.read()
     ##show the image
-    print(model.facesAndCertainity(frame))
+    list1,list2=model.facesAndCertainity(frame)
+    ##convert both to just lists
+    list1=list(list1)
+    list2=list(list2)
+    ##list are 1 to 1 convert them to tuples 
+    tuples=[]
+    for i in range(len(list1)):
+        tuples.append([list1[i],list2[i]])
+    print(tuples)
     cap.release()
     cv2.destroyAllWindows()
-    print("done")
+    
