@@ -1,14 +1,11 @@
-package FacialRecognision;
+package FacialRecognition;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 //openCV imports
 import org.opencv.core.*;
-import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
-import org.opencv.objdetect.CascadeClassifier;
-import org.opencv.highgui.HighGui;
 
 public class ImageProcessing {
     

@@ -1,4 +1,4 @@
-package FacialRecognision;
+package FacialRecognition;
 
 //openCV imports
 import org.opencv.core.*;

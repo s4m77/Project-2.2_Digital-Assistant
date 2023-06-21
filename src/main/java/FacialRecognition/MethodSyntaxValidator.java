@@ -1,4 +1,4 @@
-package FacialRecognision;
+package FacialRecognition;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 

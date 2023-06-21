@@ -1,6 +1,6 @@
 package gui.utils;
 
-import FacialRecognision.FacialRecognition;
+import FacialRecognition.FacialRecognition;
 import bots.CFG.CFG;
 import bots.TemplateSkills.TemplateSkills;
 import db.Conversationdb;
@@ -24,7 +24,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import nlp.SpellCheck;
 
-
 import java.io.*;
 import java.net.URL;
 import java.nio.file.attribute.FileTime;
@@ -46,9 +45,7 @@ public class Handler implements Initializable {
     private static final FacialRecognition fr = FacialRecognition.getInstance();
     private final Connection connection = Conversationdb.CreateServer();
 
-    private Stage stage;
     private Scene scene;
-    private Parent root;
 
     private static BotType currentType;
 
@@ -83,8 +80,8 @@ public class Handler implements Initializable {
 
     private void goToPage(String page, ActionEvent ae){
         try{
-            root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource(page)));
-            stage = (Stage) ((Node)ae.getSource()).getScene().getWindow();
+            Parent root = javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource(page)));
+            Stage stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
@@ -103,18 +100,30 @@ public class Handler implements Initializable {
     private final UserApp userApp = new UserApp(this.connection);
 
     public void login(ActionEvent ae){
+        String username = this.userTextField.getText();
+        if (this.userApp.retrieveUser(username, this.passwdField.getText())){
 
-        if (this.userApp.retrieveUser(this.userTextField.getText(), this.passwdField.getText())){
-            // store the current user in the UserApp class
-            this.userApp.storeUser(this.userTextField.getText(), this.passwdField.getText());
-            goToMainMenu(ae);
+            //face recognition: use username to compare with output of model
+            if (PyCaller.findUser().equals(username)) {
+                // store the current user in the UserApp class
+                this.userApp.storeUser(username, this.passwdField.getText());
+                goToMainMenu(ae);
+            }
+            else {
+                alertLogin("Face was not recognised");
+            }
+
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Login Failed");
-            alert.setContentText("Username or Password incorrect");
-            alert.showAndWait();
+            alertLogin("Username or Password incorrect");
         }
+    }
+
+    public void alertLogin(String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Login Failed");
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     @FXML

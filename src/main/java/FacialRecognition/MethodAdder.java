@@ -1,4 +1,4 @@
-package FacialRecognision;
+package FacialRecognition;
 
 import java.io.File;
 
