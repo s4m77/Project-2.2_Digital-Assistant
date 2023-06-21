@@ -15,14 +15,26 @@ public class PyCaller {
     static final String ENV_DIR = System.getProperty("user.dir") + "/mmda_venv";
 
     static final String COMMAND = "mmda_venv/bin/python ";
-    static final String SCRIPT = System.getProperty("user.dir")+"/src/main/java/gui/utils/Test.py ";
-    static final String METHOD = "test";
+    static final String MODEL_SCRIPT = System.getProperty("user.dir")+"/src/main/java/gui/utils/Test.py ";
 
 
     public static void main(String[] args) throws IOException {
 
-        String cmd = "mmda_venv/bin/python src/main/java/FacialRecognision/Model.py";
+//        String cmd = COMMAND + SCRIPT + METHOD;
+//        System.out.println(executeCommand(cmd));;
+        String cmd = "mmda_venv/bin/python src/main/java/gui/utils/Test.py test \"hello\" \"world\"";
+        cmd = "mmda_venv/bin/python src/main/java/FacialRecognision/Model.py";
         System.out.println(executeCommand(cmd));
+
+        String out = "['Carlos_Moya', 'Barbara_De', ...]";
+        // out will be of format ['Carlos_Moya', 'Barbara_De', ...]
+        // need to get the name of the first person, e.g. Carlos_Moya
+        String[] names = out.split(",");
+        if (names.length > 0) {
+            String name = names[0];
+            name = name.substring(2, name.length() - 1);
+            System.out.println(name);
+        }
 
     }
 
@@ -52,5 +64,20 @@ public class PyCaller {
         return null;
     }
 
+    public static String findUser() {
+        // mmda_venv/bin/python src/main/java/FacialRecognition/Model.py
+        String out = executeCommand(COMMAND + MODEL_SCRIPT);
+        // out will be of format ['Carlos_Moya', 'Barbara_De', ...]
+        // need to get the name of the first person, e.g. Carlos_Moya
+        if (out != null) {
+            String[] names = out.split(",");
+            if (names.length > 0) {
+                String name = names[0];
+                name = name.substring(2, name.length() - 1);
+                return name;
+            }
+        }
+        return "";
+    }
 
 }
