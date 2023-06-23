@@ -17,7 +17,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 
 class Model:
-    MODEL_PATH = "src/main/java/FacialRecognision/model.joblib"
+    MODEL_PATH = "src/main/java/FacialRecognition/model.joblib"
     face_cascade = cv2.CascadeClassifier('src/main/resources/Facial models/haarcascade_eye_tree_eyeglasses.xml')
     model=None
     picturePath="src\\main\\resources\\Faces"

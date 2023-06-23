@@ -10,7 +10,8 @@ import java.net.URLEncoder;
 import org.json.JSONObject;
 
 public class PredictAction {
-    public static String PredictAction(String userInput) {
+
+    public static String predictAction(String userInput) {
         String label = "";
         String score = "";
         try {
@@ -18,7 +19,7 @@ public class PredictAction {
             String encodedUserInput = URLEncoder.encode(userInput, "UTF-8");
             String url = "http://localhost:8000/predict?text=%22" + encodedUserInput + "%22";
 
-            // Url object --> initated
+            // Url object --> initiated
             URL apiUrl = new URL(url);
 
             // open the connection
@@ -63,6 +64,6 @@ public class PredictAction {
     }
 
     public static void main(String[] args) {
-        String result = PredictAction("is 7 + 3 equal to 10");
+        String result = predictAction("is 7 + 3 equal to 10");
     }
 }

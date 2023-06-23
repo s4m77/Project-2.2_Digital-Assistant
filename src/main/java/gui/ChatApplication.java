@@ -8,12 +8,17 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 
+import static gui.utils.PyCaller.startServer;
+
 public class ChatApplication extends Application {
 
     private final URL loginScene = getClass().getResource("/gui/scenes/login.fxml");
 
     @Override
     public void start(Stage stage) throws Exception {
+
+        startServer();
+
         FXMLLoader fxmlLoader = new FXMLLoader(loginScene);
 
         Scene scene = new Scene(fxmlLoader.load());

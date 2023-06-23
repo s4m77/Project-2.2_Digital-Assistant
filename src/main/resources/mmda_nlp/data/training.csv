@@ -1,0 +1,423 @@
+sentence,label
+weather Australia,5
+Are there any lectures on Saturday,1
+Where is DeepSpace located,2
+Which lectures are there on Monday at 9,1
+wiki where is the Taj Mahal located,3
+(2+3)/5+3/2,4
+which lectures are there on monday at 9,1
+which lectures are there on tuesday at 12,1
+which lectures are there at 12 on wednesday,1
+which lectures are there at 12 on thursday,1
+which lectures are there at 10 on friday,1
+how do I get to deepspace,2
+how do I get to the lecture hall,2
+how do she get to c.0016,2
+where is spacebox,2
+where is the project room,2
+where is c.0020 located,2
+weather Istanbul,5
+weather San Francisco,5
+wiki Maastricht,3
+wiki Alan Turing,3
+wiki natural language processing,3
+what is 9*12,4
+what is 1/0,4
+is 5+2 equal to 7,6
+is 4*23 equal to 82,6
+what is ((3+2)*4)/6,4
+what is 4^2,4
+what is the weather in London,5
+wiki who is Queen Elizabeth II,3
+how's the weather in Brussels,5
+at 16 on Sunday which lectures are there,1
+on monday at 9 which lectures are there,1
+where is the library located,2
+wiki what is the netherlands,3
+what's the weather like in Amsterdam,5
+can you find on wiki who is King Willem-Alexander,3
+is (5-3)*2 equal to 2,6
+what is ((3-9)^3)*2,4
+how do you get to deepspace,2
+what is the weather like in Singapore,5
+which lectures are there on friday at 10,1
+which lectures are there on thirsday at 11,1
+which lectures are there at 13 on wednesday,1
+which lectures are there at 12 on tuesday,1
+which lectures are there at 10 on Monday,1
+how do I get to spacedeep,2
+how do I get to the hall,2
+how do she get to c.1015,2
+where is box,2
+where is the project room,2
+where is b.1013 located,2
+weather Tokyo,5
+weather Mexico,5
+wiki Turing Test,3
+wiki Alex Friedman,3
+wiki theoritical computer science ,3
+what is 9*12,4
+what is 1/0,4
+is 15+2 equal to 17,6
+is 4*100 equal to 400,6
+what is ((3+2)*4)/6,4
+what is 4^2,4
+what is the weather in London,5
+wiki who is Queen Elizabeth II,3
+how's the weather in Brussels,5
+at 16 on Sunday which lectures are there,1
+on monday at 9 which lectures are there,1
+where is the library located,2
+wiki what is the netherlands,3
+what's the weather like in Amsterdam,5
+wiki who is King Willem-Alexander,3
+is (9-8)*3 equal to 1,6
+what is ((3-12)^3)*2,4
+how do you get to deepspace,2
+what is the weather like in Philippines,5
+which lectures are there on friday at 15,1
+which lectures are there on thirsday at 13,1
+which lectures are there at 9 on wednesday,1
+which lectures are there at 10 on tuesday,1
+which lectures are there at 15 on Monday,1
+how do I get to deepspa,2
+how do I get to the hall lecture,2
+how do she get to c.2011,2
+where is box,2
+where is the room project,2
+where is b.3001 located,2
+weather Beijing,5
+weather Mexico City,5
+wiki what is software testing,3
+wiki computer graphics algorithms,3
+wiki Linear programming ,3
+what is 3*32,4
+what is 8/0,4
+is 15+2 equal to 17,6
+is 83*40 equal to 3320,6
+what is ((3+2)*4)/6,4
+what is 13^2,4
+what is the weather in Edingburgh,5
+wiki who is the current president of Canada,3
+how's the weather in Antwerp,5
+at 13 on Sunday which lectures are there,1
+on thursday at 9 which lectures are there,1
+where is the Randwyck library located,2
+wiki what is the netherlands,3
+what's the weather like in Njimegen,5
+wiki what are the current emerging trends in cybersecurity,3
+is (27)**3 equal to 19683,6
+what is ((3-12)^3)*2,4
+how do you get to deepspace,2
+what is the weather like in Laos,5
+is 5+2 equal to 7,6
+is 4*23 equal to 82,6
+what is ((3+2)*4)/6,4
+is 63*54 equal to 3402,6
+is 4*20 equal to 80,6
+what is ((5+19)*4)/6,4
+how do you get to place,2
+what is the weather like in Namibia,5
+is 572+3654 equal to 4226,6
+is 7**3 equal to 343,6
+what is ((29-12)^3)*2,4
+is 47*29 equal to 1363,6
+What are the available lectures on Tuesday at 14,1
+Can you provide information on the location of the physics lab,2
+Please tell me where I can find room B.1020,2
+What is the weather forecast for Sydney, Australia,5
+Do you have any details on the lecture schedule for Wednesday at 11,1
+wiki Tell me about the history of the Eiffel Tower,3
+What is the value of (4*5)/(2+1),4
+Which lectures are scheduled for Monday at 13,1
+Could you provide information on the location of the computer science department,2
+Where can I find the seminar room,2
+What is the weather like in New York City,5
+wiki Provide me with information on the topic "Machine Learning",3
+Is (10-3)*5 equal to 35,6
+What is the result of ((6-2)^2)3,4
+How can I reach the auditorium,2
+Tell me the current weather conditions in Tokyo,5
+Which lectures are scheduled for Friday at 11,1
+What are the lecture timings for Thursday at 12,1
+Please provide details on the lectures at 10 on Wednesday,1
+Where can I find the cafeteria,2
+Where is the meeting room located,2
+Where is room C.2005 situated,2
+What is the weather like in Paris,5
+wiki What is the population of Germany,3
+What are the current weather conditions in Rome,5
+Which lectures are scheduled at 15 on Sunday,1
+On Monday at 9, which classes are available,1
+Where is the university library situated,2
+wiki Tell me about the geography of Canada,3
+What is the weather forecast for Barcelona,5
+wiki Provide information on King Henry VIII,3
+Is (5+3)/2 equal to 4,6
+What is the result of ((8-4)^3)2,4
+How do I get to the gymnasium,2
+What is the weather like in Sydney, Australia,5
+Which lectures are scheduled for Tuesday at 16,1
+What lectures are available on Friday at 15,1
+Which lectures are scheduled at 9 on Wednesday,1
+Tell me the location of room C.1010,2
+Where can I find the project room,2
+Where is room D.3005 situated,2
+What is the weather forecast for Beijing, China,5
+What is the current population of Mexico City,3
+wiki Tell me about the history of artificial intelligence,3
+wiki What are the fundamentals of computer networking,3
+wiki Provide information on the concept of Big O notation,3
+What is the result of 79,4
+What is the value of 10/0,4
+Is 20+5 equal to 25,6
+Is 310 equal to 30,6
+What is the result of ((4+3)*2)/6,4
+What is 5^2,4
+What is the weather like in Tokyo, Japan,5
+wiki Who is the current Prime Minister of the United Kingdom,3
+How's the weather in Berlin, Germany,5
+Which lectures are scheduled at 13 on Sunday,1
+On Thursday at 9, which classes are available,1
+Where is the library located on campus,2
+wiki Tell me about the history of the Netherlands,3
+What's the weather like in Amsterdam, Netherlands,5
+wiki Who is the current King of Spain,3
+Is (6-4)3 equal to 6,6
+What is the result of ((5-8)^3)2,4
+How can I reach DeepSpace Center,2
+What is the weather like in Manila, Philippines,5
+Which lectures are available on Friday at 15,1
+Which lectures are scheduled at 13 on Thursday,1
+What are the lecture timings for Wednesday at 9,1
+Which lectures are scheduled at 10 on Tuesday,1
+Which lectures are scheduled at 15 on Monday,1
+How do I get to DeepSpa,2
+How can I reach the lecture hall,2
+How does she get to room C.2011,2
+Where can I find the box,2
+Where is the project room located,2
+Where is room B.3005 situated,2
+What is the weather forecast for Shanghai, China,5
+wiki What is the current population of Seoul, South Korea,3
+wiki Tell me about software testing methodologies,3
+wiki What are the principles of computer graphics,3
+wiki Provide information on the field of artificial intelligence,3
+What is the result of 632,4
+What is the value of 10/0,4
+Is 17+2 equal to 19,6
+Is 8340 equal to 3320,6
+What is the result of ((3+2)4)/6,4
+What is 13^2,4
+What is the weather like in Edinburgh, Scotland,5
+wiki Who is the current President of Canada,3
+How's the weather in Brussels, Belgium,5
+Which lectures are scheduled at 13 on Sunday,1
+On Thursday at 9, which classes are available,1
+Where is the Randwyck library situated,2
+wiki Tell me about the geography of the Netherlands,3
+What's the weather like in Nijmegen, Netherlands,5
+wiki Provide information on current emerging trends in cybersecurity,3
+Is (5-3)^2 equal to 4,6
+What is the result of ((3-12)^3)2,4
+How do you get to DeepSpace Center,2
+What is the weather like in Vientiane, Laos,5
+Is 5+2 equal to 7,6
+Is 423 equal to 82,6
+What is the result of ((3+2)4)/6,4
+Is 6354 equal to 3402,6
+Is 420 equal to 80,6
+What is the result of ((5+19)*4)/6,4
+How do you get to the desired place,2
+What is the weather like in Windhoek, Namibia,5
+Is 572+3654 equal to 4226,6
+Is 7^3 equal to 343,6
+What is the result of ((29-12)^3)2,4
+Is 4729 equal to 1363,6
+wiki What are the benefits of exercise,3
+wiki Who is Marie Curie,3
+wiki What is the theory of relativity,3
+wiki How does photosynthesis work,3
+wiki Explain the concept of supply and demand,3
+wiki What are the symptoms of COVID-19,3
+wiki Who is Nelson Mandela,3
+wiki What is the history of Ancient Rome,3
+wiki How does the internet work,3
+wiki What are the principles of democracy,3
+wiki Explain the process of fermentation,3
+wiki Who is Albert Einstein,3
+wiki What are the different types of renewable energy,3
+wiki What is the meaning of life,3
+wiki Explain the concept of quantum mechanics,3
+wiki Who is Leonardo da Vinci,3
+wiki What is the history of the Industrial Revolution,3
+wiki How do vaccines work,3
+wiki Who is Isaac Newton,3
+wiki What are the effects of climate change,3
+What is the weather like today,5
+Are there any available appointments,1
+Where can I find a good restaurant,2
+Which movies are playing tonight,1
+wiki Tell me about the history of Ancient Rome,3
+Calculate the value of (4+5)/2,4
+Which books are recommended for beginners,1
+Tell me about the latest fashion trends,1
+Find the nearest gas station,2
+Who is the current President of the United States,3
+What are the symptoms of the common cold,3
+Is 7+3 equal to 10,6
+Evaluate the expression (2*3+4)/5,4
+How long does it take to get to the airport,2
+Where can I buy concert tickets,2
+What time does the train arrive,1
+Provide information about the nearest hotels,2
+Locate the nearest pharmacy,2
+What is the weather forecast for tomorrow,5
+wiki Explain the concept of artificial intelligence,3
+What is the best way to learn a new language,1
+Find the nearest parking lot,2
+Recommend a good book to read,1
+What are the ingredients for a classic margherita pizza,4
+Is it going to rain today,5
+What is the capital of France,3
+Who won the Nobel Prize in Physics in 2020,3
+What are the top tourist attractions in London,1
+Tell me about the history of photography,3
+Calculate the area of a triangle with base 5 and height 8,4
+What are the opening hours of the museum,1
+Find the nearest ATM,2
+What is the current exchange rate between US dollars and Euros,4
+Is 10 divided by 2 equal to 5,6
+What is the square root of 16,4
+What is the temperature in New York City,5
+wiki Who is the Prime Minister of Canada,3
+What is the best time to visit the Grand Canyon,1
+Provide information about the nearest shopping mall,2
+Locate the nearest post office,2
+What is the best way to lose weight,1
+Find the nearest coffee shop,2
+What is the weather like in Sydney,5
+Who is the author of the book "To Kill a Mockingbird",3
+What is the population of Tokyo,3
+What are the benefits of regular exercise,1
+Tell me about the history of the Internet,3
+Calculate the value of pi to the nearest hundredth,4
+What are the opening hours of the library,1
+Find the nearest gym,2
+What is the current stock price of Apple,4
+Is 20 multiplied by 3 equal to 60,6
+What is the cube root of 27,4
+What is the weather like in Paris,5
+wiki Who is the CEO of Microsoft,3
+What is the best time to visit the Eiffel Tower,1
+Provide information about the nearest bus stop,2
+Locate the nearest hospital,2
+What is the best way to improve memory,1
+Find the nearest bookstore,2
+wiki Tell me about the history of Ancient Egypt,3
+wiki What are the side effects of the COVID-19 vaccine,3
+wiki What is the capital of Brazil,3
+wiki Who invented the telephone,3
+wiki Explain the process of cellular respiration,3
+wiki What are the different programming languages,3
+wiki What is the population of New York City,3
+wiki Describe the structure of DNA,3
+wiki Who painted the Mona Lisa,3
+wiki What are the major causes of air pollution,3
+wiki What is the meaning of the term "sustainability",3
+wiki Who discovered penicillin,3
+wiki Explain the concept of artificial intelligence,3
+wiki What are the major components of the human nervous system,3
+wiki Who wrote the play Romeo and Juliet,3
+wiki What are the benefits of regular exercise,3
+wiki Explain the process of photosynthesis,3
+wiki What are the stages of mitosis,3
+wiki Who is the current Prime Minister of the United Kingdom,3
+wiki Describe the process of digestion,3
+wiki What are the major branches of science,3
+wiki Who composed the symphony "Ode to Joy",3
+wiki Explain the concept of supply and demand,3
+wiki What are the major types of renewable energy sources,3
+wiki Who is the author of the novel "Pride and Prejudice",3
+wiki Describe the process of evolution,3
+wiki What are the major causes of climate change,3
+wiki Who discovered the theory of general relativity,3
+wiki wiki Explain the concept of quantum mechanics,3
+wiki What are the major features of the human respiratory system,3
+wiki Who is the artist behind the painting "Starry Night",3
+wiki What are the benefits of meditation,3
+wiki Describe the process of plate tectonics,3
+wiki Who is the current President of the United States,3
+wiki Explain the concept of genetic inheritance,3
+wiki What are the major types of renewable energy sources,3
+wiki Who is the author of the play "Hamlet",3
+wiki Describe the process of cellular division,3
+wiki What are the major factors influencing climate change,3
+wiki Who discovered the theory of relativity,3
+wiki Explain the concept of artificial neural networks,3
+What is the average rainfall in Seattle,5
+Are there any available hotel rooms,1
+Where can I find a good sushi restaurant,2
+Which concerts are happening this weekend,1
+wiki Explain the theory of relativity,3
+Evaluate the expression (6/2)*(4-1),4
+Which programming languages are in high demand,1
+Tell me about the latest technology trends,1
+Find the nearest park,2
+wiki Who is the current Prime Minister of the United Kingdom,3
+wiki What are the symptoms of COVID-19,3
+Is 8-3 equal to 5,6
+Evaluate the expression (5^2)/3,4
+How long does it take to drive to the beach,2
+Where can I buy concert tickets online,2
+What time does the bus depart,1
+Provide information about local tourist attractions,2
+Locate the nearest movie theater,2
+What is the weather forecast for next week,5
+wiki Explain the concept of machine learning,3
+What is the best method to study for exams,1
+Find the nearest parking garage,2
+Recommend a good movie to watch,1
+What are the ingredients for a classic chocolate chip cookie,4
+Is it going to snow tomorrow,5
+What is the capital of Japan,3
+wiki Who won the Nobel Prize in Literature in 2021,3
+What are the must-visit places in New York City,1
+wiki Tell me about the history of the Renaissance,3
+Calculate the area of a circle with radius 10,4
+What are the operating hours of the amusement park,1
+Find the nearest gas station with a car wash,2
+What is the current price of gold,4
+Is 15 divided by 3 equal to 5,6
+What is the square root of 25,4
+What is the temperature in Los Angeles,5
+wiki Who is the President of France,3
+What is the best time to visit the Great Wall of China,1
+Provide information about the nearest shopping center,2
+Locate the nearest train station,2
+What is the best way to reduce stress,1
+Find the nearest pharmacy with 24-hour service,2
+What is the weather like in Dubai,5
+wiki Who is the author of the book "1984",3
+What is the population of New Delhi,3
+What are the benefits of a balanced diet,1
+wiki Tell me about the history of the Industrial Revolution,3
+Calculate the value of e raised to the power of 2,4
+What are the opening hours of the zoo,1
+Find the nearest post office with passport services,2
+What is the current exchange rate between US dollars and British pounds,4
+Is 12 multiplied by 4 equal to 48,6
+What is the cube root of 64,4
+What is the weather like in Miami,5
+wiki Who is the founder of Amazon,3
+What is the best time to visit the Colosseum,1
+Provide information about the nearest public transportation options,2
+Locate the nearest emergency room,2
+What is the best way to improve physical fitness,1
+Find the nearest art gallery,2
+
+
+
+
+
+

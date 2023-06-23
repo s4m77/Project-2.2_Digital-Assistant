@@ -11,10 +11,16 @@ import java.util.List;
 import java.util.Random;
 
 public class Tester {
+
     public static void main(String[] args) throws IOException {
         Random r = new Random(42);
+        //testSpellChecker(SpellCheck.Distance.QWERTY);
+
+    }
+
+    private static void testSpellChecker(SpellCheck.Distance type, Random r) throws IOException {
         List<String> words = getWords(1000);
-        SpellCheck.setDistance(SpellCheck.Distance.QWERTY);
+        SpellCheck.setDistance(type);
         CSVWriter writer = new CSVWriter(new java.io.FileWriter("src/main/resources/experiments/QWERTY_output.csv"));
         System.out.println(words.size());
         // for each operation

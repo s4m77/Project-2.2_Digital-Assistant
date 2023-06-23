@@ -4,3 +4,7 @@ scikit-learn
 scikit-image
 joblib
 matplotlib
+spacy
+fastapi
+uvicorn
+openpyxl
