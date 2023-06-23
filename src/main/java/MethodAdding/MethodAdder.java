@@ -1,5 +1,9 @@
+<<<<<<< HEAD:src/main/java/MethodAdding/MethodAdder.java
 package MethodAdding;
 
+=======
+package FacialRecognition;
+>>>>>>> 5bc96043d1081f6e217473fbe205d478966a2f0a:src/main/java/FacialRecognition/MethodAdder.java
 
 import java.io.File;
 

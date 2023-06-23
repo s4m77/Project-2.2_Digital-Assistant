@@ -5,57 +5,44 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.SQLOutput;
 
 /**
  * This class is used to call Python scripts from Java.
  */
 public class PyCaller {
 
-    static final boolean WINDOWS = System.getProperty("os.name").toLowerCase().startsWith("windows");
     static final String ENV_DIR = System.getProperty("user.dir") + "/mmda_venv";
-    static final String REQ_DIR = System.getProperty("user.dir") + "/src/main/resources/py/requirements.txt";
-    static final boolean SETUP = !Files.exists(Paths.get(System.getProperty("user.dir") + "/mmda_venv"));
 
     static final String COMMAND = "mmda_venv/bin/python ";
-    static final String SCRIPT = System.getProperty("user.dir")+"/src/main/java/gui/utils/Test.py ";
-    static final String METHOD = "test";
+    static final String MODEL_SCRIPT = System.getProperty("user.dir")+"/src/main/java/gui/utils/Test.py ";
 
 
     public static void main(String[] args) throws IOException {
 
-        setPyEnv();
-        String cmd = COMMAND + SCRIPT + METHOD;
-        System.out.println(executeCommand(cmd));;
+//        String cmd = COMMAND + SCRIPT + METHOD;
+//        System.out.println(executeCommand(cmd));;
+        String cmd = "mmda_venv/bin/python src/main/java/gui/utils/Test.py test \"hello\" \"world\"";
+        cmd = "mmda_venv/bin/python src/main/java/FacialRecognision/Model.py";
+        System.out.println(executeCommand(cmd));
 
-    }
+        String out = "['Carlos_Moya', 'Barbara_De', ...]";
+        // out will be of format ['Carlos_Moya', 'Barbara_De', ...]
+        // need to get the name of the first person, e.g. Carlos_Moya
+        String[] names = out.split(",");
+        if (names.length > 0) {
+            String name = names[0];
+            name = name.substring(2, name.length() - 1);
+            System.out.println(name);
+        }
 
-    private static void setPyEnv(){
-        // Create the venv
-        String createCommand = "python -m venv " + ENV_DIR;
-        executeCommand(createCommand);
-        System.out.println("Virtual environment created successfully.");
-
-        // Activate
-        String activateCommand = getActivateCommand();;
-        activateCommand = "source " + ENV_DIR + "/bin/activate";
-        executeCommand(activateCommand);
-
-        // Install requirements
-        String installCommand = "pip install -r " + REQ_DIR;
-        executeCommand(installCommand);
-        System.out.println("Virtual environment activated successfully.");
-    }
-
-    private static String getActivateCommand() {
-        return WINDOWS ? "cmd /c" + ENV_DIR + "mmda_venv/Scripts/activate.bat" : //not sure for windows
-                "source " + System.getProperty("user.dir")+ "/mmda_venv/bin/activate";
     }
 
     private static String executeCommand(String command){
         try{
             ProcessBuilder processBuilder = new ProcessBuilder(command.split(" "));
             processBuilder.environment().put("VIRTUAL_ENV", ENV_DIR);
-            processBuilder.redirectErrorStream(true);
+            processBuilder.redirectErrorStream(false); // set true for debugging (will print python errors)
             Process process = processBuilder.start();
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
@@ -77,5 +64,20 @@ public class PyCaller {
         return null;
     }
 
+    public static String findUser() {
+        // mmda_venv/bin/python src/main/java/FacialRecognition/Model.py
+        String out = executeCommand(COMMAND + MODEL_SCRIPT);
+        // out will be of format ['Carlos_Moya', 'Barbara_De', ...]
+        // need to get the name of the first person, e.g. Carlos_Moya
+        if (out != null) {
+            String[] names = out.split(",");
+            if (names.length > 0) {
+                String name = names[0];
+                name = name.substring(2, name.length() - 1);
+                return name;
+            }
+        }
+        return "";
+    }
 
 }

@@ -1,4 +1,6 @@
 opencv-python
 numpy
-sklearn
+scikit-learn
+scikit-image
 joblib
+matplotlib

@@ -1,4 +1,8 @@
+<<<<<<< HEAD:src/main/java/MethodAdding/MethodSyntaxValidator.java
 package MethodAdding;
+=======
+package FacialRecognition;
+>>>>>>> 5bc96043d1081f6e217473fbe205d478966a2f0a:src/main/java/FacialRecognition/MethodSyntaxValidator.java
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
