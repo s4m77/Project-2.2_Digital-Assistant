@@ -1,15 +1,15 @@
 
 ## *Windows*
 ### Create environment
-```commandline
+```shell
 python -m venv mmda_venv
 ```
 ### Activate environment
-```commandline
+```shell
 mmda_venv\Scripts\activate.bat
 ```
 ### Install requirements
-```commandline
+```shell
 python -m pip install -r  src/main/resources/py/requirements.txt
 ```
 

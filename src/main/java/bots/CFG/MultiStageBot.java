@@ -25,26 +25,6 @@ public class MultiStageBot {
         return action!=-1 ? CFG.executeAction(tree, action) : "I don't know how to answer that";
     }
 
-    public static String getResponse(String input, String expected){
-        input=CFG.cleanUpInput(input);
-        Node tree= new Node("top",input);
-        //expected contains a string of the expected rule
-        String[] sentenceParts=expected.split(" ");
-        //find the index of the first word of the expected rule
-        String rule=CFG.getSentenceFromKey(expected);
-        if(rule==null){
-            return "I don't know how to answer that";
-        }
-        CFG.applyRule(tree, rule, sentenceParts, maxHistory);
-
-        int action= CFG.isAction(tree);
-        return action!=-1 ? CFG.executeAction(tree, action) : "I don't know how to answer that";
-    }
-
-
-
-
-
     public static void ClearHistory(){
         History.clear();
     }

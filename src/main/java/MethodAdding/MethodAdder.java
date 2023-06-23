@@ -1,14 +1,9 @@
-<<<<<<< HEAD:src/main/java/MethodAdding/MethodAdder.java
 package MethodAdding;
-
-=======
-package FacialRecognition;
->>>>>>> 5bc96043d1081f6e217473fbe205d478966a2f0a:src/main/java/FacialRecognition/MethodAdder.java
 
 import java.io.File;
 
 public class MethodAdder {
-    
+
     public static void addMethod(String method, String classPath){
 
         //string contains a java method we want to add to the class
@@ -61,10 +56,10 @@ public class MethodAdder {
         }catch(Exception e){
             System.out.println(e);
         }
-    
+
 
     }
-    
+
 
     public static void main(String[] args) {
         String temp= "public ";

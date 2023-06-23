@@ -1,0 +1,1247 @@
+Operation: REMOVE Sentence: Are there any lectures on Saturday Count: 11
+Operation: REMOVE Sentence: Where is DeepSpace located Count: 4
+Operation: REMOVE Sentence: Which lectures are there on Monday at 9 Count: 13
+Operation: REMOVE Sentence: wiki where is the Taj Mahal located Count: 12
+Operation: REMOVE Sentence: (2+3)/5+3/2 Count: 4
+Operation: REMOVE Sentence: which lectures are there on monday at 9 Count: 7
+Operation: REMOVE Sentence: which lectures are there on tuesday at 12 Count: 16
+Operation: REMOVE Sentence: which lectures are there at 12 on wednesday Count: 15
+Operation: REMOVE Sentence: which lectures are there at 12 on thursday Count: 11
+Operation: REMOVE Sentence: which lectures are there at 10 on friday Count: 7
+Operation: REMOVE Sentence: how do I get to deepspace Count: 7
+Operation: REMOVE Sentence: how do I get to the lecture hall Count: 14
+Operation: REMOVE Sentence: how do she get to c.0016 Count: 5
+Operation: REMOVE Sentence: where is spacebox Count: 1
+Operation: REMOVE Sentence: where is the project room Count: 8
+Operation: REMOVE Sentence: where is c.0020 located Count: 1
+Operation: REMOVE Sentence: weather Istanbul Count: 3
+Operation: REMOVE Sentence: weather San Francisco Count: 8
+Operation: REMOVE Sentence: wiki Maastricht Count: 3
+Operation: REMOVE Sentence: wiki Alan Turing Count: 5
+Operation: REMOVE Sentence: wiki natural language processing Count: 10
+Operation: REMOVE Sentence: what is 9*12 Count: 2
+Operation: REMOVE Sentence: what is 1/0 Count: 5
+Operation: REMOVE Sentence: is 5+2 equal to 7 Count: 2
+Operation: REMOVE Sentence: is 4*23 equal to 82 Count: 2
+Operation: REMOVE Sentence: what is ((3+2)*4)/6 Count: 5
+Operation: REMOVE Sentence: what is 4^2 Count: 1
+Operation: REMOVE Sentence: what is the weather in London Count: 2
+Operation: REMOVE Sentence: wiki who is Queen Elizabeth II Count: 2
+Operation: REMOVE Sentence: how's the weather in Brussels Count: 3
+Operation: REMOVE Sentence: at 16 on Sunday which lectures are there Count: 17
+Operation: REMOVE Sentence: on monday at 9 which lectures are there Count: 12
+Operation: REMOVE Sentence: where is the library located Count: 11
+Operation: REMOVE Sentence: wiki what is the netherlands Count: 4
+Operation: REMOVE Sentence: what's the weather like in Amsterdam Count: 7
+Operation: REMOVE Sentence: can you find on wiki who is King Willem-Alexander Count: 11
+Operation: REMOVE Sentence: is (5-3)*2 equal to 2 Count: 2
+Operation: REMOVE Sentence: what is ((3-9)^3)*2 Count: 2
+Operation: REMOVE Sentence: how do you get to deepspace Count: 6
+Operation: REMOVE Sentence: what is the weather like in Singapore Count: 8
+Operation: REMOVE Sentence: which lectures are there on friday at 10 Count: 18
+Operation: REMOVE Sentence: which lectures are there on thirsday at 11 Count: 18
+Operation: REMOVE Sentence: which lectures are there at 13 on wednesday Count: 10
+Operation: REMOVE Sentence: which lectures are there at 12 on tuesday Count: 8
+Operation: REMOVE Sentence: which lectures are there at 10 on Monday Count: 8
+Operation: REMOVE Sentence: how do I get to spacedeep Count: 8
+Operation: REMOVE Sentence: how do I get to the hall Count: 8
+Operation: REMOVE Sentence: how do she get to c.1015 Count: 7
+Operation: REMOVE Sentence: where is box Count: 2
+Operation: REMOVE Sentence: where is the project room Count: 2
+Operation: REMOVE Sentence: where is b.1013 located Count: 2
+Operation: REMOVE Sentence: weather Tokyo Count: 1
+Operation: REMOVE Sentence: weather Mexico Count: 2
+Operation: REMOVE Sentence: wiki Turing Test Count: 8
+Operation: REMOVE Sentence: wiki Alex Friedman Count: 11
+Operation: REMOVE Sentence: wiki theoritical computer science  Count: 1
+Operation: REMOVE Sentence: what is 9*12 Count: 8
+Operation: REMOVE Sentence: what is 1/0 Count: 4
+Operation: REMOVE Sentence: is 15+2 equal to 17 Count: 2
+Operation: REMOVE Sentence: is 4*100 equal to 400 Count: 1
+Operation: REMOVE Sentence: what is ((3+2)*4)/6 Count: 5
+Operation: REMOVE Sentence: what is 4^2 Count: 3
+Operation: REMOVE Sentence: what is the weather in London Count: 2
+Operation: REMOVE Sentence: wiki who is Queen Elizabeth II Count: 12
+Operation: REMOVE Sentence: how's the weather in Brussels Count: 7
+Operation: REMOVE Sentence: at 16 on Sunday which lectures are there Count: 21
+Operation: REMOVE Sentence: on monday at 9 which lectures are there Count: 23
+Operation: REMOVE Sentence: where is the library located Count: 1
+Operation: REMOVE Sentence: wiki what is the netherlands Count: 7
+Operation: REMOVE Sentence: what's the weather like in Amsterdam Count: 9
+Operation: REMOVE Sentence: wiki who is King Willem-Alexander Count: 6
+Operation: REMOVE Sentence: is (9-8)*3 equal to 1 Count: 1
+Operation: REMOVE Sentence: what is ((3-12)^3)*2 Count: 15
+Operation: REMOVE Sentence: how do you get to deepspace Count: 5
+Operation: REMOVE Sentence: what is the weather like in Philippines Count: 18
+Operation: REMOVE Sentence: which lectures are there on friday at 15 Count: 7
+Operation: REMOVE Sentence: which lectures are there on thirsday at 13 Count: 24
+Operation: REMOVE Sentence: which lectures are there at 9 on wednesday Count: 11
+Operation: REMOVE Sentence: which lectures are there at 10 on tuesday Count: 12
+Operation: REMOVE Sentence: which lectures are there at 15 on Monday Count: 12
+Operation: REMOVE Sentence: how do I get to deepspa Count: 4
+Operation: REMOVE Sentence: how do I get to the hall lecture Count: 5
+Operation: REMOVE Sentence: how do she get to c.2011 Count: 7
+Operation: REMOVE Sentence: where is box Count: 1
+Operation: REMOVE Sentence: where is the room project Count: 9
+Operation: REMOVE Sentence: where is b.3001 located Count: 5
+Operation: REMOVE Sentence: weather Beijing Count: 2
+Operation: REMOVE Sentence: weather Mexico City Count: 3
+Operation: REMOVE Sentence: wiki what is software testing Count: 6
+Operation: REMOVE Sentence: wiki computer graphics algorithms Count: 6
+Operation: REMOVE Sentence: wiki Linear programming  Count: 7
+Operation: REMOVE Sentence: what is 3*32 Count: 5
+Operation: REMOVE Sentence: what is 8/0 Count: 2
+Operation: REMOVE Sentence: is 15+2 equal to 17 Count: 3
+Operation: REMOVE Sentence: is 83*40 equal to 3320 Count: 3
+Operation: REMOVE Sentence: what is ((3+2)*4)/6 Count: 9
+Operation: REMOVE Sentence: what is 13^2 Count: 1
+Operation: REMOVE Sentence: what is the weather in Edingburgh Count: 2
+Operation: REMOVE Sentence: wiki who is the current president of Canada Count: 11
+Operation: REMOVE Sentence: how's the weather in Antwerp Count: 2
+Operation: REMOVE Sentence: at 13 on Sunday which lectures are there Count: 16
+Operation: REMOVE Sentence: on thursday at 9 which lectures are there Count: 25
+Operation: REMOVE Sentence: where is the Randwyck library located Count: 12
+Operation: REMOVE Sentence: wiki what is the netherlands Count: 5
+Operation: REMOVE Sentence: what's the weather like in Njimegen Count: 8
+Operation: REMOVE Sentence: wiki what are the current emerging trends in cybersecurity Count: 24
+Operation: REMOVE Sentence: is (27)**3 equal to 19683 Count: 3
+Operation: REMOVE Sentence: what is ((3-12)^3)*2 Count: 4
+Operation: REMOVE Sentence: how do you get to deepspace Count: 10
+Operation: REMOVE Sentence: what is the weather like in Laos Count: 2
+Operation: REMOVE Sentence: is 5+2 equal to 7 Count: 3
+Operation: REMOVE Sentence: is 4*23 equal to 82 Count: 4
+Operation: REMOVE Sentence: what is ((3+2)*4)/6 Count: 4
+Operation: REMOVE Sentence: is 63*54 equal to 3402 Count: 4
+Operation: REMOVE Sentence: is 4*20 equal to 80 Count: 2
+Operation: REMOVE Sentence: what is ((5+19)*4)/6 Count: 15
+Operation: REMOVE Sentence: how do you get to place Count: 6
+Operation: REMOVE Sentence: what is the weather like in Namibia Count: 2
+Operation: REMOVE Sentence: is 572+3654 equal to 4226 Count: 10
+Operation: REMOVE Sentence: is 7**3 equal to 343 Count: 6
+Operation: REMOVE Sentence: what is ((29-12)^3)*2 Count: 10
+Operation: REMOVE Sentence: is 47*29 equal to 1363 Count: 5
+Operation: REMOVE Sentence: What are the available lectures on Tuesday at 14 Count: 9
+Operation: REMOVE Sentence: Can you provide information on the location of the physics lab Count: 22
+Operation: REMOVE Sentence: Please tell me where I can find room B.1020 Count: 8
+Operation: REMOVE Sentence: What is the weather forecast for Sydney Count: 3
+Operation: REMOVE Sentence: Do you have any details on the lecture schedule for Wednesday at 11 Count: 22
+Operation: REMOVE Sentence: wiki Tell me about the history of the Eiffel Tower Count: 22
+Operation: REMOVE Sentence: What is the value of (4*5)/(2+1) Count: 15
+Operation: REMOVE Sentence: Which lectures are scheduled for Monday at 13 Count: 10
+Operation: REMOVE Sentence: Could you provide information on the location of the computer science department Count: 14
+Operation: REMOVE Sentence: Where can I find the seminar room Count: 8
+Operation: REMOVE Sentence: What is the weather like in New York City Count: 3
+Operation: REMOVE Sentence: wiki Provide me with information on the topic "Machine Learning" Count: 19
+Operation: REMOVE Sentence: Is (10-3)*5 equal to 35 Count: 5
+Operation: REMOVE Sentence: What is the result of ((6-2)^2)3 Count: 5
+Operation: REMOVE Sentence: How can I reach the auditorium Count: 16
+Operation: REMOVE Sentence: Tell me the current weather conditions in Tokyo Count: 10
+Operation: REMOVE Sentence: Which lectures are scheduled for Friday at 11 Count: 12
+Operation: REMOVE Sentence: What are the lecture timings for Thursday at 12 Count: 19
+Operation: REMOVE Sentence: Please provide details on the lectures at 10 on Wednesday Count: 8
+Operation: REMOVE Sentence: Where can I find the cafeteria Count: 5
+Operation: REMOVE Sentence: Where is the meeting room located Count: 6
+Operation: REMOVE Sentence: Where is room C.2005 situated Count: 9
+Operation: REMOVE Sentence: What is the weather like in Paris Count: 6
+Operation: REMOVE Sentence: wiki What is the population of Germany Count: 13
+Operation: REMOVE Sentence: What are the current weather conditions in Rome Count: 7
+Operation: REMOVE Sentence: Which lectures are scheduled at 15 on Sunday Count: 10
+Operation: REMOVE Sentence: On Monday at 9 Count: 7
+Operation: REMOVE Sentence: Where is the university library situated Count: 1
+Operation: REMOVE Sentence: wiki Tell me about the geography of Canada Count: 11
+Operation: REMOVE Sentence: What is the weather forecast for Barcelona Count: 6
+Operation: REMOVE Sentence: wiki Provide information on King Henry VIII Count: 2
+Operation: REMOVE Sentence: Is (5+3)/2 equal to 4 Count: 6
+Operation: REMOVE Sentence: What is the result of ((8-4)^3)2 Count: 9
+Operation: REMOVE Sentence: How do I get to the gymnasium Count: 8
+Operation: REMOVE Sentence: What is the weather like in Sydney Count: 6
+Operation: REMOVE Sentence: Which lectures are scheduled for Tuesday at 16 Count: 23
+Operation: REMOVE Sentence: What lectures are available on Friday at 15 Count: 14
+Operation: REMOVE Sentence: Which lectures are scheduled at 9 on Wednesday Count: 8
+Operation: REMOVE Sentence: Tell me the location of room C.1010 Count: 6
+Operation: REMOVE Sentence: Where can I find the project room Count: 5
+Operation: REMOVE Sentence: Where is room D.3005 situated Count: 20
+Operation: REMOVE Sentence: What is the weather forecast for Beijing Count: 6
+Operation: REMOVE Sentence: What is the current population of Mexico City Count: 3
+Operation: REMOVE Sentence: wiki Tell me about the history of artificial intelligence Count: 13
+Operation: REMOVE Sentence: wiki What are the fundamentals of computer networking Count: 3
+Operation: REMOVE Sentence: wiki Provide information on the concept of Big O notation Count: 25
+Operation: REMOVE Sentence: What is the result of 79 Count: 4
+Operation: REMOVE Sentence: What is the value of 10/0 Count: 4
+Operation: REMOVE Sentence: Is 20+5 equal to 25 Count: 7
+Operation: REMOVE Sentence: Is 310 equal to 30 Count: 4
+Operation: REMOVE Sentence: What is the result of ((4+3)*2)/6 Count: 10
+Operation: REMOVE Sentence: What is 5^2 Count: 6
+Operation: REMOVE Sentence: What is the weather like in Tokyo Count: 6
+Operation: REMOVE Sentence: wiki Who is the current Prime Minister of the United Kingdom Count: 16
+Operation: REMOVE Sentence: How's the weather in Berlin Count: 2
+Operation: REMOVE Sentence: Which lectures are scheduled at 13 on Sunday Count: 18
+Operation: REMOVE Sentence: On Thursday at 9 Count: 1
+Operation: REMOVE Sentence: Where is the library located on campus Count: 15
+Operation: REMOVE Sentence: wiki Tell me about the history of the Netherlands Count: 28
+Operation: REMOVE Sentence: What's the weather like in Amsterdam Count: 11
+Operation: REMOVE Sentence: wiki Who is the current King of Spain Count: 1
+Operation: REMOVE Sentence: Is (6-4)3 equal to 6 Count: 1
+Operation: REMOVE Sentence: What is the result of ((5-8)^3)2 Count: 6
+Operation: REMOVE Sentence: How can I reach DeepSpace Center Count: 13
+Operation: REMOVE Sentence: What is the weather like in Manila Count: 13
+Operation: REMOVE Sentence: Which lectures are available on Friday at 15 Count: 15
+Operation: REMOVE Sentence: Which lectures are scheduled at 13 on Thursday Count: 23
+Operation: REMOVE Sentence: What are the lecture timings for Wednesday at 9 Count: 11
+Operation: REMOVE Sentence: Which lectures are scheduled at 10 on Tuesday Count: 21
+Operation: REMOVE Sentence: Which lectures are scheduled at 15 on Monday Count: 18
+Operation: REMOVE Sentence: How do I get to DeepSpa Count: 6
+Operation: REMOVE Sentence: How can I reach the lecture hall Count: 16
+Operation: REMOVE Sentence: How does she get to room C.2011 Count: 17
+Operation: REMOVE Sentence: Where can I find the box Count: 5
+Operation: REMOVE Sentence: Where is the project room located Count: 19
+Operation: REMOVE Sentence: Where is room B.3005 situated Count: 8
+Operation: REMOVE Sentence: What is the weather forecast for Shanghai Count: 8
+Operation: REMOVE Sentence: wiki What is the current population of Seoul Count: 7
+Operation: REMOVE Sentence: wiki Tell me about software testing methodologies Count: 9
+Operation: REMOVE Sentence: wiki What are the principles of computer graphics Count: 16
+Operation: REMOVE Sentence: wiki Provide information on the field of artificial intelligence Count: 17
+Operation: REMOVE Sentence: What is the result of 632 Count: 6
+Operation: REMOVE Sentence: What is the value of 10/0 Count: 7
+Operation: REMOVE Sentence: Is 17+2 equal to 19 Count: 5
+Operation: REMOVE Sentence: Is 8340 equal to 3320 Count: 6
+Operation: REMOVE Sentence: What is the result of ((3+2)4)/6 Count: 7
+Operation: REMOVE Sentence: What is 13^2 Count: 3
+Operation: REMOVE Sentence: What is the weather like in Edinburgh Count: 5
+Operation: REMOVE Sentence: wiki Who is the current President of Canada Count: 19
+Operation: REMOVE Sentence: How's the weather in Brussels Count: 1
+Operation: REMOVE Sentence: Which lectures are scheduled at 13 on Sunday Count: 7
+Operation: REMOVE Sentence: On Thursday at 9 Count: 1
+Operation: REMOVE Sentence: Where is the Randwyck library situated Count: 4
+Operation: REMOVE Sentence: wiki Tell me about the geography of the Netherlands Count: 10
+Operation: REMOVE Sentence: What's the weather like in Nijmegen Count: 1
+Operation: REMOVE Sentence: wiki Provide information on current emerging trends in cybersecurity Count: 22
+Operation: REMOVE Sentence: Is (5-3)^2 equal to 4 Count: 7
+Operation: REMOVE Sentence: What is the result of ((3-12)^3)2 Count: 7
+Operation: REMOVE Sentence: How do you get to DeepSpace Center Count: 16
+Operation: REMOVE Sentence: What is the weather like in Vientiane Count: 4
+Operation: REMOVE Sentence: Is 5+2 equal to 7 Count: 4
+Operation: REMOVE Sentence: Is 423 equal to 82 Count: 4
+Operation: REMOVE Sentence: What is the result of ((3+2)4)/6 Count: 4
+Operation: REMOVE Sentence: Is 6354 equal to 3402 Count: 6
+Operation: REMOVE Sentence: Is 420 equal to 80 Count: 4
+Operation: REMOVE Sentence: What is the result of ((5+19)*4)/6 Count: 10
+Operation: REMOVE Sentence: How do you get to the desired place Count: 10
+Operation: REMOVE Sentence: What is the weather like in Windhoek Count: 12
+Operation: REMOVE Sentence: Is 572+3654 equal to 4226 Count: 6
+Operation: REMOVE Sentence: Is 7^3 equal to 343 Count: 8
+Operation: REMOVE Sentence: What is the result of ((29-12)^3)2 Count: 16
+Operation: REMOVE Sentence: Is 4729 equal to 1363 Count: 5
+Operation: REMOVE Sentence: wiki What are the benefits of exercise Count: 6
+Operation: REMOVE Sentence: wiki Who is Marie Curie Count: 3
+Operation: REMOVE Sentence: wiki What is the theory of relativity Count: 7
+Operation: REMOVE Sentence: wiki How does photosynthesis work Count: 6
+Operation: REMOVE Sentence: wiki Explain the concept of supply and demand Count: 14
+Operation: REMOVE Sentence: wiki What are the symptoms of COVID-19 Count: 21
+Operation: REMOVE Sentence: wiki Who is Nelson Mandela Count: 5
+Operation: REMOVE Sentence: wiki What is the history of Ancient Rome Count: 10
+Operation: REMOVE Sentence: wiki How does the internet work Count: 6
+Operation: REMOVE Sentence: wiki What are the principles of democracy Count: 17
+Operation: REMOVE Sentence: wiki Explain the process of fermentation Count: 6
+Operation: REMOVE Sentence: wiki Who is Albert Einstein Count: 9
+Operation: REMOVE Sentence: wiki What are the different types of renewable energy Count: 6
+Operation: REMOVE Sentence: wiki What is the meaning of life Count: 15
+Operation: REMOVE Sentence: wiki Explain the concept of quantum mechanics Count: 15
+Operation: REMOVE Sentence: wiki Who is Leonardo da Vinci Count: 8
+Operation: REMOVE Sentence: wiki What is the history of the Industrial Revolution Count: 10
+Operation: REMOVE Sentence: wiki How do vaccines work Count: 6
+Operation: REMOVE Sentence: wiki Who is Isaac Newton Count: 7
+Operation: REMOVE Sentence: wiki What are the effects of climate change Count: 16
+Operation: REMOVE Sentence: What is the weather like today Count: 9
+Operation: REMOVE Sentence: Are there any available appointments Count: 23
+Operation: REMOVE Sentence: Where can I find a good restaurant Count: 5
+Operation: REMOVE Sentence: Which movies are playing tonight Count: 21
+Operation: REMOVE Sentence: wiki Tell me about the history of Ancient Rome Count: 27
+Operation: REMOVE Sentence: Calculate the value of (4+5)/2 Count: 7
+Operation: REMOVE Sentence: Which books are recommended for beginners Count: 7
+Operation: REMOVE Sentence: Tell me about the latest fashion trends Count: 9
+Operation: REMOVE Sentence: Find the nearest gas station Count: 9
+Operation: REMOVE Sentence: Who is the current President of the United States Count: 17
+Operation: REMOVE Sentence: What are the symptoms of the common cold Count: 9
+Operation: REMOVE Sentence: Is 7+3 equal to 10 Count: 5
+Operation: REMOVE Sentence: Evaluate the expression (2*3+4)/5 Count: 4
+Operation: REMOVE Sentence: How long does it take to get to the airport Count: 10
+Operation: REMOVE Sentence: Where can I buy concert tickets Count: 5
+Operation: REMOVE Sentence: What time does the train arrive Count: 8
+Operation: REMOVE Sentence: Provide information about the nearest hotels Count: 8
+Operation: REMOVE Sentence: Locate the nearest pharmacy Count: 11
+Operation: REMOVE Sentence: What is the weather forecast for tomorrow Count: 2
+Operation: REMOVE Sentence: wiki Explain the concept of artificial intelligence Count: 9
+Operation: REMOVE Sentence: What is the best way to learn a new language Count: 1
+Operation: REMOVE Sentence: Find the nearest parking lot Count: 9
+Operation: REMOVE Sentence: Recommend a good book to read Count: 3
+Operation: REMOVE Sentence: What are the ingredients for a classic margherita pizza Count: 1
+Operation: REMOVE Sentence: Is it going to rain today Count: 4
+Operation: REMOVE Sentence: What is the capital of France Count: 2
+Operation: REMOVE Sentence: Who won the Nobel Prize in Physics in 2020 Count: 3
+Operation: REMOVE Sentence: What are the top tourist attractions in London Count: 5
+Operation: REMOVE Sentence: Tell me about the history of photography Count: 14
+Operation: REMOVE Sentence: Calculate the area of a triangle with base 5 and height 8 Count: 5
+Operation: REMOVE Sentence: What are the opening hours of the museum Count: 13
+Operation: REMOVE Sentence: Find the nearest ATM Count: 5
+Operation: REMOVE Sentence: What is the current exchange rate between US dollars and Euros Count: 22
+Operation: REMOVE Sentence: Is 10 divided by 2 equal to 5 Count: 7
+Operation: REMOVE Sentence: What is the square root of 16 Count: 1
+Operation: REMOVE Sentence: What is the temperature in New York City Count: 1
+Operation: REMOVE Sentence: wiki Who is the Prime Minister of Canada Count: 7
+Operation: REMOVE Sentence: What is the best time to visit the Grand Canyon Count: 8
+Operation: REMOVE Sentence: Provide information about the nearest shopping mall Count: 18
+Operation: REMOVE Sentence: Locate the nearest post office Count: 5
+Operation: REMOVE Sentence: What is the best way to lose weight Count: 2
+Operation: REMOVE Sentence: Find the nearest coffee shop Count: 10
+Operation: REMOVE Sentence: What is the weather like in Sydney Count: 7
+Operation: REMOVE Sentence: Who is the author of the book "To Kill a Mockingbird" Count: 21
+Operation: REMOVE Sentence: What is the population of Tokyo Count: 2
+Operation: REMOVE Sentence: What are the benefits of regular exercise Count: 20
+Operation: REMOVE Sentence: Tell me about the history of the Internet Count: 4
+Operation: REMOVE Sentence: Calculate the value of pi to the nearest hundredth Count: 6
+Operation: REMOVE Sentence: What are the opening hours of the library Count: 19
+Operation: REMOVE Sentence: Find the nearest gym Count: 5
+Operation: REMOVE Sentence: What is the current stock price of Apple Count: 1
+Operation: REMOVE Sentence: Is 20 multiplied by 3 equal to 60 Count: 9
+Operation: REMOVE Sentence: What is the cube root of 27 Count: 9
+Operation: REMOVE Sentence: What is the weather like in Paris Count: 4
+Operation: REMOVE Sentence: wiki Who is the CEO of Microsoft Count: 8
+Operation: REMOVE Sentence: What is the best time to visit the Eiffel Tower Count: 8
+Operation: REMOVE Sentence: Provide information about the nearest bus stop Count: 5
+Operation: REMOVE Sentence: Locate the nearest hospital Count: 5
+Operation: REMOVE Sentence: What is the best way to improve memory Count: 1
+Operation: REMOVE Sentence: Find the nearest bookstore Count: 1
+Operation: REMOVE Sentence: wiki Tell me about the history of Ancient Egypt Count: 18
+Operation: REMOVE Sentence: wiki What are the side effects of the COVID-19 vaccine Count: 34
+Operation: REMOVE Sentence: wiki What is the capital of Brazil Count: 9
+Operation: REMOVE Sentence: wiki Who invented the telephone Count: 11
+Operation: REMOVE Sentence: wiki Explain the process of cellular respiration Count: 22
+Operation: REMOVE Sentence: wiki What are the different programming languages Count: 13
+Operation: REMOVE Sentence: wiki What is the population of New York City Count: 6
+Operation: REMOVE Sentence: wiki Describe the structure of DNA Count: 24
+Operation: REMOVE Sentence: wiki Who painted the Mona Lisa Count: 3
+Operation: REMOVE Sentence: wiki What are the major causes of air pollution Count: 6
+Operation: REMOVE Sentence: wiki What is the meaning of the term "sustainability" Count: 8
+Operation: REMOVE Sentence: wiki Who discovered penicillin Count: 3
+Operation: REMOVE Sentence: wiki Explain the concept of artificial intelligence Count: 13
+Operation: REMOVE Sentence: wiki What are the major components of the human nervous system Count: 22
+Operation: REMOVE Sentence: wiki Who wrote the play Romeo and Juliet Count: 20
+Operation: REMOVE Sentence: wiki What are the benefits of regular exercise Count: 9
+Operation: REMOVE Sentence: wiki Explain the process of photosynthesis Count: 14
+Operation: REMOVE Sentence: wiki What are the stages of mitosis Count: 4
+Operation: REMOVE Sentence: wiki Who is the current Prime Minister of the United Kingdom Count: 5
+Operation: REMOVE Sentence: wiki Describe the process of digestion Count: 9
+Operation: REMOVE Sentence: wiki What are the major branches of science Count: 5
+Operation: REMOVE Sentence: wiki Who composed the symphony "Ode to Joy" Count: 9
+Operation: REMOVE Sentence: wiki Explain the concept of supply and demand Count: 11
+Operation: REMOVE Sentence: wiki What are the major types of renewable energy sources Count: 30
+Operation: REMOVE Sentence: wiki Who is the author of the novel "Pride and Prejudice" Count: 30
+Operation: REMOVE Sentence: wiki Describe the process of evolution Count: 6
+Operation: REMOVE Sentence: wiki What are the major causes of climate change Count: 25
+Operation: REMOVE Sentence: wiki Who discovered the theory of general relativity Count: 21
+Operation: REMOVE Sentence: wiki wiki Explain the concept of quantum mechanics Count: 9
+Operation: REMOVE Sentence: wiki What are the major features of the human respiratory system Count: 7
+Operation: REMOVE Sentence: wiki Who is the artist behind the painting "Starry Night" Count: 36
+Operation: REMOVE Sentence: wiki What are the benefits of meditation Count: 6
+Operation: REMOVE Sentence: wiki Describe the process of plate tectonics Count: 24
+Operation: REMOVE Sentence: wiki Who is the current President of the United States Count: 16
+Operation: REMOVE Sentence: wiki Explain the concept of genetic inheritance Count: 5
+Operation: REMOVE Sentence: wiki What are the major types of renewable energy sources Count: 6
+Operation: REMOVE Sentence: wiki Who is the author of the play "Hamlet" Count: 10
+Operation: REMOVE Sentence: wiki Describe the process of cellular division Count: 9
+Operation: REMOVE Sentence: wiki What are the major factors influencing climate change Count: 5
+Operation: REMOVE Sentence: wiki Who discovered the theory of relativity Count: 15
+Operation: REMOVE Sentence: wiki Explain the concept of artificial neural networks Count: 16
+Operation: REMOVE Sentence: What is the average rainfall in Seattle Count: 2
+Operation: REMOVE Sentence: Are there any available hotel rooms Count: 17
+Operation: REMOVE Sentence: Where can I find a good sushi restaurant Count: 17
+Operation: REMOVE Sentence: Which concerts are happening this weekend Count: 14
+Operation: REMOVE Sentence: wiki Explain the theory of relativity Count: 11
+Operation: REMOVE Sentence: Evaluate the expression (6/2)*(4-1) Count: 6
+Operation: REMOVE Sentence: Which programming languages are in high demand Count: 8
+Operation: REMOVE Sentence: Tell me about the latest technology trends Count: 11
+Operation: REMOVE Sentence: Find the nearest park Count: 3
+Operation: REMOVE Sentence: wiki Who is the current Prime Minister of the United Kingdom Count: 18
+Operation: REMOVE Sentence: wiki What are the symptoms of COVID-19 Count: 4
+Operation: REMOVE Sentence: Is 8-3 equal to 5 Count: 1
+Operation: REMOVE Sentence: Evaluate the expression (5^2)/3 Count: 1
+Operation: REMOVE Sentence: How long does it take to drive to the beach Count: 12
+Operation: REMOVE Sentence: Where can I buy concert tickets online Count: 4
+Operation: REMOVE Sentence: What time does the bus depart Count: 10
+Operation: REMOVE Sentence: Provide information about local tourist attractions Count: 12
+Operation: REMOVE Sentence: Locate the nearest movie theater Count: 8
+Operation: REMOVE Sentence: What is the weather forecast for next week Count: 16
+Operation: REMOVE Sentence: wiki Explain the concept of machine learning Count: 18
+Operation: REMOVE Sentence: What is the best method to study for exams Count: 5
+Operation: REMOVE Sentence: Find the nearest parking garage Count: 16
+Operation: REMOVE Sentence: Recommend a good movie to watch Count: 1
+Operation: REMOVE Sentence: What are the ingredients for a classic chocolate chip cookie Count: 3
+Operation: REMOVE Sentence: Is it going to snow tomorrow Count: 3
+Operation: REMOVE Sentence: What is the capital of Japan Count: 3
+Operation: REMOVE Sentence: wiki Who won the Nobel Prize in Literature in 2021 Count: 19
+Operation: REMOVE Sentence: What are the must-visit places in New York City Count: 3
+Operation: REMOVE Sentence: wiki Tell me about the history of the Renaissance Count: 8
+Operation: REMOVE Sentence: Calculate the area of a circle with radius 10 Count: 5
+Operation: REMOVE Sentence: What are the operating hours of the amusement park Count: 5
+Operation: REMOVE Sentence: Find the nearest gas station with a car wash Count: 8
+Operation: REMOVE Sentence: What is the current price of gold Count: 4
+Operation: REMOVE Sentence: Is 15 divided by 3 equal to 5 Count: 6
+Operation: REMOVE Sentence: What is the square root of 25 Count: 7
+Operation: REMOVE Sentence: What is the temperature in Los Angeles Count: 1
+Operation: REMOVE Sentence: wiki Who is the President of France Count: 26
+Operation: REMOVE Sentence: What is the best time to visit the Great Wall of China Count: 11
+Operation: REMOVE Sentence: Provide information about the nearest shopping center Count: 23
+Operation: REMOVE Sentence: Locate the nearest train station Count: 6
+Operation: REMOVE Sentence: What is the best way to reduce stress Count: 5
+Operation: REMOVE Sentence: Find the nearest pharmacy with 24-hour service Count: 16
+Operation: REMOVE Sentence: What is the weather like in Dubai Count: 9
+Operation: REMOVE Sentence: wiki Who is the author of the book "1984" Count: 3
+Operation: REMOVE Sentence: What is the population of New Delhi Count: 11
+Operation: REMOVE Sentence: What are the benefits of a balanced diet Count: 6
+Operation: REMOVE Sentence: wiki Tell me about the history of the Industrial Revolution Count: 38
+Operation: REMOVE Sentence: Calculate the value of e raised to the power of 2 Count: 5
+Operation: REMOVE Sentence: What are the opening hours of the zoo Count: 23
+Operation: REMOVE Sentence: Find the nearest post office with passport services Count: 16
+Operation: REMOVE Sentence: What is the current exchange rate between US dollars and British pounds Count: 2
+Operation: REMOVE Sentence: Is 12 multiplied by 4 equal to 48 Count: 6
+Operation: REMOVE Sentence: What is the cube root of 64 Count: 4
+Operation: REMOVE Sentence: What is the weather like in Miami Count: 4
+Operation: REMOVE Sentence: wiki Who is the founder of Amazon Count: 8
+Operation: REMOVE Sentence: What is the best time to visit the Colosseum Count: 11
+Operation: REMOVE Sentence: Provide information about the nearest public transportation options Count: 5
+Operation: REMOVE Sentence: Locate the nearest emergency room Count: 8
+Operation: REMOVE Sentence: What is the best way to improve physical fitness Count: 1
+Operation: REMOVE Sentence: Find the nearest art gallery Count: 9
+Operation: ADD Sentence: weather Australia Count: 1
+Operation: ADD Sentence: Are there any lectures on Saturday Count: 22
+Operation: ADD Sentence: Where is DeepSpace located Count: 8
+Operation: ADD Sentence: Which lectures are there on Monday at 9 Count: 15
+Operation: ADD Sentence: wiki where is the Taj Mahal located Count: 2
+Operation: ADD Sentence: (2+3)/5+3/2 Count: 3
+Operation: ADD Sentence: which lectures are there on monday at 9 Count: 17
+Operation: ADD Sentence: which lectures are there on tuesday at 12 Count: 48
+Operation: ADD Sentence: which lectures are there at 12 on wednesday Count: 21
+Operation: ADD Sentence: which lectures are there at 12 on thursday Count: 26
+Operation: ADD Sentence: which lectures are there at 10 on friday Count: 15
+Operation: ADD Sentence: how do I get to deepspace Count: 15
+Operation: ADD Sentence: how do I get to the lecture hall Count: 43
+Operation: ADD Sentence: how do she get to c.0016 Count: 33
+Operation: ADD Sentence: where is spacebox Count: 24
+Operation: ADD Sentence: where is the project room Count: 5
+Operation: ADD Sentence: where is c.0020 located Count: 3
+Operation: ADD Sentence: weather Istanbul Count: 3
+Operation: ADD Sentence: weather San Francisco Count: 24
+Operation: ADD Sentence: wiki Maastricht Count: 37
+Operation: ADD Sentence: wiki Alan Turing Count: 2
+Operation: ADD Sentence: wiki natural language processing Count: 1
+Operation: ADD Sentence: what is 9*12 Count: 11
+Operation: ADD Sentence: what is 1/0 Count: 15
+Operation: ADD Sentence: is 5+2 equal to 7 Count: 3
+Operation: ADD Sentence: is 4*23 equal to 82 Count: 8
+Operation: ADD Sentence: what is ((3+2)*4)/6 Count: 32
+Operation: ADD Sentence: what is 4^2 Count: 3
+Operation: ADD Sentence: what is the weather in London Count: 2
+Operation: ADD Sentence: wiki who is Queen Elizabeth II Count: 17
+Operation: ADD Sentence: how's the weather in Brussels Count: 2
+Operation: ADD Sentence: at 16 on Sunday which lectures are there Count: 27
+Operation: ADD Sentence: on monday at 9 which lectures are there Count: 70
+Operation: ADD Sentence: where is the library located Count: 19
+Operation: ADD Sentence: wiki what is the netherlands Count: 4
+Operation: ADD Sentence: what's the weather like in Amsterdam Count: 3
+Operation: ADD Sentence: can you find on wiki who is King Willem-Alexander Count: 20
+Operation: ADD Sentence: is (5-3)*2 equal to 2 Count: 5
+Operation: ADD Sentence: what is ((3-9)^3)*2 Count: 54
+Operation: ADD Sentence: how do you get to deepspace Count: 10
+Operation: ADD Sentence: what is the weather like in Singapore Count: 4
+Operation: ADD Sentence: which lectures are there on friday at 10 Count: 61
+Operation: ADD Sentence: which lectures are there on thirsday at 11 Count: 37
+Operation: ADD Sentence: which lectures are there at 13 on wednesday Count: 36
+Operation: ADD Sentence: which lectures are there at 12 on tuesday Count: 49
+Operation: ADD Sentence: which lectures are there at 10 on Monday Count: 16
+Operation: ADD Sentence: how do I get to spacedeep Count: 31
+Operation: ADD Sentence: how do I get to the hall Count: 10
+Operation: ADD Sentence: how do she get to c.1015 Count: 11
+Operation: ADD Sentence: where is box Count: 1
+Operation: ADD Sentence: where is the project room Count: 5
+Operation: ADD Sentence: where is b.1013 located Count: 1
+Operation: ADD Sentence: weather Tokyo Count: 2
+Operation: ADD Sentence: weather Mexico Count: 2
+Operation: ADD Sentence: wiki Turing Test Count: 1
+Operation: ADD Sentence: wiki Alex Friedman Count: 5
+Operation: ADD Sentence: wiki theoritical computer science  Count: 4
+Operation: ADD Sentence: what is 9*12 Count: 3
+Operation: ADD Sentence: what is 1/0 Count: 3
+Operation: ADD Sentence: is 15+2 equal to 17 Count: 3
+Operation: ADD Sentence: is 4*100 equal to 400 Count: 1
+Operation: ADD Sentence: what is ((3+2)*4)/6 Count: 5
+Operation: ADD Sentence: what is 4^2 Count: 10
+Operation: ADD Sentence: what is the weather in London Count: 3
+Operation: ADD Sentence: wiki who is Queen Elizabeth II Count: 5
+Operation: ADD Sentence: how's the weather in Brussels Count: 10
+Operation: ADD Sentence: at 16 on Sunday which lectures are there Count: 12
+Operation: ADD Sentence: on monday at 9 which lectures are there Count: 33
+Operation: ADD Sentence: where is the library located Count: 15
+Operation: ADD Sentence: wiki what is the netherlands Count: 5
+Operation: ADD Sentence: what's the weather like in Amsterdam Count: 4
+Operation: ADD Sentence: wiki who is King Willem-Alexander Count: 52
+Operation: ADD Sentence: is (9-8)*3 equal to 1 Count: 5
+Operation: ADD Sentence: what is ((3-12)^3)*2 Count: 11
+Operation: ADD Sentence: how do you get to deepspace Count: 12
+Operation: ADD Sentence: what is the weather like in Philippines Count: 2
+Operation: ADD Sentence: which lectures are there on friday at 15 Count: 35
+Operation: ADD Sentence: which lectures are there on thirsday at 13 Count: 10
+Operation: ADD Sentence: which lectures are there at 9 on wednesday Count: 9
+Operation: ADD Sentence: which lectures are there at 10 on tuesday Count: 35
+Operation: ADD Sentence: which lectures are there at 15 on Monday Count: 24
+Operation: ADD Sentence: how do I get to deepspa Count: 26
+Operation: ADD Sentence: how do I get to the hall lecture Count: 27
+Operation: ADD Sentence: how do she get to c.2011 Count: 5
+Operation: ADD Sentence: where is box Count: 2
+Operation: ADD Sentence: where is the room project Count: 15
+Operation: ADD Sentence: where is b.3001 located Count: 1
+Operation: ADD Sentence: weather Beijing Count: 6
+Operation: ADD Sentence: weather Mexico City Count: 13
+Operation: ADD Sentence: wiki what is software testing Count: 3
+Operation: ADD Sentence: wiki computer graphics algorithms Count: 42
+Operation: ADD Sentence: wiki Linear programming  Count: 46
+Operation: ADD Sentence: what is 3*32 Count: 13
+Operation: ADD Sentence: what is 8/0 Count: 4
+Operation: ADD Sentence: is 15+2 equal to 17 Count: 2
+Operation: ADD Sentence: is 83*40 equal to 3320 Count: 3
+Operation: ADD Sentence: what is ((3+2)*4)/6 Count: 7
+Operation: ADD Sentence: what is 13^2 Count: 2
+Operation: ADD Sentence: what is the weather in Edingburgh Count: 6
+Operation: ADD Sentence: wiki who is the current president of Canada Count: 12
+Operation: ADD Sentence: how's the weather in Antwerp Count: 1
+Operation: ADD Sentence: at 13 on Sunday which lectures are there Count: 11
+Operation: ADD Sentence: on thursday at 9 which lectures are there Count: 10
+Operation: ADD Sentence: where is the Randwyck library located Count: 10
+Operation: ADD Sentence: wiki what is the netherlands Count: 4
+Operation: ADD Sentence: what's the weather like in Njimegen Count: 20
+Operation: ADD Sentence: wiki what are the current emerging trends in cybersecurity Count: 32
+Operation: ADD Sentence: is (27)**3 equal to 19683 Count: 9
+Operation: ADD Sentence: what is ((3-12)^3)*2 Count: 3
+Operation: ADD Sentence: how do you get to deepspace Count: 8
+Operation: ADD Sentence: what is the weather like in Laos Count: 4
+Operation: ADD Sentence: is 5+2 equal to 7 Count: 6
+Operation: ADD Sentence: is 4*23 equal to 82 Count: 2
+Operation: ADD Sentence: what is ((3+2)*4)/6 Count: 5
+Operation: ADD Sentence: is 63*54 equal to 3402 Count: 3
+Operation: ADD Sentence: is 4*20 equal to 80 Count: 13
+Operation: ADD Sentence: what is ((5+19)*4)/6 Count: 8
+Operation: ADD Sentence: how do you get to place Count: 22
+Operation: ADD Sentence: what is the weather like in Namibia Count: 5
+Operation: ADD Sentence: is 572+3654 equal to 4226 Count: 8
+Operation: ADD Sentence: is 7**3 equal to 343 Count: 4
+Operation: ADD Sentence: what is ((29-12)^3)*2 Count: 13
+Operation: ADD Sentence: is 47*29 equal to 1363 Count: 11
+Operation: ADD Sentence: What are the available lectures on Tuesday at 14 Count: 13
+Operation: ADD Sentence: Can you provide information on the location of the physics lab Count: 11
+Operation: ADD Sentence: Please tell me where I can find room B.1020 Count: 6
+Operation: ADD Sentence: What is the weather forecast for Sydney Count: 8
+Operation: ADD Sentence: Do you have any details on the lecture schedule for Wednesday at 11 Count: 18
+Operation: ADD Sentence: wiki Tell me about the history of the Eiffel Tower Count: 6
+Operation: ADD Sentence: What is the value of (4*5)/(2+1) Count: 9
+Operation: ADD Sentence: Which lectures are scheduled for Monday at 13 Count: 21
+Operation: ADD Sentence: Could you provide information on the location of the computer science department Count: 58
+Operation: ADD Sentence: Where can I find the seminar room Count: 31
+Operation: ADD Sentence: What is the weather like in New York City Count: 6
+Operation: ADD Sentence: wiki Provide me with information on the topic "Machine Learning" Count: 56
+Operation: ADD Sentence: Is (10-3)*5 equal to 35 Count: 5
+Operation: ADD Sentence: What is the result of ((6-2)^2)3 Count: 11
+Operation: ADD Sentence: How can I reach the auditorium Count: 23
+Operation: ADD Sentence: Tell me the current weather conditions in Tokyo Count: 7
+Operation: ADD Sentence: Which lectures are scheduled for Friday at 11 Count: 24
+Operation: ADD Sentence: What are the lecture timings for Thursday at 12 Count: 36
+Operation: ADD Sentence: Please provide details on the lectures at 10 on Wednesday Count: 14
+Operation: ADD Sentence: Where can I find the cafeteria Count: 28
+Operation: ADD Sentence: Where is the meeting room located Count: 13
+Operation: ADD Sentence: Where is room C.2005 situated Count: 12
+Operation: ADD Sentence: What is the weather like in Paris Count: 5
+Operation: ADD Sentence: wiki What is the population of Germany Count: 15
+Operation: ADD Sentence: What are the current weather conditions in Rome Count: 10
+Operation: ADD Sentence: Which lectures are scheduled at 15 on Sunday Count: 39
+Operation: ADD Sentence: On Monday at 9 Count: 1
+Operation: ADD Sentence: Where is the university library situated Count: 17
+Operation: ADD Sentence: wiki Tell me about the geography of Canada Count: 48
+Operation: ADD Sentence: What is the weather forecast for Barcelona Count: 5
+Operation: ADD Sentence: wiki Provide information on King Henry VIII Count: 28
+Operation: ADD Sentence: Is (5+3)/2 equal to 4 Count: 4
+Operation: ADD Sentence: What is the result of ((8-4)^3)2 Count: 30
+Operation: ADD Sentence: How do I get to the gymnasium Count: 34
+Operation: ADD Sentence: What is the weather like in Sydney Count: 8
+Operation: ADD Sentence: Which lectures are scheduled for Tuesday at 16 Count: 9
+Operation: ADD Sentence: What lectures are available on Friday at 15 Count: 83
+Operation: ADD Sentence: Which lectures are scheduled at 9 on Wednesday Count: 45
+Operation: ADD Sentence: Tell me the location of room C.1010 Count: 11
+Operation: ADD Sentence: Where can I find the project room Count: 26
+Operation: ADD Sentence: Where is room D.3005 situated Count: 6
+Operation: ADD Sentence: What is the weather forecast for Beijing Count: 13
+Operation: ADD Sentence: What is the current population of Mexico City Count: 19
+Operation: ADD Sentence: wiki Tell me about the history of artificial intelligence Count: 25
+Operation: ADD Sentence: wiki What are the fundamentals of computer networking Count: 37
+Operation: ADD Sentence: wiki Provide information on the concept of Big O notation Count: 1
+Operation: ADD Sentence: What is the result of 79 Count: 11
+Operation: ADD Sentence: What is the value of 10/0 Count: 5
+Operation: ADD Sentence: Is 20+5 equal to 25 Count: 2
+Operation: ADD Sentence: Is 310 equal to 30 Count: 5
+Operation: ADD Sentence: What is the result of ((4+3)*2)/6 Count: 12
+Operation: ADD Sentence: What is 5^2 Count: 23
+Operation: ADD Sentence: What is the weather like in Tokyo Count: 3
+Operation: ADD Sentence: wiki Who is the current Prime Minister of the United Kingdom Count: 42
+Operation: ADD Sentence: How's the weather in Berlin Count: 1
+Operation: ADD Sentence: Which lectures are scheduled at 13 on Sunday Count: 23
+Operation: ADD Sentence: On Thursday at 9 Count: 3
+Operation: ADD Sentence: Where is the library located on campus Count: 1
+Operation: ADD Sentence: wiki Tell me about the history of the Netherlands Count: 10
+Operation: ADD Sentence: What's the weather like in Amsterdam Count: 7
+Operation: ADD Sentence: wiki Who is the current King of Spain Count: 1
+Operation: ADD Sentence: Is (6-4)3 equal to 6 Count: 6
+Operation: ADD Sentence: What is the result of ((5-8)^3)2 Count: 22
+Operation: ADD Sentence: How can I reach DeepSpace Center Count: 6
+Operation: ADD Sentence: What is the weather like in Manila Count: 23
+Operation: ADD Sentence: Which lectures are available on Friday at 15 Count: 24
+Operation: ADD Sentence: Which lectures are scheduled at 13 on Thursday Count: 48
+Operation: ADD Sentence: What are the lecture timings for Wednesday at 9 Count: 27
+Operation: ADD Sentence: Which lectures are scheduled at 10 on Tuesday Count: 20
+Operation: ADD Sentence: Which lectures are scheduled at 15 on Monday Count: 18
+Operation: ADD Sentence: How do I get to DeepSpa Count: 17
+Operation: ADD Sentence: How can I reach the lecture hall Count: 25
+Operation: ADD Sentence: How does she get to room C.2011 Count: 21
+Operation: ADD Sentence: Where can I find the box Count: 8
+Operation: ADD Sentence: Where is the project room located Count: 36
+Operation: ADD Sentence: Where is room B.3005 situated Count: 7
+Operation: ADD Sentence: What is the weather forecast for Shanghai Count: 7
+Operation: ADD Sentence: wiki What is the current population of Seoul Count: 22
+Operation: ADD Sentence: wiki Tell me about software testing methodologies Count: 28
+Operation: ADD Sentence: wiki What are the principles of computer graphics Count: 36
+Operation: ADD Sentence: wiki Provide information on the field of artificial intelligence Count: 27
+Operation: ADD Sentence: What is the result of 632 Count: 9
+Operation: ADD Sentence: What is the value of 10/0 Count: 8
+Operation: ADD Sentence: Is 17+2 equal to 19 Count: 5
+Operation: ADD Sentence: Is 8340 equal to 3320 Count: 6
+Operation: ADD Sentence: What is the result of ((3+2)4)/6 Count: 7
+Operation: ADD Sentence: What is 13^2 Count: 7
+Operation: ADD Sentence: What is the weather like in Edinburgh Count: 5
+Operation: ADD Sentence: wiki Who is the current President of Canada Count: 10
+Operation: ADD Sentence: How's the weather in Brussels Count: 1
+Operation: ADD Sentence: Which lectures are scheduled at 13 on Sunday Count: 60
+Operation: ADD Sentence: On Thursday at 9 Count: 1
+Operation: ADD Sentence: Where is the Randwyck library situated Count: 11
+Operation: ADD Sentence: wiki Tell me about the geography of the Netherlands Count: 109
+Operation: ADD Sentence: What's the weather like in Nijmegen Count: 2
+Operation: ADD Sentence: wiki Provide information on current emerging trends in cybersecurity Count: 16
+Operation: ADD Sentence: Is (5-3)^2 equal to 4 Count: 7
+Operation: ADD Sentence: What is the result of ((3-12)^3)2 Count: 9
+Operation: ADD Sentence: How do you get to DeepSpace Center Count: 4
+Operation: ADD Sentence: What is the weather like in Vientiane Count: 1
+Operation: ADD Sentence: Is 5+2 equal to 7 Count: 5
+Operation: ADD Sentence: Is 423 equal to 82 Count: 1
+Operation: ADD Sentence: What is the result of ((3+2)4)/6 Count: 13
+Operation: ADD Sentence: Is 6354 equal to 3402 Count: 7
+Operation: ADD Sentence: Is 420 equal to 80 Count: 4
+Operation: ADD Sentence: What is the result of ((5+19)*4)/6 Count: 16
+Operation: ADD Sentence: How do you get to the desired place Count: 16
+Operation: ADD Sentence: What is the weather like in Windhoek Count: 11
+Operation: ADD Sentence: Is 572+3654 equal to 4226 Count: 7
+Operation: ADD Sentence: Is 7^3 equal to 343 Count: 5
+Operation: ADD Sentence: What is the result of ((29-12)^3)2 Count: 23
+Operation: ADD Sentence: Is 4729 equal to 1363 Count: 5
+Operation: ADD Sentence: wiki What are the benefits of exercise Count: 38
+Operation: ADD Sentence: wiki Who is Marie Curie Count: 1
+Operation: ADD Sentence: wiki What is the theory of relativity Count: 12
+Operation: ADD Sentence: wiki How does photosynthesis work Count: 11
+Operation: ADD Sentence: wiki Explain the concept of supply and demand Count: 9
+Operation: ADD Sentence: wiki What are the symptoms of COVID-19 Count: 37
+Operation: ADD Sentence: wiki Who is Nelson Mandela Count: 40
+Operation: ADD Sentence: wiki What is the history of Ancient Rome Count: 15
+Operation: ADD Sentence: wiki How does the internet work Count: 9
+Operation: ADD Sentence: wiki What are the principles of democracy Count: 33
+Operation: ADD Sentence: wiki Explain the process of fermentation Count: 28
+Operation: ADD Sentence: wiki Who is Albert Einstein Count: 18
+Operation: ADD Sentence: wiki What are the different types of renewable energy Count: 18
+Operation: ADD Sentence: wiki What is the meaning of life Count: 14
+Operation: ADD Sentence: wiki Explain the concept of quantum mechanics Count: 59
+Operation: ADD Sentence: wiki Who is Leonardo da Vinci Count: 16
+Operation: ADD Sentence: wiki What is the history of the Industrial Revolution Count: 68
+Operation: ADD Sentence: wiki How do vaccines work Count: 8
+Operation: ADD Sentence: wiki Who is Isaac Newton Count: 3
+Operation: ADD Sentence: wiki What are the effects of climate change Count: 38
+Operation: ADD Sentence: What is the weather like today Count: 5
+Operation: ADD Sentence: Are there any available appointments Count: 18
+Operation: ADD Sentence: Where can I find a good restaurant Count: 40
+Operation: ADD Sentence: Which movies are playing tonight Count: 15
+Operation: ADD Sentence: wiki Tell me about the history of Ancient Rome Count: 19
+Operation: ADD Sentence: Calculate the value of (4+5)/2 Count: 5
+Operation: ADD Sentence: Which books are recommended for beginners Count: 15
+Operation: ADD Sentence: Tell me about the latest fashion trends Count: 15
+Operation: ADD Sentence: Find the nearest gas station Count: 8
+Operation: ADD Sentence: Who is the current President of the United States Count: 17
+Operation: ADD Sentence: What are the symptoms of the common cold Count: 7
+Operation: ADD Sentence: Is 7+3 equal to 10 Count: 3
+Operation: ADD Sentence: Evaluate the expression (2*3+4)/5 Count: 5
+Operation: ADD Sentence: How long does it take to get to the airport Count: 29
+Operation: ADD Sentence: Where can I buy concert tickets Count: 46
+Operation: ADD Sentence: What time does the train arrive Count: 25
+Operation: ADD Sentence: Provide information about the nearest hotels Count: 11
+Operation: ADD Sentence: Locate the nearest pharmacy Count: 4
+Operation: ADD Sentence: What is the weather forecast for tomorrow Count: 18
+Operation: ADD Sentence: wiki Explain the concept of artificial intelligence Count: 42
+Operation: ADD Sentence: What is the best way to learn a new language Count: 4
+Operation: ADD Sentence: Find the nearest parking lot Count: 30
+Operation: ADD Sentence: Recommend a good book to read Count: 4
+Operation: ADD Sentence: What are the ingredients for a classic margherita pizza Count: 5
+Operation: ADD Sentence: Is it going to rain today Count: 2
+Operation: ADD Sentence: What is the capital of France Count: 3
+Operation: ADD Sentence: Who won the Nobel Prize in Physics in 2020 Count: 70
+Operation: ADD Sentence: What are the top tourist attractions in London Count: 10
+Operation: ADD Sentence: Tell me about the history of photography Count: 28
+Operation: ADD Sentence: Calculate the area of a triangle with base 5 and height 8 Count: 15
+Operation: ADD Sentence: What are the opening hours of the museum Count: 55
+Operation: ADD Sentence: Find the nearest ATM Count: 13
+Operation: ADD Sentence: What is the current exchange rate between US dollars and Euros Count: 7
+Operation: ADD Sentence: Is 10 divided by 2 equal to 5 Count: 6
+Operation: ADD Sentence: What is the square root of 16 Count: 1
+Operation: ADD Sentence: What is the temperature in New York City Count: 7
+Operation: ADD Sentence: wiki Who is the Prime Minister of Canada Count: 78
+Operation: ADD Sentence: What is the best time to visit the Grand Canyon Count: 9
+Operation: ADD Sentence: Provide information about the nearest shopping mall Count: 68
+Operation: ADD Sentence: Locate the nearest post office Count: 12
+Operation: ADD Sentence: What is the best way to lose weight Count: 2
+Operation: ADD Sentence: Find the nearest coffee shop Count: 5
+Operation: ADD Sentence: What is the weather like in Sydney Count: 3
+Operation: ADD Sentence: Who is the author of the book "To Kill a Mockingbird" Count: 34
+Operation: ADD Sentence: What is the population of Tokyo Count: 21
+Operation: ADD Sentence: What are the benefits of regular exercise Count: 11
+Operation: ADD Sentence: Tell me about the history of the Internet Count: 23
+Operation: ADD Sentence: Calculate the value of pi to the nearest hundredth Count: 2
+Operation: ADD Sentence: What are the opening hours of the library Count: 29
+Operation: ADD Sentence: Find the nearest gym Count: 19
+Operation: ADD Sentence: What is the current stock price of Apple Count: 2
+Operation: ADD Sentence: Is 20 multiplied by 3 equal to 60 Count: 10
+Operation: ADD Sentence: What is the cube root of 27 Count: 3
+Operation: ADD Sentence: What is the weather like in Paris Count: 5
+Operation: ADD Sentence: wiki Who is the CEO of Microsoft Count: 17
+Operation: ADD Sentence: What is the best time to visit the Eiffel Tower Count: 12
+Operation: ADD Sentence: Provide information about the nearest bus stop Count: 13
+Operation: ADD Sentence: Locate the nearest hospital Count: 9
+Operation: ADD Sentence: What is the best way to improve memory Count: 5
+Operation: ADD Sentence: Find the nearest bookstore Count: 6
+Operation: ADD Sentence: wiki Tell me about the history of Ancient Egypt Count: 17
+Operation: ADD Sentence: wiki What are the side effects of the COVID-19 vaccine Count: 27
+Operation: ADD Sentence: wiki What is the capital of Brazil Count: 26
+Operation: ADD Sentence: wiki Who invented the telephone Count: 16
+Operation: ADD Sentence: wiki Explain the process of cellular respiration Count: 4
+Operation: ADD Sentence: wiki What are the different programming languages Count: 9
+Operation: ADD Sentence: wiki What is the population of New York City Count: 133
+Operation: ADD Sentence: wiki Describe the structure of DNA Count: 49
+Operation: ADD Sentence: wiki Who painted the Mona Lisa Count: 15
+Operation: ADD Sentence: wiki What are the major causes of air pollution Count: 5
+Operation: ADD Sentence: wiki What is the meaning of the term "sustainability" Count: 69
+Operation: ADD Sentence: wiki Who discovered penicillin Count: 14
+Operation: ADD Sentence: wiki Explain the concept of artificial intelligence Count: 13
+Operation: ADD Sentence: wiki What are the major components of the human nervous system Count: 15
+Operation: ADD Sentence: wiki Who wrote the play Romeo and Juliet Count: 24
+Operation: ADD Sentence: wiki What are the benefits of regular exercise Count: 1
+Operation: ADD Sentence: wiki Explain the process of photosynthesis Count: 39
+Operation: ADD Sentence: wiki What are the stages of mitosis Count: 12
+Operation: ADD Sentence: wiki Who is the current Prime Minister of the United Kingdom Count: 108
+Operation: ADD Sentence: wiki Describe the process of digestion Count: 24
+Operation: ADD Sentence: wiki What are the major branches of science Count: 33
+Operation: ADD Sentence: wiki Who composed the symphony "Ode to Joy" Count: 64
+Operation: ADD Sentence: wiki Explain the concept of supply and demand Count: 45
+Operation: ADD Sentence: wiki What are the major types of renewable energy sources Count: 17
+Operation: ADD Sentence: wiki Who is the author of the novel "Pride and Prejudice" Count: 95
+Operation: ADD Sentence: wiki Describe the process of evolution Count: 42
+Operation: ADD Sentence: wiki What are the major causes of climate change Count: 1
+Operation: ADD Sentence: wiki Who discovered the theory of general relativity Count: 34
+Operation: ADD Sentence: wiki wiki Explain the concept of quantum mechanics Count: 21
+Operation: ADD Sentence: wiki What are the major features of the human respiratory system Count: 5
+Operation: ADD Sentence: wiki Who is the artist behind the painting "Starry Night" Count: 51
+Operation: ADD Sentence: wiki What are the benefits of meditation Count: 70
+Operation: ADD Sentence: wiki Describe the process of plate tectonics Count: 12
+Operation: ADD Sentence: wiki Who is the current President of the United States Count: 25
+Operation: ADD Sentence: wiki Explain the concept of genetic inheritance Count: 18
+Operation: ADD Sentence: wiki What are the major types of renewable energy sources Count: 25
+Operation: ADD Sentence: wiki Who is the author of the play "Hamlet" Count: 30
+Operation: ADD Sentence: wiki Describe the process of cellular division Count: 16
+Operation: ADD Sentence: wiki What are the major factors influencing climate change Count: 5
+Operation: ADD Sentence: wiki Who discovered the theory of relativity Count: 4
+Operation: ADD Sentence: wiki Explain the concept of artificial neural networks Count: 40
+Operation: ADD Sentence: What is the average rainfall in Seattle Count: 5
+Operation: ADD Sentence: Are there any available hotel rooms Count: 8
+Operation: ADD Sentence: Where can I find a good sushi restaurant Count: 18
+Operation: ADD Sentence: Which concerts are happening this weekend Count: 8
+Operation: ADD Sentence: wiki Explain the theory of relativity Count: 9
+Operation: ADD Sentence: Evaluate the expression (6/2)*(4-1) Count: 4
+Operation: ADD Sentence: Which programming languages are in high demand Count: 13
+Operation: ADD Sentence: Tell me about the latest technology trends Count: 11
+Operation: ADD Sentence: Find the nearest park Count: 2
+Operation: ADD Sentence: wiki Who is the current Prime Minister of the United Kingdom Count: 25
+Operation: ADD Sentence: wiki What are the symptoms of COVID-19 Count: 10
+Operation: ADD Sentence: Is 8-3 equal to 5 Count: 4
+Operation: ADD Sentence: Evaluate the expression (5^2)/3 Count: 5
+Operation: ADD Sentence: How long does it take to drive to the beach Count: 19
+Operation: ADD Sentence: Where can I buy concert tickets online Count: 11
+Operation: ADD Sentence: What time does the bus depart Count: 43
+Operation: ADD Sentence: Provide information about local tourist attractions Count: 18
+Operation: ADD Sentence: Locate the nearest movie theater Count: 7
+Operation: ADD Sentence: What is the weather forecast for next week Count: 13
+Operation: ADD Sentence: wiki Explain the concept of machine learning Count: 6
+Operation: ADD Sentence: What is the best method to study for exams Count: 2
+Operation: ADD Sentence: Find the nearest parking garage Count: 7
+Operation: ADD Sentence: Recommend a good movie to watch Count: 1
+Operation: ADD Sentence: What are the ingredients for a classic chocolate chip cookie Count: 17
+Operation: ADD Sentence: Is it going to snow tomorrow Count: 3
+Operation: ADD Sentence: What is the capital of Japan Count: 6
+Operation: ADD Sentence: wiki Who won the Nobel Prize in Literature in 2021 Count: 25
+Operation: ADD Sentence: What are the must-visit places in New York City Count: 10
+Operation: ADD Sentence: wiki Tell me about the history of the Renaissance Count: 78
+Operation: ADD Sentence: Calculate the area of a circle with radius 10 Count: 10
+Operation: ADD Sentence: What are the operating hours of the amusement park Count: 27
+Operation: ADD Sentence: Find the nearest gas station with a car wash Count: 14
+Operation: ADD Sentence: What is the current price of gold Count: 1
+Operation: ADD Sentence: Is 15 divided by 3 equal to 5 Count: 43
+Operation: ADD Sentence: What is the square root of 25 Count: 2
+Operation: ADD Sentence: What is the temperature in Los Angeles Count: 6
+Operation: ADD Sentence: wiki Who is the President of France Count: 53
+Operation: ADD Sentence: What is the best time to visit the Great Wall of China Count: 114
+Operation: ADD Sentence: Provide information about the nearest shopping center Count: 6
+Operation: ADD Sentence: Locate the nearest train station Count: 21
+Operation: ADD Sentence: What is the best way to reduce stress Count: 1
+Operation: ADD Sentence: Find the nearest pharmacy with 24-hour service Count: 10
+Operation: ADD Sentence: What is the weather like in Dubai Count: 7
+Operation: ADD Sentence: wiki Who is the author of the book "1984" Count: 31
+Operation: ADD Sentence: What is the population of New Delhi Count: 23
+Operation: ADD Sentence: What are the benefits of a balanced diet Count: 13
+Operation: ADD Sentence: wiki Tell me about the history of the Industrial Revolution Count: 43
+Operation: ADD Sentence: Calculate the value of e raised to the power of 2 Count: 14
+Operation: ADD Sentence: What are the opening hours of the zoo Count: 13
+Operation: ADD Sentence: Find the nearest post office with passport services Count: 39
+Operation: ADD Sentence: What is the current exchange rate between US dollars and British pounds Count: 6
+Operation: ADD Sentence: Is 12 multiplied by 4 equal to 48 Count: 9
+Operation: ADD Sentence: What is the cube root of 64 Count: 5
+Operation: ADD Sentence: What is the weather like in Miami Count: 27
+Operation: ADD Sentence: wiki Who is the founder of Amazon Count: 55
+Operation: ADD Sentence: What is the best time to visit the Colosseum Count: 10
+Operation: ADD Sentence: Provide information about the nearest public transportation options Count: 62
+Operation: ADD Sentence: Locate the nearest emergency room Count: 17
+Operation: ADD Sentence: What is the best way to improve physical fitness Count: 2
+Operation: ADD Sentence: Find the nearest art gallery Count: 5
+Operation: SWAP Sentence: weather Australia Count: 1
+Operation: SWAP Sentence: Are there any lectures on Saturday Count: 13
+Operation: SWAP Sentence: Where is DeepSpace located Count: 5
+Operation: SWAP Sentence: Which lectures are there on Monday at 9 Count: 4
+Operation: SWAP Sentence: wiki where is the Taj Mahal located Count: 3
+Operation: SWAP Sentence: (2+3)/5+3/2 Count: 5
+Operation: SWAP Sentence: which lectures are there on monday at 9 Count: 9
+Operation: SWAP Sentence: which lectures are there on tuesday at 12 Count: 9
+Operation: SWAP Sentence: which lectures are there at 12 on wednesday Count: 15
+Operation: SWAP Sentence: which lectures are there at 12 on thursday Count: 23
+Operation: SWAP Sentence: which lectures are there at 10 on friday Count: 29
+Operation: SWAP Sentence: how do I get to deepspace Count: 5
+Operation: SWAP Sentence: how do I get to the lecture hall Count: 5
+Operation: SWAP Sentence: how do she get to c.0016 Count: 14
+Operation: SWAP Sentence: where is spacebox Count: 3
+Operation: SWAP Sentence: where is the project room Count: 1
+Operation: SWAP Sentence: where is c.0020 located Count: 7
+Operation: SWAP Sentence: weather Istanbul Count: 2
+Operation: SWAP Sentence: weather San Francisco Count: 2
+Operation: SWAP Sentence: wiki Maastricht Count: 3
+Operation: SWAP Sentence: wiki Alan Turing Count: 3
+Operation: SWAP Sentence: wiki natural language processing Count: 30
+Operation: SWAP Sentence: what is 9*12 Count: 2
+Operation: SWAP Sentence: what is 1/0 Count: 1
+Operation: SWAP Sentence: is 5+2 equal to 7 Count: 3
+Operation: SWAP Sentence: is 4*23 equal to 82 Count: 4
+Operation: SWAP Sentence: what is ((3+2)*4)/6 Count: 7
+Operation: SWAP Sentence: what is 4^2 Count: 3
+Operation: SWAP Sentence: what is the weather in London Count: 1
+Operation: SWAP Sentence: wiki who is Queen Elizabeth II Count: 2
+Operation: SWAP Sentence: how's the weather in Brussels Count: 3
+Operation: SWAP Sentence: at 16 on Sunday which lectures are there Count: 19
+Operation: SWAP Sentence: on monday at 9 which lectures are there Count: 9
+Operation: SWAP Sentence: where is the library located Count: 3
+Operation: SWAP Sentence: wiki what is the netherlands Count: 1
+Operation: SWAP Sentence: what's the weather like in Amsterdam Count: 10
+Operation: SWAP Sentence: can you find on wiki who is King Willem-Alexander Count: 4
+Operation: SWAP Sentence: is (5-3)*2 equal to 2 Count: 7
+Operation: SWAP Sentence: what is ((3-9)^3)*2 Count: 7
+Operation: SWAP Sentence: how do you get to deepspace Count: 8
+Operation: SWAP Sentence: what is the weather like in Singapore Count: 4
+Operation: SWAP Sentence: which lectures are there on friday at 10 Count: 45
+Operation: SWAP Sentence: which lectures are there on thirsday at 11 Count: 12
+Operation: SWAP Sentence: which lectures are there at 13 on wednesday Count: 21
+Operation: SWAP Sentence: which lectures are there at 12 on tuesday Count: 50
+Operation: SWAP Sentence: which lectures are there at 10 on Monday Count: 7
+Operation: SWAP Sentence: how do I get to spacedeep Count: 7
+Operation: SWAP Sentence: how do I get to the hall Count: 9
+Operation: SWAP Sentence: how do she get to c.1015 Count: 8
+Operation: SWAP Sentence: where is box Count: 1
+Operation: SWAP Sentence: where is the project room Count: 12
+Operation: SWAP Sentence: where is b.1013 located Count: 4
+Operation: SWAP Sentence: weather Tokyo Count: 2
+Operation: SWAP Sentence: weather Mexico Count: 7
+Operation: SWAP Sentence: wiki Turing Test Count: 4
+Operation: SWAP Sentence: wiki Alex Friedman Count: 15
+Operation: SWAP Sentence: wiki theoritical computer science  Count: 1
+Operation: SWAP Sentence: what is 9*12 Count: 5
+Operation: SWAP Sentence: what is 1/0 Count: 5
+Operation: SWAP Sentence: is 15+2 equal to 17 Count: 3
+Operation: SWAP Sentence: is 4*100 equal to 400 Count: 2
+Operation: SWAP Sentence: what is ((3+2)*4)/6 Count: 14
+Operation: SWAP Sentence: what is 4^2 Count: 7
+Operation: SWAP Sentence: what is the weather in London Count: 5
+Operation: SWAP Sentence: wiki who is Queen Elizabeth II Count: 9
+Operation: SWAP Sentence: how's the weather in Brussels Count: 14
+Operation: SWAP Sentence: at 16 on Sunday which lectures are there Count: 10
+Operation: SWAP Sentence: on monday at 9 which lectures are there Count: 15
+Operation: SWAP Sentence: where is the library located Count: 26
+Operation: SWAP Sentence: wiki what is the netherlands Count: 2
+Operation: SWAP Sentence: what's the weather like in Amsterdam Count: 2
+Operation: SWAP Sentence: wiki who is King Willem-Alexander Count: 9
+Operation: SWAP Sentence: is (9-8)*3 equal to 1 Count: 3
+Operation: SWAP Sentence: what is ((3-12)^3)*2 Count: 1
+Operation: SWAP Sentence: how do you get to deepspace Count: 8
+Operation: SWAP Sentence: what is the weather like in Philippines Count: 3
+Operation: SWAP Sentence: which lectures are there on friday at 15 Count: 11
+Operation: SWAP Sentence: which lectures are there on thirsday at 13 Count: 28
+Operation: SWAP Sentence: which lectures are there at 9 on wednesday Count: 9
+Operation: SWAP Sentence: which lectures are there at 10 on tuesday Count: 16
+Operation: SWAP Sentence: which lectures are there at 15 on Monday Count: 15
+Operation: SWAP Sentence: how do I get to deepspa Count: 3
+Operation: SWAP Sentence: how do I get to the hall lecture Count: 16
+Operation: SWAP Sentence: how do she get to c.2011 Count: 3
+Operation: SWAP Sentence: where is box Count: 2
+Operation: SWAP Sentence: where is the room project Count: 1
+Operation: SWAP Sentence: where is b.3001 located Count: 1
+Operation: SWAP Sentence: weather Beijing Count: 4
+Operation: SWAP Sentence: weather Mexico City Count: 1
+Operation: SWAP Sentence: wiki what is software testing Count: 2
+Operation: SWAP Sentence: wiki computer graphics algorithms Count: 3
+Operation: SWAP Sentence: wiki Linear programming  Count: 12
+Operation: SWAP Sentence: what is 3*32 Count: 5
+Operation: SWAP Sentence: what is 8/0 Count: 4
+Operation: SWAP Sentence: is 15+2 equal to 17 Count: 3
+Operation: SWAP Sentence: is 83*40 equal to 3320 Count: 1
+Operation: SWAP Sentence: what is ((3+2)*4)/6 Count: 11
+Operation: SWAP Sentence: what is 13^2 Count: 3
+Operation: SWAP Sentence: what is the weather in Edingburgh Count: 5
+Operation: SWAP Sentence: wiki who is the current president of Canada Count: 8
+Operation: SWAP Sentence: how's the weather in Antwerp Count: 2
+Operation: SWAP Sentence: at 13 on Sunday which lectures are there Count: 25
+Operation: SWAP Sentence: on thursday at 9 which lectures are there Count: 48
+Operation: SWAP Sentence: where is the Randwyck library located Count: 8
+Operation: SWAP Sentence: wiki what is the netherlands Count: 7
+Operation: SWAP Sentence: what's the weather like in Njimegen Count: 7
+Operation: SWAP Sentence: wiki what are the current emerging trends in cybersecurity Count: 9
+Operation: SWAP Sentence: is (27)**3 equal to 19683 Count: 4
+Operation: SWAP Sentence: what is ((3-12)^3)*2 Count: 5
+Operation: SWAP Sentence: how do you get to deepspace Count: 2
+Operation: SWAP Sentence: what is the weather like in Laos Count: 6
+Operation: SWAP Sentence: is 5+2 equal to 7 Count: 2
+Operation: SWAP Sentence: is 4*23 equal to 82 Count: 2
+Operation: SWAP Sentence: what is ((3+2)*4)/6 Count: 11
+Operation: SWAP Sentence: is 63*54 equal to 3402 Count: 1
+Operation: SWAP Sentence: is 4*20 equal to 80 Count: 3
+Operation: SWAP Sentence: what is ((5+19)*4)/6 Count: 17
+Operation: SWAP Sentence: how do you get to place Count: 4
+Operation: SWAP Sentence: what is the weather like in Namibia Count: 2
+Operation: SWAP Sentence: is 572+3654 equal to 4226 Count: 1
+Operation: SWAP Sentence: is 7**3 equal to 343 Count: 3
+Operation: SWAP Sentence: what is ((29-12)^3)*2 Count: 10
+Operation: SWAP Sentence: is 47*29 equal to 1363 Count: 3
+Operation: SWAP Sentence: What are the available lectures on Tuesday at 14 Count: 32
+Operation: SWAP Sentence: Can you provide information on the location of the physics lab Count: 1
+Operation: SWAP Sentence: Please tell me where I can find room B.1020 Count: 11
+Operation: SWAP Sentence: What is the weather forecast for Sydney Count: 1
+Operation: SWAP Sentence: Do you have any details on the lecture schedule for Wednesday at 11 Count: 5
+Operation: SWAP Sentence: wiki Tell me about the history of the Eiffel Tower Count: 13
+Operation: SWAP Sentence: What is the value of (4*5)/(2+1) Count: 8
+Operation: SWAP Sentence: Which lectures are scheduled for Monday at 13 Count: 17
+Operation: SWAP Sentence: Could you provide information on the location of the computer science department Count: 3
+Operation: SWAP Sentence: Where can I find the seminar room Count: 49
+Operation: SWAP Sentence: What is the weather like in New York City Count: 4
+Operation: SWAP Sentence: wiki Provide me with information on the topic "Machine Learning" Count: 21
+Operation: SWAP Sentence: Is (10-3)*5 equal to 35 Count: 1
+Operation: SWAP Sentence: What is the result of ((6-2)^2)3 Count: 9
+Operation: SWAP Sentence: How can I reach the auditorium Count: 16
+Operation: SWAP Sentence: Tell me the current weather conditions in Tokyo Count: 9
+Operation: SWAP Sentence: Which lectures are scheduled for Friday at 11 Count: 35
+Operation: SWAP Sentence: What are the lecture timings for Thursday at 12 Count: 6
+Operation: SWAP Sentence: Please provide details on the lectures at 10 on Wednesday Count: 28
+Operation: SWAP Sentence: Where can I find the cafeteria Count: 21
+Operation: SWAP Sentence: Where is the meeting room located Count: 6
+Operation: SWAP Sentence: Where is room C.2005 situated Count: 13
+Operation: SWAP Sentence: What is the weather like in Paris Count: 9
+Operation: SWAP Sentence: wiki What is the population of Germany Count: 9
+Operation: SWAP Sentence: What are the current weather conditions in Rome Count: 1
+Operation: SWAP Sentence: Which lectures are scheduled at 15 on Sunday Count: 11
+Operation: SWAP Sentence: On Monday at 9 Count: 4
+Operation: SWAP Sentence: Where is the university library situated Count: 23
+Operation: SWAP Sentence: wiki Tell me about the geography of Canada Count: 3
+Operation: SWAP Sentence: What is the weather forecast for Barcelona Count: 2
+Operation: SWAP Sentence: wiki Provide information on King Henry VIII Count: 4
+Operation: SWAP Sentence: Is (5+3)/2 equal to 4 Count: 1
+Operation: SWAP Sentence: What is the result of ((8-4)^3)2 Count: 5
+Operation: SWAP Sentence: How do I get to the gymnasium Count: 25
+Operation: SWAP Sentence: What is the weather like in Sydney Count: 2
+Operation: SWAP Sentence: Which lectures are scheduled for Tuesday at 16 Count: 14
+Operation: SWAP Sentence: What lectures are available on Friday at 15 Count: 14
+Operation: SWAP Sentence: Which lectures are scheduled at 9 on Wednesday Count: 15
+Operation: SWAP Sentence: Tell me the location of room C.1010 Count: 9
+Operation: SWAP Sentence: Where can I find the project room Count: 14
+Operation: SWAP Sentence: Where is room D.3005 situated Count: 9
+Operation: SWAP Sentence: What is the weather forecast for Beijing Count: 2
+Operation: SWAP Sentence: What is the current population of Mexico City Count: 7
+Operation: SWAP Sentence: wiki Tell me about the history of artificial intelligence Count: 27
+Operation: SWAP Sentence: wiki What are the fundamentals of computer networking Count: 16
+Operation: SWAP Sentence: wiki Provide information on the concept of Big O notation Count: 21
+Operation: SWAP Sentence: What is the result of 79 Count: 5
+Operation: SWAP Sentence: What is the value of 10/0 Count: 3
+Operation: SWAP Sentence: Is 20+5 equal to 25 Count: 4
+Operation: SWAP Sentence: Is 310 equal to 30 Count: 2
+Operation: SWAP Sentence: What is the result of ((4+3)*2)/6 Count: 16
+Operation: SWAP Sentence: What is 5^2 Count: 8
+Operation: SWAP Sentence: What is the weather like in Tokyo Count: 18
+Operation: SWAP Sentence: wiki Who is the current Prime Minister of the United Kingdom Count: 18
+Operation: SWAP Sentence: How's the weather in Berlin Count: 17
+Operation: SWAP Sentence: Which lectures are scheduled at 13 on Sunday Count: 12
+Operation: SWAP Sentence: On Thursday at 9 Count: 1
+Operation: SWAP Sentence: Where is the library located on campus Count: 4
+Operation: SWAP Sentence: wiki Tell me about the history of the Netherlands Count: 17
+Operation: SWAP Sentence: What's the weather like in Amsterdam Count: 4
+Operation: SWAP Sentence: wiki Who is the current King of Spain Count: 28
+Operation: SWAP Sentence: Is (6-4)3 equal to 6 Count: 3
+Operation: SWAP Sentence: What is the result of ((5-8)^3)2 Count: 18
+Operation: SWAP Sentence: How can I reach DeepSpace Center Count: 13
+Operation: SWAP Sentence: What is the weather like in Manila Count: 5
+Operation: SWAP Sentence: Which lectures are available on Friday at 15 Count: 12
+Operation: SWAP Sentence: Which lectures are scheduled at 13 on Thursday Count: 26
+Operation: SWAP Sentence: What are the lecture timings for Wednesday at 9 Count: 17
+Operation: SWAP Sentence: Which lectures are scheduled at 10 on Tuesday Count: 16
+Operation: SWAP Sentence: Which lectures are scheduled at 15 on Monday Count: 12
+Operation: SWAP Sentence: How do I get to DeepSpa Count: 16
+Operation: SWAP Sentence: How can I reach the lecture hall Count: 29
+Operation: SWAP Sentence: How does she get to room C.2011 Count: 14
+Operation: SWAP Sentence: Where can I find the box Count: 3
+Operation: SWAP Sentence: Where is the project room located Count: 12
+Operation: SWAP Sentence: Where is room B.3005 situated Count: 8
+Operation: SWAP Sentence: What is the weather forecast for Shanghai Count: 3
+Operation: SWAP Sentence: wiki What is the current population of Seoul Count: 17
+Operation: SWAP Sentence: wiki Tell me about software testing methodologies Count: 6
+Operation: SWAP Sentence: wiki What are the principles of computer graphics Count: 11
+Operation: SWAP Sentence: wiki Provide information on the field of artificial intelligence Count: 17
+Operation: SWAP Sentence: What is the result of 632 Count: 4
+Operation: SWAP Sentence: What is the value of 10/0 Count: 5
+Operation: SWAP Sentence: Is 17+2 equal to 19 Count: 5
+Operation: SWAP Sentence: Is 8340 equal to 3320 Count: 3
+Operation: SWAP Sentence: What is the result of ((3+2)4)/6 Count: 11
+Operation: SWAP Sentence: What is 13^2 Count: 2
+Operation: SWAP Sentence: What is the weather like in Edinburgh Count: 2
+Operation: SWAP Sentence: wiki Who is the current President of Canada Count: 55
+Operation: SWAP Sentence: How's the weather in Brussels Count: 2
+Operation: SWAP Sentence: Which lectures are scheduled at 13 on Sunday Count: 9
+Operation: SWAP Sentence: On Thursday at 9 Count: 3
+Operation: SWAP Sentence: Where is the Randwyck library situated Count: 1
+Operation: SWAP Sentence: wiki Tell me about the geography of the Netherlands Count: 23
+Operation: SWAP Sentence: What's the weather like in Nijmegen Count: 1
+Operation: SWAP Sentence: wiki Provide information on current emerging trends in cybersecurity Count: 39
+Operation: SWAP Sentence: Is (5-3)^2 equal to 4 Count: 1
+Operation: SWAP Sentence: What is the result of ((3-12)^3)2 Count: 15
+Operation: SWAP Sentence: How do you get to DeepSpace Center Count: 5
+Operation: SWAP Sentence: What is the weather like in Vientiane Count: 1
+Operation: SWAP Sentence: Is 5+2 equal to 7 Count: 3
+Operation: SWAP Sentence: Is 423 equal to 82 Count: 2
+Operation: SWAP Sentence: What is the result of ((3+2)4)/6 Count: 15
+Operation: SWAP Sentence: Is 6354 equal to 3402 Count: 3
+Operation: SWAP Sentence: Is 420 equal to 80 Count: 6
+Operation: SWAP Sentence: What is the result of ((5+19)*4)/6 Count: 3
+Operation: SWAP Sentence: How do you get to the desired place Count: 15
+Operation: SWAP Sentence: What is the weather like in Windhoek Count: 6
+Operation: SWAP Sentence: Is 572+3654 equal to 4226 Count: 5
+Operation: SWAP Sentence: Is 7^3 equal to 343 Count: 2
+Operation: SWAP Sentence: What is the result of ((29-12)^3)2 Count: 18
+Operation: SWAP Sentence: Is 4729 equal to 1363 Count: 6
+Operation: SWAP Sentence: wiki What are the benefits of exercise Count: 1
+Operation: SWAP Sentence: wiki Who is Marie Curie Count: 7
+Operation: SWAP Sentence: wiki What is the theory of relativity Count: 22
+Operation: SWAP Sentence: wiki How does photosynthesis work Count: 3
+Operation: SWAP Sentence: wiki Explain the concept of supply and demand Count: 12
+Operation: SWAP Sentence: wiki What are the symptoms of COVID-19 Count: 11
+Operation: SWAP Sentence: wiki Who is Nelson Mandela Count: 13
+Operation: SWAP Sentence: wiki What is the history of Ancient Rome Count: 12
+Operation: SWAP Sentence: wiki How does the internet work Count: 9
+Operation: SWAP Sentence: wiki What are the principles of democracy Count: 10
+Operation: SWAP Sentence: wiki Explain the process of fermentation Count: 21
+Operation: SWAP Sentence: wiki Who is Albert Einstein Count: 5
+Operation: SWAP Sentence: wiki What are the different types of renewable energy Count: 1
+Operation: SWAP Sentence: wiki What is the meaning of life Count: 9
+Operation: SWAP Sentence: wiki Explain the concept of quantum mechanics Count: 9
+Operation: SWAP Sentence: wiki Who is Leonardo da Vinci Count: 9
+Operation: SWAP Sentence: wiki What is the history of the Industrial Revolution Count: 44
+Operation: SWAP Sentence: wiki How do vaccines work Count: 13
+Operation: SWAP Sentence: wiki Who is Isaac Newton Count: 9
+Operation: SWAP Sentence: wiki What are the effects of climate change Count: 1
+Operation: SWAP Sentence: What is the weather like today Count: 3
+Operation: SWAP Sentence: Are there any available appointments Count: 6
+Operation: SWAP Sentence: Where can I find a good restaurant Count: 15
+Operation: SWAP Sentence: Which movies are playing tonight Count: 5
+Operation: SWAP Sentence: wiki Tell me about the history of Ancient Rome Count: 11
+Operation: SWAP Sentence: Calculate the value of (4+5)/2 Count: 6
+Operation: SWAP Sentence: Which books are recommended for beginners Count: 2
+Operation: SWAP Sentence: Tell me about the latest fashion trends Count: 16
+Operation: SWAP Sentence: Find the nearest gas station Count: 10
+Operation: SWAP Sentence: Who is the current President of the United States Count: 13
+Operation: SWAP Sentence: What are the symptoms of the common cold Count: 1
+Operation: SWAP Sentence: Is 7+3 equal to 10 Count: 3
+Operation: SWAP Sentence: Evaluate the expression (2*3+4)/5 Count: 14
+Operation: SWAP Sentence: How long does it take to get to the airport Count: 13
+Operation: SWAP Sentence: Where can I buy concert tickets Count: 2
+Operation: SWAP Sentence: What time does the train arrive Count: 8
+Operation: SWAP Sentence: Provide information about the nearest hotels Count: 4
+Operation: SWAP Sentence: Locate the nearest pharmacy Count: 21
+Operation: SWAP Sentence: What is the weather forecast for tomorrow Count: 7
+Operation: SWAP Sentence: wiki Explain the concept of artificial intelligence Count: 8
+Operation: SWAP Sentence: What is the best way to learn a new language Count: 1
+Operation: SWAP Sentence: Find the nearest parking lot Count: 3
+Operation: SWAP Sentence: Recommend a good book to read Count: 1
+Operation: SWAP Sentence: What are the ingredients for a classic margherita pizza Count: 10
+Operation: SWAP Sentence: Is it going to rain today Count: 1
+Operation: SWAP Sentence: What is the capital of France Count: 8
+Operation: SWAP Sentence: Who won the Nobel Prize in Physics in 2020 Count: 30
+Operation: SWAP Sentence: What are the top tourist attractions in London Count: 11
+Operation: SWAP Sentence: Tell me about the history of photography Count: 5
+Operation: SWAP Sentence: Calculate the area of a triangle with base 5 and height 8 Count: 13
+Operation: SWAP Sentence: What are the opening hours of the museum Count: 16
+Operation: SWAP Sentence: Find the nearest ATM Count: 2
+Operation: SWAP Sentence: What is the current exchange rate between US dollars and Euros Count: 5
+Operation: SWAP Sentence: Is 10 divided by 2 equal to 5 Count: 6
+Operation: SWAP Sentence: What is the square root of 16 Count: 2
+Operation: SWAP Sentence: What is the temperature in New York City Count: 9
+Operation: SWAP Sentence: wiki Who is the Prime Minister of Canada Count: 32
+Operation: SWAP Sentence: What is the best time to visit the Grand Canyon Count: 56
+Operation: SWAP Sentence: Provide information about the nearest shopping mall Count: 6
+Operation: SWAP Sentence: Locate the nearest post office Count: 8
+Operation: SWAP Sentence: What is the best way to lose weight Count: 2
+Operation: SWAP Sentence: Find the nearest coffee shop Count: 4
+Operation: SWAP Sentence: What is the weather like in Sydney Count: 9
+Operation: SWAP Sentence: Who is the author of the book "To Kill a Mockingbird" Count: 13
+Operation: SWAP Sentence: What is the population of Tokyo Count: 3
+Operation: SWAP Sentence: What are the benefits of regular exercise Count: 19
+Operation: SWAP Sentence: Tell me about the history of the Internet Count: 8
+Operation: SWAP Sentence: Calculate the value of pi to the nearest hundredth Count: 2
+Operation: SWAP Sentence: What are the opening hours of the library Count: 15
+Operation: SWAP Sentence: Find the nearest gym Count: 5
+Operation: SWAP Sentence: What is the current stock price of Apple Count: 4
+Operation: SWAP Sentence: Is 20 multiplied by 3 equal to 60 Count: 8
+Operation: SWAP Sentence: What is the cube root of 27 Count: 8
+Operation: SWAP Sentence: What is the weather like in Paris Count: 5
+Operation: SWAP Sentence: wiki Who is the CEO of Microsoft Count: 12
+Operation: SWAP Sentence: What is the best time to visit the Eiffel Tower Count: 16
+Operation: SWAP Sentence: Provide information about the nearest bus stop Count: 15
+Operation: SWAP Sentence: Locate the nearest hospital Count: 4
+Operation: SWAP Sentence: What is the best way to improve memory Count: 5
+Operation: SWAP Sentence: Find the nearest bookstore Count: 4
+Operation: SWAP Sentence: wiki Tell me about the history of Ancient Egypt Count: 9
+Operation: SWAP Sentence: wiki What are the side effects of the COVID-19 vaccine Count: 9
+Operation: SWAP Sentence: wiki What is the capital of Brazil Count: 13
+Operation: SWAP Sentence: wiki Who invented the telephone Count: 16
+Operation: SWAP Sentence: wiki Explain the process of cellular respiration Count: 37
+Operation: SWAP Sentence: wiki What are the different programming languages Count: 1
+Operation: SWAP Sentence: wiki What is the population of New York City Count: 7
+Operation: SWAP Sentence: wiki Describe the structure of DNA Count: 6
+Operation: SWAP Sentence: wiki Who painted the Mona Lisa Count: 9
+Operation: SWAP Sentence: wiki What are the major causes of air pollution Count: 37
+Operation: SWAP Sentence: wiki What is the meaning of the term "sustainability" Count: 25
+Operation: SWAP Sentence: wiki Who discovered penicillin Count: 26
+Operation: SWAP Sentence: wiki Explain the concept of artificial intelligence Count: 15
+Operation: SWAP Sentence: wiki What are the major components of the human nervous system Count: 5
+Operation: SWAP Sentence: wiki Who wrote the play Romeo and Juliet Count: 10
+Operation: SWAP Sentence: wiki What are the benefits of regular exercise Count: 5
+Operation: SWAP Sentence: wiki Explain the process of photosynthesis Count: 20
+Operation: SWAP Sentence: wiki What are the stages of mitosis Count: 12
+Operation: SWAP Sentence: wiki Who is the current Prime Minister of the United Kingdom Count: 13
+Operation: SWAP Sentence: wiki Describe the process of digestion Count: 7
+Operation: SWAP Sentence: wiki What are the major branches of science Count: 3
+Operation: SWAP Sentence: wiki Who composed the symphony "Ode to Joy" Count: 6
+Operation: SWAP Sentence: wiki Explain the concept of supply and demand Count: 9
+Operation: SWAP Sentence: wiki What are the major types of renewable energy sources Count: 3
+Operation: SWAP Sentence: wiki Who is the author of the novel "Pride and Prejudice" Count: 18
+Operation: SWAP Sentence: wiki Describe the process of evolution Count: 7
+Operation: SWAP Sentence: wiki What are the major causes of climate change Count: 15
+Operation: SWAP Sentence: wiki Who discovered the theory of general relativity Count: 6
+Operation: SWAP Sentence: wiki wiki Explain the concept of quantum mechanics Count: 49
+Operation: SWAP Sentence: wiki What are the major features of the human respiratory system Count: 3
+Operation: SWAP Sentence: wiki Who is the artist behind the painting "Starry Night" Count: 11
+Operation: SWAP Sentence: wiki What are the benefits of meditation Count: 6
+Operation: SWAP Sentence: wiki Describe the process of plate tectonics Count: 11
+Operation: SWAP Sentence: wiki Who is the current President of the United States Count: 23
+Operation: SWAP Sentence: wiki Explain the concept of genetic inheritance Count: 10
+Operation: SWAP Sentence: wiki What are the major types of renewable energy sources Count: 8
+Operation: SWAP Sentence: wiki Who is the author of the play "Hamlet" Count: 27
+Operation: SWAP Sentence: wiki Describe the process of cellular division Count: 14
+Operation: SWAP Sentence: wiki What are the major factors influencing climate change Count: 16
+Operation: SWAP Sentence: wiki Who discovered the theory of relativity Count: 5
+Operation: SWAP Sentence: wiki Explain the concept of artificial neural networks Count: 13
+Operation: SWAP Sentence: What is the average rainfall in Seattle Count: 2
+Operation: SWAP Sentence: Are there any available hotel rooms Count: 23
+Operation: SWAP Sentence: Where can I find a good sushi restaurant Count: 13
+Operation: SWAP Sentence: Which concerts are happening this weekend Count: 52
+Operation: SWAP Sentence: wiki Explain the theory of relativity Count: 25
+Operation: SWAP Sentence: Evaluate the expression (6/2)*(4-1) Count: 8
+Operation: SWAP Sentence: Which programming languages are in high demand Count: 2
+Operation: SWAP Sentence: Tell me about the latest technology trends Count: 7
+Operation: SWAP Sentence: Find the nearest park Count: 7
+Operation: SWAP Sentence: wiki Who is the current Prime Minister of the United Kingdom Count: 25
+Operation: SWAP Sentence: wiki What are the symptoms of COVID-19 Count: 22
+Operation: SWAP Sentence: Is 8-3 equal to 5 Count: 8
+Operation: SWAP Sentence: Evaluate the expression (5^2)/3 Count: 5
+Operation: SWAP Sentence: How long does it take to drive to the beach Count: 3
+Operation: SWAP Sentence: Where can I buy concert tickets online Count: 13
+Operation: SWAP Sentence: What time does the bus depart Count: 6
+Operation: SWAP Sentence: Provide information about local tourist attractions Count: 11
+Operation: SWAP Sentence: Locate the nearest movie theater Count: 7
+Operation: SWAP Sentence: What is the weather forecast for next week Count: 6
+Operation: SWAP Sentence: wiki Explain the concept of machine learning Count: 9
+Operation: SWAP Sentence: What is the best method to study for exams Count: 2
+Operation: SWAP Sentence: Find the nearest parking garage Count: 10
+Operation: SWAP Sentence: Recommend a good movie to watch Count: 4
+Operation: SWAP Sentence: What are the ingredients for a classic chocolate chip cookie Count: 4
+Operation: SWAP Sentence: Is it going to snow tomorrow Count: 1
+Operation: SWAP Sentence: What is the capital of Japan Count: 5
+Operation: SWAP Sentence: wiki Who won the Nobel Prize in Literature in 2021 Count: 15
+Operation: SWAP Sentence: What are the must-visit places in New York City Count: 4
+Operation: SWAP Sentence: wiki Tell me about the history of the Renaissance Count: 18
+Operation: SWAP Sentence: Calculate the area of a circle with radius 10 Count: 3
+Operation: SWAP Sentence: What are the operating hours of the amusement park Count: 9
+Operation: SWAP Sentence: Find the nearest gas station with a car wash Count: 21
+Operation: SWAP Sentence: What is the current price of gold Count: 1
+Operation: SWAP Sentence: Is 15 divided by 3 equal to 5 Count: 5
+Operation: SWAP Sentence: What is the square root of 25 Count: 7
+Operation: SWAP Sentence: What is the temperature in Los Angeles Count: 3
+Operation: SWAP Sentence: wiki Who is the President of France Count: 7
+Operation: SWAP Sentence: What is the best time to visit the Great Wall of China Count: 34
+Operation: SWAP Sentence: Provide information about the nearest shopping center Count: 2
+Operation: SWAP Sentence: Locate the nearest train station Count: 13
+Operation: SWAP Sentence: What is the best way to reduce stress Count: 2
+Operation: SWAP Sentence: Find the nearest pharmacy with 24-hour service Count: 7
+Operation: SWAP Sentence: What is the weather like in Dubai Count: 2
+Operation: SWAP Sentence: wiki Who is the author of the book "1984" Count: 26
+Operation: SWAP Sentence: What is the population of New Delhi Count: 17
+Operation: SWAP Sentence: What are the benefits of a balanced diet Count: 5
+Operation: SWAP Sentence: wiki Tell me about the history of the Industrial Revolution Count: 18
+Operation: SWAP Sentence: Calculate the value of e raised to the power of 2 Count: 2
+Operation: SWAP Sentence: What are the opening hours of the zoo Count: 13
+Operation: SWAP Sentence: Find the nearest post office with passport services Count: 6
+Operation: SWAP Sentence: What is the current exchange rate between US dollars and British pounds Count: 1
+Operation: SWAP Sentence: Is 12 multiplied by 4 equal to 48 Count: 7
+Operation: SWAP Sentence: What is the cube root of 64 Count: 6
+Operation: SWAP Sentence: What is the weather like in Miami Count: 4
+Operation: SWAP Sentence: wiki Who is the founder of Amazon Count: 7
+Operation: SWAP Sentence: What is the best time to visit the Colosseum Count: 13
+Operation: SWAP Sentence: Provide information about the nearest public transportation options Count: 9
+Operation: SWAP Sentence: Locate the nearest emergency room Count: 2
+Operation: SWAP Sentence: What is the best way to improve physical fitness Count: 3
+Operation: SWAP Sentence: Find the nearest art gallery Count: 6

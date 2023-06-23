@@ -48,8 +48,8 @@ public class PredictAction {
                 label = jsonResponse.getString("label");
                 score = jsonResponse.getString("score");
                 // print
-                System.out.println("Label: " + label);
-                System.out.println("Score: " + score);
+//                System.out.println("Label: " + label);
+//                System.out.println("Score: " + score);
 
             } else {
                 System.out.println("Request failed with response code: " + responseCode);
