@@ -20,7 +20,7 @@ Rule <WIKIQUERY> @
 Rule <WEATHERQUERY> <CITYNAME>
 Rule <CITYNAME> <SETNAME> | <CITYNAME> <SETNAME>
 Rule <SETNAME> @
-Rule <FOODQUESTION> i want something to eat
+Rule <FOODQUESTION> I want something to eat
 Rule <FOODRESPONSE> @
 Rule <SCHEDULEFOLLOW> <TIMEEXPRESSION> | and <TIMEEXPRESSION>
 Action <SCHEDULE> @ <DAY> saturday : There are no lectures on Saturday

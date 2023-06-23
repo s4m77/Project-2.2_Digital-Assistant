@@ -1,4 +1,5 @@
-package FacialRecognision;
+package MethodAdding;
+
 
 import java.io.File;
 
