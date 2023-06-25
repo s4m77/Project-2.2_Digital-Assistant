@@ -17,20 +17,29 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 
 class Model:
-    MODEL_PATH = "src/main/java/FacialRecognition/model.joblib"
-    face_cascade = cv2.CascadeClassifier('src/main/resources/Facial models/haarcascade_eye_tree_eyeglasses.xml')
-    model=None
-    picturePath="src\\main\\resources\\Faces"
-    Certainity=0.6
+    KNN_MODEL_PATH = "src\main\java\FacialRecognition\KNNMODELSELF"
+    PCA_MODEL_PATH = "src\main\java\FacialRecognition\PCAMODELSELF"
+    face_cascade = cv2.CascadeClassifier('src\\main\\resources\\Facial models\\haarcascade_frontalface_default.xml')
+    KNN_MODEL=None
+    PCA_MODEL=None
 
+    picturePath="src\\main\\resources\\Faces"
+  
     def __init__(self):
-        self.model = joblib.load(self.MODEL_PATH)
-        if os.path.exists(self.MODEL_PATH):
-            self.model = joblib.load(self.MODEL_PATH)
+        
+        if os.path.exists(self.KNN_MODEL_PATH):
+            self.KNN_MODEL = joblib.load(self.KNN_MODEL_PATH)
         else:
             print("facial recognition model not found")
             exit(1)
-
+        if os.path.exists(self.PCA_MODEL_PATH):
+            self.PCA_MODEL = joblib.load(self.PCA_MODEL_PATH)
+        else:
+            print("PCA model not found")
+            exit(1)
+        if self.face_cascade.empty() or self.face_cascade is None:
+            print("face cascade model not found")
+            exit(1)
     def process(self, image):
 
         faces = self.findFaces(image)
@@ -55,7 +64,12 @@ class Model:
         gray = self.process(image)
         predictions = []
         for i in gray:
-            value=self.model.predict(i.reshape(1, -1))
+            feature_vector = self.extract_features(i)
+
+            feature_vector = (feature_vector - np.mean(feature_vector)) / np.std(feature_vector)
+            transformed = self.PCA_MODEL.transform(feature_vector.reshape(1, -1))
+
+            value=self.KNN_MODEL.predict(transformed)
             predictions.append(value[0])
         return predictions
     
@@ -64,8 +78,16 @@ class Model:
         gray= self.process(image)
         predictions=[]
         for i in gray:
-            value=self.model.predict(i.reshape(1,-1))
-            predictions.append(value)
+            ##get the feature vector
+            feature_vector=self.extract_features(i)
+            ##normalize the feature vector
+            feature_vector=(feature_vector-np.mean(feature_vector))/np.std(feature_vector)
+            transformed=self.PCA_MODEL.transform(feature_vector.reshape(1,-1))
+
+            ##predict the class
+            value=self.KNN_MODEL.predict(transformed)
+            predictions.append(value[0])
+
         return predictions
 
     
@@ -88,26 +110,7 @@ class Model:
         
         return feature_vector
     
-    def train(self,components=100):
-        dir=self.picturePath
-        Labels=os.listdir(dir)
 
-
-        temp2=[dir+"/"+i for i in Labels]
-        images=np.array([plt.imread(image) for image in temp2])
-        Labels=np.array(Labels)
-        ##convert to grayscale
-        proccessed= [self.process(i) for i in images]
-        
-        Vectors=np.array([self.extract_features(i) for i in proccessed])
-        normalized=(Vectors-np.mean(Vectors))/np.std(Vectors)
-        pca=PCA(n_components=components)
-        reduced=pca.fit_transform(normalized)
-        classifier=KNeighborsClassifier(n_neighbors=1)
-        classifier.fit(reduced,Labels)
-        joblib.dump(classifier,self.MODEL_PATH)
-        print("Model trained")
-        return classifier
     
     
     
@@ -125,35 +128,52 @@ if __name__=="__main__":
 
     while True:
         ret, frame = cap.read()
-        predictions=model.predict(frame)
-        if len(predictions)>0:
-            break
+        faces=model.findFaces(frame)
+        ##put a rectangle around the face
+        if(len(faces)>0):
+            predictions=model.predict(frame)
+            print(predictions)
+        for (x,y,w,h) in faces:
+            cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
+            ##put the prediction on the image
+            cv2.putText(frame,str(predictions[0]),(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(255,0,0),2)
+        cv2.imshow("frame",frame)
 
-    print(predictions)
-    ##list are 1 to 1 convert them to tuples   
+
+        ##repeat until the user presses q
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+            
+        
+
+        
+        
+            
+
+
+        # predictions=model.predict(frame)
+        # if len(predictions)>0:
+        #     break
+
+    ##print(predictions)  
     cap.release()
     cv2.destroyAllWindows()
 
-# if __name__ == '__main__':
+##if the model predicts a face, draw a rectangle around it
+# if __name__=="__main__":
 #     model=Model()
+    
 #     cap=cv2.VideoCapture(0)
+
 #     while True:
 #         ret, frame = cap.read()
-#         faces=model.findFaces(frame)
-#         print(faces)
-#         #put a rectangle around the face
-#         for (x,y,w,h) in faces:
-#             cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
 #         predictions=model.predict(frame)
-#         print(predictions)
-        
-#         cv2.imshow("frame",frame)
-#         ##repeat until the user presses q
-#         if cv2.waitKey(1) & 0xFF == ord('q'):
+#         if len(predictions)>0:
 #             break
 
+#     print(predictions)
+#     ##list are 1 to 1 convert them to tuples   
 #     cap.release()
 #     cv2.destroyAllWindows()
-
 
     
