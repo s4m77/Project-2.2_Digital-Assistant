@@ -150,11 +150,25 @@ if __name__=="__main__":
         
             
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 
         # predictions=model.predict(frame)
         # if len(predictions)>0:
         #     break
 
+=======
+=======
+>>>>>>> a39462a041355a4608605aef1ca891658691895f
+
+        # predictions=model.predict(frame)
+        # if len(predictions)>0:
+        #     break
+
+<<<<<<< HEAD
+>>>>>>> a39462a041355a4608605aef1ca891658691895f
+=======
+>>>>>>> a39462a041355a4608605aef1ca891658691895f
     ##print(predictions)  
     cap.release()
     cv2.destroyAllWindows()
