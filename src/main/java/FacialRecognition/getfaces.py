@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 
 name = input("Who is in the picture?")
-path="src\\main\\java\\FacialRecognition\\faces\\"
+path="src\\main\\java\\FacialRecognition\\Faces\\"
 
 
 ##get frontal face
@@ -46,12 +46,6 @@ while True:
     ##display the resulting frame
     cv2.imshow('frame', frame)
 
-##ask who is in the picture
-
-##format the image to 64x64
-for i in range(len(faces)):
-    faces[i] = cv2.resize(faces[i], (64, 64))
-    faces[i] = cv2.cvtColor(faces[i], cv2.COLOR_BGR2GRAY)
 
     
 
