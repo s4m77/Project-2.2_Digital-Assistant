@@ -17,13 +17,13 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 
 class Model:
-    KNN_MODEL_PATH = "src\main\java\FacialRecognition\KNNMODELSELF"
-    PCA_MODEL_PATH = "src\main\java\FacialRecognition\PCAMODELSELF"
-    face_cascade = cv2.CascadeClassifier('src\\main\\resources\\Facial models\\haarcascade_frontalface_default.xml')
+    KNN_MODEL_PATH = "src/main/java/FacialRecognition/KNNMODELSELF"
+    PCA_MODEL_PATH = "src/main/java/FacialRecognition/PCAMODELSELF"
+    face_cascade = cv2.CascadeClassifier('src/main/resources/Facial models/haarcascade_frontalface_default.xml')
     KNN_MODEL=None
     PCA_MODEL=None
 
-    picturePath="src\\main\\resources\\Faces"
+    picturePath="src/main/resources/Faces"
   
     def __init__(self):
         
@@ -143,32 +143,19 @@ if __name__=="__main__":
         ##repeat until the user presses q
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-            
-        
 
-        
-        
-            
-
-<<<<<<< HEAD
-<<<<<<< HEAD
 
         # predictions=model.predict(frame)
         # if len(predictions)>0:
         #     break
 
-=======
-=======
->>>>>>> a39462a041355a4608605aef1ca891658691895f
+
 
         # predictions=model.predict(frame)
         # if len(predictions)>0:
         #     break
 
-<<<<<<< HEAD
->>>>>>> a39462a041355a4608605aef1ca891658691895f
-=======
->>>>>>> a39462a041355a4608605aef1ca891658691895f
+
     ##print(predictions)  
     cap.release()
     cv2.destroyAllWindows()

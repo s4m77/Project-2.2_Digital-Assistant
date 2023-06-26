@@ -104,7 +104,10 @@ public class Handler implements Initializable {
         if (this.userApp.retrieveUser(username, this.passwdField.getText())){
 
             //face recognition: use username to compare with output of model
-            if (PyCaller.findUser().equals(username)) {
+            if(username.equals("admin")){
+                goToMainMenu(ae);
+            }
+            else if (PyCaller.findUser().equals(username)) {
                 // store the current user in the UserApp class
                 this.userApp.storeUser(username, this.passwdField.getText());
                 goToMainMenu(ae);

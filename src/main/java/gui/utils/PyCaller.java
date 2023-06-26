@@ -19,17 +19,9 @@ public class PyCaller {
 
     public static void main(String[] args) throws IOException {
 
-//        String cmd = COMMAND + SCRIPT + METHOD;
-//        System.out.println(executeCommand(cmd));;
-//        String cmd = "mmda_venv/bin/python src/main/java/gui/utils/Test.py test \"hello\" \"world\"";
-//        cmd = "mmda_venv/bin/python src/main/java/FacialRecognition/Model.py";
-//        System.out.println(executeCommand(cmd));
-//
-//        // out will be of format ['Carlos_Moya', 'Barbara_De', ...]
-//        // need to get the name of the first person, e.g. Carlos_Moya
         startServer();
         System.out.println("Server started");
-        System.out.println(predictAction("is 7 + 3 equal to 10"));;
+        System.out.println(predictAction("is 7 + 3 equal to 10"));
     }
 
     private static String executeCommand(String command){
