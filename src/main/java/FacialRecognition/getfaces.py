@@ -12,7 +12,8 @@ path="src/main/java/FacialRecognition/Faces"
 
 
 ##get frontal face
-face_cascade = cv2.CascadeClassifier('src/main/resources/Facial models/haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('src/sam
+main/resources/Facial models/haarcascade_frontalface_default.xml')
 if face_cascade.empty() or face_cascade is None:
     print("face cascade model not found")
     exit(1)
@@ -45,6 +46,9 @@ while True:
         break
     ##display the resulting frame
     cv2.imshow('frame', frame)
+
+##ask who is in the picture
+
 
 
 
