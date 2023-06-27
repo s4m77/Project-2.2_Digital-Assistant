@@ -47,3 +47,11 @@ src/main/resources/Facedataset/Humans/1 (1).jpeg
 
 ### Python ENV ###
 mmda_venv/
+
+src/main/java/FacialRecognition/KNNMODELSELF
+src/main/java/FacialRecognition/PCAMODELSELF
+
+
+src/main/resources/experiments/minedit_phase3.csv
+
+src/main/java/FacialRecognition/Faces

@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 
 name = input("Who is in the picture?")
-path="src\\main\\java\\FacialRecognition\\faces\\"
+path="src/main/java/FacialRecognition/Faces"
 
 
 ##get frontal face
@@ -48,8 +48,6 @@ while True:
     cv2.imshow('frame', frame)
 
 ##ask who is in the picture
-
-
 
 
 
