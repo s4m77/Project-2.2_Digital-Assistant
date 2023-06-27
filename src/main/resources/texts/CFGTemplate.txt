@@ -33,6 +33,6 @@ Action <MATHQUESTION> @ : <ANSWER> : Math
 Action <WIKI> @ : <WIKIANSWER> : Wiki
 Action <WEATHER> @ : <WEATHERANSWER> : Weather
 Action <FOODQUESTION> @ : What would you like to eat?
-Action <FOODRESPONSE> @ Action <FOODQUESTION> @ : testing
+Action <FOODRESPONSE> @ Action <FOODQUESTION> @ : that sounds tasty
 Action <SCHEDULEFOLLOW> @ Action <TIMEEXPRESSION> @ :
 Action : I have no idea

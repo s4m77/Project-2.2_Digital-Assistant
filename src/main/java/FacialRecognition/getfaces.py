@@ -12,7 +12,8 @@ path="src\\main\\java\\FacialRecognition\\faces\\"
 
 
 ##get frontal face
-face_cascade = cv2.CascadeClassifier('src/main/resources/Facial models/haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('src/sam
+main/resources/Facial models/haarcascade_frontalface_default.xml')
 if face_cascade.empty() or face_cascade is None:
     print("face cascade model not found")
     exit(1)
@@ -48,12 +49,7 @@ while True:
 
 ##ask who is in the picture
 
-##format the image to 64x64
-for i in range(len(faces)):
-    faces[i] = cv2.resize(faces[i], (64, 64))
-    faces[i] = cv2.cvtColor(faces[i], cv2.COLOR_BGR2GRAY)
 
-    
 
 
 
