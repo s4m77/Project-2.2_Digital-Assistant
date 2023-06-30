@@ -66,10 +66,12 @@ public class PredictAction {
 
     public static void main(String[] args) {
 
-        PyCaller.startServer();
+       PyCaller.startServer();
 
-        String input = "is 7 + 3 equal to 10";
+        String input = "wiki how to make a cake with chocolate and strawberry frosting on top";
 
         String result = predictAction(input);
+
+        System.out.println(result);
     }
 }

@@ -2,6 +2,7 @@ package gui.utils;
 
 import FacialRecognition.FacialRecognition;
 import bots.CFG.CFG;
+import bots.CFG.MultiStageBot;
 import bots.TemplateSkills.TemplateSkills;
 import db.Conversationdb;
 import gui.utils.messages.BotLabel;
@@ -22,6 +23,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import nlp.PredictAction;
 import nlp.SpellCheck;
 
 import java.io.*;
@@ -32,6 +34,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
+
+import static gui.utils.Handler.BotType.MultiTurnCFG;
 
 /**
  * This class is the main controller for the GUI.
@@ -49,6 +53,7 @@ public class Handler implements Initializable {
 
     private static BotType currentType;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         nu.pattern.OpenCV.loadLocally(); // init openCV
@@ -65,7 +70,7 @@ public class Handler implements Initializable {
         if (fr.currentModel != null)
             faceComboBox.setValue(String.valueOf(fr.currentModel));
         else
-            faceComboBox.setValue(faceModelList.get(0));
+            faceComboBox.setValue("Select a bot type");
         setCurrentModel();
     }
 
@@ -262,6 +267,12 @@ public class Handler implements Initializable {
                 case TemplateSkills -> {
                     return TemplateSkills.interpret(sentence);
                 }
+                case MultiTurnCFG -> {
+                    return MultiStageBot.getResponse(sentence);
+                }
+                case PredictAction -> {
+                    return PredictAction.predictAction(sentence);
+                }
                 default -> {
                     return "Error: BotType not set";
                 }
@@ -354,7 +365,9 @@ public class Handler implements Initializable {
 
     public enum BotType{
         CFG,
-        TemplateSkills
+        TemplateSkills,
+        MultiTurnCFG,
+        PredictAction
     }
 
     /**
@@ -385,16 +398,18 @@ public class Handler implements Initializable {
         switch (botComboBox.getValue()){
             case "CFG" -> currentType = BotType.CFG;
             case "TemplateSkills" -> currentType = BotType.TemplateSkills;
-            default -> currentType = BotType.TemplateSkills;
+            case "MultiTurnCFG" -> currentType = BotType.MultiTurnCFG;
+            case "PredictAction" -> currentType = BotType.PredictAction;
+            default -> currentType = BotType.MultiTurnCFG;
         }
         //System.out.println("Current bot type: " + currentType);
     }
 
     private void setCurrentModel(){
-        switch (faceComboBox.getValue()) {
-            case "EYE" -> fr.setFacialModel(FacialRecognition.FacialModel.EYE);
-            case "FACE" ->fr.setFacialModel(FacialRecognition.FacialModel.FACE);
-            default -> fr.setFacialModel(FacialRecognition.FacialModel.FACE);
+        if (faceComboBox.getValue().equals("EYE")) {
+            fr.setFacialModel(FacialRecognition.FacialModel.EYE);
+        } else {
+            fr.setFacialModel(FacialRecognition.FacialModel.FACE);
         }
     }
 }
