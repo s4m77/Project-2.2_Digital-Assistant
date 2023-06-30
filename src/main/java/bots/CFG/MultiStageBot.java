@@ -38,7 +38,7 @@ public class MultiStageBot {
     }
     
     public static void main(String[] args) {
-        String first="I want something to eat";
+        String first="i want something to eat";
         String second="hotdog";
         String answer1=getResponse(first);
         System.out.println(answer1);

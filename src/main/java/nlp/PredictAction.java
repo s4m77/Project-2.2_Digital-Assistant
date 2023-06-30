@@ -7,6 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import gui.utils.PyCaller;
 import org.json.JSONObject;
 
 public class PredictAction {
@@ -64,6 +65,11 @@ public class PredictAction {
     }
 
     public static void main(String[] args) {
-        String result = predictAction("is 7 + 3 equal to 10");
+
+        PyCaller.startServer();
+
+        String input = "is 7 + 3 equal to 10";
+
+        String result = predictAction(input);
     }
 }

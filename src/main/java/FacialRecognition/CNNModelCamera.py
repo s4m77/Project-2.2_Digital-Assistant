@@ -29,15 +29,15 @@ class Model:
     CNN_MODEL=None
 
     picturePath="src/main/resources/Faces"
-  
+
     def __init__(self):
-        
+
         if os.path.exists(self.CNN_MODEL_PATH):
             self.CNN_MODEL = load_model(self.CNN_MODEL_PATH)
         else:
             print("facial recognition model not found")
             exit(1)
-       
+
         if self.CNN_MODEL is None:
             print("CNN model not found")
             exit(1)
@@ -75,14 +75,14 @@ class Model:
             print(number)
             predictions.append(self.intToName(number))
         return predictions
-    
 
-    
+
+
 
     def findFaces(self,image):
         faces=self.face_cascade.detectMultiScale(image, 1.3, 5)
         return faces
-    
+
 
     def nameToInt(self,name):
         if name=="tom":
@@ -118,58 +118,17 @@ class Model:
             return "unknown"
 
 
-    
-
-    
-    
-    
 
 
 
 
 
-##open the camera and feed the image to the model
-##if the model predicts a face, draw a rectangle around it
-# if __name__=="__main__":
-#     model=Model()
-#
-#     cap=cv2.VideoCapture(0)
-#
-#     while True:
-#         ret, frame = cap.read()
-#         faces=model.findFaces(frame)
-#         ##put a rectangle around the face
-#         if(len(faces)>0):
-#             predictions=model.predict(frame)
-#             print(predictions)
-#         for (x,y,w,h) in faces:
-#             cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
-#             ##put the prediction on the image
-#             cv2.putText(frame,str(predictions[0]),(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(255,0,0),2)
-#         cv2.imshow("frame",frame)
-#
-#
-#         ##repeat until the user presses q
-#         if cv2.waitKey(1) & 0xFF == ord('q'):
-#             break
-#
-#
-#
-#         # predictions=model.predict(frame)
-#         # if len(predictions)>0:
-#         #     break
-#
-#
-#
-#         # predictions=model.predict(frame)
-#         # if len(predictions)>0:
-#         #     break
-#
-#
-#     ##print(predictions)
-#     cap.release()
-#     cv2.destroyAllWindows()
-#
+
+
+
+
+
+#open the camera and feed the image to the model
 #if the model predicts a face, draw a rectangle around it
 if __name__=="__main__":
     model=Model()
@@ -178,13 +137,37 @@ if __name__=="__main__":
 
     while True:
         ret, frame = cap.read()
-        predictions=model.predict(frame)
-        if len(predictions)>0:
+        faces=model.findFaces(frame)
+        ##put a rectangle around the face
+        if(len(faces)>0):
+            predictions=model.predict(frame)
+            print(predictions)
+        for (x,y,w,h) in faces:
+            cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
+            ##put the prediction on the image
+            cv2.putText(frame,str(predictions[0]),(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(255,0,0),2)
+        cv2.imshow("frame",frame)
+
+
+        ##repeat until the user presses q
+        if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
-    print(predictions)
-    ##list are 1 to 1 convert them to tuples
+
+
+        # predictions=model.predict(frame)
+        # if len(predictions)>0:
+        #     break
+
+
+
+        # predictions=model.predict(frame)
+        # if len(predictions)>0:
+        #     break
+
+
+    ##print(predictions)
     cap.release()
     cv2.destroyAllWindows()
 
-    
+

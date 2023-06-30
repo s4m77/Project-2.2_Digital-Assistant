@@ -3,8 +3,8 @@ package gui.utils;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-
-import static nlp.PredictAction.predictAction;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * This class is used to call Python scripts from Java.
@@ -14,14 +14,20 @@ public class PyCaller {
     static final String ENV_DIR = System.getProperty("user.dir") + "/mmda_venv";
 
     static final String COMMAND = "mmda_venv/bin/python ";
-    static final String MODEL_SCRIPT = System.getProperty("user.dir")+"/src/main/java/FacialRecognition/Model.py ";
+    static final String MODEL_SCRIPT = System.getProperty("user.dir")+"/src/main/java/FacialRecognition/CNNModel.py ";
 
 
     public static void main(String[] args) throws IOException {
 
-        startServer();
-        System.out.println("Server started");
-        System.out.println(predictAction("is 7 + 3 equal to 10"));
+//        startServer();
+//        System.out.println("Server started");
+//        System.out.println(predictAction("is 7 + 3 equal to 10"));
+//        System.out.println(findUser());
+        System.out.println(findUser());
+    }
+
+    public static void startServer(){
+        executeCommand("mmda_venv/bin/python src/main/resources/mmda_nlp/infer.py");
     }
 
     private static String executeCommand(String command){
@@ -50,24 +56,22 @@ public class PyCaller {
         return null;
     }
 
-    public static void startServer(){
-        executeCommand("mmda_venv/bin/python src/main/resources/mmda_nlp/infer.py");
-    }
-
     public static String findUser() {
         // mmda_venv/bin/python src/main/java/FacialRecognition/Model.py
         String out = executeCommand(COMMAND + MODEL_SCRIPT);
-        // out will be of format ['Carlos_Moya', 'Barbara_De', ...]
-        // need to get the name of the first person, e.g. Carlos_Moya
-        if (out != null) {
-            String[] names = out.split(",");
-            if (names.length > 0) {
-                String name = names[0];
-                name = name.substring(2, name.length() - 1);
-                return name;
-            }
+        return filter(out);
+    }
+
+    public static String filter(String input) {
+        String lastValue = null;
+        Pattern pattern = Pattern.compile("\\[(.*?)\\]");
+        Matcher matcher = pattern.matcher(input);
+
+        while (matcher.find()) {
+            lastValue = matcher.group(1);
         }
-        return "";
+        assert lastValue != null;
+        return lastValue.substring(1, lastValue.length() - 1);
     }
 
 }
